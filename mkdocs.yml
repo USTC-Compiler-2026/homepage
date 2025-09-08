@@ -35,8 +35,8 @@ theme:
 plugins:
   - search
   - glightbox
-  #- git-authors   # 显示作者 https://github.com/timvink/mkdocs-git-authors-plugin
-  #- git-revision-date-localized   # 显示上次编辑时间 https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
+  - git-authors   # 显示作者 https://github.com/timvink/mkdocs-git-authors-plugin
+  - git-revision-date-localized   # 显示上次编辑时间 https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
 
 
 
