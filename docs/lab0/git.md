@@ -13,93 +13,54 @@ git config --global user.email "Your Email"
 
 这些配置信息会记录每次代码更新的提交者和联系方式，有助于代码的追踪。
 
-## 创建远程仓库
+## 创建你的仓库
 
-我们将使用 GitLab 进行远程代码管理。
+我们将使用 GitLab 进行远程代码管理。虽然你没有权限在 GitLab 上创建仓库，但你可以通过 fork 的方式拥有一个属于自己的仓库。
 
-你可以在 GitLab 上创建自己的仓库，点击 New Project 可以创建仓库
+1. 进入以下公开仓库链接： **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024_warm_up.git](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024_warm_up.git)**
+2. 点击右上角的 "Fork" 按钮。这个操作会创建一个与原仓库一模一样的新仓库，唯一的区别是，这个新仓库是你自己的。你可以在新仓库上执行任何你需要的操作。
 
+   ![Untitled](photos/git1.png)
 
-![alt text](photos/1.png)
+3. 点击 "Fork" 后，页面将自动跳转到新的仓库页面，你将成为这个仓库的拥有者，这也会显示在仓库名称旁边。
 
-你可以在弹出的界面填写仓库的基本信息，但是不用勾选 Initialize repository with a README 选项。
+![Untitled](photos/git2.png)
 
-
-## 创建本地仓库
-
-当成功创建远程仓库后，你需要将它与本地的仓库连接起来，这样才能将更改推送到远程。
-
-1. 创建本地仓库
-
-	在 Ubuntu 环境中，新建一个文件夹，进入它，在其中创建本地仓库。
-
-	```bash
-	mkdir 2025_warm_up
-	cd 2025_warm_up
-	git init
-	```
-
-2. 获得远程仓库的 URL
-
-   ![Untitled](photos/git3.png)
-
-
-3. 将本地仓库与远程仓库关联起来
-
-	关联仓库使你可以运行 git pull 和 git push，在本地和远程之间同步代码。
-
-   ```bash
-   git remote add origin 你获得的远程仓库URL
-   ```
-
-	在这里，origin 是你远程仓库在本地仓库的一个 git 别名。
-
-## 拉取助教代码
-
-助教在一些实验中已经提供了框架，所以需要通过 git pull 来同步更改。
-
-由于网络教学中心的要求，助教的仓库无法公开，但是我们提供了包含只读的 access token 的仓库访问链接，可以用于执行 pull 操作（这个网页浏览器打不开是正常的）。
-
-```
-https://oauth2:xNpX7V6syseSZy8qLevE@cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up.git
-```
-
-1. 关联助教仓库
-
-	同样将其关联到本地仓库，并取一个不同的别名，这里是 upstream。
-
-
-	```bash
-   git remote add upstream https://oauth2:xNpX7V6syseSZy8qLevE@cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up.git
-   ```
-
-2. 拉取 master 分支
-
-	这样你可以同步助教的更改。
-	```bash
-	git pull upstream master
-	```
+现在，你已经成功拥有了自己的第一个仓库。接下来，我们可以开始对这个仓库进行修改。
 
 ## 进行一次提交
 
-1. 提交并初始化远程仓库
+由于仓库目前在服务器上，我们首先得到仓库的 URL，并通过 git clone 将其下载到本地。
 
-	你的远程仓库内容还没有任何内容，可以先将本地助教的代码提交到远程仓库
-	```
-	git push -u origin master
-	```
-	输入 GitLab 用户名和密码进行身份验证，然后才能成功提交。
+1. 得到仓库的 URL
 
+   ![Untitled](photos/git3.png)
 
-此时，我们可以创建并提交第一个自己的文件
+2. 在 Ubuntu 环境中，利用得到的 URL，克隆仓库到本地
 
-2. 创建一个 readme.md 文件
+   ```bash
+   # 使用 URL 进行 git clone XXX 为你的用户名
+   git clone https://cscourse.ustc.edu.cn/vdir/Gitlab/XXX/2024_warm_up.git
+   ```
+
+3. 输入 GitLab 用户名和密码进行身份验证，验证完毕后就将服务器上的仓库克隆到了本地
+
+   ```bash
+   # 检查是否成功 clone
+   $ cd 2024_warm_up
+   $ ls
+   warm_up.txt
+   ```
+
+   此时，我们可以创建并提交第一个文件
+
+4. 创建一个 readme.md 文件
 
    ```bash
    touch README.md
    ```
 
-3. 在 README.md 中添加 hello world 信息
+5. 在 README.md 中添加 hello world 信息
 
    ```bash
    $ echo "# Hello World" >> README.md
@@ -107,7 +68,7 @@ https://oauth2:xNpX7V6syseSZy8qLevE@cscourse.ustc.edu.cn/vdir/Gitlab/compiler_st
    # Hello World
    ```
 
-4. 将 README.md 添加到 git 的暂存区
+6. 将 README.md 添加到 git 的暂存区
 
    ```bash
    # git add 指令可以将文件添加到 git 的暂存区
@@ -125,7 +86,7 @@ https://oauth2:xNpX7V6syseSZy8qLevE@cscourse.ustc.edu.cn/vdir/Gitlab/compiler_st
            new file:   readme.md
    ```
 
-5. 提交本次修改并添加提交信息
+7. 提交本次修改并添加提交信息
 
    ```bash
    # 使用 git commit 提交本次修改到 Git 本地仓库
@@ -166,7 +127,7 @@ Delta compression using up to 8 threads
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 290 bytes | 290.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-To https://cscourse.ustc.edu.cn/vdir/Gitlab/PB********/2025_warm_up.git
+To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2024_warm_up.git
     6d08e6d..bc20c0b  master -> master
 ```
 
@@ -286,3 +247,4 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/PB********/2025_warm_up.git
    2. 如何撤销保存在暂存区的修改？如何仅撤销最近一次提交的某一个文件 (test.txt)？
    3. 解释 git fetch 和 git pull 的区别。
 3. 将 [LLVM 等软件环境配置与测试](software.md) 中生成的 Test.ll 文件添加到仓库中，并上传到远程仓库中去。
+
