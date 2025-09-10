@@ -25,7 +25,7 @@
 首先将本仓库的内容从 GitHub clone 到本地。在你选定的本地路径下运行
 
 ```
-git clone https://github.com/USTC-Compiler-2024/HomePage
+git clone https://github.com/USTC-Compiler-2025/HomePage.git
 ```
 
 即可。clone 完成后进入 HomePage 目录，该目录即为我们的项目根目录。
