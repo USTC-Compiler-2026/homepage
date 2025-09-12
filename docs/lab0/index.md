@@ -1,12 +1,8 @@
 # Lab0 简介
 
-!!! Info "敬请期待"
-    **本实验还未发布！**
-<!--
-
 !!! warning "Deadline"
 
-    **2025 年 9 月 21 日 23:59**
+    **2025 年 9 月 24 日 23:59**
 
 本次实验用于指导同学们进行环境的搭建以及带领同学们熟悉实验中常用的 C++ 特性以及 Git 的操作，主要有以下内容：
 
@@ -55,22 +51,16 @@ Lab0 完成后，除了 answer.pdf 文件（需要回答 [Git 的使用](git.md#
 
 #### 文件上传提交方式
 
--->
-
-<!-- 目前还没有开放提交 -->
-<!--
-
 对于上传的文件，助教会进行文本相似性检测，请同学们认真学习并完成要求。
 
-![alt text](photos/image.png)
+![alt text](photos/image-2025.png)
 
 #### GitLab 仓库链接提交方式
 
-![alt text](photos/image-1.png)
+![alt text](photos/image-2025-1.png)
 
-![Alt text](photos/image-2.png)
+![Alt text](photos/image-2025-2.png)
 
--->
 
 
 <!-- #### 答疑

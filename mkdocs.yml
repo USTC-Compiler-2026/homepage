@@ -122,11 +122,11 @@ nav:
 #
   - Lab0:
     - Lab0 简介: lab0/index.md
-#    - Linux 环境配置: lab0/linux.md
-#    - LLVM 等软件环境配置: lab0/software.md
-#    - Git 的使用: lab0/git.md
-#    - C++ 语法: lab0/cpp.md
-#    - 如何Debug: lab0/debug.md
+    - Linux 环境配置: lab0/linux.md
+    - LLVM 等软件环境配置: lab0/software.md
+    - Git 的使用: lab0/git.md
+    - C++ 语法: lab0/cpp.md
+    - 如何Debug: lab0/debug.md
 #  - Lab1:
 #    - Lab1 简介: lab1/index.md
 #    - 正则表达式: lab1/正则表达式.md

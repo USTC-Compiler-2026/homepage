@@ -44,8 +44,8 @@
 
 ## <strong>公告</strong>
 - 2025-09-08：[课程平台介绍](exp_platform_intro/README.md) 已发布
+- 2025-09-14：[Lab0](lab0/index.md) 已发布，Deadline：**2025 年 9 月 24 日**
 <!--
-- 2025-09-14：[Lab0](lab0/index.md) 已发布，Deadline：**2024 年 9 月 21 日**
 - 2024-09-18：第一次作业已发布，Deadline：**2024 年 9 月 20 日**
 - 2024-09-18：[Lab1](lab1/index.md) 已发布，Deadline：**Phase1 : 2024 年 9 月 28 日 / Phase2 : 2024 年 10 月 7 日**
 - 2024-09-25：第二次作业已发布，Deadline：**2024 年 9 月 30 日**
