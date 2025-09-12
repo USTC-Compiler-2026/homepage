@@ -17,7 +17,7 @@ git config --global user.email "Your Email"
 
 我们将使用 GitLab 进行远程代码管理。虽然你没有权限在 GitLab 上创建仓库，但你可以通过 fork 的方式拥有一个属于自己的仓库。
 
-1. 进入以下公开仓库链接： **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024_warm_up.git](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024_warm_up.git)**
+1. 进入以下公开仓库链接： **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up.git](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up.git)**
 2. 点击右上角的 "Fork" 按钮。这个操作会创建一个与原仓库一模一样的新仓库，唯一的区别是，这个新仓库是你自己的。你可以在新仓库上执行任何你需要的操作。
 
    ![Untitled](photos/git1.png)
@@ -40,14 +40,14 @@ git config --global user.email "Your Email"
 
    ```bash
    # 使用 URL 进行 git clone XXX 为你的用户名
-   git clone https://cscourse.ustc.edu.cn/vdir/Gitlab/XXX/2024_warm_up.git
+   git clone https://cscourse.ustc.edu.cn/vdir/Gitlab/XXX/2025_warm_up.git
    ```
 
 3. 输入 GitLab 用户名和密码进行身份验证，验证完毕后就将服务器上的仓库克隆到了本地
 
    ```bash
    # 检查是否成功 clone
-   $ cd 2024_warm_up
+   $ cd 2025_warm_up
    $ ls
    warm_up.txt
    ```
@@ -100,19 +100,19 @@ git config --global user.email "Your Email"
    $ git log
    commit bc20c0b170a829948439961745cf1a2dc7817e86 (HEAD -> master)
    Author: gpzlx1 <gpzlx1@mail.ustc.edu.cn>
-   Date:   Wed Sep 6 19:01:15 2024 +0800
+   Date:   Wed Sep 6 19:01:15 2025 +0800
 
        add readme
 
    commit 6d08e6d4a1be64dea41798086b54cb0acc4377e2 (origin/master, origin/HEAD)
    Author: 123 <hej148@nenu.edu.cn>
-   Date:   Tue Sep 5 22:39:37 2024 +0800
+   Date:   Tue Sep 5 22:39:37 2025 +0800
 
        copy b
 
    commit 1abfe16c1d28becaea62aa0971b1e7afd1f4672e
    Author: 123 <hej148@nenu.edu.cn>
-   Date:   Tue Sep 5 22:02:53 2024 +0800
+   Date:   Tue Sep 5 22:02:53 2025 +0800
 
        欢迎加入编译原理
    ```
@@ -127,7 +127,7 @@ Delta compression using up to 8 threads
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 290 bytes | 290.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2024_warm_up.git
+To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
     6d08e6d..bc20c0b  master -> master
 ```
 
@@ -139,13 +139,13 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2024_warm_up.git
 
 通过 fork 操作，你已经拥有了一个自己的仓库，在此我们可以引入上下游的概念。假设通过 fork 仓库 A 得到仓库 B，那么 A 就是 B 的上游。尽管 A 和 B 可能有大部分相同的内容，但对 A 和 B 的修改是彼此独立的。在这个课程实验中，我们将以类似的方式发布实验代码，助教维护上游仓库 A，而学生修改下游仓库 B。由于 A 和 B 的修改是相互独立的，接下来我们将介绍如何使 B 同步 A 的相关修改。
 
-接下来，以 **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024_warm_up_upstream](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024_warm_up_upstream)** 作为上游仓库为例：
+接下来，以 **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up_upstream](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up_upstream)** 作为上游仓库为例：
 
 - 添加上游仓库
   ```bash
   # 可以通过 git remote add 添加上游仓库
   # 用 upstream 标识该上游仓库
-  $ git remote add upstream https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024_warm_up_upstream.git
+  $ git remote add upstream https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up_upstream.git
   ```
 - 抓取上游仓库
 
@@ -156,7 +156,7 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2024_warm_up.git
   remote: Counting objects: 100% (5/5), done.
   remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
   Unpacking objects: 100% (3/3), 258 bytes | 51.00 KiB/s, done.
-  From https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024_warm_up_upstream
+  From https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up_upstream
     * branch            master     -> FETCH_HEAD
     * [new branch]      master     -> upstream/master
   hint: You have divergent branches and need to specify how to reconcile them.
@@ -224,7 +224,7 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2024_warm_up.git
   Compressing objects: 100% (3/3), done.
   Writing objects: 100% (6/6), 626 bytes | 626.00 KiB/s, done.
   Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
-  To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2024_warm_up.git
+  To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
      bc20c0b..126d5c9  master -> master
   ```
 
