@@ -38,7 +38,7 @@
 
 ### 提交内容
 
-Lab0 完成后，除了 answer.pdf 文件（需要回答 [Git 的使用](git.md#实验任务)和[在 CMake 构建的大型项目中如何 Debug](debug.md#实验任务)中**实验任务**一节的问题），你还在 GitLab 上拥有一个名为 2024_warm_up 的远程仓库，该仓库有以下结构：
+Lab0 完成后，除了 answer.pdf 文件（需要回答 [Git 的使用](git.md#实验任务)和[在 CMake 构建的大型项目中如何 Debug](debug.md#实验任务)中**实验任务**一节的问题），你还在 GitLab 上拥有一个名为 2025_warm_up 的远程仓库，该仓库有以下结构：
 
 ```shell
 2025_warm_up_b:
