@@ -17,7 +17,7 @@ git config --global user.email "Your Email"
 
 我们将使用 GitLab 进行远程代码管理。虽然你没有权限在 GitLab 上创建仓库，但你可以通过 fork 的方式拥有一个属于自己的仓库。
 
-!!! warning "Deadline"
+!!! warning "重要"
 
     **请确保本课程的 GitLab 用户名为学号**，登录希冀平台后点击右上角“更多栏目”登录 GitLab 会直接创建用户名为学号的用户，如果你此前注册过 GitLab，请修改你的用户名为学号，字母大写。
 
