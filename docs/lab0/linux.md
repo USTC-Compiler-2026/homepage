@@ -19,6 +19,11 @@
 
      下面将介绍两款常见的虚拟机管理软件：**VirtualBox**、**VMWare**，任选其一即可！
 
+!!! warning "重要"
+	 WSL 与部分版本的 VirtualBox 和 VMWare 不兼容，可能会导致后二者不能正常运行。如果你已经安装了 WSL，可以直接使用 WSL。
+
+	 本实验在 WSL 2.0 Ubuntu 22.04.5 上测试通过。
+
 ## 1 Virtual Box
 
 下面以虚拟机软件 VirtualBox 为例介绍搭建环境的方法。
@@ -41,7 +46,7 @@
 
      本学期实验规定了相应的 Ubuntu 版本以方便后续软件的下载与使用，请各位同学 **务必** 下载使用推荐版本 **22.04**。
 
-镜像文件请下载 **server** 版本，后续指导基于 server 版本展开。请下载命名为 ubuntu-22.04.4-live-server-amd64 的镜像文件。
+镜像文件请下载 **server** 版本，后续指导基于 server 版本展开。请下载命名为 ubuntu-22.04.4-live-server-amd64（或 22.04.5） 的镜像文件。
 
 下载完成之后无需打开镜像文件，只需在后续导入虚拟机软件即可。
 
@@ -295,7 +300,7 @@ Hello VirtualBox!
 
 (x86)
 
-请下载命名为 ubuntu-22.04.4-live-server-amd64 的镜像文件
+请下载命名为 ubuntu-22.04.4-live-server-amd64（或 22.04.5） 的镜像文件
 
 - 官网链接：[Ubuntu Releases](https://releases.ubuntu.com/)
 - 科大镜像：[Index of /ubuntu-releases/ (ustc.edu.cn)](https://mirrors.ustc.edu.cn/ubuntu-releases/)
@@ -305,10 +310,10 @@ Hello VirtualBox!
 
 (arm)
 
-请下载命名为 ubuntu-22.04.4-live-server-arm64 的镜像文件
+请下载命名为 ubuntu-22.04.5-live-server-arm64 的镜像文件
 
-- 科大镜像：[Index of /ubuntu-releases/ (ustc.edu.cn)](https://mirrors.ustc.edu.cn/ubuntu-cdimage/releases/22.04.4/release/)
-- 清华镜像：[Index of /ubuntu-releases/ | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://mirrors.tuna.tsinghua.edu.cn/ubuntu-cdimage/releases/22.04.4/release/)
+- 科大镜像：[Index of /ubuntu-releases/ (ustc.edu.cn)](https://mirrors.ustc.edu.cn/ubuntu-cdimage/releases/22.04.5/release/)
+- 清华镜像：[Index of /ubuntu-releases/ | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://mirrors.tuna.tsinghua.edu.cn/ubuntu-cdimage/releases/22.04.5/release/)
 
 !!! warning "重要"
 
