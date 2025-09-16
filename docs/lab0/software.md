@@ -119,7 +119,7 @@ void StudentNumber(int u[], int v[], int k[]) {
  *
  * @param Grade[0]: 你的年级，如 20，21，22 等
  * @param Degree[0]: 你的专业代号，如计科是 11
- * @param Number[0]: 你的学生序号，如 0011，4514 等
+ * @param Number[0]: 你的学生序号，如 0011（为了避免出现八进制，这个值不能以0为开头），4514 等
  * @return int
  */
 int main(void) {

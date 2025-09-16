@@ -183,7 +183,7 @@ struct Dog : public Animal {
 ```
 
 ??? Info "关于`struct`和`class`"
-C++ 中默认`struct`的成员是`public`的，而`class`的成员是`private`的。在这里我们使用`struct`来定义类，是为了方便讲解，实际上在 C++ 中`class`和`struct`的区别仅在于默认的访问权限。
+	C++ 中默认`struct`的成员是`public`的，而`class`的成员是`private`的。在这里我们使用`struct`来定义类，是为了方便讲解，实际上在 C++ 中`class`和`struct`的区别仅在于默认的访问权限。
 
 在这个例子中，`Cat` 和 `Dog` 类继承了 `Animal` 类，因此它们自动拥有了 `Animal` 类中的 `eat()` 方法。同时，它们可以定义自己的特有方法，如 `nyan()` 和 `bark()`。
 
@@ -308,6 +308,27 @@ C++11 引入了许多智能指针类型来帮助自动内存管理，本实验�
 2. `std::unique_ptr`: 表示所有权的智能指针，该指针要求它所管理的对象只能有一次引用，主要用于语义上不允许共享的对象（比如 `llvm::Module`）。当引用计数为 0 时，它也会回收内存。可以用 `std::make_unique` 来创建。
 
 在涉及到内存管理时，应该尽量使用智能指针。
+
+!!! warning
+
+    请避免用智能指针来管理链表的内存，例如
+
+	```CPP
+	#include <memory>
+
+	struct Node
+	{
+		std::shared_ptr<Node> next_ = nullptr;
+	};
+
+	int main()
+	{
+		std::shared_ptr<Node> node = std::make_shared<Node>();
+		node->next_ = node;
+	}
+	```
+
+	这段代码创造了一个链表的头节点，并将它内部的指针指向自身。因为该节点引用了自己，其智能指针的对象引用计数永远大于 0，导致节点的内存永远不会释放，从而内存泄漏。
 
 ## 常用技术
 
