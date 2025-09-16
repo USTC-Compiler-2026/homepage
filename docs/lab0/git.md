@@ -17,6 +17,10 @@ git config --global user.email "Your Email"
 
 我们将使用 GitLab 进行远程代码管理。虽然你没有权限在 GitLab 上创建仓库，但你可以通过 fork 的方式拥有一个属于自己的仓库。
 
+!!! warning "Deadline"
+
+    **请确保本课程的 GitLab 用户名为学号**，登录希冀平台后点击右上角“更多栏目”登录 GitLab 会直接创建用户名为学号的用户，如果你此前注册过 GitLab，请修改你的用户名为学号，字母大写。
+
 1. 进入以下公开仓库链接： **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up.git](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up.git)**
 2. 点击右上角的 "Fork" 按钮。这个操作会创建一个与原仓库一模一样的新仓库，唯一的区别是，这个新仓库是你自己的。你可以在新仓库上执行任何你需要的操作。
 
@@ -95,25 +99,25 @@ git config --global user.email "Your Email"
    [master bc20c0b] add readme
    1 file changed, 1 insertion(+)
    create mode 100644 readme.md
-
+   
    # 我们可以通过 git log 查看历史提交记录
    $ git log
    commit bc20c0b170a829948439961745cf1a2dc7817e86 (HEAD -> master)
    Author: gpzlx1 <gpzlx1@mail.ustc.edu.cn>
    Date:   Wed Sep 6 19:01:15 2025 +0800
-
+   
        add readme
-
+   
    commit 6d08e6d4a1be64dea41798086b54cb0acc4377e2 (origin/master, origin/HEAD)
    Author: 123 <hej148@nenu.edu.cn>
    Date:   Tue Sep 5 22:39:37 2025 +0800
-
+   
        copy b
-
+   
    commit 1abfe16c1d28becaea62aa0971b1e7afd1f4672e
    Author: 123 <hej148@nenu.edu.cn>
    Date:   Tue Sep 5 22:02:53 2025 +0800
-
+   
        欢迎加入编译原理
    ```
 
@@ -189,11 +193,11 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
   Auto-merging warm_up.txt
   CONFLICT (content): Merge conflict in warm_up.txt
   Automatic merge failed; fix conflicts and then commit the result.
-
+  
   # 此时输出信息，告诉我们在 warm_up.txt 中存在冲突，这是由于 master 分支
   # 和 upstream/master 分支都对改文件相同位置进行了修改，此时需要我们手动处理冲突
   # 然后才能完成分支的合并和代码的同步
-
+  
   # 我们先查看当前 warm_up.txt 的内容
   $ cat warm_up.txt
   <<<<<<< HEAD
@@ -201,7 +205,7 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
   =======
   欢迎您加入编译原理课程学习！
   >>>>>>> upstream/master
-
+  
   # 这里出现了 <<< ==== >>>>等标识符
   # <<< 和 ===之间的内容是当前这个分支的内容
   # === 和 >>>之间的内容是计划 merge 进来的分支的内容
@@ -210,12 +214,12 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
   # 那更改 warm_up.text 的内容为以下，并删除<<< ==== >>>>等标识符
   $ cat warm_up.txt
   欢迎您加入编译原理课程学习！
-
+  
   # 此时，我们完成该文件的冲突处理，我们可以添加和提交本次修改，完成 merge 操作
   $ git add warm_up.txt
   $ git commit
   [master 126d5c9] Merge remote-tracking branch 'upstream/master'
-
+  
   # 最后，将所有修改同步到远程服务器，方便助教进行批改
   $ git push origin master
   Enumerating objects: 10, done.

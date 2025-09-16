@@ -34,27 +34,27 @@ sudo apt install clangd
 ???+ Info "依赖"
 
     这种调试方法实际上是使用了lldb调试工具以及VSCode `CodeLLDB`扩展。
-
+    
     使用以下命令安装lldb:
-
+    
     (apt)
-
+    
     ```shell
         sudo apt install lldb
     ```
-
+    
     (brew)
-
+    
     ```shell
         brew install lldb
     ```
-
+    
     在VSCode安装扩展：
     - CodeLLDB
         ![CodeLLDB](photos/codelldb.png)
     - CMake & CMake Tools
         ![CMakeExt](photos/CMake.png)
-
+    
     **安装 CMake 扩展后会弹出窗口提示选择工具包 (ToolKit)，请选择最高版本的 clang**。
 
 LLDB 是 LLVM 项目开发的调试器，通过设置 VSCode 扩展可以方便地调试大型项目。下面将以一个小型工程为例：
@@ -113,17 +113,17 @@ Human destructor called
 ??? Info "如何自动生成一个.json 文件"
 
     点击`运行/启动调试(F5)`：
-
+    
     ![F5](photos/F5.png)
-
+    
     上方提示栏弹出，选择LLDB：
-
+    
     ![LLDB](photos/LLDB.png)
-
+    
     这时由于vscode的CODELLDB扩展不知道如何调试，会报错并为我们创建`.vscode/launch.json`文件。
-
+    
     ![json](photos/error.png)
-
+    
     ```json
     {
         // 使用 IntelliSense 了解相关属性。
@@ -180,7 +180,7 @@ Human destructor called
 
 读工程中的 CMakeLists.txt 文件即可得知，生成的可执行文件目录为`${workspaceFolder}/build/src/`，可执行文件名为`lab0_debug`
 
-而 main.cpp:17-20L 要求输入-t 参数，因此可以做如下修改：
+而 main.cpp:17-20L 要求输入-t 参数，因此可以做如下修改（此处修改仅作参考）：
 
 ```json
 
@@ -192,6 +192,14 @@ Human destructor called
 ...
 
 ```
+
+??? Info "什么是 **workspaceFolder** "
+
+    在 VS Code 中，如果你用 "Open Folder" 打开了一个文件夹，如 `/home/Desktop/lab0`，那么 `${workspaceFolder}` 会被替换为 `/home/Desktop/lab0`。如果只是打开单个文件，或者 "Add Folder to Workspace"，那 `${workspaceFolder}` 可能是该文件所在的目录。
+    
+    同学们调试时也可以通过调试控制台（Debug Console）的输出来确定自己的 `${workspaceFolder}` 是否写错了，见最后一行绿色说明，例如助教电脑上显示的就是（对于助教的虚拟机来说）正确的路径：
+    
+    ![workspacefolder](photos/workspacefolder.png)
 
 之后在 main 入口处打断点再执行即可开始调试了。
 
@@ -234,7 +242,7 @@ Human destructor called
 ??? Info "什么是 **ASAN** "
 
     ASAN（Address Sanitizer）是针对 C/C++ 的快速内存错误检测工具，在运行时检测 C/C++ 代码中的多种内存错误。
-
+    
     ASAN 早先是 LLVM 中的特性，后被集成到 GCC 4.8 中，在 4.9 版本中加入了对 ARM 平台的支持。
 
 ??? Warning "请先拉取最新仓库"
@@ -245,24 +253,24 @@ Human destructor called
     $ cd build
     $ cmake .. -DCMAKE_BUILD_TYPE=ASAN
     $ make
-
+    
     ```
 
 ??? Info "ASAN 效果展示"
 
     w/o ASAN :
-
+    
     ```shell
-
+    
     jyjs@jyjs-virtual-machine:~/Documents/2025ustc-jianmu-compiler/build$ ./src/lab0_debug -t
     Hello, from stl_debug!
     MyMyI'mStudent object created
     Segmentation fault (core dumped)
-
+    
     ```
-
+    
     w/ ASAN :
-
+    
     ```shell
     Hello, from stl_debug!
     MyMyI'mStudent object created
@@ -274,7 +282,7 @@ Human destructor called
         #2 0x7ba1e7e29d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
         #3 0x7ba1e7e29e3f in __libc_start_main_impl ../csu/libc-start.c:392
         #4 0x59d0dfabd9c4 in _start (/home/jyjs/Documents/2025ustc-jianmu-compiler/build/src/lab0_debug+0x149c4)
-
+    
     0x603000000040 is located 0 bytes inside of 24-byte region [0x603000000040,0x603000000058)
     freed by thread T0 here:
         #0 0x7ba1e8eb724f in operator delete(void*, unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:172
@@ -287,7 +295,7 @@ Human destructor called
         #7 0x59d0dfac2059 in std::__cxx11::list<int, std::allocator<int> >::remove(int const&) (/home/jyjs/Documents/2025ustc-jianmu-compiler/build/src/lab0_debug+0x19059)
         #8 0x59d0dfabe9b5 in main /home/jyjs/Documents/2025ustc-jianmu-compiler/src/main.cpp:38
         #9 0x7ba1e7e29d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-
+    
     previously allocated by thread T0 here:
         #0 0x7ba1e8eb61e7 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
         #1 0x59d0dfac6fd3 in __gnu_cxx::new_allocator<std::_List_node<int> >::allocate(unsigned long, void const*) (/home/jyjs/Documents/2025ustc-jianmu-compiler/build/src/lab0_debug+0x1dfd3)
@@ -298,7 +306,7 @@ Human destructor called
         #6 0x59d0dfac14bf in std::__cxx11::list<int, std::allocator<int> >::push_back(int&&) (/home/jyjs/Documents/2025ustc-jianmu-compiler/build/src/lab0_debug+0x184bf)
         #7 0x59d0dfabe7d2 in main /home/jyjs/Documents/2025ustc-jianmu-compiler/src/main.cpp:36
         #8 0x7ba1e7e29d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-
+    
     SUMMARY: AddressSanitizer: heap-use-after-free (/home/jyjs/Documents/2025ustc-jianmu-compiler/build/src/lab0_debug+0x188f7) in std::_List_iterator<int>::operator++()
     Shadow bytes around the buggy address:
     0x0c067fff7fb0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
