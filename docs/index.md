@@ -119,6 +119,7 @@
 
 - Stanford 课程主页：<http://web.stanford.edu/class/cs143/>
 - MIT 课程主页：<http://6.035.scripts.mit.edu/fa18/>
+- 编译实验讲解与说明：<https://www.bilibili.com/video/BV1D7421N7c4?vd_source=95295bdf2712702f621d0ff0e737f124> 
 
 
 
