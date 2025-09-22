@@ -25,7 +25,7 @@
 
 !!! warning "Deadline"
 
-    **2024 年 9 月 28 日 23:59**
+    **2025 年 9 月 29 日 23:59**
 
 ### 阶段二
 
@@ -35,7 +35,7 @@
 
 !!! warning "Deadline"
 
-    **2024 年 10 月 7 日 23:59**
+    **2025 年 10 月 8 日 23:59**
 
 ## 实验要求
 
@@ -43,14 +43,14 @@
 
     请使用自己fork后的仓库完成今后的实验！
 
-请根据 Lab0 的内容，将[实验仓库](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024ustc-jianmu-compiler) <font color="red">**fork**</font> 并 clone 到本地虚拟机中，并将实验仓库设置为上游仓库。
+请根据 Lab0 的内容，将[实验仓库](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler) <font color="red">**fork**</font> 并 clone 到本地虚拟机中，并将实验仓库设置为上游仓库。
 
 ```bash
 
 git clone ${Your_Repo}
-cd 2024ustc-jianmu-compiler
+cd 2025ustc-jianmu-compiler
 git checkout lab1
-git remote add upstream https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024ustc-jianmu-compiler
+git remote add upstream https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler
 git pull upstream lab1
 
 #在你完成TODO后
@@ -61,7 +61,7 @@ git push origin lab1
 
 ## 提交内容
 
-- 在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2024ustc-jianmu-compiler.git`）。
+- 在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2025ustc-jianmu-compiler.git`）。
 - 在希冀平台提交你的 `answer.pdf` 文件，其中包含：
   - [正则表达式](./正则表达式.md#思考题)
   - [Flex](./Flex.md#思考题)
