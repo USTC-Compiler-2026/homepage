@@ -87,7 +87,7 @@ program
 #### 编译
 
 ```c++
-$ cd 2024ustc-jianmu-compiler
+$ cd 2025ustc-jianmu-compiler
 $ mkdir build
 $ cd build
 # 使用 cmake 生成 makefile 等文件
@@ -113,7 +113,7 @@ $ ./cminusfc
 我们在 `tests/testcases_general` 文件夹中准备了一些通用案例。
 
 ```c++
-# 返回 2024ustc-jianmu-compiler 的根目录
+# 返回 2025ustc-jianmu-compiler 的根目录
 
 # 运行 cminusfc，进行AST生成
 $ ./build/cminusfc ./tests/testcases_general/1-return.cminus
@@ -152,7 +152,7 @@ program
 我们使用 `diff` 命令进行结果比较
 
 ```c++
-$ cd 2024ustc-jianmu-compiler
+$ cd 2025ustc-jianmu-compiler
 $ export PATH="$(realpath ./build):$PATH"
 $ cd tests/1-parser
 $ cminusfc input/normal/local-decl.cminus > output_student_ast/normal/local-decl.ast
