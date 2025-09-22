@@ -72,15 +72,14 @@
 
 ## <strong>教学课件</strong>
 
-|     日期     |                          标题                          |                                                 课件                                                 |
-|:----------:| :----------------------------------------------------: | :--------------------------------------------------------------------------------------------------: |
-| 2025-09-08 |                   编译原理和技术导论                   |                               [Lecture1_Intro](ppt/Lecture1-Intro.pdf)                               |
-| 2025-09-10 |                        词法分析                        |                        [Lexical-analysis](ppt/Lecture2-Lexical-analysis.pdf), [Triton_Intro](ppt/triton_intel.pdf)        |
-| 2025-09-15 |               语法分析 - 上下文无关文法                |                            [Parser-part1](ppt/Lecture3-Parser-part1.pdf)                             |
-| 2025-09-17 |             语法分析 - 自顶向下 - 递归下降             |                            [Parser-part2](ppt/Lecture4-Parser-part2.pdf)                             |
+|     日期     |                            标题                             |                                                                     课件                                                                      |
+|:----------:|:---------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|
+| 2025-09-08 |                         编译原理和技术导论                         |                                                  [Lecture1_Intro](ppt/Lecture1-Intro.pdf)                                                   |
+| 2025-09-10 |                           词法分析                            |                         [Lexical-analysis](ppt/Lecture2-Lexical-analysis.pdf), [Triton_Intro](ppt/triton_intel.pdf)                         |
+| 2025-09-15 |                      语法分析 - 上下文无关文法                       |                                                [Parser-part1](ppt/Lecture3-Parser-part1.pdf)                                                |
+| 2025-09-17 |                    语法分析 - 自顶向下 - 递归下降                     |                                                [Parser-part2](ppt/Lecture4-Parser-part2.pdf)                                                |
+| 2025-09-22 | 语法分析 - 自顶向下 - LL(1) 文法 & 语法分析 - 自底向上 - 移进规约 & LR 分析器的简单模型 | [Parser-part3](ppt/Lecture5-Parser-part3.pdf), [Parser-part4](ppt/Lecture6-Parser-part4.pdf), [Parser-part5](ppt/Lecture7-Parser-part5.pdf) |
 <!--
-| 2024-09-16 |            语法分析 - 自顶向下 - LL(1) 文法            |                            [Parser-part3](ppt/Lecture5-Parser-part3.pdf)                             |
-| 2024-09-18 |  语法分析 - 自底向上 - 移进规约 & LR 分析器的简单模型  |     [Parser-part4](ppt/Lecture6-Parser-part4.pdf), [Parser-part5](ppt/Lecture7-Parser-part5.pdf)     |
 | 2024-09-23 |               语法分析 - 简单的 LR 方法                |                            [Parser-part6](ppt/Lecture8-Parser-part6.pdf)                             |
 | 2024-09-25 |       语法分析 - 简单的 LR 方法 & 规范的 LR 方法       |     [Parser-part6](ppt/Lecture8-Parser-part6.pdf), [Parser-part7](ppt/Lecture9-Parser-part7.pdf)     |
 | 2024-09-30 |               语法分析 - 规范的 LR 方法                |                            [Parser-part7](ppt/Lecture9-Parser-part7.pdf)                             |
