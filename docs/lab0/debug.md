@@ -55,9 +55,7 @@ sudo apt install clangd
     - CMake & CMake Tools
         ![CMakeExt](photos/CMake.png)
     
-    **安装 CMake 扩展后会弹出窗口提示选择工具包 (ToolKit)，请选择最高版本的 clang**。
-
-	如果没有弹出窗口或不慎关闭，也可以手动选择。按 `Ctrl + Shift + P` 调出命令窗口，输入 `CMake: Select a Kit` 选择工具包，选择其中 clang 即可。若没有工具包可选，可以选择 [扫描工具包]，然后重复上述操作。
+    **安装 CMake 扩展后，如果弹出窗口提示选择工具包 (ToolKit)，请选择最高版本的 clang。**
 
 LLDB 是 LLVM 项目开发的调试器，通过设置 VSCode 扩展可以方便地调试大型项目。下面将以一个小型工程为例：
 
@@ -67,6 +65,24 @@ LLDB 是 LLVM 项目开发的调试器，通过设置 VSCode 扩展可以方便�
 git clone https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler.git
 cd 2025ustc-jianmu-compiler
 git checkout lab0
+```
+
+
+???+ Info "设置 VSCode 打开的目录"
+	
+	点击 VSCode 左上角“文件”选项卡，选择“打开文件夹”，然后选择 `2025ustc-jianmu-compiler` 文件夹，这样 VSCode 会打开该文件夹。
+
+	在一些 VSCode 的一些设置中包含 `${workspaceFolder}` 字段，这是代表 VSCode 目前打开的文件夹的宏。VSCode 的很多扩展使用该宏作为其命令的执行目录，所以它们需要 VSCode 打开正确的文件夹才能工作。
+
+	在我们的实验中，默认打开 git 仓库所在的文件夹。
+
+
+为了确保使用 clang 进行编译，需要指定 CMake 的工具包。按 `Ctrl + Shift + P` 调出命令窗口，输入 `CMake: Select a Kit` 选择工具包，选择其中 clang 即可。若没有工具包可选，可以选择 [扫描工具包]，然后重复上述操作。
+
+
+然后在命令行进行生成
+
+```shell
 mkdir build
 cd build
 cmake ..
@@ -112,7 +128,7 @@ Human destructor called
 
 `.vscode/launch.json`文件记录了调试器需要的基本信息，它是由 vscode 自动生成的。
 
-??? Info "如何自动生成一个.json 文件"
+??? Info "如何自动生成 launch.json"
 
     点击`运行/启动调试(F5)`：
     
@@ -172,7 +188,7 @@ Human destructor called
   - type：任务类型 这是一个 lldb 任务
   - request：需要执行的任务 launch 即只有它本身
   - name：将这个任务命名为 Debug
-  - program：被调试的程序 注：_<font color=grey>${workspaceFolder} 是一个环境变量，即工程文件所在文件夹</font>_
+  - program：被调试的程序
   - args：设置需要的参数
   - cwd：指令执行的目录
 
@@ -194,14 +210,6 @@ Human destructor called
 ...
 
 ```
-
-??? Info "什么是 **workspaceFolder** "
-
-    在 VS Code 中，如果你用 "Open Folder" 打开了一个文件夹，如 `/home/Desktop/lab0`，那么 `${workspaceFolder}` 会被替换为 `/home/Desktop/lab0`。如果只是打开单个文件，或者 "Add Folder to Workspace"，那 `${workspaceFolder}` 可能是该文件所在的目录。
-    
-    同学们调试时也可以通过调试控制台（Debug Console）的输出来确定自己的 `${workspaceFolder}` 是否写错了，见最后一行绿色说明，例如助教电脑上显示的就是（对于助教的虚拟机来说）正确的路径：
-    
-    ![workspacefolder](photos/workspacefolder.png)
 
 之后在 main 入口处打断点再执行即可开始调试了。
 
