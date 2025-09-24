@@ -25,7 +25,7 @@
 
 !!! warning "Deadline"
 
-    **2025 年 9 月 29 日 23:59**
+    **2025 年 10 月 1 日 23:59**
 
 ### 阶段二
 
@@ -61,8 +61,9 @@ git push origin lab1
 
 ## 提交内容
 
-- 在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2025ustc-jianmu-compiler.git`）。
+- 在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2025ustc-jianmu-compiler.git lab1`）。
+    - 注意是 url 后空格加上分支名
 - 在希冀平台提交你的 `answer.pdf` 文件，其中包含：
-  - [正则表达式](./正则表达式.md#思考题)
-  - [Flex](./Flex.md#思考题)
-  - [Bison](./Bison.md#思考题)
+    - [正则表达式](./正则表达式.md#思考题)
+    - [Flex](./Flex.md#思考题)
+    - [Bison](./Bison.md#思考题)
