@@ -127,14 +127,14 @@ nav:
     - Git 的使用: lab0/git.md
     - C++ 语法: lab0/cpp.md
     - 如何Debug: lab0/debug.md
-#  - Lab1:
-#    - Lab1 简介: lab1/index.md
-#    - 正则表达式: lab1/正则表达式.md
-#    - Flex: lab1/Flex.md
-#    - Bison: lab1/Bison.md
-#    - 词法语法解析: lab1/词法语法解析.md
-#    - AST: lab1/AST.md
-#    - AST生成: lab1/AST生成.md
+  - Lab1:
+    - Lab1 简介: lab1/index.md
+    - 正则表达式: lab1/正则表达式.md
+    - Flex: lab1/Flex.md
+    - Bison: lab1/Bison.md
+    - 词法语法解析: lab1/词法语法解析.md
+    - AST: lab1/AST.md
+    - AST生成: lab1/AST生成.md
 #  - Lab2:
 #    - Lab2 简介: lab2/index.md
 #    - Light IR 预热: lab2/warmup.md
