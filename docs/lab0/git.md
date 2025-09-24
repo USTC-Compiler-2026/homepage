@@ -247,8 +247,8 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
 
 1. 根据上述操作，完成 readme.md 添加、上游仓库添加和冲突处理等操作。
 2. 阅读扩展材料，回答以下问题，将答案添加到 `answer.pdf`。
-   1. 如何创建一个新的 git 分支？如何进行分支切换？如何删除一个分支？什么时候可以安全的删除一个分支？
-   2. 如何撤销保存在暂存区的修改？如何仅撤销最近一次提交的某一个文件 (test.txt)？
-   3. 解释 git fetch 和 git pull 的区别。
+    1. 如何创建一个新的 git 分支？如何进行分支切换？如何删除一个分支？什么时候可以安全的删除一个分支？
+    2. 如何撤销保存在暂存区的修改？如何仅撤销最近一次提交的某一个文件 (test.txt)？
+    3. 解释 git fetch 和 git pull 的区别。
 3. 将 [LLVM 等软件环境配置与测试](software.md) 中生成的 Test.ll 文件添加到仓库中，并上传到远程仓库中去。
 
