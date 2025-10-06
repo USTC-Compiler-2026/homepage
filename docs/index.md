@@ -80,8 +80,8 @@
 | 2025-09-17 |                    语法分析 - 自顶向下 - 递归下降                     |                                                [Parser-part2](ppt/Lecture4-Parser-part2.pdf)                                                |
 | 2025-09-22 | 语法分析 - 自顶向下 - LL(1) 文法 & 语法分析 - 自底向上 - 移进规约 & LR 分析器的简单模型 | [Parser-part3](ppt/Lecture5-Parser-part3.pdf), [Parser-part4](ppt/Lecture6-Parser-part4.pdf), [Parser-part5](ppt/Lecture7-Parser-part5.pdf) |
 | 2025-09-24 |               语法分析 - 简单的 LR 方法                |                            [Parser-part6](ppt/Lecture8-Parser-part6.pdf)                             |
+| 2025-09-29 |       语法分析 - 简单的 LR 方法 & 规范的 LR 方法       |     [Parser-part6](ppt/Lecture8-Parser-part6.pdf), [Parser-part7](ppt/Lecture9-Parser-part7.pdf)     |
 <!--
-| 2024-09-25 |       语法分析 - 简单的 LR 方法 & 规范的 LR 方法       |     [Parser-part6](ppt/Lecture8-Parser-part6.pdf), [Parser-part7](ppt/Lecture9-Parser-part7.pdf)     |
 | 2024-09-30 |               语法分析 - 规范的 LR 方法                |                            [Parser-part7](ppt/Lecture9-Parser-part7.pdf)                             |
 | 2024-10-09 |                      中间代码表示                      |                                      [IR](ppt/Lecture10-IR.pdf)                                      |
 | 2024-10-12 |                         习题课                         |     [HW1](ppt/2024-HW1-习题课.pdf), [HW2](ppt/2024-HW2-习题课.pdf), [Lab2](ppt/实验讲解Lab2.pdf)     |
@@ -118,7 +118,7 @@
 
 - Stanford 课程主页：<http://web.stanford.edu/class/cs143/>
 - MIT 课程主页：<http://6.035.scripts.mit.edu/fa18/>
-- 编译实验讲解与说明：<https://www.bilibili.com/video/BV1D7421N7c4?vd_source=95295bdf2712702f621d0ff0e737f124> 
+- 编译实验讲解与说明：<https://www.bilibili.com/video/BV1D7421N7c4> 
 
 
 
