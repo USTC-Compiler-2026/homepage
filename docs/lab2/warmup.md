@@ -72,7 +72,7 @@ Light IR 指令参考手册：[Light IR 手册](./LightIR.md)
 - `if.c`
 - `while.c`
 
-学生需要在 `test/2-ir-gen/warmup/stu_ll` 目录中，手动将这四个 C 程序翻译成 IR 代码，得到 `assign_hand.ll`、`func_hand.ll`、`if_handf.ll` 和 `while_hand.ll`，可参考 `tests/2-ir-gen/warmup/ta_gcd` 路径下助教给的手工翻译示例，也可以参考 `clang -S -emit-llvm` 的输出。
+学生需要在 `test/2-ir-gen/warmup/stu_ll` 目录中，手动将这四个 C 程序翻译成 IR 代码，得到 `assign_hand.ll`、`func_hand.ll`、`if_hand.ll` 和 `while_hand.ll`，可参考 `tests/2-ir-gen/warmup/ta_gcd` 路径下助教给的手工翻译示例，也可以参考 `clang -S -emit-llvm` 的输出。
 
 ### 运行、测试
 
@@ -105,7 +105,7 @@ Light IR IR C++ 库参考手册：[Light IR cpp APIs](./LightIR C++.md)
 **编译**
 
 ```shell
-$ cd 2024ustc-jianmu-compiler
+$ cd 2025ustc-jianmu-compiler
 $ mkdir build
 $ cd build
 # 使用 cmake 生成 makefile 等文件
@@ -132,3 +132,4 @@ $ echo $?
 1. 在 [Light IR 手册](./LightIR.md)里，你已经了解了 IR 代码的基本结构，请尝试编写一个有全局变量的 cminus 程序，并用 `clang` 编译生成中间代码，解释全局变量在其中的位置。
 2. Light IR 中基本类型 label 在 Light IR C++ 库中是如何用类表示的？
 3. Light IR C++ 库中 `Module` 类中对基本类型与组合类型存储的方式是一样的吗？请尝试解释组合类型使用其存储方式的原因。
+
