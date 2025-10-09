@@ -135,15 +135,15 @@ nav:
     - 词法语法解析: lab1/词法语法解析.md
     - AST: lab1/AST.md
     - AST生成: lab1/AST生成.md
-#  - Lab2:
-#    - Lab2 简介: lab2/index.md
-#    - Light IR 预热: lab2/warmup.md
-#    - Cminusf 语义介绍: lab2/cminusf语义.md
-#    - Light IR 简介: lab2/LightIR.md
-#    - Light IR C++ 库: lab2/LightIR C++.md
-#    - 访问者模式: lab2/visitor_pattern.md
-#    - IR 自动化生成: lab2/autogen.md
-#    - 剖析LLVM中的getelementptr: lab2/getelementptr.md
+  - Lab2:
+    - Lab2 简介: lab2/index.md
+    - Light IR 预热: lab2/warmup.md
+    - Cminusf 语义介绍: lab2/cminusf语义.md
+    - Light IR 简介: lab2/LightIR.md
+    - Light IR C++ 库: lab2/LightIR C++.md
+    - 访问者模式: lab2/visitor_pattern.md
+    - IR 自动化生成: lab2/autogen.md
+    # - 剖析LLVM中的getelementptr: lab2/getelementptr.md
 #  - Lab3:
 #    - Lab3 简介: lab3/index.md
 #    - Lab3 实验指导: lab3/guidance.md
