@@ -161,7 +161,7 @@ Light IR 指令从 LLVM IR 中裁剪得到，因此保留了 LLVM IR 如下的�
   - `%ptr = alloca [10 x i32]`
 
 
-???+ Alloca 返回指针
+???+ Alloca	返回指针
 
 	使用 `%1 = alloca i32` 在内存分配一个整数，得到的 `%1` 是 `i32*` 类型，而使用 `%2 = alloca [10 x i32]` 在内存分配一个数组，得到的 `%2` 是 `[10 x i32]*` 数组指针类型。要想获得数组的元素，需要对 `%2` 添加两个数组索引，类似于 `a[0][2]`，第一维对指针进行索引，第二维对数组进行索引。
 
@@ -303,3 +303,182 @@ Light IR 指令从 LLVM IR 中裁剪得到，因此保留了 LLVM IR 如下的�
 	```
 
 - 额外阅读：[The Often Misunderstood GEP Instruction](https://llvm.org/docs/GetElementPtr.html)
+
+
+### 从 Cminusf 生成 Light IR
+
+##### 变量
+
+Cminusf 中每个变量都可能会被修改多次，故它们不适合翻译为 Light IR 中的虚拟寄存器（虚拟寄存器只能被赋值一次）。
+
+在 C 语言中，局部变量最终会存储到函数栈帧上，而 `alloca` 正是在函数栈帧分配内存的指令，每个 Cminusf 变量刚好可以转化为一个 `alloca` 分配变量。
+
+`alloca` 得到指向变量的指针，对变量的读取和赋值需要转换为对应的 `load` 和 `store`。
+
+```c
+int a;
+// %a = alloca i32
+// %a 类型为 i32*
+a = 1;
+// store i32 1, i32* %a
+```
+
+我们不要求翻译后的 Light IR 中虚拟寄存器名字与 Cminusf 变量名相同，但是保持相同变量名确实可以带来更好的程序可读性。在编写翻译程序时，你可以通过 `Value` 类的 `set_name` 方法来设置 Light IR 的虚拟寄存器名字，如果未设置，程序也会自动分配一个 `op1` 类似格式的名字。注意 Cminusf 允许同一函数中存在多个同名变量，但是 Light IR 不允许同一函数中具有同名虚拟寄存器，若你要自己设置名字，需要保证每个名字不同。
+
+```c
+int a;
+{
+	int a; // ok
+} 
+```
+
+```c
+%a = alloca i32
+%a = alloca i32 // error
+```
+
+我们建议将所有 `alloca` 语句放在 Light IR 函数的入口块的开头处，即使变量声明可能位于 Cminusf 函数的各个位置。考虑如下函数
+
+```c
+while(1)
+{
+	int b;
+}
+```
+
+当将 `%b = alloca i32` 放置到循环内而非函数开头时，`alloca` 会在每次循环时都在函数栈帧上分配内存，由于函数栈帧上的内存只会在函数运行结束后释放，这将导致内存泄漏。
+
+为了将 `alloca` 语句创建在基本块开头，你可以使用 `create_alloca_begin` 函数，它创建 `alloca` 并置于基本块开头处。多个 `alloca` 之间的顺序无关紧要，它们不会影响程序的正确性和性能。
+
+##### 全局变量
+
+Cminusf 的全局变量同样可能被修改多次。在 C 语言中，全局变量被分配到程序的数据段，Light IR 同样有在程序数据段创建变量的方法。
+
+```C
+int a;
+// @a = global i32 0
+// @a 类型为 i32*
+int b[2];
+// @b = global [2 x i32] zeroinitializer
+// @b 类型为 [2 x i32]*
+```
+
+`global` 同样得到指针，你可以对其进行 `load` 和 `store`
+
+```C
+a = 1;
+// store i32 1, i32* @a
+```
+
+
+##### 表达式中间结果
+
+
+Cminusf 中的表达式需要使用 Light IR 的多个表达式来表达，由于其中的临时变量只会被赋值一次，可以使用虚拟寄存器来表示临时变量，而不必使用 `alloca`。
+
+```c
+int a;
+// %a = alloca i32
+a = (1 + 2) + 3;
+// %op0 = add i32 1 2
+// %op1 = add i32 %op0 3
+// store i32 %op1, i32* %a
+```
+
+
+##### 函数参数类型
+
+Cminusf 中的简单类型都拥有对应的 Light IR 类型
+
+```c
+void f(int a, float b)
+// define void @f(i32 a, float b)
+```
+
+而对于数组函数参数，其没有具体大小的 `[]` 实际上代表了指针
+
+```c
+void f(int a[], int b[][2])
+// define void @f(i32* a, [2 x i32]* b)
+```
+
+##### 函数参数传递
+
+Cminusf 使用值传递参数，你需要传递值而非地址。这意味着你需要在传递时进行 `load` 操作
+
+```c
+int a;
+// %a = alloca i32
+f(a);
+// %op0 = load i32, i32* %a
+// call void @f(i32 %op0)
+```
+
+另一个需要关注的点是传递数组参数，由于函数参数和数组类型不同，你可能需要使用 `getelementptr`
+
+```C
+void f(int a[]);
+// define void @f(i32* %a)
+void main(void)
+{
+	int a[2];
+	// %a = alloca [2 x i32]
+	f(a);
+	// %op0 = getelementptr [2 x i32], [2 x i32]* %a, i32 0, i32 0
+	// call void @f(i32* %op0)
+}
+```
+
+当然在参数类型相同时就不用
+
+```C
+void f(int a[]);
+// define void @f(i32* %a)
+void g(int a[])
+// define void @g(i32* %a)
+{
+	f(a);
+	// call void @f(i32* %a)
+	// 这不是翻译时的标准做法，它经过了 mem2reg 优化
+}
+```
+
+##### 函数参数存储
+
+Cminusf 的函数形参是一个变量，例如 `void f(int a)`，它可以在函数内被赋值。
+然而，Light IR 位于函数参数位置的标识符是虚拟寄存器，例如 `define void f(i32 %a)`，`%a` 是虚拟寄存器，值无法改变。
+
+解决这个问题的做法是在函数开始执行时将函数参数传入的值存进函数栈帧
+
+```C
+void g(int a, int b[])
+// define void @g(i32 %a, i32* %b)
+{
+	// %ap = alloca i32
+	// %bp = alloca i32*
+	// store i32 %a, i32* %ap
+	// store i32* %b, i32* %bp
+	a = 1;
+	// store i32 1, i32* %ap
+	*b = 2;
+	// %op0 = load i32*, i32** %bp
+	// store i32 2, i32* %op0
+}
+```
+
+Cminusf 没有指针赋值操作，函数参数中的指针永远不会改变。上述例子的 `%bp = alloca i32*` 是多余的，`%bp` 的 `load` 操作可以用 `%b` 替代，转化为
+
+```C
+void g(int a, int b[])
+// define void @g(i32 %a, i32* %b)
+{
+	// %ap = alloca i32
+	// store i32 %a, i32* %ap
+	a = 1;
+	// store i32 1, i32* %ap
+	*b = 2;
+	// store i32 2, i32* %b
+}
+```
+
+这样做会使 IR 生成变得困难，所以这步操作通常在 IR 优化而非在从 Cminusf 生成 Light IR 阶段进行。

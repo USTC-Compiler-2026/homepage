@@ -88,10 +88,12 @@ struct {
 
 **友情提示**：
 
-1. 请比较通过 cminusfc 产生的 IR 和通过 clang 产生的 IR 来找出可能的问题或发现新的思路。
+1. 阅读 [Light IR 文档](./LightIR.md) 尤其是从 Cminusf 生成 Light IR 部分，以学习自动生成方法。
+2. 请比较通过 cminusfc 产生的 IR 和通过 clang 产生的 IR 来找出可能的问题或发现新的思路。
 2. 使用 GDB 进行调试来检查错误的原因。
 3. 我们为 `Function`、`Type` 等类都实现了 `print` 接口，可以使用我们提供的 [logging 工具](../lab0/debug.md#logging-工具使用) 进行打印调试。
-4. 对于 C++ 不熟悉的学生可以复习 [Lab0 的 C++ 简介](../lab0/cpp.md)。
+4. 我们为 `Function` 类实现了 `check_for_block_relation_error` 接口，可用于检查生成的函数潜在的错误
+5. 对于 C++ 不熟悉的学生可以复习 [Lab0 的 C++ 简介](../lab0/cpp.md)。
 
 ## 编译、运行和评测
 

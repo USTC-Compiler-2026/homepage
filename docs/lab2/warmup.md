@@ -53,7 +53,7 @@ LLVM IR 指令参考手册：[Reference Manual](https://llvm.org/docs/LangRef.ht
     $ echo $?
     ```
 
-[gcd_array.c](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024ustc-jianmu-compiler/-/blob/main/tests/2-ir-gen/warmup/ta_gcd/gcd_array.c) 是实验提供的例子，学生可以通过使用 clang 翻译示例，并查阅 [Light IR 手册](./LightIR.md#light-ir-指令)来理解每条 LLVM IR 指令含义，在 `tests/2-ir-gen/warmup/ta_gcd` 目录中，助教也提供了翻译后的示例去除大部分 LLVM 复杂修饰符后的 Light IR 版本。
+[gcd_array.c](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler/-/blob/main/tests/2-ir-gen/warmup/ta_gcd/gcd_array.c) 是实验提供的例子，学生可以通过使用 clang 翻译示例，并查阅 [Light IR 手册](./LightIR.md#light-ir-指令)来理解每条 LLVM IR 指令含义，在 `tests/2-ir-gen/warmup/ta_gcd` 目录中，助教也提供了翻译后的示例去除大部分 LLVM 复杂修饰符后的 Light IR 版本。
 
 ### Light IR
 
