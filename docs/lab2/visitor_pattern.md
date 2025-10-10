@@ -19,7 +19,7 @@ Visitor Pattern（访问者模式）是一种在 LLVM 项目源码中被广泛�
 **编译**
 
 ```shell
-$ cd 2024ustc-jianmu-compiler
+$ cd 2025ustc-jianmu-compiler
 $ mkdir build
 $ cd build
 # 使用 cmake 生成 makefile 等文件
