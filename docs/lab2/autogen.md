@@ -38,7 +38,7 @@
 
     分析树在语法分析的过程中被构造；抽象语法树则是分析树的浓缩表示，使用运算符作为根节点和内部节点，并使用操作数作为子节点。进一步了解可以阅读 [分析树和抽象语法树的比较](https://stackoverflow.com/questions/5026517/whats-the-difference-between-parse-trees-and-abstract-syntax-trees-asts)。
 
-实验框架实现了 Lab1 生成的分析树到 C++ 上的抽象语法树的转换。可以使用[访问者模式](./visitor_pattern.md)来实现对抽象语法树的遍历，[ast.hpp](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024ustc-jianmu-compiler/-/blob/main/include/common/ast.hpp) 文件中包含抽象语法树节点定义。
+实验框架实现了 Lab1 生成的分析树到 C++ 上的抽象语法树的转换。可以使用[访问者模式](./visitor_pattern.md)来实现对抽象语法树的遍历，[ast.hpp](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler/-/blob/main/include/common/ast.hpp) 文件中包含抽象语法树节点定义。
 
 ### 符号表 Scope
 
@@ -61,7 +61,7 @@ bool in_global();
 
 ### `CminusfBuilder` 类
 
-`CminusfBuilder` 类定义在 [cminusf_builder.hpp](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024ustc-jianmu-compiler/-/blob/main/include/cminusfc/cminusf_builder.hpp)文件中，`CminusfBuilder` 类中定义了对抽象语法树不同语法节点的 `visit` 函数，实验已给出了一些语法树节点的访问规则，其余的需要学生补充。
+`CminusfBuilder` 类定义在 [cminusf_builder.hpp](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler/-/blob/main/include/cminusfc/cminusf_builder.hpp)文件中，`CminusfBuilder` 类中定义了对抽象语法树不同语法节点的 `visit` 函数，实验已给出了一些语法树节点的访问规则，其余的需要学生补充。
 
 在 `CminusfBuilder` 构造函数函数中，下列代码片段是对 [Cminusf 语义](./cminusf语义.md)中的 4 个预定义函数进行声明并加入全局符号表中，在生成 IR 时可从符号表中查找。我们的测试样例会使用这些函数，从而实现 IO。
 
@@ -100,7 +100,7 @@ struct {
 ### 编译
 
 ```shell
-$ cd 2024ustc-jianmu-compiler
+$ cd 2025stc-jianmu-compiler
 $ mkdir build
 $ cd build
 # 使用 cmake 生成 makefile 等文件
