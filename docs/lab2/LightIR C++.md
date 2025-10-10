@@ -340,6 +340,7 @@ builder->create_ret(xLoad);
 
         void set_instr_name();
         std::string print();
+        void check_for_block_relation_error();
 
       private:
         llvm::ilist<BasicBlock> basic_blocks_;
@@ -393,6 +394,8 @@ builder->create_ret(xLoad);
 
 - `set_instr_name`：设置函数内所有指令的名称。
 
+- `check_for_block_relation_error`：用于检查函数的基本块是否存在问题
+
 ##### 常用接口
 
 - `get_basic_blocks`：常在遍历一个 function 的基本块列表时使用。
@@ -400,6 +403,7 @@ builder->create_ret(xLoad);
 - `get_num_basic_blocks`：获取基本块数量。
 - `get_num_of_args`
 - `get_entry_block`：设置 branch 跳转的目标时常用到一个函数的入口基本块。
+- `check_for_block_relation_error` 检查并指出 function 的基本块表，基本块关系存在的各种问题，常用于调试
 
 #### Argument
 
