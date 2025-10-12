@@ -18,11 +18,11 @@
 - upstream：课程发布实验代码的公开仓库
 - origin：学生 fork 得到的私有仓库
 
-![](figs/remote-info.png)
+![](figs/index 2.png)
 
 两个仓库各有 3 条分支（红色字体）：main、lab0 和 lab1，如下图。最上边的 lab1 和 main 代表本地的分支，分别追踪远程的 `origin/lab1` 和 `origin/main`，main 前边的星号 `*` 和绿色字体代表当前处于 main 分支下：
 
-![](figs/branches.png)
+![](figs/index3.png)
 
 !!! info
 
@@ -61,7 +61,13 @@
 
     ![](figs/conflict-solve-2.png)
 
+    如果执行 `git merge --continue` 后有下图所示的 hint，按照提示先 `git add <your_directory_or_merged_files>` 再 merge 即可。
+    ![](figs/merge-extra2.png)
+
     事实上，在处理本次合并可能的冲突时，只需要保留你在 lab1 编写的代码即可，其余基本上都保留上游仓库的最新内容。
+
+    VS code 还提供了高亮合并选项，例如下图是助教保留 lab1 parser 相关代码时的高亮选项 `Accept Incoming Change`：
+    ![](figs/merge-extra1.png)
 
 此时进入 build 文件夹，执行 `cmake ..` 和 `make -j` 编译最新的程序，然后进入 lab1 的测试目录 `tests/1-parser`，执行 lab1 的两个脚本。在正确合并分支的情况下，你应该能够正常编译项目并通过 lab1 的两个脚本，这时你可以开始本次实验的撰写了。
 
@@ -114,3 +120,4 @@
 
 - 阶段一：在希冀平台提交你的 `answer.pdf` 文件，在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2024ustc-jianmu-compiler.git`）。
 - 阶段二、三：在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2024ustc-jianmu-compiler.git`）。
+
