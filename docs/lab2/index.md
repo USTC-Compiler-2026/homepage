@@ -43,6 +43,8 @@
     ![](figs/create_main1.png)
     ![](figs/create_main2.png)
     在本地执行 `git pull origin` 拉取新创建的 main 分支，然后执行 `git checkout main`切换到 main 分支下面。
+    我们以后的实验都是基于 main 分支进行的，所以可以把 main 分支设置为默认分支，点击 Settings -> Repository -> Default branch 进行设置。
+    ![](figs/set_default_branch.png)
 
 然后使用 `git pull upstream main` 获取最新内容。此时你应该可以在项目下找到 `tests/2-ir-gen/**` 和 `src/lightir/**` 等内容。
 
