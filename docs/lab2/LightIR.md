@@ -287,7 +287,7 @@ Light IR 指令从 LLVM IR 中裁剪得到，因此保留了 LLVM IR 如下的�
 		...
 	```
 
-	`getelementptr` 的返回值类型并非一定是其右边紧跟的类型，例如 `getelementptr [2 x i32], [2 x i32]* %ar, i32 3, i32 1` 返回的类型不是 `[2 x i32]` 而是 `i32*`。
+	`getelementptr` 的返回值类型**并非一定是其右边紧跟的类型**，例如 `getelementptr [2 x i32], [2 x i32]* %ar, i32 3, i32 1` 返回的类型不是 `[2 x i32]` 而是 `i32*`。
 
 	从 `getelementptr` 的对象类型和索引维度数可以确定返回值类型，例如 `%p = getelementptr [2 x i32], [2 x i32]* %ar, i32 3, i32 1` 进行二维地址计算，最细粒度地址计算是元素的地址，所以返回类型为元素指针，即 `i32*`。而 `%p = getelementptr [2 x i32], [2 x i32]* %ar, i32 3` 进行一维地址计算，最细粒度地址计算是数组的地址，所以返回类型为数组指针，即 `[2 x i32]*`。
 
