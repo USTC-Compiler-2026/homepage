@@ -35,7 +35,14 @@
 首先切换到 main 分支下：
 
 - `git checkout main`：如果 `git branch` 的输出存在 main；
-- 或 `git checkout -b main --track origin/main`：如果 `git branch` 的输出不存在 main。
+- 或 `git checkout -b main --track origin/main`：如果在自己的远程仓库中有main分支，而 `git branch` 的输出不存在 main。
+
+??? note "如果你的远程仓库没有 main 分支"
+
+    首先登录自己的gitlab平台，进入自己的实验仓库页面，点击左侧的 Repository -> Branches，查看是否存在 main 分支。如果不存在，请点击 New branch 创建一个 main 分支，分支来源选择 master。
+    ![](figs/create_main1.png)
+    ![](figs/create_main2.png)
+    然后在本地执行 `git pull origin` 拉取新创建的 main 分支，然后执行 `git checkout main`切换到 main 分支下面。
 
 然后使用 `git pull upstream main` 获取最新内容。此时你应该可以在项目下找到 `tests/2-ir-gen/**` 和 `src/lightir/**` 等内容。
 
@@ -98,7 +105,7 @@
 
 !!! warning "Deadline"
 
-    **2024 年 10 月 18 日 23:59**
+    **2025 年 10 月 22 日 23:59**
 
 ### 阶段二
 
@@ -106,7 +113,7 @@
 
 !!! warning "Deadline"
 
-    **2024 年 10 月 27 日 23:59**
+    **2025 年 10 月 31 日 23:59**
 
 ### 阶段三
 
@@ -114,11 +121,11 @@
 
 !!! warning "Deadline"
 
-    **2024 年 11 月 2 日 23:59**
+    **2025 年 11 月 7 日 23:59**
 
 ## 提交内容
 
-- 阶段一：在希冀平台提交你的 `answer.pdf` 文件，在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2024ustc-jianmu-compiler.git`）。
-- 阶段二、三：在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2024ustc-jianmu-compiler.git`）。
+- 阶段一：在希冀平台提交你的 `answer.pdf` 文件，在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2025ustc-jianmu-compiler.git main`）。
+- 阶段二、三：在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2025ustc-jianmu-compiler.git main`）。
 
 
