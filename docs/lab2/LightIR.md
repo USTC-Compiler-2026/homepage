@@ -295,11 +295,11 @@ Light IR 指令从 LLVM IR 中裁剪得到，因此保留了 LLVM IR 如下的�
 
 	```
 	%op1 = getelementptr i32, i32* %op0, i32 1 ; %op1 为 i32*
-	%op1 = getelementptr i32, [3 x i32]* %op0, i32 1 ; %op1 为 [2 x i32]*
-	%op1 = getelementptr i32, [3 x i32]* %op0, i32 1, i32 2 ; %op1 为 i32*
-	%op1 = getelementptr i32, [3 x [4 x i32]]* %op0, i32 1 ; %op1 为 [3 x [4 x i32]]*
-	%op1 = getelementptr i32, [3 x [4 x i32]]* %op0, i32 1, i32 2 ; %op1 为 [4 x i32]*
-	%op1 = getelementptr i32, [3 x [4 x i32]]* %op0, i32 1, i32 2, i32 3 ; %op1 为 i32*
+	%op1 = getelementptr [3 x i32], [3 x i32]* %op0, i32 1 ; %op1 为 [3 x i32]*
+	%op1 = getelementptr [3 x i32], [3 x i32]* %op0, i32 1, i32 2 ; %op1 为 i32*
+	%op1 = getelementptr [3 x [4 x i32]], [3 x [4 x i32]]* %op0, i32 1 ; %op1 为 [3 x [4 x i32]]*
+	%op1 = getelementptr [3 x [4 x i32]], [3 x [4 x i32]]* %op0, i32 1, i32 2 ; %op1 为 [4 x i32]*
+	%op1 = getelementptr [3 x [4 x i32]], [3 x [4 x i32]]* %op0, i32 1, i32 2, i32 3 ; %op1 为 i32*
 	```
 
 - 额外阅读：[The Often Misunderstood GEP Instruction](https://llvm.org/docs/GetElementPtr.html)
