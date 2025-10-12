@@ -268,7 +268,7 @@ Light IR 指令从 LLVM IR 中裁剪得到，因此保留了 LLVM IR 如下的�
 
 	```c
 	%ar = alloca [2 x i32]
-	// int ar[][2];
+	// int ar[][2]; 虽然分配的是一维数组, %ar 却是 [2 x i32]* 类型, 与 ar[][2] 访问模式类似
 	%p = getelementptr [2 x i32], [2 x i32]* %ar, i32 0, i32 1
 	// int* p = ar + ((0 * 2) + 1); (其实就是计算的 &ar[0][1])
 	%result = load i32, i32* %p
