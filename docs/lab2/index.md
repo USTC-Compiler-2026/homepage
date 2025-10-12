@@ -42,7 +42,7 @@
     首先登录自己的gitlab平台，进入自己的实验仓库页面，点击左侧的 Repository -> Branches，查看是否存在 main 分支。如果不存在，请点击 New branch 创建一个 main 分支，分支来源选择 master。
     ![](figs/create_main1.png)
     ![](figs/create_main2.png)
-    然后在本地执行 `git pull origin` 拉取新创建的 main 分支，然后执行 `git checkout main`切换到 main 分支下面。
+    在本地执行 `git pull origin` 拉取新创建的 main 分支，然后执行 `git checkout main`切换到 main 分支下面。
 
 然后使用 `git pull upstream main` 获取最新内容。此时你应该可以在项目下找到 `tests/2-ir-gen/**` 和 `src/lightir/**` 等内容。
 
