@@ -397,14 +397,14 @@ Cminusf 中的简单类型都拥有对应的 Light IR 类型
 
 ```c
 void f(int a, float b)
-// define void @f(i32 a, float b)
+// define void @f(i32 %a, float %b)
 ```
 
 而对于数组函数参数，其没有具体大小的 `[]` 实际上代表了指针
 
 ```c
 void f(int a[], int b[][2])
-// define void @f(i32* a, [2 x i32]* b)
+// define void @f(i32* %a, [2 x i32]* %b)
 ```
 
 ##### 函数参数传递
@@ -488,3 +488,4 @@ void g(int a, int b[])
 
 
 这样做会使 IR 生成变得困难，所以这步操作通常在 IR 优化而非在从 Cminusf 生成 Light IR 阶段进行。
+
