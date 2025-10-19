@@ -263,7 +263,7 @@ Light IR 指令从 LLVM IR 中裁剪得到，因此保留了 LLVM IR 如下的�
 	```c
 	%p1 = getelementptr i32, i32* %p, i32 1
 	// int* p1 = p + 1
-	store i32 1, i32* %p1
+	store i32 2, i32* %p1
 	// *p1 = 2;
 	%result = load i32, i32* %p1
 	// int result = *p1;
@@ -462,7 +462,7 @@ void g(int a, int b[])
 	// %ap = alloca i32
 	// %bp = alloca i32*
 	// store i32 %a, i32* %ap
-	// store i32* %b, i32* %bp
+	// store i32* %b, i32** %bp
 	a = 1;
 	// store i32 1, i32* %ap
 	*b = 2;
