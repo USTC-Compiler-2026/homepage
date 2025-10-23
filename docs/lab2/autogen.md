@@ -125,10 +125,10 @@ $ sudo make install
 
 ```shell
 # 假设 cminusfc 的路径在你的 $PATH 中，并且你现在在 test.cminus 文件所在目录中
-$ cminusfc test.cminus -emit-llvm
+$ cminusfc test.cminus -emit-llvm -o test.ll
 ```
 
-此时会在同目录下生成同名的 .ll 文件，在这里即为 `test.ll`。也可以使用 `-o` 指定输出文件名，比如 `cminusfc test.cminus -emit-llvm -o anyname.ll`，这里 `-o anyname.ll` 与 `-emit-llvm` 的顺序可以是任意的。
+此时会在同目录下生成 `test.ll`。也可以使用 `-o` 指定输出文件名，比如 `cminusfc test.cminus -emit-llvm -o anyname.ll`，这里 `-o anyname.ll` 与 `-emit-llvm` 的顺序可以是任意的。
 
 #### 情况二：生成可执行文件
 
