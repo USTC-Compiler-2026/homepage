@@ -51,8 +51,8 @@
     - **Phase1 : 2025 年 10 月 22 日**
     - **Phase2 : 2025 年 10 月 31 日**
     - **Phase3 : 2025 年 11 月 7 日**
+- 2025-10-17：[第二次作业](hw/011163_25FA_HW2.pdf)已发布，Deadline：**2024 年 10 月 29 日**
 <!--
-- 2024-09-25：第二次作业已发布，Deadline：**2024 年 9 月 30 日**
 - 2024-10-08：[Lab2](lab2/index.md) 已发布，Deadline：
     - **Phase1 : 2024 年 10 月 18 日**
     - **Phase2 : 2024 年 10 月 27 日**
@@ -76,23 +76,25 @@
 
 ## <strong>教学课件</strong>
 
-|     日期     |                            标题                             |                                                                       课件                                                                       |
-|:----------:|:---------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------:|
-| 2025-09-08 |                         编译原理和技术导论                         |                                                    [Lecture1_Intro](ppt/Lecture1-Intro.pdf)                                                    |
-| 2025-09-10 |                           词法分析                            |                          [Lexical-analysis](ppt/Lecture2-Lexical-analysis.pdf), [Triton_Intro](ppt/triton_intel.pdf)                           |
-| 2025-09-15 |                      语法分析 - 上下文无关文法                       |                                                 [Parser-part1](ppt/Lecture3-Parser-part1.pdf)                                                  |
-| 2025-09-17 |                    语法分析 - 自顶向下 - 递归下降                     |                                                 [Parser-part2](ppt/Lecture4-Parser-part2.pdf)                                                  |
-| 2025-09-22 | 语法分析 - 自顶向下 - LL(1) 文法 & 语法分析 - 自底向上 - 移进规约 & LR 分析器的简单模型 |  [Parser-part3](ppt/Lecture5-Parser-part3.pdf), [Parser-part4](ppt/Lecture6-Parser-part4.pdf), [Parser-part5](ppt/Lecture7-Parser-part5.pdf)   |
-| 2025-09-24 |                     语法分析 - 简单的 LR 方法                      |                                                 [Parser-part6](ppt/Lecture8-Parser-part6.pdf)                                                  |
-| 2025-09-29 |               语法分析 - 简单的 LR 方法 & 规范的 LR 方法                |                          [Parser-part6](ppt/Lecture8-Parser-part6.pdf), [Parser-part7](ppt/Lecture9-Parser-part7.pdf)                          |
-| 2025-09-29 |                         中间代码表示 & 语法制导翻译 - 语法制导定义 & S/L 属性的定义                         | [IR](ppt/Lecture10-IR.pdf), [Translation-part1](ppt/Lecture11-Translation-part1.pdf) |
-| 2025-10-13 |                语法制导翻译 - 语法制导翻译方案 & L 属性定义的翻译方案                |               [Translation-part2](ppt/Lecture12-Translation-part2.pdf), [Translation-part3](ppt/Lecture13-Translation-part3.pdf)               |
-| 2025-10-15 |                            语法制导翻译 - L 属性定义的翻译方案                            |                               [Translation-part4](ppt/Lecture14-Translation-part4.pdf)                               |
+|     日期     |                            标题                             |                                                                     课件                                                                      |
+|:----------:|:---------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|
+| 2025-09-08 |                         编译原理和技术导论                         |                                                  [Lecture1_Intro](ppt/Lecture1-Intro.pdf)                                                   |
+| 2025-09-10 |                           词法分析                            |                         [Lexical-analysis](ppt/Lecture2-Lexical-analysis.pdf), [Triton_Intro](ppt/triton_intel.pdf)                         |
+| 2025-09-15 |                      语法分析 - 上下文无关文法                       |                                                [Parser-part1](ppt/Lecture3-Parser-part1.pdf)                                                |
+| 2025-09-17 |                    语法分析 - 自顶向下 - 递归下降                     |                                                [Parser-part2](ppt/Lecture4-Parser-part2.pdf)                                                |
+| 2025-09-22 | 语法分析 - 自顶向下 - LL(1) 文法 & 语法分析 - 自底向上 - 移进规约 & LR 分析器的简单模型 | [Parser-part3](ppt/Lecture5-Parser-part3.pdf), [Parser-part4](ppt/Lecture6-Parser-part4.pdf), [Parser-part5](ppt/Lecture7-Parser-part5.pdf) |
+| 2025-09-24 |                     语法分析 - 简单的 LR 方法                      |                                                [Parser-part6](ppt/Lecture8-Parser-part6.pdf)                                                |
+| 2025-09-29 |               语法分析 - 简单的 LR 方法 & 规范的 LR 方法                |                        [Parser-part6](ppt/Lecture8-Parser-part6.pdf), [Parser-part7](ppt/Lecture9-Parser-part7.pdf)                         |
+| 2025-09-29 |           中间代码表示 & 语法制导翻译 - 语法制导定义 & S/L 属性的定义            |                            [IR](ppt/Lecture10-IR.pdf), [Translation-part1](ppt/Lecture11-Translation-part1.pdf)                             |
+| 2025-10-13 |              语法制导翻译 - 语法制导翻译方案 & L 属性定义的翻译方案              |             [Translation-part2](ppt/Lecture12-Translation-part2.pdf), [Translation-part3](ppt/Lecture13-Translation-part3.pdf)              |
+| 2025-10-15 |           语法制导翻译 - L 属性定义的翻译方案 & 中间代码翻译 - 简单语句            |         [Translation-part4](ppt/Lecture14-Translation-part4.pdf), [IR-Translation-part1](ppt/Lecture15-IR%20Translation-part1.pdf)          |
+| 2025-10-20 |              中间代码生成 - 控制流与布尔表达式 & 标号回填与布尔表达式              |     [IR-Translation-part2](ppt/Lecture16-IR%20Translation-part2.pdf), [IR-Translation-part3](ppt/Lecture17-IR%20Translation-part3.pdf)      |
+| 2025-10-22 |             中间代码翻译 - 标号回填与控制流语句 & 类型表达式及自动构造              |     [IR-Translation-part4](ppt/Lecture18-IR%20Translation-part4.pdf), [IR-Translation-part5](ppt/Lecture19-IR%20Translation-part5.pdf)      |
+| 2025-10-27 |                     中间代码生成 - 符号表与声明语句                     |                                      [IR-Translation-part6](ppt/Lecture20-IR%20Translation-part6.pdf)                                       |
+| 2025-10-29 |               中间代码翻译 - 数组寻址 & 运行时管理 - 存储组织                |             [IR-Translation-part7](ppt/Lecture21-IR%20Translation-part7.pdf), [Runtime-part1](ppt/Lecture22-Runtime-part1.pdf)              |
+| 2025-11-03 |                   运行时管理 - 栈式分配 & 非局部名字                    |                     [Runtime-part2](ppt/Lecture23-Runtime-part2.pdf), [Runtime-part3](ppt/Lecture24-Runtime-part3.pdf)                      |
+| 2025-11-05 |                     代码生成 - 简单机器模型 & 机器无关代码优化 - 常见优化方法                      |                    [CodeGen-part1](ppt/Lecture25-CodeGen-part1.pdf),  [IR Opt-part1](ppt/Lecture26-IR%20Opt-part1.pdf)                   |
 <!--
-| 2024-10-14 |      语法制导翻译 - 语法制导定义 & S/L 属性的定义      |      [Translation-part1](ppt/Lecture11-Translation-part1.pdf), [Translation-part2](ppt/Lecture12-Translation-part2.pdf)      |
-| 2024-10-16 | 语法制导翻译 - 语法制导翻译方案 & L 属性定义的翻译方案 |      [Translation-part2](ppt/Lecture12-Translation-part2.pdf), [Translation-part3](ppt/Lecture13-Translation-part3.pdf)      |
-| 2024-10-21 |          语法制导翻译 - L 属性定义的翻译方案           |                             [Translation-part4](ppt/Lecture14-Translation-part4.pdf)                             |
-| 2024-10-23 |  中间代码翻译 - 简单语句翻译 & 控制流与布尔表达式翻译  | [IR-Translation-part1](ppt/Lecture15-IR%20Translation-part1.pdf), [IR-Translation-part2](ppt/Lecture16-IR%20Translation-part2.pdf) |
 | 2024-10-28 |                    中间代码翻译 - 布尔表达式 & 控制流语句                    |                                                                              [IR-Translation-part3](ppt/Lecture17-IR%20Translation-part3.pdf), [IR-Translation-part4](ppt/Lecture18-IR%20Translation-part4.pdf)                                                                              |
 | 2024-10-30 |                    中间代码翻译 - 类型表达式及自动构造                    |                                                                              [IR-Translation-part5](ppt/Lecture19-IR%20Translation-part5.pdf)                                                                              |
 | 2024-11-04 |               中间代码翻译 - 类型表达式 & 符号表与声明语句                |                                        [IR-Translation-part6](ppt/Lecture20-IR%20Translation-part6.pdf)                                        |
@@ -111,6 +113,7 @@
 | 2024-12-13 |                                  复习课                                   |                                                                             [slides](https://rec.ustc.edu.cn/share/3a4ffcf0-995a-11ee-9fdc-a7ee4ffd604e)                                                                              | -->
 
 ## <strong>参考资料</strong>
+- 2025-10-21：[第一次作业答案](hw/011163_25FA_HW1_ANSWER.pdf) 已发布
 
 ### <strong>教材和参考书</strong>
 
