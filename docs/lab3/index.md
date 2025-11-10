@@ -4,7 +4,7 @@
 
 ## 同步实验仓库
 
-在进行实验之前，首先拉取[实验仓库](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2024ustc-jianmu-compiler)的最新代码，具体步骤可以参考 [Lab2 中的指导](../lab2/index.md#实验要求)。
+在进行实验之前，首先拉取[实验仓库](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler)的最新代码，具体步骤可以参考 [Lab2 中的指导](../lab2/index.md#实验要求)。
 
 本次实验仓库更新的内容如下，每个阶段的文件将在对应文档详细说明：
 
@@ -46,7 +46,7 @@
 
 !!! warning "Deadline"
 
-    **2024 年 11 月 13 日 23:59**
+    **2025 年 11 月 13 日 23:59**
 
 ### 阶段二
 
@@ -62,11 +62,11 @@
 
 !!! warning "Deadline"
 
-    **2024 年 11 月 27 日 23:59**
+    **2025 年 11 月 27 日 23:59**
 
 ## 提交内容
 
-阶段一、二：在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2024ustc-jianmu-compiler.git`）。
+阶段一、二：在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2025ustc-jianmu-compiler.git`）。
 
 在提交之前，请确保你 fork 得到的远程仓库与本地同步：
 

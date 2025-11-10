@@ -28,7 +28,7 @@
 ### 编译
 
 ```shell
-$ cd 2024ustc-jianmu-compiler
+$ cd 2025ustc-jianmu-compiler
 $ mkdir build
 $ cd build
 # 使用 cmake 生成 makefile 等文件
@@ -97,7 +97,7 @@ $ echo $?
 ### 编译
 
 ```shell
-$ cd 2024ustc-jianmu-compiler
+$ cd 2025ustc-jianmu-compiler
 $ mkdir build
 $ cd build
 # 使用 cmake 生成 makefile 等文件
@@ -128,7 +128,7 @@ $ cminusfc test.cminus -S
 为了运行得到的汇编文件，需要调用龙芯交叉编译器编译链接生成二进制文件 `test`：
 
 ```shell
-# 假设你位于 2024ustc-jianmu-compiler 目录，否则你应该修改下面 src/io/io.c 到具体的路径
+# 假设你位于 2025ustc-jianmu-compiler 目录，否则你应该修改下面 src/io/io.c 到具体的路径
 $ loongarch64-unknown-linux-gnu-gcc -static test.s src/io/io.c -o test
 ```
 
