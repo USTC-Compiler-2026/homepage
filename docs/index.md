@@ -47,11 +47,15 @@
 - 2025-09-14：[Lab0](lab0/index.md) 已发布，Deadline：**2025 年 9 月 24 日**
 - 2025-09-21：[第一次作业](hw/011163_25FA_HW1.pdf)已发布，Deadline：**2025 年 9 月 28 日**
 - 2025-09-24：[Lab1](lab1/index.md) 已发布，Deadline：**Phase1 : 2025 年 10 月 1 日 / Phase2 : 2025 年 10 月 8 日**
-- 2024-10-08：[Lab2](lab2/index.md) 已发布，Deadline：
+- 2025-10-08：[Lab2](lab2/index.md) 已发布，Deadline：
     - **Phase1 : 2025 年 10 月 22 日**
     - **Phase2 : 2025 年 10 月 31 日**
     - **Phase3 : 2025 年 11 月 7 日**
-- 2025-10-17：[第二次作业](hw/011163_25FA_HW2.pdf)已发布，Deadline：**2024 年 10 月 29 日**
+- 2025-10-17：[第二次作业](hw/011163_25FA_HW2.pdf)已发布，Deadline：**2025 年 10 月 29 日**
+- 2025-11-12：[第三次作业](hw/011163_25FA_HW3.pdf)已发布，Deadline：**2025 年 11 月 23 日**
+- 2025-11-12：[Lab3](lab3/index.md) 已发布，Deadline：
+    - **Phase1 : 2025 年 11 月 23 日**
+    - **Phase2 : 2025 年 11 月 30 日**
 <!--
 - 2024-10-08：[Lab2](lab2/index.md) 已发布，Deadline：
     - **Phase1 : 2024 年 10 月 18 日**
@@ -114,6 +118,7 @@
 
 ## <strong>参考资料</strong>
 - 2025-10-21：[第一次作业答案](hw/011163_25FA_HW1_ANSWER.pdf) 已发布
+- 2025-11-12：[第二次作业答案](hw/011163_25FA_HW2_ANSWER.pdf) 已发布
 
 ### <strong>教材和参考书</strong>
 
