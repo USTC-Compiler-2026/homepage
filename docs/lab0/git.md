@@ -82,8 +82,8 @@ git config --global user.email "Your Email"
 
    # 我们可以通过 git status 查看 git 的暂存区
    $ git status
-   On branch master
-   Your branch is up to date with 'origin/master'.
+   On branch main
+   Your branch is up to date with 'origin/main'.
 
    Changes to be committed:
     (use "git restore --staged <file>..." to unstage)
@@ -96,19 +96,19 @@ git config --global user.email "Your Email"
    # 使用 git commit 提交本次修改到 Git 本地仓库
    # -m 后面的内容用于帮助记录本次提交的相关信息，要求每次提交最好都记录信息
    $ git commit -m 'add readme'
-   [master bc20c0b] add readme
+   [main bc20c0b] add readme
    1 file changed, 1 insertion(+)
    create mode 100644 readme.md
    
    # 我们可以通过 git log 查看历史提交记录
    $ git log
-   commit bc20c0b170a829948439961745cf1a2dc7817e86 (HEAD -> master)
+   commit bc20c0b170a829948439961745cf1a2dc7817e86 (HEAD -> main)
    Author: gpzlx1 <gpzlx1@mail.ustc.edu.cn>
    Date:   Wed Sep 6 19:01:15 2025 +0800
    
        add readme
    
-   commit 6d08e6d4a1be64dea41798086b54cb0acc4377e2 (origin/master, origin/HEAD)
+   commit 6d08e6d4a1be64dea41798086b54cb0acc4377e2 (origin/main, origin/HEAD)
    Author: 123 <hej148@nenu.edu.cn>
    Date:   Tue Sep 5 22:39:37 2025 +0800
    
@@ -124,7 +124,7 @@ git config --global user.email "Your Email"
 通过以上操作，我们完成了一次本地修改和提交。然而，请注意这些更改仅存储在本地，需要使用 "git push" 命令将它们上传到服务器，以实现本地和服务器的同步。
 
 ```bash
-$ git push origin master  # 推送本地仓库的内容到 Git 远程仓库
+$ git push origin main  # 推送本地仓库的内容到 Git 远程仓库
 Enumerating objects: 4, done.
 Counting objects: 100% (4/4), done.
 Delta compression using up to 8 threads
@@ -132,7 +132,7 @@ Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 290 bytes | 290.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
-    6d08e6d..bc20c0b  master -> master
+    6d08e6d..bc20c0b  main -> main
 ```
 
 现在，刷新 GitLab 页面，刚刚提交的内容已经显示在网页上。
@@ -155,14 +155,14 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
 
   ```bash
   # 使用以下命令从上游仓库获取最新代码
-  $ git fetch upstream master
+  $ git fetch upstream main
   remote: Enumerating objects: 5, done.
   remote: Counting objects: 100% (5/5), done.
   remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
   Unpacking objects: 100% (3/3), 258 bytes | 51.00 KiB/s, done.
   From https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up_upstream
-    * branch            master     -> FETCH_HEAD
-    * [new branch]      master     -> upstream/master
+    * branch            main     -> FETCH_HEAD
+    * [new branch]      main     -> upstream/main
   hint: You have divergent branches and need to specify how to reconcile them.
   hint: You can do so by running one of the following commands sometime before
   hint: your next pull:
@@ -177,7 +177,7 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
   hint: invocation.
   fatal: Need to specify how to reconcile divergent branches.
 
-  # 此时所有的 upstream 的内容都在 upstream/master 分支上
+  # 此时所有的 upstream 的内容都在 upstream/main 分支上
   # 分支是 git 的一个重要概念，在本质上是一条独立的开发线。
   # 在处理新功能或 bug 修复时，您可以使用分支来将您的工作与其他团队成员的工作隔离开来。
   ```
@@ -186,16 +186,16 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
 
   ```bash
   # 此时我们的仓库中存在两条分支
-  # master: 我们修改内容
-  # upstream/mater: 上游的内存
-  # 我们可以通过 merge 操作将 upstream/master 的内容合并到 master 中
-  $ git merge upstream/master
+  # main: 我们修改内容
+  # upstream/main: 上游的内存
+  # 我们可以通过 merge 操作将 upstream/main 的内容合并到 main 中
+  $ git merge upstream/main
   Auto-merging warm_up.txt
   CONFLICT (content): Merge conflict in warm_up.txt
   Automatic merge failed; fix conflicts and then commit the result.
   
-  # 此时输出信息，告诉我们在 warm_up.txt 中存在冲突，这是由于 master 分支
-  # 和 upstream/master 分支都对改文件相同位置进行了修改，此时需要我们手动处理冲突
+  # 此时输出信息，告诉我们在 warm_up.txt 中存在冲突，这是由于 main 分支
+  # 和 upstream/main 分支都对改文件相同位置进行了修改，此时需要我们手动处理冲突
   # 然后才能完成分支的合并和代码的同步
   
   # 我们先查看当前 warm_up.txt 的内容
@@ -204,7 +204,7 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
   欢迎你同学加入编译原理课程学习！
   =======
   欢迎您加入编译原理课程学习！
-  >>>>>>> upstream/master
+  >>>>>>> upstream/main
   
   # 这里出现了 <<< ==== >>>>等标识符
   # <<< 和 ===之间的内容是当前这个分支的内容
@@ -218,10 +218,10 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
   # 此时，我们完成该文件的冲突处理，我们可以添加和提交本次修改，完成 merge 操作
   $ git add warm_up.txt
   $ git commit
-  [master 126d5c9] Merge remote-tracking branch 'upstream/master'
+  [main 126d5c9] Merge remote-tracking branch 'upstream/main'
   
   # 最后，将所有修改同步到远程服务器，方便助教进行批改
-  $ git push origin master
+  $ git push origin main
   Enumerating objects: 10, done.
   Counting objects: 100% (10/10), done.
   Delta compression using up to 8 threads
@@ -229,10 +229,10 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
   Writing objects: 100% (6/6), 626 bytes | 626.00 KiB/s, done.
   Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
   To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
-     bc20c0b..126d5c9  master -> master
+     bc20c0b..126d5c9  main -> main
   ```
 
-注：在完成冲突处理后 `git commit` 时，终端弹出的默认编辑器应该是 GNU nano，并带有默认的 commit message `Merge remote-tracking branch 'upstream/master'`，这时用 `Ctrl + X` 再选择 `Y` 即可完成 commit。感兴趣的同学可以阅读 [这篇文章](https://zhuanlan.zhihu.com/p/341705638) 进一步学习 GNU nano 的使用。
+注：在完成冲突处理后 `git commit` 时，终端弹出的默认编辑器应该是 GNU nano，并带有默认的 commit message `Merge remote-tracking branch 'upstream/main'`，这时用 `Ctrl + X` 再选择 `Y` 即可完成 commit。感兴趣的同学可以阅读 [这篇文章](https://zhuanlan.zhihu.com/p/341705638) 进一步学习 GNU nano 的使用。
 
 ## 扩展材料
 
@@ -251,4 +251,5 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
     2. 如何撤销保存在暂存区的修改？如何仅撤销最近一次提交的某一个文件 (test.txt)？
     3. 解释 git fetch 和 git pull 的区别。
 3. 将 [LLVM 等软件环境配置与测试](software.md) 中生成的 Test.ll 文件添加到仓库中，并上传到远程仓库中去。
+
 
