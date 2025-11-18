@@ -160,7 +160,7 @@ $ qemu-loongarch64 ./test
 
 以下是评测脚本的**使用示例**：
 
-以 `./testcases` 为测例目录，使用评测脚本 `test` 模式测试（我们使用正确的实现，但是故意在 `13-complex.cminus` 中制造了语法错误）：
+以 `./testcases` 为测例目录，使用评测脚本 `test` 模式测试（我们使用正确的实现，但是故意在 `13-complex.cminus` 中制造了语法错误，注意原测试样例测试结果应为 OK）：
 
 ```shell
 $ ./eval_lab3.sh ./testcases test
