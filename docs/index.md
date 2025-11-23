@@ -100,6 +100,8 @@
 | 2025-11-05 |                     代码生成 - 简单机器模型 & 机器无关代码优化 - 常见优化方法                     |                     [CodeGen-part1](ppt/Lecture25-CodeGen-part1.pdf),  [IR Opt-part1](ppt/Lecture26-IR%20Opt-part1.pdf)                     |
 | 2025-11-10 |                           机器无关代码优化 - 数据流与到达定值分析                           |                                              [IR Opt-part2](ppt/Lecture27-IR%20Opt-part2.pdf)                                               |
 | 2025-11-12 |                            机器无关代码优化 - 可用表达式分析 & 活跃变量分析 & 基本块内优化                            |                                             [IR Opt-part3](ppt/Lecture28-IR%20Opt-part3.pdf), [IR Opt-part4](ppt/Lecture29-IR%20Opt-part4.pdf), [IR Opt-part5](ppt/Lecture30-IR%20Opt-part5.pdf)                                              |
+| 2025-11-17 | 流图中的循环 & 寄存器分配              |                                                                              [Loop](ppt/Lecture31-Loop-part1.pdf), [Register](ppt/Lecture32-Register.pdf)                                |
+| 2024-11-19 | 一段代码的神奇之旅            |                                       [一段代码的神奇之旅](ppt/一段代码的神奇之旅.pdf)                                      |
 <!--
 | 2024-11-04 |               中间代码翻译 - 类型表达式 & 符号表与声明语句                |                                        [IR-Translation-part6](ppt/Lecture20-IR%20Translation-part6.pdf)                                        |
 | 2024-11-06 |              中间代码翻译 - 数组寻址 & 运行时管理 - 存储组织              |                                       [IR-Translation-part7](ppt/Lecture21-IR%20Translation-part7.pdf), [Runtime-part1](ppt/Lecture22-Runtime-part1.pdf)                                        |
