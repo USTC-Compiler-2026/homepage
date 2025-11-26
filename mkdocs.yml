@@ -112,7 +112,9 @@ extra_javascript:
 
 nav:
   - 首页: index.md
-  - 课程平台介绍: exp_platform_intro/README.md
+  - 公共文档:
+    - 课程平台介绍: exp_platform_intro/README.md
+    - 助教代码介绍: exp_platform_intro/TA.md
   # - 公共文档:
     # - Cminusf 语法语义介绍: common/cminusf.md
     # - Light IR 简介: common/LightIR.md

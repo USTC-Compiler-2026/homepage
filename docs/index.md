@@ -56,6 +56,9 @@
 - 2025-11-12：[Lab3](lab3/index.md) 已发布，Deadline：
     - **Phase1 : 2025 年 11 月 23 日**
     - **Phase2 : 2025 年 11 月 30 日**
+- 2025-11-27：[Lab2 助教代码](exp_platform_intro/TA.md) 已发布：
+	- 包含 Lab1, 2 的助教实现和 Lab3 Phase2 框架，可以在上面实现 Lab3 Phase2
+	- 具有比旧版本更方便调试的底层框架，具体更改见[助教代码介绍](exp_platform_intro/TA.md/#使用-vscode-进行调试)，Lab4 将仅提供该版本代码
 <!--
 - 2024-10-08：[Lab2](lab2/index.md) 已发布，Deadline：
     - **Phase1 : 2024 年 10 月 18 日**
