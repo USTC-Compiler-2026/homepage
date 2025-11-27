@@ -13,7 +13,7 @@ git checkout -b ta --track upstream/ta
 ```
 
 
-然后手动复制你完成了的 Lab3 Phase2 代码到对应的文件夹。你可以先将 `CodeGen.cpp` 下载到本地，这样能够比对 `TODO` 并复制你的实验进度。
+然后手动复制你完成了的 Lab3 Phase2 代码到对应的文件夹（如果你做的是 Lab4 则不需要复制）。你可以先将 `CodeGen.cpp` 下载到本地，这样能够比对 `TODO` 并复制你的实验进度。
 **注意只复制 TODO 部分**，复制整个文件将需要你手动修复大量代码错误。
 
 !!! Note "下载 **CodeGen.cpp**" 
@@ -22,7 +22,7 @@ git checkout -b ta --track upstream/ta
 
 ### 更改代码
 
-由于实验框架的变动，你完成的代码中少量的代码（主要是 Light IR 相关的代码）需要更改，主要是以下几个部分：
+由于实验框架的变动，你完成的代码中少量的代码（主要是 Light IR 相关的代码）需要更改，（如果没有开始 Lab3 Phase2，或你目前要做的是 Lab4，则不需要更改）主要是以下几个部分：
 
 - `ASMInstruction::Atrribute` 需要重命名为 `ASMInstruction::Attribute`。
 	- 你可以 `Ctrl + F` 唤出搜索栏，点击搜索栏最左边的箭头唤出替换栏，然后将 `Atrribute` 全部替换为 `Attribute`，因为这实际上是以前的框架拼错了。
