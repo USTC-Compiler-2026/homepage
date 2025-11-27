@@ -7,9 +7,9 @@
 git add *
 git commit -m
 # 拉取新更新
-git pull
+git pull upstream
 # 切换分支
-git checkout ta
+git checkout -b ta --track upstream/ta
 ```
 
 
