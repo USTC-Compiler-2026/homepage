@@ -31,7 +31,7 @@ git checkout -b ta --track upstream/ta
 	- 围绕 BasicBlock 和 Instruction 的报错基本上是因为这个
 
 
-然后你可以编译你的代码，我们推荐使用 VSCode 进行 cmake 的更新，而非手动输入 cmake，因为后者捕捉不到 cmake 文件的变化。
+然后你可以编译你的代码，我们推荐使用 VSCode 运行 cmake，而非手动输入 `cmake ..`，因为后者捕捉不到 cmake 文件的变化。
 
 ### 编译代码
 
