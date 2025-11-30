@@ -13,7 +13,7 @@ git checkout -b ta --track upstream/ta
 ```
 
 
-然后手动复制你完成了的 Lab3 Phase2 代码到对应的文件夹（如果你做的是 Lab4 则不需要复制）。你可以先将 `CodeGen.cpp` 下载到本地，这样能够比对 `TODO` 并复制你的实验进度。
+然后手动复制你完成了的 Lab3 Phase2 代码到对应的文件夹（如果你做的是 Lab4 则不需要复制，Lab4 不需要用到 CodeGen）。你可以先将 `CodeGen.cpp` 下载到本地，这样能够比对 `TODO` 并复制你的实验进度。
 **注意只复制 TODO 部分**，复制整个文件将需要你手动修复大量代码错误。
 
 !!! Note "下载 **CodeGen.cpp**" 
