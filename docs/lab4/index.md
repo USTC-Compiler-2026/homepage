@@ -5,9 +5,28 @@
 
 ## 同步实验仓库
 
-在进行实验之前，首先拉取[实验仓库](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler)的最新代码，这次实验将使用助教提供的 Lab1, Lab2 代码和框架。
+在进行实验之前，首先拉取[实验仓库](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler) `ta` 分支的最新代码，这次实验将使用助教提供的 Lab1, Lab2, Lab3 代码和框架，为了评测机能正常工作（特别是为了实现性能统计功能），你需要完全使用助教的 Lab1, Lab2, Lab3。
 
-框架与 Lab1 - Lab3 相比具有一些变化，详见[助教代码介绍](exp_platform_intro/TA.md)。
+!!! warning "拉取代码"
+	
+	即使你已经在新分支实现了 Lab3，也应该创建一个新分支，这可以使用 
+
+	```
+	git switch -c lab4 upstream/ta
+	```
+
+	来实现。
+
+	然后更改后需要推送到 origin，这可以用
+
+	```
+	git push -u origin lab4/lab4
+	```
+
+	来实现。
+
+
+框架与 Lab1 - Lab3 相比具有一些变化，详见[助教代码介绍](../exp_platform_intro/TA.md)。
 
 本次实验仓库更新的内容如下，每个阶段的文件将在对应文档详细说明：
 
@@ -48,20 +67,20 @@
 
 !!! warning "Deadline"
 
-    **2024 年 12 月 14 日 23:59**
+    **2025 年 12 月 14 日 23:59**
 
 ### 阶段二 LICM
 
-阅读章节[循环相关介绍](./loop.md) 和 [LICM](./LICM.md)，完成 LoopDetection 循环分析 与 LICM 循环不变量外提 两个Pass。
+阅读章节[循环相关介绍](./loop.md), [LoopDetection](./loop_detect.md) 和 [LICM](./LICM.md)，完成 LoopDetection 循环分析 与 LICM 循环不变量外提 两个Pass。
 
 !!! warning "Deadline"
 
-    **2024 年 12 月 24 日 23:59**
+    **2025 年 12 月 21 日 23:59**
 
 ## 提交方式
 
 - 在希冀平台提交实验仓库的 URL
 
-  > 在提交之前，请确保你 fork 得到的远程仓库与本地同步：`git push origin master`
+  > 在提交之前，请确保你 fork 得到的远程仓库与本地同步：`git push origin lab4`
   
 - 在希冀平台提交实验报告（实现方法、正确性验证、性能验证等）

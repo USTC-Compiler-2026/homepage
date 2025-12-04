@@ -14,16 +14,20 @@
 
 在我们的课程中，这通常被称为**自然循环**。
 
+下图中 B0, B1, B2 是一个 Loop, 但是 B1, B2 只是一个 Cycle。
+
+![alt text](image-16.png)
+
 ### 一些额外的定义
 
-- **Entering block** (或 Loop Predecessor) : 指的是一个不在循环中的节点，它有一条边指向循环的头节点。如果只有一个进入块，并且这条边唯一指向头节点，那么这个进入块也叫做**preheader**。**preheader** 支配循环中的所有节点，但它本身不是循环的一部分。
+- **Entering block** (或 Loop Predecessor) : 指的是一个不在循环中的节点，它有一条边指向循环的头节点。如果只有一个进入块，并且这条边唯一指向头节点，那么这个进入块也叫做 **preheader**。**preheader** 支配循环中的所有节点，但它本身不是循环的一部分。
 - **Latch**：有一条边指向头节点（header）的循环内节点。
 - **Backedge**：从 Latch 指向 header 的边。
 - **Exiting Edge**：从 loop 内部指向外部的边。它从 **exiting block** 指向 **exit block**。
 
 ![loop-terminology](./figs/loop-terminology.svg)
 
-### 一些其他的说明
+## 一些其他的说明
 
 - 每个节点最多只能是一个循环的头节点，因此一个循环可以通过其头节点来唯一标识。
 - 对于从函数入口不可达的基本块，循环的概念是未定义的，因为支配关系也未定义。
@@ -44,6 +48,6 @@
 
 ![loop-merge](./figs/loop-merge.svg)
 
-在 `LLVM` 中，[LoopSimplify](https://llvm.org/docs/LoopTerminology.html#loop-terminology-loop-simplify)会将这个循环分解为两个循环。但为了简化实验，我们在这里**并不涉及该pass**。
+在 `LLVM` 中，[LoopSimplify](https://llvm.org/docs/LoopTerminology.html#loop-terminology-loop-simplify) 会将这个循环分解为两个循环。但为了简化实验，我们在这里**并不涉及该pass**。
 
 ![loop-separate](./figs/loop-separate.svg)

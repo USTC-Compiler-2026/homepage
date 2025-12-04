@@ -79,10 +79,10 @@ Mem2Reg 会消除所有的非数组 `alloca`，以及它相关的 `load` 和 `st
 
 ### 执行 rename
 
-Rename 需要对每个基本块执行，在我们的实现中，Rename 首先操作入口块，然后按照支配树进行深度优先搜索处理其它基本块。Rename 进行的操作基本上类似 [单基本块的转换](Mem2Reg.md/###单基本块的转换)。
+Rename 需要对每个基本块执行，在我们的实现中，Rename 首先操作入口块，然后按照支配树进行深度优先搜索处理其它基本块。Rename 进行的操作基本上类似 [单基本块的转换](Mem2Reg.md/#单基本块的转换)。
 
 
-在 [单基本块的转换](Mem2Reg.md/###单基本块的转换) 中，我们创建两个 `map`，第一个保留临时变量与它目前的值的映射，在 `store` 时进行修改（我们叫做 `value`）；第二个保留每个 `load` 指令到它读取到的值的映射（我们叫做 `replace`）。这样虽然可以处理单基本块的情况，但是对于多基本块有两个问题：
+在 [单基本块的转换](Mem2Reg.md/#单基本块的转换) 中，我们创建两个 `map`，第一个保留临时变量与它目前的值的映射，在 `store` 时进行修改（我们叫做 `value`）；第二个保留每个 `load` 指令到它读取到的值的映射（我们叫做 `replace`）。这样虽然可以处理单基本块的情况，但是对于多基本块有两个问题：
 
 - 如何在基本块间切换
 - 如何处理上一步插入的 phi 指令
@@ -158,37 +158,7 @@ rename(BasicBlock* bb)
 }
 ```
 
-## 前后端对 Phi 的处理
-
-### 使用 Phi 指令帮助生成 IR
-
-虽然我们实验不会遇到，但如果你需要翻译比较赋值操作
-
-```
-int a = b > c;
-// 尤其是还有长这样的 int a = (b > c) && (d < e);
-```
-
-最好的翻译方式是
-
-```
-%op0 = icmp sgt i32 %b, %c
-%a = zext i1 %op0 to i32
-```
-
-但是你也可以使用短路运算结合 phi
-
-```
-label0:
-%op0 = icmp sgt i32 %b, %c
-br i1 %op0, label %label1, label %label2
-label1:
-br %label2
-label2:
-%a = phi i32 [1, %label1], [0, %label2]
-```
-
-### 在 CodeGen 中处理 Phi
+## 在 CodeGen 中处理 Phi
 
 我们 CodeGen 使用的 `phi` 翻译方法已经由助教编写，由于栈式分配会给每个变量（包括 `phi`）分配一个栈空间，只需要在基本块末尾将值存入后序块的 `phi` 对应栈空间。
 
@@ -216,31 +186,25 @@ label2:
 
 ```
 .
-├── cleanup.sh
-├── eval_lab4.sh            # 功能测试脚本
-├── test_perf.sh            # 性能测试脚本
+├── eval_lab4.cpp
 └── testcases
-    ├── ...
-    ├── functional-cases    # 功能测试用例
-    └── mem2reg             # 性能测试用例
+    └── ...
 ```
 
-其中本地测评脚本 `eval_lab4.sh` 与 Lab3 一致，使用方法可以回顾 [Lab3 测试](../lab3/guidance.md#测试)，要求通过的测例目录：
+当运行 `sudo make install` 后，你可以直接使用 `eval_lab4 all ../../build/cases debug` 进行测试，或者将 `all` 换成 `raw`，`mem2reg`，`licm` 来测试不同阶段，其中 `raw` 代表不加任何优化。
 
-- `tests/testcases_general`
-- `tests/4-licm/testcases/functional-cases`
+运行结果类似于
 
-此外，为了让你能够体会 Mem2Reg 的效果，我们还提供了 3 个性能测试样例，在 `testcases/mem2reg` 中。你可以使用脚本 `test_perf.sh` 来进行性能比较，使用示例如下所示。
+```
+==========6_complex4.cminus==============
+raw      OK Take Time (us): 1088  Inst Execute Cost: 428 Allocate Size (bytes): 1188
+mem2reg  OK Take Time (us): 829   Inst Execute Cost: 428 Allocate Size (bytes): 60
+licm     OK Take Time (us): 857   Inst Execute Cost: 406 Allocate Size (bytes): 60
+```
 
-??? info "`test_perf.sh` 使用示例"
+由于后端使用栈式分配，并且需要进行额外的统计工作，可能时间上不会体现出很明显的优化。我们提供了 Allocate Size (bytes) 指标，代表程序中 Allocate 分配的栈大小。
 
-    ```shell
-    $ ./test_perf.sh mem2reg
-    [info] Start testing, using testcase dir: ./testcases/mem2reg
-    ==========./testcases/mem2reg/mem2reg-1.cminus==========
-    ...
-
-    ```
+Mem2Reg 会消除栈变量，将它变成寄存器变量。 可以认为  Allocate Size 越小 Mem2Reg 效果越好。
 
 ## 编译与运行
 
@@ -259,4 +223,4 @@ $ sudo make install
 现在你可以 `-mem2reg` 使用来指定开启 Mem2Reg 优化：
 
 - 将 `test.cminus` 编译到 IR：`cminusfc -emit-llvm -mem2reg test.cminus`
-- 将 `test.cminus` 编译到汇编：`cminusfc -S -mem2reg test.cminus`
+- 将 `test.cminus` 编译到汇编（还会附带一个 IR）：`cminusfc -S -mem2reg test.cminus`
