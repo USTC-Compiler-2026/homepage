@@ -1,38 +1,5 @@
 # 助教代码介绍
 
-## 切换到助教代码
-
-```bash
-# 保存所有更改
-git add *
-git commit -m
-# 拉取新更新
-git pull upstream
-# 切换分支
-git checkout -b ta --track upstream/ta
-```
-
-
-然后手动复制你完成了的 Lab3 Phase2 代码到对应的文件夹（如果你做的是 Lab4 则不需要复制，Lab4 不需要用到 CodeGen）。你可以先将 `CodeGen.cpp` 下载到本地，这样能够比对 `TODO` 并复制你的实验进度。
-**注意只复制 TODO 部分**，复制整个文件将需要你手动修复大量代码错误。
-
-!!! Note "下载 **CodeGen.cpp**" 
-
-	在 VSCode 右键 `CodeGen.cpp`，点击 `下载`。
-
-### 更改代码
-
-由于实验框架的变动，你完成的代码中少量的代码（主要是 Light IR 相关的代码）需要更改，（如果没有开始 Lab3 Phase2，或你目前要做的是 Lab4，则不需要更改）主要是以下几个部分：
-
-- `ASMInstruction::Atrribute` 需要重命名为 `ASMInstruction::Attribute`。
-	- 你可以 `Ctrl + F` 唤出搜索栏，点击搜索栏最左边的箭头唤出替换栏，然后将 `Atrribute` 全部替换为 `Attribute`，因为这实际上是以前的框架拼错了。
-- 使用 for 循环 `for(auto &i: bb)` 遍历基本块时，以前这里的 `i` 是 `BasicBlock`，现在是 `BasicBlock*`，因此它周围可能有智能提示报告错误，你需要去掉一些使用 `&` 取地址的操作，对这个错误进行修复。
-	- 对 Instruction 也有同样的问题
-	- 围绕 BasicBlock 和 Instruction 的报错基本上是因为这个
-
-
-然后你可以编译你的代码，我们推荐使用 VSCode 运行 cmake，而非手动输入 `cmake ..`，因为后者捕捉不到 cmake 文件的变化。
-
 ### 编译代码
 
 #### 打开仓库
@@ -203,7 +170,7 @@ void c() {
 
 ???+ Note "Q&A" 
 
-	调试窗口变量的描述与文档中的图片不同，非常复杂难以阅读?
+	**调试窗口变量的描述与文档中的图片不同，非常复杂难以阅读?**
 
 	这可能是由于 lldb 没有正常工作。
 
@@ -214,6 +181,10 @@ void c() {
 	然后你需要寻找 llvm 自带的 python，它一般在 `/usr/lib/llvm-14/lib/python3.10/dist-packages`，然后将它链接到 llvm 默认路径，这里即 `sudo ln -s /usr/lib/llvm-14/lib/python3.10/dist-packages /usr/lib/local/lib/python3.10/dist-packages`。
 
 	不同的机器可能具有不同的路径。
+
+	**当程序陷入异常后通过调用堆栈导航到外面，发现调试窗口难以阅读**
+
+	这是正常的，异常之前打个断点提前停下来就不会这样。
 
 
 
@@ -301,7 +272,7 @@ a2 放在哪里？它需要放在所有本基本块使用到 a 的变量的前�
 
 段的区分在接口中没有明显体现，当你遍历指令列表，你还是会遍历所有指令，只不过 `alloca` 和 `phi` 都在指令列表开头的地方。
 
-### 去除 Instruction 类的冗余模板
+### 去除 Instruction 类的 CRTP
 
 将
 
@@ -349,7 +320,7 @@ class IBinaryInst : public Instruction {
 };
 ```
 
-原来的那个实现是祖传代码，我们的实验实际上用不到这种抽象，并且它还会导致报错时点击报错函数导航到 `BaseInst` 这个空模板，影响 debug。
+原来的那个实现虽然性能更好，但它会导致报错时点击报错函数导航到 `BaseInst` 这个空模板，影响 debug。
 
 
 ### 创建时命名

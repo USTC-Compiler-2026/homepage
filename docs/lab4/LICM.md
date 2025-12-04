@@ -1,125 +1,253 @@
-## Loop Detection
+# LICM
 
-要进行循环相关的优化，我们首先要进行对循环的识别。循环检测基于支配树分析。我们根据支配树后序遍历所有基本块，这确保了先处理内层循环再处理外层循环。对每个基本块，检查其所有前驱，如果存在前驱被当前块支配，则找到了一个回边，这个回边的目标节点（当前块）就是循环头。
-
-找到循环头后，我们需要查找对应的循环和子循环，对应了 `LICM.cpp` 中的 `discover_loop_and_sub_loops` 函数。创建Loop对象并使用工作表法 (worklist algorithm) 从回边的源节点 (latch) 开始向上遍历 CFG ，将遇到的未分配节点加入当前循环。如果遇到已属于其他循环的节点，说明发现了循环嵌套，此时需要建立正确的父子关系。整个过程通过bb_to_loop_映射维护节点归属关系，通过 Loop 对象的 parent 和 sub_loops 字段维护循环的层次结构。更多的内容详见代码。
-
-
-下面的动图可能对你理解这个 pass 有所帮助：
-![discover](./figs/discover.gif){width="400"}
-
-## 循环不变代码外提
+## 循环不变代码外提介绍
 
 循环不变代码外提（**L**oop **I**nvariant **C**ode **M**otion，**LICM**）是编译器优化中的一种重要技术，它通过识别和移动循环中的不变操作来提高程序性能。当一个计算操作的结果在整个循环执行过程中保持不变时，我们就可以将这个操作移到循环之外执行，这样就能避免在每次循环迭代中重复执行相同的计算。
 
-假设有如下代码
-```cpp
-for (int i = 0; i < n; i++) {
-    x = y + z;
-    a[i] = 6 * i + x * x;
-}
-```
-在这段代码中，`x = y + z`和`x * x`是循环不变的，因为它们的值在整个循环执行过程中保持不变。因此，我们可以将这个操作移到循环之外执行，减少循环内的计算量。
-```cpp
-x = y + z;
-tmp = x * x;
-for (int i = 0; i < n; i++) {
-    a[i] = 6 * i + tmp;
-}
-```
-但是，聪明的你可能很快就能发现，这段代码是存在问题的。因为循环体在`n<=0`的情况下并不会被执行，但这个时候变量`x`的值却被修改了。一个好的方法是加入一个保护(guard)。
+假设有如下代码（除了循环体和寻址，其余变量保持静态单赋值，以与 IR 对应）
 
 ```cpp
-if (n > 0) { // loop guard
-    x = y + z;
-    tmp = x * x;
-    for (int i = 0; i < n; i++) {
-        a[i] = 6 * i + tmp;
-    }
+int n = random_input();
+int i = 0;
+while (i < n) {
+    int x1 = y + z;
+	int x2 = log3(log3(log3(x1)));
+	int x3 = i + x2;
+	a[i] = x3;
+	b[0] = x2;
+	i = i + 1;
 }
 ```
-以上的代码已经可以保证正确性，但是还可以被稍微地改进一下。注意到我们实际上在循环开始前做了两次比较操作，一次是在我们的guard中，一次是在循环第一次执行的判断条件中。为了避免这种情况，我们可以无条件进行一次循环迭代，然后再进行判断。实际上就是把循环改成一个do-while循环。
+
+在这段代码中，`int x1 = y + z` 和 `int x2 = log3(log3(log3(x1)))` 是循环不变的，因为它们的值在整个循环执行过程中保持不变。因此，我们可以将这个操作移到循环之外执行，减少循环内的计算量。
 
 ```cpp
-if (n > 0) { // loop guard
-    x = y + z;
-    tmp = x * x;
-    i = 0;
-    do {
-        a[i] = 6 * i + tmp;
-        i++;
-    } while (i < n);
+int n = random_input();
+int i = 0;
+int x1 = y + z;
+int x2 = log3(log3(log3(x1)));
+while (i < n) {
+	int x3 = i + x2;
+	a[i] = x3;
+	b[0] = x2;
+	i = i + 1;
 }
 ```
-这一过程被称之为 [Loop Rotate](https://llvm.org/docs/Passes.html#passes-loop-rotate)。但我们在本次实验中不要求实现，你可以假设**所有的代码都会进入循环**。
+
+但这并不总是会优化性能，例如如果 `n` 在大部分时候等于 0，这个循环即使不会执行，也还是要把 `x1` 和 `x2` 计算出来。
+
+可以对它的性能进行定量分析，假设所有操作只有 `log3(log3(log3(x1)))` 是耗时的，它的耗时记为 `1`，我们 4 次执行程序，并对耗时取平均值：
+
+|输入 `n` 序列|未外提平均耗时|外提平均耗时|
+|---|---|---|
+|`0, 0, 0, 0`| `0`| `1`|
+|`1, 0, 0, 0`| `0.25`|`1`|
+|`2, 1, 2, 0`| `1.25`| `1`|
+|`1, 2, 3, 4`| `2.5`| `1`|
+
+显然，程序有时变快有时变慢。一般的循环大部分时候输入 `n` 都非 0，所以大部分情况都是变快。
+
+我们可以通过在代码外层套一层 `if` 判断是否会执行循环，再把 `while` 变成 `do while` 的方式来解决这个问题：
+
+```cpp
+int n = random_input();
+int i = 0;
+if(i < n) { // loop guard
+	do {
+    	int x1 = y + z;
+		int x2 = log3(log3(log3(x1)));
+		int x3 = i + x2;
+		a[i] = x3;
+		b[0] = x2;
+		i = i + 1;
+	} while (i < n)
+}
+```
+
+这一过程被称之为 [Loop Rotate](https://llvm.org/docs/Passes.html#passes-loop-rotate)，我们在本次实验中不要求实现。
+
+在进行 Loop Rotate 后，我们可以进行无负优化的外提，并且还能将 `b[0] = x2` 一起外提出去
+```cpp
+int n = random_input();
+int i = 0;
+if(i < n) { // loop guard
+    int x1 = y + z;
+	int x2 = log3(log3(log3(x1)));
+	do {
+		int x3 = i + x2;
+		a[i] = x3;
+		i = i + 1;
+	} while (i < n)
+	b[0] = x2;
+}
+```
 
 ## 如何识别循环不变量？
 
-我们使用更标准的语言来表达循环不变计算检测的算法，在这里我们暂且并不考虑 `load`，`store` 可能会引入副作用的指令。
+Light IR 是静态单赋值形式，意味着：
 
-给定一个循环体内的指令集合 $\mathcal{I} = \{ I_1, I_2, \dots, I_n \}$，每条指令$I_i$具有操作数集合 $\text{Operands}(I_i)$ 和结果 $\text{Result}(I_i)$。我们的目标是标记所有循环不变的计算指令。
+- 单赋值，一个变量只被赋值一次，赋值后值不变
 
-一条指令 $I_i$ 被标记为不变的，如果：
+- 静态，只在编译阶段是单赋值，在执行阶段，循环中每次执行值都会变化
 
-1. 对于所有操作数 $x \in \text{Operands}(I_i)$，$x$ 要么是常量，要么是循环外部的变量（不依赖于循环中的变量）；或者
+而我们所寻找的循环不变量，是即使在执行时两次经过循环，值也不会发生变化的变量。
 
-2. $I_i$ 的所有操作数要么是常量，要么是之前已标记为不变的指令的结果。
+循环不变量中最显然的是循环外的变量，例如下图中的 `y` 和 `z`：
 
-我们可以给出如下算法：
+```cpp
+int n = random_input();
+int i = 0;
+while (i < n) {
+    int x1 = y + z;
+	int x2 = log3(log3(log3(x1)));
+	int x3 = i + x2;
+	a[i] = x3;
+	b[0] = x2;
+	i = i + 1;
+}
+```
 
+显然操作数都是循环不变量，而又没有副作用（例如 load/store）的指令也是循环不变量。
 
+我们逐句检查循环中每条指令：
 
-\begin{aligned}
-&\textbf{Input:} \\
-&\quad \text{- A set of instructions } \mathcal{I} = \{I_1, I_2, \ldots, I_n\} \\
-&\quad \text{- Each instruction } I_i \text{ has:} \\
-&\quad\quad \text{- A set of operands } \text{Operands}(I_i) = \{x_1, x_2, \ldots, x_k\} \\
-&\quad\quad \text{- A result } \text{Result}(I_i) \\
-\\
-&\textbf{Output:} \\
-&\quad \text{- A set of invariant instructions } \mathcal{I}_{\text{inv}} \subseteq \mathcal{I} \\
-\\
-&\textbf{1. Initialize:} \\
-&\quad \mathcal{I}_{\text{inv}} = \emptyset \quad \text{// Empty set of invariant instructions} \\
-&\quad \text{changed} = \text{True} \\
-\\
-&\textbf{2. Repeat until no more instructions are marked as invariant:} \\
-&\quad \text{changed} = \text{False} \\
-\\
-&\quad \text{For each instruction } I_i \in \mathcal{I}\text{:} \\
-&\quad\quad \text{If } I_i \notin \mathcal{I}_{\text{inv}}\text{: } \quad \text{// If not already marked invariant} \\
-&\quad\quad\quad \text{operands_are_invariant} = \text{True} \\
-\\
-&\quad\quad\quad \text{For each operand } x \in \text{Operands}(I_i)\text{:} \\
-&\quad\quad\quad\quad \text{If } x \text{ is a loop variable:} \\
-&\quad\quad\quad\quad\quad \text{operands_are_invariant} = \text{False} \\
-&\quad\quad\quad\quad\quad \text{Break} \\
-\\
-&\quad\quad\quad \text{If } \text{operands_are_invariant} = \text{True}\text{:} \\
-&\quad\quad\quad\quad \text{Add } I_i \text{ to } \mathcal{I}_{\text{inv}} \\
-&\quad\quad\quad\quad \text{changed} = \text{True} \\
-\\
-&\textbf{3. Return } \mathcal{I}_{\text{inv}} \quad \text{// Set of loop-invariant instructions}
-\end{aligned}
+- `x1 = y + z` 操作数只有 `y` 和 `z`，它是一个循环不变量。
+- `x2 = log3(log3(log3(x1)))`，操作数只有 `x1`，其中调用的函数 `log3` 是一个纯函数（意味着无副作用），它也是循环不变量。
+- `x3 = i + x2` 包含一个 `i`，每次循环都会变，因此它不是循环不变量
 
+上面这种操作方式启发我们使用如下算法：
 
+- 收集循环中的所有指令，放到集合 `insts` 中
 
-当然，以上的算法并不完整。同学们需要考虑 `load`，`store` 指令，以及如何处理函数调用等可能引入副作用的指令。当然，完整地考虑上述情况可能还需要引入额外的 [别名分析](https://en.wikipedia.org/wiki/Alias_analysis) 等技术，这超出了本次实验的范围。在这里，我们的实现较为简单，详情请参考 `LICM.cpp` 。
+- 准备两个集合， `variant` 放置在每次循环一定会变化变量，`invariant` 放置每次循环都不变的不变量
+
+- 扫描 `insts` 中每个指令
+	- 如果这个指令有副作用，将它从 `insts` 放进 `variant`，这包括
+		- 它是 `phi`，即使可以外提也非常麻烦，需要更改每个操作数，所以干脆当成变量不外提
+		- 它是 `alloca`，如果你在循环中发现了 `alloca`，代表你的 `lab2` 写得有问题
+		- 它是 `ret` 或 `br`，不能外提
+		- 它是 `store`，外提后还需要 Loop Rotate 保证程序正确，因此不外提
+		- 它是 `load`，不知道两次循环 `load` 出来的值是不是一样，所以不外提
+		- 它是 `call`，并且调用的不是纯函数，因此函数内部可能会进行类似 `load` 和 `store` 的操作，不外提
+	- 如果这个指令没有副作用
+		- 如果它的操作数要么在 `invariant` 里，要么在循环外，说明它的操作数都是循环不变量，那它自身也应该是循环不变量，将它从 `insts` 放入 `invariant`。
+		- 如果它有在 `variant` 中的操作数，说明它依赖于一个循环中的变量，它自身也就是变量，从 `insts` 放入 `variant`
+		- 如果操作数全在 `insts` 中，说明还不能决定它是变量还是不变量，把它留在 `insts` 里，先扫描下一条指令
+
+- 不断扫描 `insts` 重复上述操作，直到 `insts` 为空
+
+这样，`invariant` 中就包含了所有的需要外提的循环不变量。
+
+## 处理 Load
+
+我们以前的算法假设所有的 `load` 都不能外提，但是显然，在下面指令中的 `b[0]` 是可以外提的。因为在整个循环都没有对 `b` 进行 `store`，`load` 出来的值不会发生变化。
+
+```cpp
+int n = random_input();
+int i = 0;
+while (i < n) {
+    int x1 = b[0];
+	int x3 = a[0];
+	int x4 = x1 + x3;
+	a[i] = x2;
+	i = i + 1;
+}
+```
+
+识别这种可以外提的 `load` （即在循环中没有被 `store` 过的变量的 `load`）具有两个挑战
+
+- `load` 和 `store` 的指针通常来自于 `getelementptr`，如何知道一对 `load` 和 `store` 是不是操作同一变量？
+- 代码中存在一些非纯函数的调用，如何知道这些函数调用是否 `store` 了我们希望 `load` 的变量？
+
+助教在此提供了 FuncInfo Pass 用于解决这些问题，这个 Pass 不要求同学们实现，如果你感兴趣，你可以看看它是如何实现的。
+
+### FuncInfo
+
+FuncInfo Pass 用于获得函数的信息，一般包括计算每个函数是否是纯函数。基于 Light IR 的一些特点，可以使 FuncInfo 提供每个函数 `store` 和 `load` 了哪些变量的信息。
+
+我们的 `cminus_builder` 在运行完 `Mem2Reg` 和 `DeadCode` 后，提供的 IR 满足
+
+- 指针不会被存入内存中
+	- IR 中唯一会将指针存入内存的地方是函数调用时传入 `int[]`，它会被存入 `alloca i32*` 中，然而 `alloca i32*` 会被 `Mem2Reg` 消除
+
+- 指针不会出现在 phi，这是由于没有指针赋值，例如下面这个
+
+	- ```c++
+		int a[10];
+		int b[10];
+		int* c;
+		if(xxx) c = &a[0];
+		else c = &b[0];
+		```
+
+所以如果对某个 `load/store` 操作的指针 `%p` 进行溯源：
+
+- 令 `src = %p`
+
+- 反复执行：若 `src == getelementptr %p1`，令 `src = %p1`
+
+你就能得到 `load/store` 操作的指针来源，它要么是一个全局变量，要么是局部的数组变量 `alloca`，要么是函数参数中传入的指针形参变量 `argument`。
+
+FuncInfo 通过这些分析，提供了一组 api:
+
+```
+FuncInfo::is_pure(Function*) 函数是否是纯函数，非纯函数不能外提
+
+FuncInfo::store_ptr(StoreInst*) StoreInst 存入的变量
+
+FuncInfo::load_ptr(LoadInst*) LoadInst 加载的变量
+
+FuncInfo::get_stores(CallInst*) CallInst 直接或间接 store 了的所有变量
+```
+
+### 处理 Load
+
+在进行不变量识别前，首先扫描一遍循环中的所有指令，通过 `FuncInfo::store_ptr` 和 `FuncInfo::get_stores(CallInst*)` 收集循环中被 `store` 过的变量集合。
+
+现在开始进行不变量识别。如果发现遇到的 `load` 指令加载的变量（通过 `load_ptr` 得到）没有被 `store` 过，它就可以外提。
+
+## 处理 Call
+
+一些函数非纯函数调用也可以进行外提，例如
+```CPP
+int N;
+void func(int a)
+{
+	return a + N;
+}
+```
+
+假如 `N` 只会被在程序开始赋值一次，其它时候实际上是个常量，这个函数完全可以当成类似纯函数来看待。
 
 ## 如何进行外提？
 
-在识别出了循环不变量后，我们还要考虑如何将这些循环不变量外提。这似乎是一件简单的问题，我们只需要将循环不变的指令 **按照顺序** 移动到循环之前即可。那么问题来了，在控制流图中，我们如何找到这个位置呢？
+在识别出了循环不变量后，我们还要考虑如何将这些循环不变量外提。这似乎是一件简单的问题，我们只需要将循环不变的指令 **按照顺序** 移动到循环之前即可。
 
-我们的循环保证了 `header` 节点是循环的入口，那我们只要找到一个支配 `header` 的前驱节点即可，这也被称为 `preheader`。我们将循环不变的指令移动到 `preheader` 节点之后，这样就保证了循环不变量在循环执行之前被计算。
+![alt text](image-19.png)
 
-但是，这样的 `preheader` 并不一定存在。在这种情况下，我们就需要额外插入一个`preheader`节点。这个节点的前驱是循环外部的节点，后继是 `header` 节点。注意我们要在这里维护所有的前驱后继关系，修改 `phi`，`br` 等指令。随后，我们将循环不变的指令移动到这个新插入的 `preheader` 节点之中即可。
+左图中，我们将指令放入 Header 之前的基本块，也就是循环的 PreHeader；在中图，这样的基本块有两个，由于我们的 IR 是静态单赋值形式，指令不能同时放入两个基本块，因此就找不到放置指令的位置；在右图，虽然可以放入 Block2，但这导致即使不进入循环也会执行我们外提的指令。
+
+这一切要求为循环创建一个 **PreHeader** 基本块作为不变量的外提插入点。循环的 **PreHeader** 满足以下要求：
+
+- PreHeader 只有 Header 一个后继
+- Header 只有 PreHeader 一个前驱
+
+如果已经像左图一样存在这样的基本块，就可以直接拿它作为 PreHeader，如果不存在，就需要在 Header 前面创建一个 PreHeader 块，并且将 Header 原来前驱的跳转都指向 PreHeader。
 
 ![loop_preheader](./figs/loop_preheader.svg)
 
+## 为 PreHeader 维护 Phi
+
+PreHeader 的插入将导致 Header 块的 Phi 被破坏，以上图为例，假设 Header 具有指令 `%a = phi [%b1, block1], [%b2, block2], [%b3, block3], [%b4, latch]`，那么它需要被分裂成
+
+- 一条在 PreHeader 的指令 `%ap = phi [%b1, block1], [%b2, block2], [%b3, block3]`
+- 一条在 Header 原有位置的指令 `%p = phi [%ap, preheader], [%b4, latch]`
+
+好在外提的指令不会依赖这些指令，因此不需要更改，你可以简单的把它们从指令列表中移除，然后添加到 preheader 中。
+
 ## 代码撰写
 
-1. 补全 `src/passes/LoopDetection.cpp` 文件，使编译器能够进行循环查找。
-2. 补全 `src/passes/LICM.cpp` 文件，使编译器能够正确执行循环不变量外提。
+1. 补全 `src/passes/LICM.cpp` 文件，使编译器能够正确执行循环不变量外提。
 
 ## 本地测试
 
@@ -129,38 +257,33 @@ if (n > 0) { // loop guard
 
 ```
 .
-├── cleanup.sh
-├── eval_lab4.sh            # 功能测试脚本
-├── test_perf.sh            # 性能测试脚本
+├── eval_lab4.cpp
 └── testcases
-    ├── ...
-    ├── functional-cases    # 功能测试用例
-    └── loop                # 性能测试用例
+    └── ...
 ```
 
-其中本地测评脚本 `eval_lab4.sh` 与 Lab3 一致，使用方法可以回顾 [Lab3 测试](../lab3/guidance.md#测试)，要求通过的测例目录：
+当运行 `sudo make install` 后，你可以直接使用 `eval_lab4 all ../../build/cases debug` 进行测试，或者将 `all` 换成 `raw`，`mem2reg`，`licm` 来测试不同阶段，其中 `raw` 代表不加任何优化。
 
-- `tests/testcases_general`
-- `tests/4-opt/testcases/functional-cases`
+运行结果类似于
 
-此外，为了让你能够体会 LICM 的效果，我们还提供了 3 个性能测试样例，在 `testcases/loop` 中。你可以使用脚本 `test_perf.sh` 来进行性能比较，使用示例如下所示。
+```
+==========6_complex4.cminus==============
+raw      OK Take Time (us): 1088  Inst Execute Cost: 428 Allocate Size (bytes): 1188
+mem2reg  OK Take Time (us): 829   Inst Execute Cost: 428 Allocate Size (bytes): 60
+licm     OK Take Time (us): 857   Inst Execute Cost: 406 Allocate Size (bytes): 60
+```
 
-??? info "`test_perf.sh` 使用示例"
+由于后端使用栈式分配，并且需要进行额外的统计工作，可能时间上不会体现出很明显的优化。我们提供了 Inst Execute Cost 指标，代表程序中特定类型指令的执行次数。
 
-    ```shell
-    $ ./test_perf.sh licm
-    [info] Start testing, using testcase dir: ./testcases/loop
-    ==========./testcases/loop/loop-1.cminus==========
-    ...
+LICM 将指令提到循环外，所以大部分时候会降低这个次数，所以可以认为次数越低效果越好。
 
-    ```
 
 ## 编译与运行
 
 按照如下示例进行项目编译：
 
 ```shell
-$ cd 2024ustc-jianmu-compiler
+$ cd 2025ustc-jianmu-compiler
 $ mkdir build
 $ cd build
 # 使用 cmake 生成 makefile 等文件
@@ -172,4 +295,4 @@ $ sudo make install
 现在你可以 `-licm` 使用来指定开启 LICM 优化：
 
 - 将 `test.cminus` 编译到 IR：`cminusfc -emit-llvm -mem2reg -licm test.cminus`
-- 将 `test.cminus` 编译到汇编：`cminusfc -S -mem2reg -licm test.cminus`
+- 将 `test.cminus` 编译到汇编（还会附带一个 IR）：`cminusfc -S -mem2reg -licm test.cminus`
