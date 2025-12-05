@@ -20,7 +20,7 @@
 	然后更改后需要推送到 origin，这可以用
 
 	```
-	git push -u origin lab4/lab4
+	git push -u origin lab4:lab4
 	```
 
 	来实现。
