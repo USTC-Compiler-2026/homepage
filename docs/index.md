@@ -41,8 +41,8 @@
 <strong>其它</strong>
 
 - QQ 群：910418526
+- 希冀实验平台（作业及实验提交）：<http://cscourse.ustc.edu.cn/>
 <!-- - 录课视频（需校内统一身份认证）：<https://v.ustc.edu.cn/1/2024-1/capture-course/011163.02/detail> -->
-<!-- - 希冀实验平台（作业及实验提交）：<http://cscourse.ustc.edu.cn/> -->
 <!-- - 实验框架已公开，见参考资料 [<sup>2</sup>](#textbook2) -->
 
 
@@ -63,30 +63,10 @@
 - 2025-11-27：[Lab2 助教代码](exp_platform_intro/TA.md) 已发布：
 	- 包含 Lab1, 2 的助教实现和 Lab3 Phase2 框架，可以在上面实现 Lab3 Phase2
 	- 具有比旧版本更方便调试的底层框架，具体更改见[助教代码介绍](exp_platform_intro/TA.md/#使用-vscode-进行调试)，Lab4 将仅提供该版本代码
+- 2025-11-12：[第四次作业](hw/011163_25FA_HW4.pdf)已发布，Deadline：**2025 年 12 月 07 日**
 - 2025-12-4：[Lab4](lab4/index.md) 已发布，Deadline：
     - **Phase1 : 2025 年 12 月 14 日**
     - **Phase2 : 2025 年 12 月 21 日**
-<!--
-- 2024-10-08：[Lab2](lab2/index.md) 已发布，Deadline：
-    - **Phase1 : 2024 年 10 月 18 日**
-    - **Phase2 : 2024 年 10 月 27 日**
-    - **Phase3 : 2024 年 11 月 2 日**
-- 2024-11-03：[Lab3](lab3/index.md) 已发布，Deadline：
-    - **Phase1 : 2024 年 11 月 13 日**
-    - **Phase2 : 2024 年 11 月 27 日**
-- 2024-12-01：[Lab4](lab4/index.md) 已发布，Deadline：
-    - **Phase1 : 2024 年 12 月 14 日**
-    - **Phase2 : 2024 年 12 月 24 日**
--->
-<!--
-- 2024-10-11：第三次作业：3.27、3.37、4.3、4.5、4.9（教材 [<sup>1</sup>](#textbook)），Deadline：**2024 年 10 月 18 日 16:00**
-- 2024-11-01：[Lab3](lab3/index.md) 已发布，注意分阶段 Deadline
-- 2024-11-01：第四次作业已发布，Deadline：**2024 年 11 月 8 日 17:25**
-- 2024-11-14：第五次作业：4.13、4.15、5.5、6.5、6.6（教材 [<sup>1</sup>](#textbook)），Deadline：**2024 年 11 月 21 日 09:00**
-- 2024-11-27：[Lab4](lab4/index.md) 已发布，Deadline：**2024 年 12 月 18 日**
-- 2024-12-08：第六次作业：7.2c、7.5、7.12、8.1e、8.2e、8.6（教材 [<sup>1</sup>](#textbook)），Deadline：**2024 年 12 月 20 日 24:00**
-- 2024-12-08：第七次作业：9.1、9.2、9.3、9.15af（教材 [<sup>1</sup>](#textbook)），Deadline：**2024 年 1 月 3 日 24:00**
-- 2025-01-14：[建木杯–编译原理创新实验](innovative-lab/index.md) 已发布 -->
 
 ## <strong>教学课件</strong>
 
@@ -114,6 +94,8 @@
 | 2024-11-19 |                         一段代码的神奇之旅                         |                                                            [一段代码的神奇之旅](ppt/一段代码的神奇之旅.pdf)                                                            |
 | 2025-11-24 |                      龙芯架构介绍 & 龙芯汇编介绍                      |                                                        [LA-part1](ppt/Lecture34-LA-part1.pdf)                                                        |
 | 2025-11-26 |                          栈式分配介绍                           |                                                        [LA-part2](ppt/Lecture35-LA-part2.pdf)                                                        |
+| 2025-12-01 |                          指令并行与调度                          |                                                     [Backend-Opt](ppt/Lecture37-Backend-Opt.pdf)                                                     |
+| 2025-12-08 |                          静态类型检查                           |                                                      [Type-Check](ppt/Lecture38-Type-Check.pdf)                                                      |
 <!--
 | 2024-11-04 |               中间代码翻译 - 类型表达式 & 符号表与声明语句                |                                        [IR-Translation-part6](ppt/Lecture20-IR%20Translation-part6.pdf)                                        |
 | 2024-11-06 |              中间代码翻译 - 数组寻址 & 运行时管理 - 存储组织              |                                       [IR-Translation-part7](ppt/Lecture21-IR%20Translation-part7.pdf), [Runtime-part1](ppt/Lecture22-Runtime-part1.pdf)                                        |
