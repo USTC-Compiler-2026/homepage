@@ -158,6 +158,7 @@ nav:
     - Dominators: lab4/dominator.md
     - Mem2Reg: lab4/Mem2Reg.md
     - 循环相关介绍: lab4/loop.md
+    - LoopDetection: lab4/loop_detect.md
     - LICM: lab4/LICM.md
 #  # - 建木杯–编译原理创新实验: innovative-lab/index.md
 #  - FAQ: faq/README.md
