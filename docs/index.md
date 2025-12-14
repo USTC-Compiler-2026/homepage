@@ -67,6 +67,7 @@
 - 2025-12-4：[Lab4](lab4/index.md) 已发布，Deadline：
     - **Phase1 : 2025 年 12 月 14 日**
     - **Phase2 : 2025 年 12 月 21 日**
+- 2025-12-10：[第五次作业](hw/011163_25FA_HW5.pdf)已发布，Deadline：**2025 年 12 月 16 日**
 
 ## <strong>教学课件</strong>
 
@@ -96,6 +97,7 @@
 | 2025-11-26 |                          栈式分配介绍                           |                                                        [LA-part2](ppt/Lecture35-LA-part2.pdf)                                                        |
 | 2025-12-01 |                          指令并行与调度                          |                                                     [Backend-Opt](ppt/Lecture37-Backend-Opt.pdf)                                                     |
 | 2025-12-08 |                          静态类型检查                           |                                                      [Type-Check](ppt/Lecture38-Type-Check.pdf)                                                      |
+| 2024-12-10 |                     寄存器分配-图着色 & 全局值编号                     |                                   [RegAlloc-part2](ppt/Lecture39-RegAlloc-part2.pdf), [GVN](ppt/Lecture40-GVN.pdf)                                   |
 <!--
 | 2024-11-04 |               中间代码翻译 - 类型表达式 & 符号表与声明语句                |                                        [IR-Translation-part6](ppt/Lecture20-IR%20Translation-part6.pdf)                                        |
 | 2024-11-06 |              中间代码翻译 - 数组寻址 & 运行时管理 - 存储组织              |                                       [IR-Translation-part7](ppt/Lecture21-IR%20Translation-part7.pdf), [Runtime-part1](ppt/Lecture22-Runtime-part1.pdf)                                        |
