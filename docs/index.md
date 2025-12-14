@@ -91,7 +91,7 @@
 | 2025-11-05 |             代码生成 - 简单机器模型 & 机器无关代码优化 - 常见优化方法             |                         [CodeGen-part1](ppt/Lecture25-CodeGen-part1.pdf),  [IR Opt-part1](ppt/Lecture26-IR%20Opt-part1.pdf)                          |
 | 2025-11-10 |                   机器无关代码优化 - 数据流与到达定值分析                   |                                                   [IR Opt-part2](ppt/Lecture27-IR%20Opt-part2.pdf)                                                   |
 | 2025-11-12 |           机器无关代码优化 - 可用表达式分析 & 活跃变量分析 & 基本块内优化            | [IR Opt-part3](ppt/Lecture28-IR%20Opt-part3.pdf), [IR Opt-part4](ppt/Lecture29-IR%20Opt-part4.pdf), [IR Opt-part5](ppt/Lecture30-IR%20Opt-part5.pdf) |
-| 2025-11-17 |                      流图中的循环 & 寄存器分配                       |                                     [Loop](ppt/Lecture31-Loop-part1.pdf), [Register](ppt/Lecture32-Register.pdf)                                     |
+| 2025-11-17 |                      流图中的循环 & 寄存器分配                       |                               [Loop](ppt/Lecture31-Loop-part1.pdf), [RegAlloc-part1](ppt/Lecture32-RegAlloc-part1.pdf)                               |
 | 2024-11-19 |                         一段代码的神奇之旅                         |                                                            [一段代码的神奇之旅](ppt/一段代码的神奇之旅.pdf)                                                            |
 | 2025-11-24 |                      龙芯架构介绍 & 龙芯汇编介绍                      |                                                        [LA-part1](ppt/Lecture34-LA-part1.pdf)                                                        |
 | 2025-11-26 |                          栈式分配介绍                           |                                                        [LA-part2](ppt/Lecture35-LA-part2.pdf)                                                        |
@@ -106,7 +106,7 @@
 | 2024-11-18 | 机器无关代码优化 - 常见优化方法 | [IR Opt-part1](ppt/Lecture26-IR%20Opt-part1.pdf)|
 | 2024-11-20 | 机器无关代码优化 - 数据流与到达定值分析  | [IR Opt-part2](ppt/Lecture27-IR%20Opt-part2.pdf)|
 | 2024-11-25 | 机器无关代码优化 - 可用表达式分析 & 活跃变量分析 & 基本块内优化             |                                       [IR Opt-part3](ppt/Lecture28-IR%20Opt-part3.pdf), [IR Opt-part4](ppt/Lecture29-IR%20Opt-part4.pdf), [IR Opt-part5](ppt/Lecture30-IR%20Opt-part5.pdf)                                       |
-| 2024-11-27 | 流图中的循环 & 寄存器分配              |                                                                              [Loop](ppt/Lecture31-Loop-part1.pdf), [Register](ppt/Lecture32-Register.pdf)                                |
+| 2024-11-27 | 流图中的循环 & 寄存器分配              |                                                                              [Loop](ppt/Lecture31-Loop-part1.pdf), [Register](ppt/Lecture32-RegAlloc-part1.pdf)                                |
 
 -->
 <!--| 2024-11-29 |                          面向目标机器的代码优化                           |                                                                              [part1](https://rec.ustc.edu.cn/share/d6169380-9045-11ee-8a37-87201671ab8d)                                                                              |
