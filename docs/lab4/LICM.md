@@ -262,7 +262,7 @@ PreHeader 的插入将导致 Header 块的 Phi 被破坏，以上图为例，假
     └── ...
 ```
 
-当运行 `sudo make install` 后，你可以直接使用 `eval_lab4 all ../../build/cases debug` 进行测试，或者将 `all` 换成 `raw`，`mem2reg`，`licm` 来测试不同阶段，其中 `raw` 代表不加任何优化。
+当运行 `sudo make install` 后，你可以直接使用 `eval_lab4 all testcases debug` 进行测试，或者将 `all` 换成 `raw`，`mem2reg`，`licm` 来测试不同阶段，其中 `raw` 代表不加任何优化。
 
 运行结果类似于
 
