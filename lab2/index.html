@@ -1,0 +1,706 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Index - USTC 编译原理和技术 2026</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../styles.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab2-中间代码生成" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="USTC 编译原理和技术 2026" class="md-header__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            USTC 编译原理和技术 2026
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Index
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="切换到夜晚模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜晚模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到白天模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到白天模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../exp_platform_intro/" class="md-tabs__link">
+          
+  
+  公共文档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="USTC 编译原理和技术 2026" class="md-nav__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    USTC 编译原理和技术 2026
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    公共文档
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            公共文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exp_platform_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课程平台介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#实验要求" class="md-nav__link">
+    <span class="md-ellipsis">
+      实验要求
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实验要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#拉取最新代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      拉取最新代码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#合并-lab1-分支" class="md-nav__link">
+    <span class="md-ellipsis">
+      合并 lab1 分支
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#实验内容" class="md-nav__link">
+    <span class="md-ellipsis">
+      实验内容
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实验内容">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#阶段一" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段一
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#阶段二" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段二
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#阶段三" class="md-nav__link">
+    <span class="md-ellipsis">
+      阶段三
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#提交内容" class="md-nav__link">
+    <span class="md-ellipsis">
+      提交内容
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<!-- TODO:
+1）确定 deadline
+2）优化文档关于 Light IR C++ api 介绍的内容
+3）说明 git 仓库同步的流程，如何 merge
+4）在 warmup 阶段，有一些例子引用了仓库链接，需要同步仓库后更新这些链接！
+5）Lab1 也有 AST，需要检查 lab2 关于 AST 的叙述是不是要改动
+
+ -->
+
+<h1 id="lab2-中间代码生成">Lab2 中间代码生成<a class="headerlink" href="#lab2-中间代码生成" title="Permanent link">&para;</a></h1>
+<p>本次实验需要同学们在 Lab1 实现的 Cminusf 解析器基础上，完成从语法树向中间代码的自动化翻译过程。</p>
+<h2 id="实验要求">实验要求<a class="headerlink" href="#实验要求" title="Permanent link">&para;</a></h2>
+<p>根据 <a href="../lab1/#实验要求">Lab1 的要求</a>，学生有两个远程仓库：</p>
+<ul>
+<li>upstream：课程发布实验代码的公开仓库</li>
+<li>origin：学生 fork 得到的私有仓库</li>
+</ul>
+<p><a class="glightbox" href="figs/index2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/index2.png" /></a></p>
+<p>两个仓库各有 3 条分支（红色字体）：main、lab0 和 lab1，如下图。最上边的 lab1 和 main 代表本地的分支，分别追踪远程的 <code>origin/lab1</code> 和 <code>origin/main</code>，main 前边的星号 <code>*</code> 和绿色字体代表当前处于 main 分支下：</p>
+<p><a class="glightbox" href="figs/index3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/index3.png" /></a></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>以上两条命令分别是：<code>git remote -v</code> 和 <code>git branch --all -vv</code>，如果第二条命令的输出中缺少 upstream 的分支，你可以通过 <code>git fetch --all</code> 来获取。</p>
+</div>
+<p>在实验一中，我们通过 lab1 分支发布实验，与 lab0 作为区分，因此学生也是处于 lab1 分支下完成实验。为了更优雅地发布实验，从 lab2 开始，我们将使用 main 分支发布实验。在开始撰写本次实验代码之前，学生需要抓取最新的 main 分支到本地，然后将 lab1 分支合并到 main 分支，并处理可能的冲突。以下是详细的指导。</p>
+<h3 id="拉取最新代码">拉取最新代码<a class="headerlink" href="#拉取最新代码" title="Permanent link">&para;</a></h3>
+<p>首先切换到 main 分支下：</p>
+<ul>
+<li><code>git checkout main</code>：如果 <code>git branch</code> 的输出存在 main；</li>
+<li>或 <code>git checkout -b main --track origin/main</code>：如果在自己的远程仓库中有main分支，而 <code>git branch</code> 的输出不存在 main。</li>
+</ul>
+<details class="note">
+<summary>如果你的远程仓库没有 main 分支</summary>
+<p>首先登录自己的gitlab平台，进入自己的实验仓库页面，点击左侧的 Repository -&gt; Branches，查看是否存在 main 分支。如果不存在，请点击 New branch 创建一个 main 分支，分支来源选择 master。
+<a class="glightbox" href="figs/create_main1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/create_main1.png" /></a>
+<a class="glightbox" href="figs/create_main2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/create_main2.png" /></a>
+在本地执行 <code>git pull origin</code> 拉取新创建的 main 分支，然后执行 <code>git checkout main</code>切换到 main 分支下面。
+我们以后的实验都是基于 main 分支进行的，所以可以把 main 分支设置为默认分支，点击 Settings -&gt; Repository -&gt; Default branch 进行设置。
+<a class="glightbox" href="figs/set_default_branch.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/set_default_branch.png" /></a></p>
+</details>
+<p>然后使用 <code>git pull upstream main</code> 获取最新内容。此时你应该可以在项目下找到 <code>tests/2-ir-gen/**</code> 和 <code>src/lightir/**</code> 等内容。</p>
+<h3 id="合并-lab1-分支">合并 lab1 分支<a class="headerlink" href="#合并-lab1-分支" title="Permanent link">&para;</a></h3>
+<p>检查当前关于 lab1 的实验内容：<code>src/parser/lexical_analyzer.l</code>、<code>src/parser/syntax_analyzer.y</code> 和 <code>src/common/ast.cpp</code>，你会发现曾经完成的代码不见了，这三个文件处于 lab1 开始前的版本。现在使用 <code>git merge lab1</code>，将你在 lab1 完成的内容合并到主分支（main）下。</p>
+<details class="note">
+<summary>如果你遇到了冲突</summary>
+<p>在执行 merge 时，git 会尝试自动合并经过修改的文件内容，如果一处内容同时被两方（current 和 incoming）修改，就会产生冲突，需要手动决定保留哪一方的更改（或者都保留）。</p>
+<p><a href="../lab0/git/#上下游同步和冲突处理">回顾 Lab0 中关于 git 冲突处理的讲解</a>。</p>
+<p>下图就是在合并时出现了冲突的例子，表示在 <code>src/common/ast.cpp</code> 文件出现了冲突。
+<a class="glightbox" href="figs/conflict.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/conflict.png" /></a></p>
+<p>我们检查这个文件，看到一处冲突，截图如下：
+<a class="glightbox" href="figs/conflict-solve-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/conflict-solve-1.png" /></a></p>
+<p>在这里，我们（上游仓库）最新的代码将 <code>ASTVisitor::visit</code> 接口的返回值更新成了 <code>Value *</code>，这种接口变动要以上游为准。现在是将 lab1 合并进 main 分支，所以进行 merge 的双方，current 是上游内容，incoming 是 lab1 的内容，在这里保留 current 内容。</p>
+<p>在完成文件的更改后，保存文件，你仍然在 merge 的阶段，你可以使用 <code>git status</code> 查看，并使用 <code>git merge --continue</code> 完成你的合并操作，如下图所示。</p>
+<p><a class="glightbox" href="figs/conflict-solve-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/conflict-solve-2.png" /></a></p>
+<p>如果执行 <code>git merge --continue</code> 后有下图所示的 hint，按照提示先 <code>git add &lt;your_directory_or_merged_files&gt;</code> 再 merge 即可。
+<a class="glightbox" href="figs/merge-extra2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/merge-extra2.png" /></a></p>
+<p>事实上，在处理本次合并可能的冲突时，只需要保留你在 lab1 编写的代码即可，其余基本上都保留上游仓库的最新内容。</p>
+<p>VS code 还提供了高亮合并选项，例如下图是助教保留 lab1 parser 相关代码时的高亮选项 <code>Accept Incoming Change</code>：
+<a class="glightbox" href="figs/merge-extra1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/merge-extra1.png" /></a></p>
+</details>
+<p>此时进入 build 文件夹，执行 <code>cmake ..</code> 和 <code>make -j</code> 编译最新的程序，然后进入 lab1 的测试目录 <code>tests/1-parser</code>，执行 lab1 的两个脚本。在正确合并分支的情况下，你应该能够正常编译项目并通过 lab1 的两个脚本，这时你可以开始本次实验的撰写了。</p>
+<details class="note">
+<summary>ZLIB 相关报错</summary>
+<p>如果你在 <code>cmake ..</code> 一步遇到如下报错<code>Target "IR_lib" links to target "ZLIB::ZLIB" but the target was not found.</code>，请使用 <code>sudo apt install zlib1g-dev</code> 安装 zlib 库，然后重新 <code>cmake .. &amp;&amp; make</code>。</p>
+</details>
+<!--
+然后抓取来自公开仓库（upstream）的最新内容：`git fetch --all`。这时最新内容还保存在 `remotes/upstream/main` 下边，你可以通过一款叫做 `Git Graph` 的 vscode 插件来可视化这些分支的迭代关系，如下图：
+
+![](figs/git-graph.png)
+
+同一分支上越靠上的节点，代表越新的更改。这里我们关注红色线，因为这是 master 分支，我们看到 `origin/main` 当前落后于 `upstream/main` 一个提交。我们使用命令 `git merge upstream/main` 将最新的实验内容合并到本地。
+-->
+
+<h2 id="实验内容">实验内容<a class="headerlink" href="#实验内容" title="Permanent link">&para;</a></h2>
+<p>本次实验需要分阶段完成及验收。</p>
+<h3 id="阶段一">阶段一<a class="headerlink" href="#阶段一" title="Permanent link">&para;</a></h3>
+<ul>
+<li>内容一：
+  阅读 <a href="warmup/">Light IR 预热</a>并参考 <a href="LightIR/">Light IR 手册</a> 和 <a href="LightIR%20C%2B%2B/">Light IR C++ 库</a>，掌握手写 Light IR，使用 Light IR C++ 库生成 IR 的方法。</li>
+<li>内容二：
+  阅读<a href="visitor_pattern/">访问者模式</a>，理解 C++ 访问者模式的工作原理及遍历顺序。</li>
+</ul>
+<p>阶段一需要 <strong>回答 <a href="warmup/#思考题">Light IR 预热</a>与<a href="visitor_pattern/#思考题">访问者模式</a>文档中的思考题</strong>，回答内容保存为 <code>answer.pdf</code>。并完成 <code>tests/2-ir-gen/warmup/stu_ll</code> 与 <code>tests/2-ir-gen/warmup/stu_cpp</code> 目录下代码的编写。</p>
+<div class="admonition warning">
+<p class="admonition-title">Deadline</p>
+<p><strong>2025 年 10 月 22 日 23:59</strong></p>
+</div>
+<h3 id="阶段二">阶段二<a class="headerlink" href="#阶段二" title="Permanent link">&para;</a></h3>
+<p>阅读 <a href="autogen/">IR 自动化生成</a>，<a href="cminusf%E8%AF%AD%E4%B9%89/">Cminusf 语义</a>，补充 <code>include/cminusfc/cminusf_builder.hpp</code> 与 <code>src/cminusfc/cminusf_builder.cpp</code> 文件，并通过 <code>tests/2-ir-gen/autogen/testcases/</code>目录下 <code>lv0_1</code>, <code>lv0_2</code>, <code>lv1</code> 级别的测试样例。</p>
+<div class="admonition warning">
+<p class="admonition-title">Deadline</p>
+<p><strong>2025 年 10 月 31 日 23:59</strong></p>
+</div>
+<h3 id="阶段三">阶段三<a class="headerlink" href="#阶段三" title="Permanent link">&para;</a></h3>
+<p>在阶段二的基础上，继续补充 <code>include/cminusfc/cminusf_builder.hpp</code> 与 <code>src/cminusfc/cminusf_builder.cpp</code> 文件，并通过 <code>tests/2-ir-gen/autogen/testcases/</code> 目录下所有提供的测试样例。</p>
+<div class="admonition warning">
+<p class="admonition-title">Deadline</p>
+<p><strong>2025 年 11 月 7 日 23:59</strong></p>
+</div>
+<h2 id="提交内容">提交内容<a class="headerlink" href="#提交内容" title="Permanent link">&para;</a></h2>
+<ul>
+<li>阶段一：在希冀平台提交你的 <code>answer.pdf</code> 文件，在希冀平台提交你实验仓库的 url（如 <code>https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2025ustc-jianmu-compiler.git main</code>）。</li>
+<li>阶段二、三：在希冀平台提交你实验仓库的 url（如 <code>https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2025ustc-jianmu-compiler.git main</code>）。</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 12, 2025</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="贡献者">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:119509559+shirakawasanae@users.noreply.github.com">Jingwen Sun</a>, 
+        <a href="mailto:1002682355@qq.com">Terialion</a>, 
+        <a href="mailto:153092435+terialion@users.noreply.github.com">WangYuhang</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

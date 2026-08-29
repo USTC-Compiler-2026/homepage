@@ -1,0 +1,1038 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Linux 环境配置 - USTC 编译原理和技术 2026</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linux-环境配置" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-header__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            USTC 编译原理和技术 2026
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Linux 环境配置
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="切换到夜晚模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜晚模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到白天模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到白天模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../exp_platform_intro/" class="md-tabs__link">
+          
+  
+  公共文档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-nav__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    USTC 编译原理和技术 2026
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    公共文档
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            公共文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exp_platform_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课程平台介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-virtual-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Virtual Box
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Virtual Box">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-下载" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 下载
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-创建安装虚拟机virtualbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 创建、安装虚拟机（VirtualBox）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-使用-vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 使用 VSCode
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 使用 VSCode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-下载-vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.1 下载 VSCode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-配置-vscode可选" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.2 配置 VSCode［可选］
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-通过-vscode-连接虚拟机" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 通过 VSCode 连接虚拟机
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 通过 VSCode 连接虚拟机">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.1 SSH
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4.1 SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1411-在-linux-系统上安装-ssh-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.1.1 在 Linux 系统上安装 ssh server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1412-虚拟机网络设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.1.2 虚拟机网络设置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1413-在-windows-系统上使用-ssh-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.1.3 在 Windows 系统上使用 ssh client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1414-使用-ssh-连接虚拟机" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.1.4 使用 ssh 连接虚拟机
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-使用-vscode-连接虚拟机" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.2 使用 VSCode 连接虚拟机
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4.2 使用 VSCode 连接虚拟机">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1421-vscode-设置" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.2.1 VSCode 设置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1422-vscode-连接虚拟机使用示例" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.2.2 VSCode 连接虚拟机使用示例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vmware-workstation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 VMWare Workstation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 VMWare Workstation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-下载" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 下载
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-创建安装虚拟机" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 创建、安装虚拟机
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 VS Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-通过-vscode-连接虚拟机" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 通过 VSCode 连接虚拟机
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="linux-环境配置">Linux 环境配置<a class="headerlink" href="#linux-环境配置" title="Permanent link">&para;</a></h1>
+<p>本页文档用于对本学期实验所使用的实验环境进行说明并提供相应的搭建建议。</p>
+<p>本学期实验使用的 <strong>核心软件</strong> 版本为：</p>
+<ul>
+<li>Ubuntu 22.04</li>
+<li>LLVM 14.0.0</li>
+<li>Git 2.34.1</li>
+<li>CMake 3.22.1</li>
+<li>Flex 2.6.4</li>
+<li>Bison 3.8.2</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">说明</p>
+<p>文档主要针对非 Linux 系统用户，已搭建好 Linux 环境并且 <strong>符合版本要求</strong> 的同学可选择性跳过。</p>
+<p>如果在配置环境的时候出现问题，请联系助教。</p>
+<p>下面将介绍两款常见的虚拟机管理软件：<strong>VirtualBox</strong>、<strong>VMWare</strong>，任选其一即可！</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">重要</p>
+<p>WSL 与部分版本的 VirtualBox 和 VMWare 不兼容，可能会导致后二者不能正常运行。如果你已经安装了 WSL，可以直接使用 WSL。</p>
+<p>本实验在 WSL 2.0 Ubuntu 22.04.5 上测试通过。</p>
+</div>
+<h2 id="1-virtual-box">1 Virtual Box<a class="headerlink" href="#1-virtual-box" title="Permanent link">&para;</a></h2>
+<p>下面以虚拟机软件 VirtualBox 为例介绍搭建环境的方法。</p>
+<h3 id="11-下载">1.1 下载<a class="headerlink" href="#11-下载" title="Permanent link">&para;</a></h3>
+<p>下载虚拟机软件：</p>
+<ul>
+<li>VirtualBox：<a href="https://www.virtualbox.org/wiki/Downloads">Downloads – Oracle VM VirtualBox</a></li>
+</ul>
+<p>虚拟机软件的版本没有规定的要求，但必须满足基本需求。</p>
+<p>下载 Ubuntu：</p>
+<ul>
+<li>官网链接：<a href="https://releases.ubuntu.com/">Ubuntu Releases</a></li>
+<li>科大镜像：<a href="https://mirrors.ustc.edu.cn/ubuntu-releases/">USTC Open Source Mirror</a></li>
+<li>清华镜像：<a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/">Tsinghua Open Source Mirror</a></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">重要</p>
+<p>本学期实验规定了相应的 Ubuntu 版本以方便后续软件的下载与使用，请各位同学 <strong>务必</strong> 下载使用推荐版本 <strong>22.04</strong>。</p>
+</div>
+<p>镜像文件请下载 <strong>server</strong> 版本，后续指导基于 server 版本展开。请下载命名为 ubuntu-22.04.4-live-server-amd64（或 22.04.5） 的镜像文件。</p>
+<p>下载完成之后无需打开镜像文件，只需在后续导入虚拟机软件即可。</p>
+<h3 id="12-创建安装虚拟机virtualbox">1.2 创建、安装虚拟机（VirtualBox）<a class="headerlink" href="#12-创建安装虚拟机virtualbox" title="Permanent link">&para;</a></h3>
+<p>下面介绍 VirtualBox 创建、安装虚拟机的过程。</p>
+<ol>
+<li>点击“新建”创建虚拟机。设置虚拟机的名称，指定文件夹，设置类型与版本，虚拟光盘可以先不用指定：
+   <a class="glightbox" href="../photos/V1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V1" src="../photos/V1.png" /></a></li>
+<li>下一步后给虚拟机分配内存，请至少分配 2GB 以上的内存给虚拟机。对于处理器的分配可结合个人情况进行分配：
+   <a class="glightbox" href="../photos/V2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V2" src="../photos/V2.png" /></a></li>
+<li>下一步后给硬盘分配空间：
+   <a class="glightbox" href="../photos/V3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V3" src="../photos/V3.png" /></a>
+   如果各位同学只将该虚拟机用于本学期的实验那么设置最大磁盘大小为 25~40GB 即可，本学期的实验不会占用过多磁盘空间。但<strong>不建议将磁盘大小设置过小</strong>，因为磁盘空间不够引发的相关问题将会非常棘手。</li>
+<li>下一步后点击完成，虚拟机已经创建完毕，点击启动进入虚拟机：
+   <a class="glightbox" href="../photos/V4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V4" src="../photos/V4.png" /></a></li>
+<li>启动虚拟机后其会提示加载虚拟光盘，在这里选择我们先前已经按照的 Ubuntu 镜像文件：
+   <a class="glightbox" href="../photos/V5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V5" src="../photos/V5.png" /></a></li>
+<li>选择完毕后点击挂载并尝试启动，等待其出现如下的界面：
+   <a class="glightbox" href="../photos/V6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Vs6" src="../photos/V6.png" /></a>
+   按图示选择第一项后点击回车即可，以下 <strong>选择确认时均需回车</strong>。</li>
+<li>以后出现的界面选择较简单，选择默认选择即可；</li>
+<li>选择至出现下述界面，按自己喜好进行填写即可：
+   <a class="glightbox" href="../photos/V7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V8" src="../photos/V7.png" /></a><blockquote>
+<p>务必记住 username 以及 password</p>
+</blockquote>
+</li>
+<li>填写完后一路按照默认选择至如下界面并且下方出现 Reboot 时选择 Reboot 即可；注意当出现下述界面时需要 <strong>保持等待</strong>直到其出现 Reboot 按键：
+   <a class="glightbox" href="../photos/V8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Vs17" src="../photos/V8.png" /></a></li>
+<li>等待重启过程中如果界面卡住不发生变化时可以尝试按回车，例如出现如下界面时可按回车尝试解决：
+    <a class="glightbox" href="../photos/V9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Vs20" src="../photos/V9.png" /></a></li>
+<li>等到出现如下界面时输入你的用户名以及密码即可成功登录：
+    <a class="glightbox" href="../photos/V10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Vs18" src="../photos/V10.png" /></a></li>
+<li>出现此界面后即表示配置成功：
+    <a class="glightbox" href="../photos/V11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Vs19" src="../photos/V11.png" /></a></li>
+</ol>
+<h3 id="13-使用-vscode">1.3 使用 VSCode<a class="headerlink" href="#13-使用-vscode" title="Permanent link">&para;</a></h3>
+<details class="info" open="open">
+<summary>VSCode</summary>
+<p>VSCode 由微软开发，是一款强大的跨平台代码编辑器。它提供美观的界面和可定制的主题，同时支持众多插件，如代码高亮、智能代码补全、括号匹配和代码比较，显著提升工作效率。此外，VSCode 还支持便捷的远程服务器连接，例如虚拟机，让你享受代码编写环境和预配置的 Linux 环境，大幅提高实验效率。熟练使用 VSCode 将为你后续的工作带来极大便利。</p>
+</details>
+<h4 id="131-下载-vscode">1.3.1 下载 VSCode<a class="headerlink" href="#131-下载-vscode" title="Permanent link">&para;</a></h4>
+<p>前往<a href="https://code.visualstudio.com/download">官网</a>进行下载即可。</p>
+<h4 id="132-配置-vscode可选">1.3.2 配置 VSCode［可选］<a class="headerlink" href="#132-配置-vscode可选" title="Permanent link">&para;</a></h4>
+<p>对 VSCode 进行基础配置可以参考<a href="https://zhuanlan.zhihu.com/p/87864677">链接</a>。</p>
+<p>对 VSCode 进行插件安装可以参考<a href="https://zhuanlan.zhihu.com/p/487406915">链接</a>。</p>
+<h3 id="14-通过-vscode-连接虚拟机">1.4 通过 VSCode 连接虚拟机<a class="headerlink" href="#14-通过-vscode-连接虚拟机" title="Permanent link">&para;</a></h3>
+<p>在开始指导连接虚拟机之前，我们需要明确一个重要事实：VSCode 并非用于直接连接虚拟机的工具，而是一款专注于代码（文本）编辑的应用程序。我们实际上是通过一种特殊的方式来实现虚拟机连接，而这种方式允许我们在 VSCode 中享受代码编写的环境。这个特殊的方式就是 SSH。</p>
+<h4 id="141-ssh">1.4.1 SSH<a class="headerlink" href="#141-ssh" title="Permanent link">&para;</a></h4>
+<p>SSH（Secure Shell）是一种网络协议，用于在计算机之间建立安全的远程连接和数据传输。它提供了一种加密的通信方式，可用于远程管理和安全数据传输。SSH 协议通常涉及两个主要组件：SSH 服务器（server）和 SSH 客户端（client）。</p>
+<p>SSH 服务器（SSH Server）：</p>
+<ul>
+<li>SSH 服务器是运行在远程计算机上的软件或服务，它监听着 SSH 协议的连接请求，并允许远程用户通过 SSH 协议进行安全访问。</li>
+<li>主要任务包括验证用户身份、管理连接请求、启动远程会话、执行命令和文件传输。</li>
+</ul>
+<p>SSH 客户端（SSH Client）：</p>
+<ul>
+<li>SSH 客户端是运行在本地计算机上的软件或工具，用于连接到远程 SSH 服务器并与之通信。</li>
+<li>客户端用于提供连接参数、身份验证凭据（通常是用户名和密码或 SSH 密钥）以及执行远程操作，例如运行远程命令、传输文件等。</li>
+</ul>
+<h5 id="1411-在-linux-系统上安装-ssh-server">1.4.1.1 在 Linux 系统上安装 ssh server<a class="headerlink" href="#1411-在-linux-系统上安装-ssh-server" title="Permanent link">&para;</a></h5>
+<p>在虚拟机中执行以下命令：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 安装 ssh server</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openssh-server
+<span class="c1"># 启动 ssh server</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>ssh
+<span class="c1"># 设置系统开机自启动</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>ssh
+</code></pre></div>
+<p>检验是否启动成功，输入下述命令：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 出现 /usr/sbin/sshd 类似信息则已启动成功</span>
+$<span class="w"> </span>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>sshd
+root<span class="w">         </span><span class="m">765</span><span class="w">  </span><span class="m">0</span>.0<span class="w">  </span><span class="m">0</span>.0<span class="w">  </span><span class="m">15420</span><span class="w">  </span><span class="m">8784</span><span class="w"> </span>?<span class="w">        </span>Ss<span class="w">   </span><span class="m">03</span>:50<span class="w">   </span><span class="m">0</span>:00<span class="w"> </span>sshd:<span class="w"> </span>/usr/sbin/sshd<span class="w"> </span>-D<span class="w"> </span><span class="o">[</span>listener<span class="o">]</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>of<span class="w"> </span><span class="m">10</span>-100<span class="w"> </span>startups
+</code></pre></div>
+<h5 id="1412-虚拟机网络设置">1.4.1.2 虚拟机网络设置<a class="headerlink" href="#1412-虚拟机网络设置" title="Permanent link">&para;</a></h5>
+<p>接下来，我们需要配置虚拟机的网络设置，以确保我们可以从主机访问虚拟机。</p>
+<ol>
+<li>打开虚拟机启动界面，在设置中选择网络：</li>
+</ol>
+<p><a class="glightbox" href="../photos/V13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V20" src="../photos/V13.png" /></a></p>
+<ol>
+<li>这里连接方式选择 <u><strong>NAT</strong></u>，在高级中选择端口转发：</li>
+</ol>
+<p><a class="glightbox" href="../photos/V14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V21" src="../photos/V14.png" /></a></p>
+<ol>
+<li>在出现的界面中添加一个转发规则：</li>
+</ol>
+<p><a class="glightbox" href="../photos/V15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V22" src="../photos/V15.png" /></a></p>
+<p>规则的名称可以自行命名，主机 IP 与子系统 IP 可以不填，子系统端口 <strong>必须是 22</strong>（为什么？）；主机端口可以随意，不产生端口冲突即可</p>
+<ol>
+<li>添加完后点击确认即可。</li>
+</ol>
+<h5 id="1413-在-windows-系统上使用-ssh-client">1.4.1.3 在 Windows 系统上使用 ssh client<a class="headerlink" href="#1413-在-windows-系统上使用-ssh-client" title="Permanent link">&para;</a></h5>
+<p>在 Windows 系统上，我们使用 OpenSSH client 来进行 SSH 连接。OpenSSH 是目前最流行的 SSH 协议实现，而且是一个开源项目，微软已经提供了对在 Windows 上使用 OpenSSH 的支持。</p>
+<p>从 Windows10 开始系统自带 OpenSSH client，在 "设置"-&gt;"应用"-&gt;"可选功能"可以检查是否已经安装 OpenSSH client：</p>
+<p><a class="glightbox" href="../photos/V12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V35" src="../photos/V12.png" /></a></p>
+<p>若没有安装，请参考<a href="https://blog.csdn.net/fjw044586/article/details/110940729#前言">这里</a>。</p>
+<h5 id="1414-使用-ssh-连接虚拟机">1.4.1.4 使用 ssh 连接虚拟机<a class="headerlink" href="#1414-使用-ssh-连接虚拟机" title="Permanent link">&para;</a></h5>
+<p>打开 Windows PowerShell，在命令行输入以下内容进行 ssh 连接：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># -p 表示端口 后面数字为端口号</span>
+ssh<span class="w"> </span>-p<span class="w"> </span><span class="m">1145</span><span class="w"> </span>虚拟机用户名@127.0.0.1
+</code></pre></div>
+<p><a class="glightbox" href="../photos/ssh_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../photos/ssh_image.png" /></a></p>
+<p>输入虚拟机用户对应的密码即可连接到虚拟机当中。</p>
+<h4 id="142-使用-vscode-连接虚拟机">1.4.2 使用 VSCode 连接虚拟机<a class="headerlink" href="#142-使用-vscode-连接虚拟机" title="Permanent link">&para;</a></h4>
+<p>由于在 VirtualBox 上配置的 Ubuntu server 没有图形化界面，不够美观的同时也无法可视化操作。这里我们推荐使用 VSCode 连接我们刚刚配置好的虚拟机，使用 VSCode 进行开发可以大大提高我们的开发效率。</p>
+<p>在验证 ssh 连接虚拟机成功后，我们即可以通过 VSCode 来连接虚拟机。</p>
+<h5 id="1421-vscode-设置">1.4.2.1 VSCode 设置<a class="headerlink" href="#1421-vscode-设置" title="Permanent link">&para;</a></h5>
+<p>打开 VSCode 执行以下操作：</p>
+<ol>
+<li>下载并安装 Remote-SSH 插件：</li>
+</ol>
+<p><a class="glightbox" href="../photos/image-20230907232746795.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20230907232746795" src="../photos/image-20230907232746795.png" /></a></p>
+<blockquote>
+<p>remote-ssh 是一个专门用于通过 SSH 来远程连接服务器的辅助工具。</p>
+</blockquote>
+<ol>
+<li>下载完毕后在 VSCode 的左边栏找到远程资源管理器，在上方选择栏中选择 <strong>远程（隧道/SSH）</strong>：</li>
+</ol>
+<p><a class="glightbox" href="../photos/V17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V24" src="../photos/V17.png" /></a></p>
+<ol>
+<li>在 SSH 中点击设置，后选择 SSH 配置文件：</li>
+</ol>
+<p><a class="glightbox" href="../photos/V18.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V25" src="../photos/V18.png" /></a></p>
+<ol>
+<li>在配置文件中加入如下代码段，保存：</li>
+</ol>
+<div class="highlight"><pre><span></span><code># Host 名字可以随意
+Host vbox
+  HostName 127.0.0.1
+  # User 填入你自己的虚拟机 username
+  User test
+  # Port 填入在设置虚拟机网络时你填入的主机端口
+  Port 4514
+</code></pre></div>
+<p>随后刷新左侧列表可以在 SSH 下看到如下项：</p>
+<p><a class="glightbox" href="../photos/V19.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V26" src="../photos/V19.png" /></a></p>
+<ol>
+<li>在自己设置的项（助教这里是 vbox）右侧点击右箭头开始连接：</li>
+</ol>
+<p><a class="glightbox" href="../photos/V20.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V27" src="../photos/V20.png" /></a></p>
+<ol>
+<li>这里出现的 platform 选择 Linux：</li>
+</ol>
+<p><a class="glightbox" href="../photos/V21.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V28" src="../photos/V21.png" /></a></p>
+<ol>
+<li>
+<p>随后点击 Continue；</p>
+</li>
+<li>
+<p>输入你的虚拟机的密码；</p>
+</li>
+<li>
+<p>耐心等待连接，等到界面左下方出现如下情况即表示连接成功：</p>
+</li>
+</ol>
+<p><a class="glightbox" href="../photos/V22.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V31" src="../photos/V22.png" /></a></p>
+<ol>
+<li>随后即可在 VSCode 上愉快地使用虚拟机。VSCode 拥有一系列针对各种语言的插件，同学们按需安装，这里不再做过多展开。</li>
+</ol>
+<h5 id="1422-vscode-连接虚拟机使用示例">1.4.2.2 VSCode 连接虚拟机使用示例<a class="headerlink" href="#1422-vscode-连接虚拟机使用示例" title="Permanent link">&para;</a></h5>
+<p>我们已经成功通过 VSCode 连接了虚拟机，下面是一些简单的使用指导。</p>
+<p>首先在 VSCode 中，我们可以使用快捷键 <code>CTRL + `</code> 打开终端：</p>
+<p><a class="glightbox" href="../photos/image-20230907233217641.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20230907233217641" src="../photos/image-20230907233217641.png" /></a></p>
+<p>注意这个终端里的所有指令都是运行在你配置的虚拟机/服务器上，尝试如下指令：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 查看虚拟机的相关信息</span>
+$<span class="w"> </span>uname<span class="w"> </span>-a
+Linux<span class="w"> </span>gpu12<span class="w"> </span><span class="m">5</span>.4.0-156-generic<span class="w"> </span><span class="c1">#173-Ubuntu SMP Tue Jul 11 07:25:22 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux</span>
+
+<span class="c1"># mkdir 创建文件夹</span>
+<span class="c1"># code 指令使用 VSCode 打开一个特定的工作区</span>
+$<span class="w"> </span>mkdir<span class="w"> </span>Test
+$<span class="w"> </span>code<span class="w"> </span>Test
+</code></pre></div>
+<p>此时，会弹出一个新的 VSCode 窗口，该新窗口以 Test 文件夹作为 workspace。</p>
+<p>下面，我们进行简单的文件创建和添加。选择 VSCode 的 explorer，并点击新建文件操作，新建文件 <code>testfile.txt</code>。</p>
+<p><a class="glightbox" href="../photos/image-20230907233515388.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20230907233515388" src="../photos/image-20230907233515388.png" /></a></p>
+<p>随后打开该文件，并输入相关信息。此时，我们已经通过 VSCode 在虚拟机上创建一个 <code>testfile.txt</code> 文件，且该文件位于 <code>Test</code> 文件夹下。</p>
+<p><a class="glightbox" href="../photos/V23.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V36" src="../photos/V23.png" /></a></p>
+<p>完成上述操作后，你可以在 VSCode 终端中或 virtualbox 的界面，在虚拟机中查看相关文件内容。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>Test
+$<span class="w"> </span>cat<span class="w"> </span>testfile.txt
+Hello<span class="w"> </span>VirtualBox!
+</code></pre></div>
+<p>通过这个例子，你应该已经掌握了使用 VSCode 连接远程服务器和修改相关文件等操作。</p>
+<details class="tip" open="open">
+<summary>VSCode 远程服务器文件上传和下载</summary>
+<p>文件上传：直接拖拽桌面文件进入 VSCode 的 explorer</p>
+<p>文件下载：在 VSCode 的 explorer 中对相关文件进行右键并选择下载。</p>
+</details>
+<p>更多关于 VSCode 的操作，欢迎同学自行探索。</p>
+<h2 id="2-vmware-workstation">2 VMWare Workstation<a class="headerlink" href="#2-vmware-workstation" title="Permanent link">&para;</a></h2>
+<h3 id="21-下载">2.1 下载<a class="headerlink" href="#21-下载" title="Permanent link">&para;</a></h3>
+<p>下载虚拟机软件：</p>
+<ul>
+<li>VMWare：<a href="https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion">Downloads – VMWare</a></li>
+</ul>
+<p>虚拟机软件的版本没有规定的要求，但必须满足基本需求。</p>
+<p>下载 Ubuntu：</p>
+<p>(x86)</p>
+<p>请下载命名为 ubuntu-22.04.4-live-server-amd64（或 22.04.5） 的镜像文件</p>
+<ul>
+<li>官网链接：<a href="https://releases.ubuntu.com/">Ubuntu Releases</a></li>
+<li>科大镜像：<a href="https://mirrors.ustc.edu.cn/ubuntu-releases/">Index of /ubuntu-releases/ (ustc.edu.cn)</a></li>
+<li>清华镜像：<a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/">Index of /ubuntu-releases/ | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a></li>
+</ul>
+<hr />
+<p>(arm)</p>
+<p>请下载命名为 ubuntu-22.04.5-live-server-arm64 的镜像文件</p>
+<ul>
+<li>科大镜像：<a href="https://mirrors.ustc.edu.cn/ubuntu-cdimage/releases/22.04.5/release/">Index of /ubuntu-releases/ (ustc.edu.cn)</a></li>
+<li>清华镜像：<a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-cdimage/releases/22.04.5/release/">Index of /ubuntu-releases/ | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">重要</p>
+<p>本学期实验规定了相应的 Ubuntu 版本以方便后续软件的下载与使用，请各位同学 <strong>务必</strong> 下载使用推荐版本 <strong>22.04</strong>。</p>
+</div>
+<p>下载完成之后无需打开镜像文件，只需在后续导入虚拟机软件即可。</p>
+<h3 id="22-创建安装虚拟机">2.2 创建、安装虚拟机<a class="headerlink" href="#22-创建安装虚拟机" title="Permanent link">&para;</a></h3>
+<p>点击<code>创建新的虚拟机</code>，之后跟随向导选择即可，下面是一些关键配置数据：</p>
+<ul>
+<li>安装客户机系统时，选择安装程序映像文件，选择你刚刚下载的镜像文件</li>
+<li>请记住你设置的密码</li>
+<li>磁盘空间请设置 25GB～40GB(推荐)</li>
+<li>安装时语言尽量选择英文，否则你的 home 目录下可能会出现中文路径 (可以进系统后换成中文)</li>
+<li>Installation Type 请选择 Eraze disk and install Ubuntu</li>
+</ul>
+<h3 id="23-vs-code">2.3 VS Code<a class="headerlink" href="#23-vs-code" title="Permanent link">&para;</a></h3>
+<p>请参照 <a href="#13-使用-vscode">VS Code</a> 节，安装 VS Code</p>
+<h3 id="24-通过-vscode-连接虚拟机">2.4 通过 VSCode 连接虚拟机<a class="headerlink" href="#24-通过-vscode-连接虚拟机" title="Permanent link">&para;</a></h3>
+<p>打开虚拟机后，请点击 右键 - 在终端中打开</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>net-tools<span class="w"> </span>openssh-server
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>ssh
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>ssh
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>ssh
+ifconfig
+</code></pre></div>
+<p>ifconfig 会输出你的所有网络接口 (如果是新建的虚拟机，应该仅有两个接口)，请忽略<code>lo:</code>一组，它代表着本地环回。请记下另一组中的 inet 字段，例：<code>192.168.32.169</code></p>
+<p>打开 VSCode 执行以下操作：</p>
+<ol>
+<li>下载并安装 Remote-SSH 插件：</li>
+</ol>
+<p><a class="glightbox" href="../photos/image-20230907232746795.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20230907232746795" src="../photos/image-20230907232746795.png" /></a></p>
+<blockquote>
+<p>remote-ssh 是一个专门用于通过 SSH 来远程连接服务器的辅助工具。</p>
+</blockquote>
+<ol>
+<li>下载完毕后在 VSCode 的左边栏找到远程资源管理器，在上方选择栏中选择 <strong>远程（隧道/SSH）</strong>：</li>
+</ol>
+<p><a class="glightbox" href="../photos/V17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V24" src="../photos/V17.png" /></a></p>
+<ol>
+<li>在 SSH 中点击设置，后选择 SSH 配置文件：</li>
+</ol>
+<p><a class="glightbox" href="../photos/V18.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V25" src="../photos/V18.png" /></a></p>
+<ol>
+<li>在配置文件中加入如下代码段，保存：</li>
+</ol>
+<div class="highlight"><pre><span></span><code># Host 名字可以随意
+Host vbox
+  # HostName 填入刚刚的 inet 字段
+  HostName 192.168.32.169 # 请改掉
+  # User 填入你自己的虚拟机 username
+  User test
+</code></pre></div>
+<p>随后刷新左侧列表可以在 SSH 下看到如下项：</p>
+<p><a class="glightbox" href="../photos/V19.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="V26" src="../photos/V19.png" /></a></p>
+<p>之后的步骤和<a href="#1421-vscode-设置">上方</a> 相同</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 13, 2025</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="贡献者">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:153092435+terialion@users.noreply.github.com">WangYuhang</a>, 
+        <a href="mailto:ylc221606@mail.ustc.edu.cn">Yang00002</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

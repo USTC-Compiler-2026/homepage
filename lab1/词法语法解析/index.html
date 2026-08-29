@@ -1,0 +1,1054 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>词法语法解析 - USTC 编译原理和技术 2026</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#词法语法解析" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-header__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            USTC 编译原理和技术 2026
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              词法语法解析
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="切换到夜晚模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜晚模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到白天模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到白天模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../exp_platform_intro/" class="md-tabs__link">
+          
+  
+  公共文档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-nav__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    USTC 编译原理和技术 2026
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    公共文档
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            公共文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exp_platform_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课程平台介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#词法分析器" class="md-nav__link">
+    <span class="md-ellipsis">
+      词法分析器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="词法分析器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cminusf-词法" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cminusf 词法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#实验内容" class="md-nav__link">
+    <span class="md-ellipsis">
+      实验内容
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#语法分析器" class="md-nav__link">
+    <span class="md-ellipsis">
+      语法分析器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="语法分析器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cminusf-语法" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cminusf 语法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#实验内容_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      实验内容
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#实验要求" class="md-nav__link">
+    <span class="md-ellipsis">
+      实验要求
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实验要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#仓库目录结构" class="md-nav__link">
+    <span class="md-ellipsis">
+      仓库目录结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#编译运行和评测" class="md-nav__link">
+    <span class="md-ellipsis">
+      编译、运行和评测
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#拓展阅读" class="md-nav__link">
+    <span class="md-ellipsis">
+      拓展阅读
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="拓展阅读">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#介绍" class="md-nav__link">
+    <span class="md-ellipsis">
+      介绍
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#如何消除警告" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何消除警告
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="词法语法解析">词法语法解析<a class="headerlink" href="#词法语法解析" title="Permanent link">&para;</a></h1>
+<h2 id="词法分析器">词法分析器<a class="headerlink" href="#词法分析器" title="Permanent link">&para;</a></h2>
+<p>现在我们开始编写 Cminusf 的词法解析器。首先，让我们了解一下 Cminusf 的词法规则，随后将介绍实验要求和细节。</p>
+<h3 id="cminusf-词法">Cminusf 词法<a class="headerlink" href="#cminusf-词法" title="Permanent link">&para;</a></h3>
+<p>Cminus 是 C 语言的一个子集，该语言的语法在《编译原理与实践》第九章附录中有详细的介绍。而 Cminusf 则是在 Cminus 上追加了浮点操作。</p>
+<p>1.关键字。</p>
+<div class="highlight"><pre><span></span><code><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="kt">float</span>
+</code></pre></div>
+<p>2.专用符号。</p>
+<div class="highlight"><pre><span></span><code><span class="o">+</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="cm">/* */</span>
+</code></pre></div>
+<p>3.标识符 ID 和数值，通过下列正则表达式定义：</p>
+<div class="highlight"><pre><span></span><code><span class="n">letter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">|</span><span class="p">...</span><span class="o">|</span><span class="n">z</span><span class="o">|</span><span class="n">A</span><span class="o">|</span><span class="p">...</span><span class="o">|</span><span class="n">Z</span>
+<span class="n">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="o">|</span><span class="p">...</span><span class="o">|</span><span class="mi">9</span>
+<span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">letter</span><span class="o">+</span>
+<span class="n">INTEGER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">digit</span><span class="o">+</span>
+<span class="n">FLOAT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">digit</span><span class="o">+</span><span class="p">.</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">digit</span><span class="o">*</span><span class="p">.</span><span class="n">digit</span><span class="o">+</span><span class="p">)</span>
+</code></pre></div>
+<p>4.注释用 <code>/*...*/</code> 表示，可以超过一行。注释不能嵌套。</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/*...*/</span>
+</code></pre></div>
+<p>请认真阅读 Cminusf 的词法。其词法特性相比 C 语言做了大量简化，比如标识符 <code>student_id</code> 在 C 语言中是合法的，但是在 Cminusf 中是不合法的。</p>
+<h3 id="实验内容">实验内容<a class="headerlink" href="#实验内容" title="Permanent link">&para;</a></h3>
+<p>本部分需要各位同学在 <code>src/parser/lexical_analyzer.l</code> 文件中根据 Cminusf 的词法规则完成词法分析器。在 <code>lexical_analyzer.l</code> 文件中，你只需在规则部分补全模式和动作即可，能够输出识别出的 <code>token</code>，<code>text</code>，<code>line(刚出现的行数)</code>，<code>pos_start(该行开始位置)</code>，<code>pos_end(结束的位置，不包含)</code>。比如：</p>
+<p>文本输入：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>则识别结果应该如下：</p>
+<div class="highlight"><pre><span></span><code>Token<span class="w">         </span>Text<span class="w">      </span>Line<span class="w">    </span>Column<span class="w"> </span><span class="o">(</span>Start,End<span class="o">)</span>
+<span class="m">282</span><span class="w">           </span>void<span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">1</span>,5<span class="o">)</span>
+<span class="m">284</span><span class="w">           </span>main<span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">6</span>,10<span class="o">)</span>
+<span class="m">272</span><span class="w">              </span><span class="o">(</span><span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">10</span>,11<span class="o">)</span>
+<span class="m">282</span><span class="w">           </span>void<span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">11</span>,15<span class="o">)</span>
+<span class="m">273</span><span class="w">              </span><span class="o">)</span><span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">15</span>,16<span class="o">)</span>
+<span class="m">276</span><span class="w">              </span><span class="o">{</span><span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">17</span>,18<span class="o">)</span>
+<span class="m">281</span><span class="w">         </span><span class="k">return</span><span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">19</span>,25<span class="o">)</span>
+<span class="m">270</span><span class="w">              </span><span class="p">;</span><span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">25</span>,26<span class="o">)</span>
+<span class="m">277</span><span class="w">              </span><span class="o">}</span><span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">27</span>,28<span class="o">)</span>
+</code></pre></div>
+<p>必须维护正确的：<code>token</code>、<code>text</code>。</p>
+<p>可以选择性维护的（方便 debug，测试）：<code>line</code>、<code>pos_start</code>、<code>pos_end</code>。</p>
+<blockquote>
+<p>推荐同学们下载 vscode 的插件 lex 和 bison，可以在补全 <code>.l</code>文件和 <code>.y</code>文件的时候提供高亮。</p>
+</blockquote>
+<h2 id="语法分析器">语法分析器<a class="headerlink" href="#语法分析器" title="Permanent link">&para;</a></h2>
+<h3 id="cminusf-语法">Cminusf 语法<a class="headerlink" href="#cminusf-语法" title="Permanent link">&para;</a></h3>
+<p>本小节将给出 Cminusf 的语法，我们将 Cminusf 的所有规则分为五类。</p>
+<ol>
+<li>字面量、关键字、运算符与标识符</li>
+<li><code>type-specifier</code></li>
+<li><code>relop</code></li>
+<li><code>addop</code></li>
+<li><code>mulop</code></li>
+<li>声明</li>
+<li><code>declaration-list</code></li>
+<li><code>declaration</code></li>
+<li><code>var-declaration</code></li>
+<li><code>fun-declaration</code></li>
+<li><code>local-declarations</code></li>
+<li>语句</li>
+<li><code>compound-stmt</code></li>
+<li><code>statement-list</code></li>
+<li><code>statement</code></li>
+<li><code>expression-stmt</code></li>
+<li><code>iteration-stmt</code></li>
+<li><code>selection-stmt</code></li>
+<li><code>return-stmt</code></li>
+<li>表达式</li>
+<li><code>expression</code></li>
+<li><code>simple-expression</code></li>
+<li><code>var</code></li>
+<li><code>additive-expression</code></li>
+<li><code>term</code></li>
+<li><code>factor</code></li>
+<li><code>integer</code></li>
+<li><code>float</code></li>
+<li><code>call</code></li>
+<li>其他</li>
+<li><code>params</code></li>
+<li><code>param-list</code></li>
+<li><code>param</code></li>
+<li><code>args</code></li>
+<li><code>arg-list</code></li>
+</ol>
+<p>起始符号是 <code>program</code>。文法中用到的 token 均以下划线和粗体标出。</p>
+<ol>
+<li><span class="arithmatex">\(\text{program} \rightarrow \text{declaration-list}\)</span></li>
+<li><span class="arithmatex">\(\text{declaration-list} \rightarrow \text{declaration-list}\ \text{declaration}\ |\ \text{declaration}\)</span></li>
+<li><span class="arithmatex">\(\text{declaration} \rightarrow \text{var-declaration}\ |\ \text{fun-declaration}\)</span></li>
+<li><span class="arithmatex">\(\text{var-declaration}\ \rightarrow \text{type-specifier}\ \underline{\textbf{ID}}\ \underline{\textbf{;}}\ |\ \text{type-specifier}\ \underline{\textbf{ID}}\ \underline{\textbf{[}}\ \underline{\textbf{INTEGER}}\ \underline{\textbf{]}}\ \underline{\textbf{;}}\)</span></li>
+<li><span class="arithmatex">\(\text{type-specifier} \rightarrow \underline{\textbf{int}}\ |\ \underline{\textbf{float}}\ |\ \underline{\textbf{void}}\)</span></li>
+<li><span class="arithmatex">\(\text{fun-declaration} \rightarrow \text{type-specifier}\ \underline{\textbf{ID}}\ \underline{\textbf{(}}\ \text{params}\ \underline{\textbf{)}}\ \text{compound-stmt}\)</span></li>
+<li><span class="arithmatex">\(\text{params} \rightarrow \text{param-list}\ |\ \underline{\textbf{void}}\)</span></li>
+<li><span class="arithmatex">\(\text{param-list} \rightarrow \text{param-list}\ \underline{\textbf{,}}\ \text{param}\ |\ \text{param}\)</span></li>
+<li><span class="arithmatex">\(\text{param} \rightarrow \text{type-specifier}\ \underline{\textbf{ID}}\ |\ \text{type-specifier}\ \underline{\textbf{ID}}\ \underline{\textbf{[}}\ \underline{\textbf{]}}\)</span></li>
+<li><span class="arithmatex">\(\text{compound-stmt} \rightarrow \underline{\textbf{\{}}\ \text{local-declarations}\ \text{statement-list}\ \underline{\textbf{\}}}\)</span></li>
+<li><span class="arithmatex">\(\text{local-declarations} \rightarrow \text{local-declarations var-declaration}\ |\ \text{empty}\)</span></li>
+<li><span class="arithmatex">\(\text{statement-list} \rightarrow \text{statement-list}\ \text{statement}\ |\ \text{empty}\)</span></li>
+<li><span class="arithmatex">\(\begin{aligned}\text{statement} \rightarrow\ &amp;\text{expression-stmt}\\\ &amp;|\ \text{compound-stmt}\\\ &amp;|\ \text{selection-stmt}\\\ &amp;|\ \text{iteration-stmt}\\\ &amp;|\ \text{return-stmt}\end{aligned}\)</span></li>
+<li><span class="arithmatex">\(\text{expression-stmt} \rightarrow \text{expression}\ \underline{\textbf{;}}\ |\ \underline{\textbf{;}}\)</span></li>
+<li><span class="arithmatex">\(\begin{aligned}\text{selection-stmt} \rightarrow\ &amp;\underline{\textbf{if}}\ \underline{\textbf{(}}\ \text{expression}\ \underline{\textbf{)}}\ \text{statement}\\\ &amp;|\ \underline{\textbf{if}}\ \underline{\textbf{(}}\ \text{expression}\ \underline{\textbf{)}}\ \text{statement}\ \underline{\textbf{else}}\ \text{statement}\end{aligned}\)</span></li>
+<li><span class="arithmatex">\(\text{iteration-stmt} \rightarrow \underline{\textbf{while}}\ \underline{\textbf{(}}\ \text{expression}\ \underline{\textbf{)}}\ \text{statement}\)</span></li>
+<li><span class="arithmatex">\(\text{return-stmt} \rightarrow \underline{\textbf{return}}\ \underline{\textbf{;}}\ |\ \underline{\textbf{return}}\ \text{expression}\ \underline{\textbf{;}}\)</span></li>
+<li><span class="arithmatex">\(\text{expression} \rightarrow \text{var}\ \underline{\textbf{=}}\ \text{expression}\ |\ \text{simple-expression}\)</span></li>
+<li><span class="arithmatex">\(\text{var} \rightarrow \underline{\textbf{ID}}\ |\ \underline{\textbf{ID}}\ \underline{\textbf{[}}\ \text{expression} \underline{\textbf{]}}\)</span></li>
+<li><span class="arithmatex">\(\text{simple-expression} \rightarrow \text{additive-expression}\ \text{relop}\ \text{additive-expression}\ |\ \text{additive-expression}\)</span></li>
+<li><span class="arithmatex">\(\text{relop}\ \rightarrow \underline{\textbf{&lt;=}}\ |\ \underline{\textbf{&lt;}}\ |\ \underline{\textbf{&gt;}}\ |\ \underline{\textbf{&gt;=}}\ |\ \underline{\textbf{==}}\ |\ \underline{\textbf{!=}}\)</span></li>
+<li><span class="arithmatex">\(\text{additive-expression} \rightarrow \text{additive-expression}\ \text{addop}\ \text{term}\ |\ \text{term}\)</span></li>
+<li><span class="arithmatex">\(\text{addop} \rightarrow \underline{\textbf{+}}\ |\ \underline{\textbf{-}}\)</span></li>
+<li><span class="arithmatex">\(\text{term} \rightarrow \text{term}\ \text{mulop}\ \text{factor}\ |\ \text{factor}\)</span></li>
+<li><span class="arithmatex">\(\text{mulop} \rightarrow \underline{\textbf{*}}\ |\ \underline{\textbf{/}}\)</span></li>
+<li><span class="arithmatex">\(\text{factor} \rightarrow \underline{\textbf{(}}\ \text{expression}\ \underline{\textbf{)}}\ |\ \text{var}\ |\ \text{call}\ |\ \text{integer}\ |\ \text{float}\)</span></li>
+<li><span class="arithmatex">\(\text{integer} \rightarrow \underline{\textbf{INTEGER}}\)</span></li>
+<li><span class="arithmatex">\(\text{float} \rightarrow \underline{\textbf{FLOATPOINT}}\)</span></li>
+<li><span class="arithmatex">\(\text{call} \rightarrow \underline{\textbf{ID}}\ \underline{\textbf{(}}\ \text{args} \underline{\textbf{)}}\)</span></li>
+<li><span class="arithmatex">\(\text{args} \rightarrow \text{arg-list}\ |\ \text{empty}\)</span></li>
+<li><span class="arithmatex">\(\text{arg-list} \rightarrow \text{arg-list}\ \underline{\textbf{,}}\ \text{expression}\ |\ \text{expression}\)</span></li>
+</ol>
+<p>为了大家方便，我们提供了 Cminusf 语法的 pdf 文件，可在此下载：<a href="../assets/cminusf.pdf">Cminusf 语法</a></p>
+<h3 id="实验内容_1">实验内容<a class="headerlink" href="#实验内容_1" title="Permanent link">&para;</a></h3>
+<p>本部分需要同学们完成 <code>src/parser/syntax_analyzer.y</code>。与词法分析器相同，你只需要补全代码中规则部分即可。</p>
+<p>如果实现正确，该语法分析器可以从 Cminusf 代码分析得到一颗语法树。例如输入</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>可以得到如下语法树</p>
+<div class="highlight"><pre><span></span><code>&gt;--+ program
+|  &gt;--+ declaration-list
+|  |  &gt;--+ declaration
+|  |  |  &gt;--+ fun-declaration
+|  |  |  |  &gt;--+ type-specifier
+|  |  |  |  |  &gt;--* int
+|  |  |  |  &gt;--* main
+|  |  |  |  &gt;--* (
+|  |  |  |  &gt;--+ params
+|  |  |  |  |  &gt;--* void
+|  |  |  |  &gt;--* )
+|  |  |  |  &gt;--+ compound-stmt
+|  |  |  |  |  &gt;--* {
+|  |  |  |  |  &gt;--+ local-declarations
+|  |  |  |  |  |  &gt;--* epsilon
+|  |  |  |  |  &gt;--+ statement-list
+|  |  |  |  |  |  &gt;--+ statement-list
+|  |  |  |  |  |  |  &gt;--* epsilon
+|  |  |  |  |  |  &gt;--+ statement
+|  |  |  |  |  |  |  &gt;--+ return-stmt
+|  |  |  |  |  |  |  |  &gt;--* return
+|  |  |  |  |  |  |  |  &gt;--+ expression
+|  |  |  |  |  |  |  |  |  &gt;--+ simple-expression
+|  |  |  |  |  |  |  |  |  |  &gt;--+ additive-expression
+|  |  |  |  |  |  |  |  |  |  |  &gt;--+ term
+|  |  |  |  |  |  |  |  |  |  |  |  &gt;--+ factor
+|  |  |  |  |  |  |  |  |  |  |  |  |  &gt;--+ integer
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  &gt;--* 0
+|  |  |  |  |  |  |  |  &gt;--* ;
+|  |  |  |  |  &gt;--* }
+</code></pre></div>
+<p><strong>这一部分必须严格遵守我们给出的语法，输出必须与标准程序输出完全一致。</strong></p>
+<h2 id="实验要求">实验要求<a class="headerlink" href="#实验要求" title="Permanent link">&para;</a></h2>
+<h3 id="仓库目录结构">仓库目录结构<a class="headerlink" href="#仓库目录结构" title="Permanent link">&para;</a></h3>
+<p>与本次实验有关的文件如下。</p>
+<div class="highlight"><pre><span></span><code><span class="p">|</span>--<span class="w"> </span>CMakeLists.txt
+<span class="p">|</span>--<span class="w"> </span>build<span class="w"> </span><span class="c1"># 在编译过程中产生，不需要通过 git add 添加到仓库中</span>
+<span class="p">|</span>--<span class="w"> </span>src
+<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>CMakeLists.txt
+<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>common
+<span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>parser
+<span class="p">|</span><span class="w">       </span><span class="p">|</span>--<span class="w"> </span>CMakeLists.txt
+<span class="p">|</span><span class="w">       </span><span class="p">|</span>--<span class="w"> </span>lexer.c
+<span class="p">|</span><span class="w">       </span><span class="p">|</span>--<span class="w"> </span>lexical_analyzer.l<span class="w"> </span><span class="c1"># 你需要修改本文件</span>
+<span class="p">|</span><span class="w">       </span><span class="p">|</span>--<span class="w"> </span>parser.c
+<span class="p">|</span><span class="w">       </span><span class="sb">`</span>--<span class="w"> </span>syntax_analyzer.y<span class="w"> </span><span class="c1"># 你需要修改本文件</span>
+<span class="sb">`</span>--<span class="w"> </span>tests
+<span class="w">     </span><span class="p">|</span>--<span class="w"> </span><span class="m">1</span>-parser
+<span class="w">     </span><span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>input<span class="w"> </span><span class="c1"># 针对 Lab1 的测试样例</span>
+<span class="w">     </span><span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>output_standard<span class="w"> </span><span class="c1"># 助教提供的标准参考结果</span>
+<span class="w">     </span><span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>output_student<span class="w"> </span><span class="c1"># 测试脚本产生的你解析后的结果</span>
+<span class="w">     </span><span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>cleanup.sh
+<span class="w">     </span><span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>eval_phase1.sh<span class="w"> </span><span class="c1"># 阶段一测试用的脚本</span>
+<span class="w">     </span><span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>eval_phase2.sh<span class="w"> </span><span class="c1"># 阶段二测试用的脚本</span>
+<span class="w">     </span><span class="sb">`</span>--<span class="w"> </span>testcases_general<span class="w"> </span><span class="c1"># 整个课程所用到的测试样例</span>
+</code></pre></div>
+<h3 id="编译运行和评测">编译、运行和评测<a class="headerlink" href="#编译运行和评测" title="Permanent link">&para;</a></h3>
+<p>首先将你的实验仓库克隆的本地虚拟机中。要编译和运行词法分析器，请按照以下步骤在本地虚拟机中进行操作：</p>
+<p><strong>编译</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>2025ustc-jianmu-compiler
+$<span class="w"> </span>mkdir<span class="w"> </span>build
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+<span class="c1"># 使用 cmake 生成 makefile 等文件</span>
+$<span class="w"> </span>cmake<span class="w"> </span>..
+<span class="c1"># 使用 make 进行编译</span>
+$<span class="w"> </span>make
+</code></pre></div>
+<blockquote>
+<p>这里如果 make 编译比较慢，可以 通过 <code>-j</code>选项开启更多的内核并行编译，会加快编译的效率。</p>
+<p>如果不清楚自己虚拟机的内核数量，可以使用 <code>htop</code>指令查看，这里给出一个例子：</p>
+<p><a class="glightbox" href="../assets/image-20240915145113114.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240915145113114" src="../assets/image-20240915145113114.png" /></a></p>
+<p>如上图，助教的虚拟机拥有 20 个内核，在编译的时候可以使用 16 个内核同时编译（不建议全部使用）。</p>
+<div class="highlight"><pre><span></span><code>$ make -j 16
+</code></pre></div>
+</blockquote>
+<p>如果构建成功，你会在 <code>build</code> 文件夹下找到 <code>lexer</code> 和 <code>parser</code> 可执行文件，用于对 Cminusf 文件进行词法和语法分析。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>lexer<span class="w"> </span>parser
+lexer<span class="w"> </span>parser
+
+$<span class="w"> </span>./lexer
+usage:<span class="w"> </span>lexer<span class="w"> </span>input_file
+</code></pre></div>
+<p><strong>运行</strong></p>
+<p>我们在 <code>tests/testcases_general</code> 文件夹中准备了一些通用案例。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 返回 2025ustc-jianmu-compiler 的根目录</span>
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">WORKSPACE</span><span class="si">}</span>
+
+<span class="c1"># 运行 lexer，进行词法分析</span>
+$<span class="w"> </span>./build/lexer<span class="w"> </span>tests/testcases_general/1-return.cminus
+Token<span class="w">         </span>Text<span class="w">      </span>Line<span class="w">    </span>Column<span class="w"> </span><span class="o">(</span>Start,End<span class="o">)</span>
+<span class="m">282</span><span class="w">           </span>void<span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">1</span>,5<span class="o">)</span>
+<span class="m">284</span><span class="w">           </span>main<span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">6</span>,10<span class="o">)</span>
+<span class="m">272</span><span class="w">              </span><span class="o">(</span><span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">10</span>,11<span class="o">)</span>
+<span class="m">282</span><span class="w">           </span>void<span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">11</span>,15<span class="o">)</span>
+<span class="m">273</span><span class="w">              </span><span class="o">)</span><span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">15</span>,16<span class="o">)</span>
+<span class="m">276</span><span class="w">              </span><span class="o">{</span><span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">17</span>,18<span class="o">)</span>
+<span class="m">281</span><span class="w">         </span><span class="k">return</span><span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">19</span>,25<span class="o">)</span>
+<span class="m">270</span><span class="w">              </span><span class="p">;</span><span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">25</span>,26<span class="o">)</span>
+<span class="m">277</span><span class="w">              </span><span class="o">}</span><span class="w">      </span><span class="m">1</span><span class="w">       </span><span class="o">(</span><span class="m">27</span>,28<span class="o">)</span>
+
+<span class="c1"># 运行 parser，解析 1-return.cminus 输出语法树</span>
+$<span class="w"> </span>./build/parser<span class="w"> </span>./tests/testcases_general/1-return.cminus
+&gt;--+<span class="w"> </span>program
+<span class="p">|</span><span class="w">  </span>&gt;--+<span class="w"> </span>declaration-list
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--+<span class="w"> </span>declaration
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--+<span class="w"> </span>fun-declaration
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--+<span class="w"> </span>type-specifier
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--*<span class="w"> </span>void
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--*<span class="w"> </span>main
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--*<span class="w"> </span><span class="o">(</span>
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--+<span class="w"> </span>params
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--*<span class="w"> </span>void
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--*<span class="w"> </span><span class="o">)</span>
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--+<span class="w"> </span>compound-stmt
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--*<span class="w"> </span><span class="o">{</span>
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--+<span class="w"> </span>local-declarations
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--*<span class="w"> </span>epsilon
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--+<span class="w"> </span>statement-list
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--+<span class="w"> </span>statement-list
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--*<span class="w"> </span>epsilon
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--+<span class="w"> </span>statement
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--+<span class="w"> </span><span class="k">return</span>-stmt
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--*<span class="w"> </span><span class="k">return</span>
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--*<span class="w"> </span><span class="p">;</span>
+<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>&gt;--*<span class="w"> </span><span class="o">}</span>
+</code></pre></div>
+<p><strong>测试</strong></p>
+<p>测试样例分为两个部分，分别是 <code>tests/testcases_general</code> 和 lab1 限定的 <code>tests/1-parser</code>。</p>
+<p>我们重点使用 <code>tests/1-parser</code> 考察语法分析器的正确性。其结构如下：</p>
+<div class="highlight"><pre><span></span><code>.
+<span class="p">|</span>--<span class="w"> </span>input<span class="w"> </span><span class="c1"># 输入目录，包含 xxx.cminus 文件</span>
+<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>easy
+<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>hard
+<span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>normal
+<span class="p">|</span>--<span class="w"> </span>output_standard<span class="w"> </span><span class="c1"># 助教标准输出目录，包含 xxx.syntax_tree 文件</span>
+<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>easy
+<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>normal
+<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>hard
+<span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>testcases_general
+<span class="p">|</span>--<span class="w"> </span>output_student<span class="w"> </span><span class="c1"># 学生输出目录，测试过程中产生 xxx.syntax_tree 文件</span>
+<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>easy
+<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>hard
+<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>normal
+<span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>testcases_general
+<span class="p">|</span>--<span class="w"> </span>eval_phase1.sh<span class="w"> </span><span class="c1"># 阶段一的测试脚本</span>
+<span class="p">|</span>--<span class="w"> </span>eval_phase2.sh<span class="w"> </span><span class="c1"># 阶段二的测试脚本</span>
+<span class="sb">`</span>--<span class="w"> </span>cleanup.sh
+</code></pre></div>
+<p>我们使用 <code>diff</code> 命令进行结果比较：</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>2025ustc-jianmu-compiler
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>realpath<span class="w"> </span>./build<span class="k">)</span><span class="s2">:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>tests/1-parser
+$<span class="w"> </span>parser<span class="w"> </span>input/normal/local-decl.cminus<span class="w"> </span>&gt;<span class="w"> </span>output_student/normal/local-decl.syntax_tree
+$<span class="w"> </span>diff<span class="w"> </span>output_student/normal/local-decl.syntax_tree<span class="w"> </span>output_standard/normal/local-decl.syntax_tree
+<span class="o">[</span>输出为空，代表没有区别，该测试通过<span class="o">]</span>
+</code></pre></div>
+<p>我们提供了 <code>eval_phase1.sh</code> 等脚本进行快速批量测试。</p>
+<p>该脚本有两种使用方法：</p>
+<ul>
+<li>使用 <code>-all</code>参数一键测试 4 个测试集的所有样例。并会在最后给出 正确的样例个数，如下。</li>
+</ul>
+<div class="highlight"><pre><span></span><code>innerpeace@innerpeace:~/stl_debug/tests/1-parser$ ./eval_phase1.sh  -all
+[info] Found 6 valid files in /home/innerpeace/stl_debug/tests/1-parser/input/easy
+...
+[info] Analyzing id.cminus
+[info] Comparing id.cminus...
+[info] id.cminus is correct!
+[info] Score for /home/innerpeace/stl_debug/tests/1-parser/input/easy: 6/6
+[info] Found 7 valid files in /home/innerpeace/stl_debug/tests/1-parser/input/normal
+...
+[info] Analyzing skip_spaces.cminus
+[info] Comparing skip_spaces.cminus...
+[info] skip_spaces.cminus is correct!
+[info] Score for /home/innerpeace/stl_debug/tests/1-parser/input/normal: 7/7
+[info] Found 6 valid files in /home/innerpeace/stl_debug/tests/1-parser/input/hard
+...
+[info] Analyzing You_Should_Pass.cminus
+[info] Comparing You_Should_Pass.cminus...
+[info] You_Should_Pass.cminus is correct!
+[info] Score for /home/innerpeace/stl_debug/tests/1-parser/input/hard: 6/6
+[info] Found 21 valid files in /home/innerpeace/stl_debug/tests/1-parser/../testcases_general
+...
+[info] Analyzing 9-assign_cast.cminus
+[info] Comparing 9-assign_cast.cminus...
+[info] 9-assign_cast.cminus is correct!
+[info] Score for /home/innerpeace/stl_debug/tests/1-parser/../testcases_general: 21/21
+[info] Total score for all testcases: 40/40
+</code></pre></div>
+<p>一共有 40 个测试样例。</p>
+<ul>
+<li>第一个参数可以是 <code>easy</code>、 <code>normal</code>、 <code>hard</code> 以及 <code>testcases_general</code>，并且有第二个可选参数，用于批量 <code>diff</code> 和助教提供的标准参考结果进行比较。</li>
+</ul>
+<p>第二个参数为 <code>no/yes/verbose</code></p>
+<ul>
+<li>no：不进行 diff</li>
+<li>yes：进行 diff</li>
+<li>verbose：进行 diff，并得到更详细的输出</li>
+</ul>
+<p>脚本运行后会将生成结果放在 <code>tests/1-parser/output_student</code> 文件夹里，而助教的参考输出则在 <code>tests/1-parser/output_standard</code> 中。</p>
+<div class="highlight"><pre><span></span><code>innerpeace@innerpeace:~/stl_debug/tests/1-parser$<span class="w"> </span>./eval_phase1.sh<span class="w">  </span>easy<span class="w"> </span>yes
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Analyzing<span class="w"> </span>expr.cminus
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Comparing<span class="w"> </span>expr.cminus...
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>expr.cminus<span class="w"> </span>is<span class="w"> </span>correct!
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Analyzing<span class="w"> </span>FAIL_comment2.cminus
+error<span class="w"> </span>at<span class="w"> </span>line<span class="w"> </span><span class="m">1</span><span class="w"> </span>column<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>syntax<span class="w"> </span>error
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Comparing<span class="w"> </span>FAIL_comment2.cminus...
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>FAIL_comment2.cminus<span class="w"> </span>is<span class="w"> </span>correct!
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Analyzing<span class="w"> </span>FAIL_comment.cminus
+error<span class="w"> </span>at<span class="w"> </span>line<span class="w"> </span><span class="m">1</span><span class="w"> </span>column<span class="w"> </span><span class="m">4</span>:<span class="w"> </span>syntax<span class="w"> </span>error
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Comparing<span class="w"> </span>FAIL_comment.cminus...
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>FAIL_comment.cminus<span class="w"> </span>is<span class="w"> </span>correct!
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Analyzing<span class="w"> </span>FAIL_function.cminus
+error<span class="w"> </span>at<span class="w"> </span>line<span class="w"> </span><span class="m">3</span><span class="w"> </span>column<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>syntax<span class="w"> </span>error
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Comparing<span class="w"> </span>FAIL_function.cminus...
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>FAIL_function.cminus<span class="w"> </span>is<span class="w"> </span>correct!
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Analyzing<span class="w"> </span>FAIL_id.cminus
+error<span class="w"> </span>at<span class="w"> </span>line<span class="w"> </span><span class="m">1</span><span class="w"> </span>column<span class="w"> </span><span class="m">6</span>:<span class="w"> </span>syntax<span class="w"> </span>error
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Comparing<span class="w"> </span>FAIL_id.cminus...
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>FAIL_id.cminus<span class="w"> </span>is<span class="w"> </span>correct!
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Analyzing<span class="w"> </span>id.cminus
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Comparing<span class="w"> </span>id.cminus...
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>id.cminus<span class="w"> </span>is<span class="w"> </span>correct!
+<span class="o">[</span>info<span class="o">]</span><span class="w"> </span>Score<span class="w"> </span><span class="k">for</span><span class="w"> </span>/home/innerpeace/stl_debug/tests/1-parser/input/easy:<span class="w"> </span><span class="m">6</span>/6
+</code></pre></div>
+<h2 id="拓展阅读">拓展阅读<a class="headerlink" href="#拓展阅读" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">注意</p>
+<p>请在完成词法语法解析这一部分的实验后再阅读本小节！</p>
+<p>本小节仅作为拓展部分，不计入实验分数！</p>
+</div>
+<h3 id="介绍">介绍<a class="headerlink" href="#介绍" title="Permanent link">&para;</a></h3>
+<p>在我们完成了本阶段的任务，首次使用 <code>make</code> 编译时，会出现以下警告。</p>
+<div class="highlight"><pre><span></span><code>obug@obug-VMware-Virtual-Platform:~/2025ustc-jianmu-compiler/build$<span class="w"> </span>make
+<span class="o">[</span><span class="w">  </span><span class="m">5</span>%<span class="o">]</span><span class="w"> </span><span class="o">[</span>BISON<span class="o">][</span>syntax<span class="o">]</span><span class="w"> </span>Building<span class="w"> </span>parser<span class="w"> </span>with<span class="w"> </span>bison<span class="w"> </span><span class="m">3</span>.8.2
+syntax_analyzer.y:<span class="w"> </span>warning:<span class="w"> </span><span class="m">1</span><span class="w"> </span>shift/reduce<span class="w"> </span>conflict<span class="w"> </span><span class="o">[</span>-Wconflicts-sr<span class="o">]</span>
+syntax_analyzer.y:<span class="w"> </span>note:<span class="w"> </span>rerun<span class="w"> </span>with<span class="w"> </span>option<span class="w"> </span><span class="s1">&#39;-Wcounterexamples&#39;</span><span class="w"> </span>to<span class="w"> </span>generate<span class="w"> </span>conflict<span class="w"> </span>counterexamples
+</code></pre></div>
+<p>这是因为，我们的 cminusf 语法存在一项移进/规约冲突。</p>
+<p>进入 <code>2025ustc-jianmu-compiler</code> 仓库下的 <code>src/parser</code> 目录，运行以下命令</p>
+<div class="highlight"><pre><span></span><code>bison<span class="w"> </span>-v<span class="w"> </span>syntax_analyzer.y<span class="w"> </span>-Wcounterexamples
+</code></pre></div>
+<p>在终端的输出中，生成了一个移进/规约冲突的样例：</p>
+<div class="highlight"><pre><span></span><code>Example:<span class="w"> </span>IF<span class="w"> </span>LPARENTHESE<span class="w"> </span>expression<span class="w"> </span>RPARENTHESE<span class="w"> </span>IF<span class="w"> </span>LPARENTHESE<span class="w"> </span>expression<span class="w"> </span>RPARENTHESE<span class="w"> </span>statement<span class="w"> </span>•<span class="w"> </span>ELSE<span class="w"> </span>statement
+Shift<span class="w"> </span>derivation
+<span class="w">  </span>selection-stmt
+<span class="w">  </span>↳<span class="w"> </span><span class="m">30</span>:<span class="w"> </span>IF<span class="w"> </span>LPARENTHESE<span class="w"> </span>expression<span class="w"> </span>RPARENTHESE<span class="w"> </span>statement
+<span class="w">                                              </span>↳<span class="w"> </span><span class="m">25</span>:<span class="w"> </span>selection-stmt
+<span class="w">                                                    </span>↳<span class="w"> </span><span class="m">31</span>:<span class="w"> </span>IF<span class="w"> </span>LPARENTHESE<span class="w"> </span>expression<span class="w"> </span>RPARENTHESE<span class="w"> </span>statement<span class="w"> </span>•<span class="w"> </span>ELSE<span class="w"> </span>statement
+Reduce<span class="w"> </span>derivation
+<span class="w">  </span>selection-stmt
+<span class="w">  </span>↳<span class="w"> </span><span class="m">31</span>:<span class="w"> </span>IF<span class="w"> </span>LPARENTHESE<span class="w"> </span>expression<span class="w"> </span>RPARENTHESE<span class="w"> </span>statement<span class="w">                                                     </span>ELSE<span class="w"> </span>statement
+<span class="w">                                              </span>↳<span class="w"> </span><span class="m">25</span>:<span class="w"> </span>selection-stmt
+<span class="w">                                                    </span>↳<span class="w"> </span><span class="m">30</span>:<span class="w"> </span>IF<span class="w"> </span>LPARENTHESE<span class="w"> </span>expression<span class="w"> </span>RPARENTHESE<span class="w"> </span>statement<span class="w"> </span>•
+</code></pre></div>
+<p>在这里的 <code>IF-IF-ELSE</code> 样例，<code>Shift derivation</code> 把 <code>ELSE</code> 与后面的 <code>IF</code> 匹配，<code>Reduce derivation</code> 把 <code>ELSE</code> 与前面的 <code>IF</code> 匹配，两种处理方式产生了冲突。</p>
+<p>我们打开同目录下的 <code>syntax_analyzer.output</code> 文件，这是刚才的命令生成的。</p>
+<p><code>ctrl+F</code> 搜索 conflict，可以看到下详细信息。其中有一句是 <code>shift/reduce conflict on token ELSE</code>。在读到 <code>ELSE</code> 这个 token 时，可以选择将前面的 <code>IF LPARENTHESE expression RPARENTHESE statement</code> 规约成 statement，这种情况下 <code>ELSE</code> 就只能和第一个 <code>IF</code> 匹配；也可以选择继续移进 <code>ELSE</code>，最后在规约时，<code>ELSE</code> 便会与最近的 <code>IF</code> 即第二个 <code>IF</code> 匹配。</p>
+<p>显然，第二种是正确的。</p>
+<div class="highlight"><pre><span></span><code>State<span class="w"> </span><span class="m">101</span>
+
+<span class="w">   </span><span class="m">30</span><span class="w"> </span>selection-stmt:<span class="w"> </span>IF<span class="w"> </span>LPARENTHESE<span class="w"> </span>expression<span class="w"> </span>RPARENTHESE<span class="w"> </span>statement<span class="w"> </span>•
+<span class="w">   </span><span class="m">31</span><span class="w">               </span><span class="p">|</span><span class="w"> </span>IF<span class="w"> </span>LPARENTHESE<span class="w"> </span>expression<span class="w"> </span>RPARENTHESE<span class="w"> </span>statement<span class="w"> </span>•<span class="w"> </span>ELSE<span class="w"> </span>statement
+
+<span class="w">    </span>ELSE<span class="w">  </span>shift,<span class="w"> </span>and<span class="w"> </span>go<span class="w"> </span>to<span class="w"> </span>state<span class="w"> </span><span class="m">104</span>
+
+<span class="w">    </span>ELSE<span class="w">      </span><span class="o">[</span>reduce<span class="w"> </span>using<span class="w"> </span>rule<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="o">(</span>selection-stmt<span class="o">)]</span>
+<span class="w">    </span><span class="nv">$default</span><span class="w">  </span>reduce<span class="w"> </span>using<span class="w"> </span>rule<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="o">(</span>selection-stmt<span class="o">)</span>
+</code></pre></div>
+<p>在这里，读到 <code>ELSE</code> 时 Bison 默认采取了移进，舍弃了规约（方括号表示被放弃的动作选项），这也就是我们的程序运行没报错的原因。</p>
+<h3 id="如何消除警告">如何消除警告<a class="headerlink" href="#如何消除警告" title="Permanent link">&para;</a></h3>
+<p>对于我们的实验，这里的警告并无影响，Bison 已经智能地帮我们选择了合理的处理方式。</p>
+<p>如果想消除这一项移进/规约冲突，这里提出一种思路：手动设置优先级。我们可以在所有的 token 后加入这两行</p>
+<div class="highlight"><pre><span></span><code>%nonassoc<span class="w"> </span>Epsilon
+%nonassoc<span class="w"> </span>ELSE
+</code></pre></div>
+<p>这里引入了一个虚拟的 token，名为 <code>Epsilon</code>，并规定它的优先级比 <code>ELSE</code> 低。
+之后我们可以在 <strong>selection-stmt</strong> 的前一条规则（即无 <code>ELSE</code> 的）最后一个 token 后面加上 <strong><em>%prec Epsilon</em></strong>，来规定这条规则的优先级是低于 <code>ELSE</code> 的。</p>
+<p>在 Bison 中，当遇到移进/归约冲突时，Bison 会比较移进操作所涉及的终结符的优先级和归约操作所涉及规则的优先级。如果规则的优先级低于终结符的优先级，则选择移进；反之则选择归约。</p>
+<p>这样，在移进 <code>ELSE</code> 和采用该规则规约之间，由于 <code>ELSE</code> 的优先级比该规则高，就会移进 <code>ELSE</code>。这样就消除了移进/规约冲突。</p>
+<p>可以验证，删除 <code>build</code> 文件夹，重新编译，发现没有了移进/规约冲突的警告！</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 26, 2025</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="贡献者">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:ack@mail.ustc.edu.cn">Ack</a>, 
+        <a href="mailto:153092435+terialion@users.noreply.github.com">WangYuhang</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

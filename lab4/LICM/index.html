@@ -1,0 +1,915 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>LICM - USTC 编译原理和技术 2026</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#licm" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-header__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            USTC 编译原理和技术 2026
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              LICM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="切换到夜晚模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜晚模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到白天模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到白天模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../exp_platform_intro/" class="md-tabs__link">
+          
+  
+  公共文档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-nav__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    USTC 编译原理和技术 2026
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    公共文档
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            公共文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exp_platform_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课程平台介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#循环不变代码外提介绍" class="md-nav__link">
+    <span class="md-ellipsis">
+      循环不变代码外提介绍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#如何识别循环不变量" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何识别循环不变量？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#处理-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      处理 Load
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="处理 Load">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funcinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      FuncInfo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#处理-load_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      处理 Load
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#处理-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      处理 Call
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#如何进行外提" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何进行外提？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#为-preheader-维护-phi" class="md-nav__link">
+    <span class="md-ellipsis">
+      为 PreHeader 维护 Phi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#代码撰写" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码撰写
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#本地测试" class="md-nav__link">
+    <span class="md-ellipsis">
+      本地测试
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="本地测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#测试脚本" class="md-nav__link">
+    <span class="md-ellipsis">
+      测试脚本
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#编译与运行" class="md-nav__link">
+    <span class="md-ellipsis">
+      编译与运行
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="licm">LICM<a class="headerlink" href="#licm" title="Permanent link">&para;</a></h1>
+<h2 id="循环不变代码外提介绍">循环不变代码外提介绍<a class="headerlink" href="#循环不变代码外提介绍" title="Permanent link">&para;</a></h2>
+<p>循环不变代码外提（<strong>L</strong>oop <strong>I</strong>nvariant <strong>C</strong>ode <strong>M</strong>otion，<strong>LICM</strong>）是编译器优化中的一种重要技术，它通过识别和移动循环中的不变操作来提高程序性能。当一个计算操作的结果在整个循环执行过程中保持不变时，我们就可以将这个操作移到循环之外执行，这样就能避免在每次循环迭代中重复执行相同的计算。</p>
+<p>假设有如下代码（除了循环体和寻址，其余变量保持静态单赋值，以与 IR 对应）</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random_input</span><span class="p">();</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log3</span><span class="p">(</span><span class="n">log3</span><span class="p">(</span><span class="n">log3</span><span class="p">(</span><span class="n">x1</span><span class="p">)));</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x3</span><span class="p">;</span>
+<span class="w">    </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>在这段代码中，<code>int x1 = y + z</code> 和 <code>int x2 = log3(log3(log3(x1)))</code> 是循环不变的，因为它们的值在整个循环执行过程中保持不变。因此，我们可以将这个操作移到循环之外执行，减少循环内的计算量。</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random_input</span><span class="p">();</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log3</span><span class="p">(</span><span class="n">log3</span><span class="p">(</span><span class="n">log3</span><span class="p">(</span><span class="n">x1</span><span class="p">)));</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x3</span><span class="p">;</span>
+<span class="w">    </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>但这并不总是会优化性能，例如如果 <code>n</code> 在大部分时候等于 0，这个循环即使不会执行，也还是要把 <code>x1</code> 和 <code>x2</code> 计算出来。</p>
+<p>可以对它的性能进行定量分析，假设所有操作只有 <code>log3(log3(log3(x1)))</code> 是耗时的，它的耗时记为 <code>1</code>，我们 4 次执行程序，并对耗时取平均值：</p>
+<table>
+<thead>
+<tr>
+<th>输入 <code>n</code> 序列</th>
+<th>未外提平均耗时</th>
+<th>外提平均耗时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0, 0, 0, 0</code></td>
+<td><code>0</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>1, 0, 0, 0</code></td>
+<td><code>0.25</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>2, 1, 2, 0</code></td>
+<td><code>1.25</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>1, 2, 3, 4</code></td>
+<td><code>2.5</code></td>
+<td><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<p>显然，程序有时变快有时变慢。一般的循环大部分时候输入 <code>n</code> 都非 0，所以大部分情况都是变快。</p>
+<p>我们可以通过在代码外层套一层 <code>if</code> 判断是否会执行循环，再把 <code>while</code> 变成 <code>do while</code> 的方式来解决这个问题：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random_input</span><span class="p">();</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// loop guard</span>
+<span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log3</span><span class="p">(</span><span class="n">log3</span><span class="p">(</span><span class="n">log3</span><span class="p">(</span><span class="n">x1</span><span class="p">)));</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">x3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x3</span><span class="p">;</span>
+<span class="w">        </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这一过程被称之为 <a href="https://llvm.org/docs/Passes.html#passes-loop-rotate">Loop Rotate</a>，我们在本次实验中不要求实现。</p>
+<p>在进行 Loop Rotate 后，我们可以进行无负优化的外提，并且还能将 <code>b[0] = x2</code> 一起外提出去
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random_input</span><span class="p">();</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// loop guard</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log3</span><span class="p">(</span><span class="n">log3</span><span class="p">(</span><span class="n">log3</span><span class="p">(</span><span class="n">x1</span><span class="p">)));</span>
+<span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">x3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x3</span><span class="p">;</span>
+<span class="w">        </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="w">    </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="如何识别循环不变量">如何识别循环不变量？<a class="headerlink" href="#如何识别循环不变量" title="Permanent link">&para;</a></h2>
+<p>Light IR 是静态单赋值形式，意味着：</p>
+<ul>
+<li>
+<p>单赋值，一个变量只被赋值一次，赋值后值不变</p>
+</li>
+<li>
+<p>静态，只在编译阶段是单赋值，在执行阶段，循环中每次执行值都会变化</p>
+</li>
+</ul>
+<p>而我们所寻找的循环不变量，是即使在执行时两次经过循环，值也不会发生变化的变量。</p>
+<p>循环不变量中最显然的是循环外的变量，例如下图中的 <code>y</code> 和 <code>z</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random_input</span><span class="p">();</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log3</span><span class="p">(</span><span class="n">log3</span><span class="p">(</span><span class="n">log3</span><span class="p">(</span><span class="n">x1</span><span class="p">)));</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x3</span><span class="p">;</span>
+<span class="w">    </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>显然操作数都是循环不变量，而又没有副作用（例如 load/store）的指令也是循环不变量。</p>
+<p>我们逐句检查循环中每条指令：</p>
+<ul>
+<li><code>x1 = y + z</code> 操作数只有 <code>y</code> 和 <code>z</code>，它是一个循环不变量。</li>
+<li><code>x2 = log3(log3(log3(x1)))</code>，操作数只有 <code>x1</code>，其中调用的函数 <code>log3</code> 是一个纯函数（意味着无副作用），它也是循环不变量。</li>
+<li><code>x3 = i + x2</code> 包含一个 <code>i</code>，每次循环都会变，因此它不是循环不变量</li>
+</ul>
+<p>上面这种操作方式启发我们使用如下算法：</p>
+<ul>
+<li>
+<p>收集循环中的所有指令，放到集合 <code>insts</code> 中</p>
+</li>
+<li>
+<p>准备两个集合， <code>variant</code> 放置在每次循环一定会变化变量，<code>invariant</code> 放置每次循环都不变的不变量</p>
+</li>
+<li>
+<p>扫描 <code>insts</code> 中每个指令</p>
+<ul>
+<li>如果这个指令有副作用，将它从 <code>insts</code> 放进 <code>variant</code>，这包括<ul>
+<li>它是 <code>phi</code>，即使可以外提也非常麻烦，需要更改每个操作数，所以干脆当成变量不外提</li>
+<li>它是 <code>alloca</code>，如果你在循环中发现了 <code>alloca</code>，代表你的 <code>lab2</code> 写得有问题</li>
+<li>它是 <code>ret</code> 或 <code>br</code>，不能外提</li>
+<li>它是 <code>store</code>，外提后还需要 Loop Rotate 保证程序正确，因此不外提</li>
+<li>它是 <code>load</code>，不知道两次循环 <code>load</code> 出来的值是不是一样，所以不外提</li>
+<li>它是 <code>call</code>，并且调用的不是纯函数，因此函数内部可能会进行类似 <code>load</code> 和 <code>store</code> 的操作，不外提</li>
+</ul>
+</li>
+<li>如果这个指令没有副作用<ul>
+<li>如果它的操作数要么在 <code>invariant</code> 里，要么在循环外，说明它的操作数都是循环不变量，那它自身也应该是循环不变量，将它从 <code>insts</code> 放入 <code>invariant</code>。</li>
+<li>如果它有在 <code>variant</code> 中的操作数，说明它依赖于一个循环中的变量，它自身也就是变量，从 <code>insts</code> 放入 <code>variant</code></li>
+<li>如果操作数全在 <code>insts</code> 中，说明还不能决定它是变量还是不变量，把它留在 <code>insts</code> 里，先扫描下一条指令</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>不断扫描 <code>insts</code> 重复上述操作，直到 <code>insts</code> 为空</p>
+</li>
+</ul>
+<p>这样，<code>invariant</code> 中就包含了所有的需要外提的循环不变量。</p>
+<h2 id="处理-load">处理 Load<a class="headerlink" href="#处理-load" title="Permanent link">&para;</a></h2>
+<p>我们以前的算法假设所有的 <code>load</code> 都不能外提，但是显然，在下面指令中的 <code>b[0]</code> 是可以外提的。因为在整个循环都没有对 <code>b</code> 进行 <code>store</code>，<code>load</code> 出来的值不会发生变化。</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random_input</span><span class="p">();</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x3</span><span class="p">;</span>
+<span class="w">    </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>识别这种可以外提的 <code>load</code> （即在循环中没有被 <code>store</code> 过的变量的 <code>load</code>）具有两个挑战</p>
+<ul>
+<li><code>load</code> 和 <code>store</code> 的指针通常来自于 <code>getelementptr</code>，如何知道一对 <code>load</code> 和 <code>store</code> 是不是操作同一变量？</li>
+<li>代码中存在一些非纯函数的调用，如何知道这些函数调用是否 <code>store</code> 了我们希望 <code>load</code> 的变量？</li>
+</ul>
+<p>助教在此提供了 FuncInfo Pass 用于解决这些问题，这个 Pass 不要求同学们实现，如果你感兴趣，你可以看看它是如何实现的。</p>
+<h3 id="funcinfo">FuncInfo<a class="headerlink" href="#funcinfo" title="Permanent link">&para;</a></h3>
+<p>FuncInfo Pass 用于获得函数的信息，一般包括计算每个函数是否是纯函数。基于 Light IR 的一些特点，可以使 FuncInfo 提供每个函数 <code>store</code> 和 <code>load</code> 了哪些变量的信息。</p>
+<p>我们的 <code>cminus_builder</code> 在运行完 <code>Mem2Reg</code> 和 <code>DeadCode</code> 后，提供的 IR 满足</p>
+<ul>
+<li>
+<p>指针不会被存入内存中</p>
+<ul>
+<li>IR 中唯一会将指针存入内存的地方是函数调用时传入 <code>int[]</code>，它会被存入 <code>alloca i32*</code> 中，然而 <code>alloca i32*</code> 会被 <code>Mem2Reg</code> 消除</li>
+</ul>
+</li>
+<li>
+<p>指针不会出现在 phi，这是由于没有指针赋值，例如下面这个</p>
+<ul>
+<li><code>c++
+    int a[10];
+    int b[10];
+    int* c;
+    if(xxx) c = &amp;a[0];
+    else c = &amp;b[0];</code></li>
+</ul>
+</li>
+</ul>
+<p>所以如果对某个 <code>load/store</code> 操作的指针 <code>%p</code> 进行溯源：</p>
+<ul>
+<li>
+<p>令 <code>src = %p</code></p>
+</li>
+<li>
+<p>反复执行：若 <code>src == getelementptr %p1</code>，令 <code>src = %p1</code></p>
+</li>
+</ul>
+<p>你就能得到 <code>load/store</code> 操作的指针来源，它要么是一个全局变量，要么是局部的数组变量 <code>alloca</code>，要么是函数参数中传入的指针形参变量 <code>argument</code>。</p>
+<p>FuncInfo 通过这些分析，提供了一组 api:</p>
+<div class="highlight"><pre><span></span><code>FuncInfo::is_pure(Function*) 函数是否是纯函数，非纯函数不能外提
+
+FuncInfo::store_ptr(StoreInst*) StoreInst 存入的变量
+
+FuncInfo::load_ptr(LoadInst*) LoadInst 加载的变量
+
+FuncInfo::get_stores(CallInst*) CallInst 直接或间接 store 了的所有变量
+</code></pre></div>
+<h3 id="处理-load_1">处理 Load<a class="headerlink" href="#处理-load_1" title="Permanent link">&para;</a></h3>
+<p>在进行不变量识别前，首先扫描一遍循环中的所有指令，通过 <code>FuncInfo::store_ptr</code> 和 <code>FuncInfo::get_stores(CallInst*)</code> 收集循环中被 <code>store</code> 过的变量集合。</p>
+<p>现在开始进行不变量识别。如果发现遇到的 <code>load</code> 指令加载的变量（通过 <code>load_ptr</code> 得到）没有被 <code>store</code> 过，它就可以外提。</p>
+<h2 id="处理-call">处理 Call<a class="headerlink" href="#处理-call" title="Permanent link">&para;</a></h2>
+<p>一些函数非纯函数调用也可以进行外提，例如
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">N</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>假如 <code>N</code> 只会被在程序开始赋值一次，其它时候实际上是个常量，这个函数完全可以当成类似纯函数来看待。</p>
+<h2 id="如何进行外提">如何进行外提？<a class="headerlink" href="#如何进行外提" title="Permanent link">&para;</a></h2>
+<p>在识别出了循环不变量后，我们还要考虑如何将这些循环不变量外提。这似乎是一件简单的问题，我们只需要将循环不变的指令 <strong>按照顺序</strong> 移动到循环之前即可。</p>
+<p><a class="glightbox" href="../image-19.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-19.png" /></a></p>
+<p>左图中，我们将指令放入 Header 之前的基本块，也就是循环的 PreHeader；在中图，这样的基本块有两个，由于我们的 IR 是静态单赋值形式，指令不能同时放入两个基本块，因此就找不到放置指令的位置；在右图，虽然可以放入 Block2，但这导致即使不进入循环也会执行我们外提的指令。</p>
+<p>这一切要求为循环创建一个 <strong>PreHeader</strong> 基本块作为不变量的外提插入点。循环的 <strong>PreHeader</strong> 满足以下要求：</p>
+<ul>
+<li>PreHeader 只有 Header 一个后继</li>
+<li>Header 只有 PreHeader 一个前驱</li>
+</ul>
+<p>如果已经像左图一样存在这样的基本块，就可以直接拿它作为 PreHeader，如果不存在，就需要在 Header 前面创建一个 PreHeader 块，并且将 Header 原来前驱的跳转都指向 PreHeader。</p>
+<p><a class="glightbox" href="../figs/loop_preheader.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="loop_preheader" src="../figs/loop_preheader.svg" /></a></p>
+<h2 id="为-preheader-维护-phi">为 PreHeader 维护 Phi<a class="headerlink" href="#为-preheader-维护-phi" title="Permanent link">&para;</a></h2>
+<p>PreHeader 的插入将导致 Header 块的 Phi 被破坏，以上图为例，假设 Header 具有指令 <code>%a = phi [%b1, block1], [%b2, block2], [%b3, block3], [%b4, latch]</code>，那么它需要被分裂成</p>
+<ul>
+<li>一条在 PreHeader 的指令 <code>%ap = phi [%b1, block1], [%b2, block2], [%b3, block3]</code></li>
+<li>一条在 Header 原有位置的指令 <code>%p = phi [%ap, preheader], [%b4, latch]</code></li>
+</ul>
+<p>好在外提的指令不会依赖这些指令，因此不需要更改，你可以简单的把它们从指令列表中移除，然后添加到 preheader 中。</p>
+<h2 id="代码撰写">代码撰写<a class="headerlink" href="#代码撰写" title="Permanent link">&para;</a></h2>
+<ol>
+<li>补全 <code>src/passes/LICM.cpp</code> 文件，使编译器能够正确执行循环不变量外提。</li>
+</ol>
+<h2 id="本地测试">本地测试<a class="headerlink" href="#本地测试" title="Permanent link">&para;</a></h2>
+<h3 id="测试脚本">测试脚本<a class="headerlink" href="#测试脚本" title="Permanent link">&para;</a></h3>
+<p><code>tests/4-opt</code> 目录的结构如下：</p>
+<div class="highlight"><pre><span></span><code>.
+├── eval_lab4.cpp
+└── testcases
+    └── ...
+</code></pre></div>
+<p>当运行 <code>sudo make install</code> 后，你可以直接使用 <code>eval_lab4 all testcases debug</code> 进行测试，或者将 <code>all</code> 换成 <code>raw</code>，<code>mem2reg</code>，<code>licm</code> 来测试不同阶段，其中 <code>raw</code> 代表不加任何优化。</p>
+<p>运行结果类似于</p>
+<div class="highlight"><pre><span></span><code>==========6_complex4.cminus==============
+raw      OK Take Time (us): 1088  Inst Execute Cost: 428 Allocate Size (bytes): 1188
+mem2reg  OK Take Time (us): 829   Inst Execute Cost: 428 Allocate Size (bytes): 60
+licm     OK Take Time (us): 857   Inst Execute Cost: 406 Allocate Size (bytes): 60
+</code></pre></div>
+<p>由于后端使用栈式分配，并且需要进行额外的统计工作，可能时间上不会体现出很明显的优化。我们提供了 Inst Execute Cost 指标，代表程序中特定类型指令的执行次数。</p>
+<p>LICM 将指令提到循环外，所以大部分时候会降低这个次数，所以可以认为次数越低效果越好。</p>
+<h2 id="编译与运行">编译与运行<a class="headerlink" href="#编译与运行" title="Permanent link">&para;</a></h2>
+<p>按照如下示例进行项目编译：</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>2025ustc-jianmu-compiler
+$<span class="w"> </span>mkdir<span class="w"> </span>build
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+<span class="c1"># 使用 cmake 生成 makefile 等文件</span>
+$<span class="w"> </span>cmake<span class="w"> </span>..
+<span class="c1"># 使用 make 进行编译，指定 install 以正确测试</span>
+$<span class="w"> </span>sudo<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
+<p>现在你可以 <code>-licm</code> 使用来指定开启 LICM 优化：</p>
+<ul>
+<li>将 <code>test.cminus</code> 编译到 IR：<code>cminusfc -emit-llvm -mem2reg -licm test.cminus</code></li>
+<li>将 <code>test.cminus</code> 编译到汇编（还会附带一个 IR）：<code>cminusfc -S -mem2reg -licm test.cminus</code></li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 16, 2025</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="贡献者">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:153092435+terialion@users.noreply.github.com">WangYuhang</a>, 
+        <a href="mailto:ylc221606@mail.ustc.edu.cn">Yang00002</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,858 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>AST - USTC 编译原理和技术 2026</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ast" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-header__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            USTC 编译原理和技术 2026
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AST
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="切换到夜晚模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜晚模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到白天模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到白天模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../exp_platform_intro/" class="md-tabs__link">
+          
+  
+  公共文档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-nav__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    USTC 编译原理和技术 2026
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    公共文档
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            公共文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exp_platform_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课程平台介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#简介" class="md-nav__link">
+    <span class="md-ellipsis">
+      简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#转换示例" class="md-nav__link">
+    <span class="md-ellipsis">
+      转换示例
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#如何转换" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何转换？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="如何转换？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntax_tree定义" class="md-nav__link">
+    <span class="md-ellipsis">
+      syntax_tree定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ast-类定义" class="md-nav__link">
+    <span class="md-ellipsis">
+      AST 类定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transform_node_iter函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      transform_node_iter函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ast-结点" class="md-nav__link">
+    <span class="md-ellipsis">
+      AST 结点
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AST 结点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#astnode" class="md-nav__link">
+    <span class="md-ellipsis">
+      ASTNode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#一个-ast-结点类的例子" class="md-nav__link">
+    <span class="md-ellipsis">
+      一个 AST 结点类的例子
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="ast">AST<a class="headerlink" href="#ast" title="Permanent link">&para;</a></h1>
+<h2 id="简介">简介<a class="headerlink" href="#简介" title="Permanent link">&para;</a></h2>
+<p><strong>AST（抽象语法树，Abstract Syntax Tree）</strong> 是编程语言中的一种树状数据结构，用于表示源代码的语法结构。AST 将程序代码中的元素（如变量、运算符、语句等）按照层次结构组织起来，去除掉原始源代码中的一些无关紧要的信息（例如注释和格式），并抽象出表达式和控制流的关键部分。</p>
+<p>AST 是编译器用来理解和处理源代码的关键步骤。编译器首先将源代码解析成 AST，然后再进行优化，生成中间代码。</p>
+<p>对于 phase1 中 <code>Bison</code> 生成的 <code>syntax_tree</code> 本身就是 AST，但为了适配 lab2 中通过访问者模式进行中间代码生成的需求，我们在这里需要将其简化，将每个语法树结点类型抽象为一个类，在每个类中填充一些属性，并按类进行中间代码生成。</p>
+<p>而我们目前得到的 <code>syntax_tree</code> 的所有结点都只是由一个 <code>name</code> 表示，因此需要将 Bison 自动生成分析树转化成更简单的 AST。</p>
+<div class="admonition notes">
+<p class="admonition-title">分析树（Parse Tree）与抽象语法树（Abstract Syntax Tree）</p>
+<p>分析树在语法分析的过程中被构造；抽象语法树则是分析树的浓缩表示，使用运算符作为根结点和内部结点，并使用操作数作为子结点。进一步了解可以阅读 <a href="https://stackoverflow.com/questions/5026517/whats-the-difference-between-parse-trees-and-abstract-syntax-trees-asts">分析树和抽象语法树的比较</a>。</p>
+</div>
+<h2 id="转换示例">转换示例<a class="headerlink" href="#转换示例" title="Permanent link">&para;</a></h2>
+<p>比如，我们有如下样例：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>经过阶段一中 Flex + Bison 自动构建的词法、语法分析器后，我们得到了一棵 <code>syntax_tree</code> 并打印得到：</p>
+<div class="highlight"><pre><span></span><code>&gt;--+ program
+|  &gt;--+ declaration-list
+|  |  &gt;--+ declaration
+|  |  |  &gt;--+ fun-declaration
+|  |  |  |  &gt;--+ type-specifier
+|  |  |  |  |  &gt;--* int
+|  |  |  |  &gt;--* main
+|  |  |  |  &gt;--* (
+|  |  |  |  &gt;--+ params
+|  |  |  |  |  &gt;--* void
+|  |  |  |  &gt;--* )
+|  |  |  |  &gt;--+ compound-stmt
+|  |  |  |  |  &gt;--* {
+|  |  |  |  |  &gt;--+ local-declarations
+|  |  |  |  |  |  &gt;--* epsilon
+|  |  |  |  |  &gt;--+ statement-list
+|  |  |  |  |  |  &gt;--+ statement-list
+|  |  |  |  |  |  |  &gt;--* epsilon
+|  |  |  |  |  |  &gt;--+ statement
+|  |  |  |  |  |  |  &gt;--+ return-stmt
+|  |  |  |  |  |  |  |  &gt;--* return
+|  |  |  |  |  |  |  |  &gt;--+ expression
+|  |  |  |  |  |  |  |  |  &gt;--+ simple-expression
+|  |  |  |  |  |  |  |  |  |  &gt;--+ additive-expression
+|  |  |  |  |  |  |  |  |  |  |  &gt;--+ term
+|  |  |  |  |  |  |  |  |  |  |  |  &gt;--+ factor
+|  |  |  |  |  |  |  |  |  |  |  |  |  &gt;--+ integer
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  &gt;--* 0
+|  |  |  |  |  |  |  |  &gt;--* ;
+|  |  |  |  |  &gt;--* }
+</code></pre></div>
+<p>转换为 AST 再打印，我们将得到：</p>
+<div class="highlight"><pre><span></span><code>program
+--fun-declaration: main
+----compound-stmt
+------return-stmt
+--------simple-expression
+----------additive-expression
+------------term
+--------------num (int): 0
+</code></pre></div>
+<blockquote>
+<p>这两个不同语法树的输出都是直接将语法树结点名字按 DFS 的顺序做输出，可以发现后者的结点数量明显更少。在后面的结点类属性分析中，我们可以发现每个结点的信息更丰富。</p>
+</blockquote>
+<h2 id="如何转换">如何转换？<a class="headerlink" href="#如何转换" title="Permanent link">&para;</a></h2>
+<p>整体的转换逻辑是将一棵 <code>syntax_tree</code> 按 DFS 的顺序遍历所有结点，将 <code>syntax_tree</code> 的不同结点转化为作用相似的 <code>ASTNode</code>。</p>
+<h3 id="syntax_tree定义"><code>syntax_tree</code>定义<a class="headerlink" href="#syntax_tree定义" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">_syntax_tree_node</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_syntax_tree_node</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">parent</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_syntax_tree_node</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">children</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">children_num</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="n">SYNTAX_TREE_NODE_NAME_MAX</span><span class="p">];</span>
+<span class="p">};</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_syntax_tree_node</span><span class="w"> </span><span class="n">syntax_tree_node</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">_syntax_tree</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">syntax_tree_node</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_syntax_tree</span><span class="w"> </span><span class="n">syntax_tree</span><span class="p">;</span>
+</code></pre></div>
+<ul>
+<li><code>syntax_tree</code> 结构体唯一属性是 <code>root</code>，指向根结点的指针</li>
+<li>每个 <code>syntax_tree_node</code> 有以下属性：</li>
+<li><code>parent</code>：父结点</li>
+<li><code>children</code>：子结点数组，这里子结点数目是由产生式决定的，不会超过 10</li>
+<li><code>children_num</code>：子结点的数目</li>
+<li><code>name</code>：<code>syntax_tree</code>结点的名字，也是区分不同结点的标识</li>
+</ul>
+<p>比如对于 <code>declaration-list</code> 这个结点，其对应的文法产生式为：</p>
+<p><span class="arithmatex">\(program\rightarrow declaration-list\)</span></p>
+<p><span class="arithmatex">\(declaration-list \rightarrow declaration-list ~declaration |declaration\)</span></p>
+<p>当采用前一个产生式时，我们可以得到以下属性：</p>
+<ul>
+<li><code>parent</code>：<code>program</code> 结点的指针</li>
+<li><code>children[10]</code>：<code>children[0]</code> 为指向 <code>declaration-list</code> 结点的指针，<code>children[1]</code> 为指向 <code>declaration</code> 结点的指针</li>
+<li><code>children_num = 2</code></li>
+<li><code>name = "declaration-list"</code></li>
+</ul>
+<p>第二个产生式同理。</p>
+<h3 id="ast-类定义">AST 类定义<a class="headerlink" href="#ast-类定义" title="Permanent link">&para;</a></h3>
+<p><code>Class AST</code> 定义如下：</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AST</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span>
+<span class="w">        </span><span class="n">AST</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
+<span class="w">        </span><span class="n">AST</span><span class="p">(</span><span class="n">syntax_tree</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
+<span class="w">        </span><span class="n">AST</span><span class="p">(</span><span class="n">AST</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">tree</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">.</span><span class="n">root</span><span class="p">;</span>
+<span class="w">                </span><span class="n">tree</span><span class="p">.</span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="n">ASTProgram</span><span class="w"> </span><span class="o">*</span><span class="nf">get_root</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">root</span><span class="p">.</span><span class="n">get</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">run_visitor</span><span class="p">(</span><span class="n">ASTVisitor</span><span class="w"> </span><span class="o">&amp;</span><span class="n">visitor</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">private</span><span class="o">:</span>
+<span class="w">        </span><span class="n">ASTNode</span><span class="w"> </span><span class="o">*</span><span class="n">transform_node_iter</span><span class="p">(</span><span class="n">syntax_tree_node</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ASTProgram</span><span class="o">&gt;</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>其中，</p>
+<ul>
+<li>
+<p><code>root</code> 是 AST 的根结点。</p>
+</li>
+<li>
+<p><code>transform_node_iter</code> 即 DFS 遍历函数，将一棵 <code>syntax_tree</code> 转换为 <code>AST</code>。</p>
+</li>
+<li>
+<p>这里的 <code>run_visitor</code> 是访问者模式遍历 <code>AST</code> 并输出的接口，本次实验测试会用到，但是实现时不会用到，感兴趣的同学可以研究一下。</p>
+</li>
+</ul>
+<blockquote>
+<p>我们会在下一个 lab 中详细介绍访问者模式，本次实验不会涉及。</p>
+</blockquote>
+<p><code>Class AST</code> 的构造对象实现在 <code>src/common/ast.cpp</code> 中：</p>
+<div class="highlight"><pre><span></span><code><span class="n">AST</span><span class="o">::</span><span class="n">AST</span><span class="p">(</span><span class="n">syntax_tree</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;empty input tree!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">abort</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transform_node_iter</span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">);</span>
+<span class="w">    </span><span class="n">del_syntax_tree</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ASTProgram</span><span class="o">&gt;</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">ASTProgram</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">node</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>其中，</p>
+<ul>
+<li>我们将一个 <code>syntax_tree</code> 实例传给构造函数作为参数。</li>
+<li>我们从 <code>syntax_tree</code> 的根结点开始进行 DFS，并将这个新的 <code>AST</code> 的根赋给 <code>AST</code> 实例的 <code>root</code>。</li>
+<li>转换结束会删除原先的 <code>syntax_tree</code>，并释放内存空间。</li>
+</ul>
+<h3 id="transform_node_iter函数"><code>transform_node_iter</code>函数<a class="headerlink" href="#transform_node_iter函数" title="Permanent link">&para;</a></h3>
+<p>本次实验最主要的就是补全 <code>transform_node_iter</code> 这个函数的内容。我们将以一个具体的结点例子介绍 <code>transform_node_iter</code> 函数的逻辑。</p>
+<div class="highlight"><pre><span></span><code><span class="n">ASTNode</span><span class="w"> </span><span class="o">*</span><span class="nf">AST::transform_node_iter</span><span class="p">(</span><span class="n">syntax_tree_node</span><span class="w"> </span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_STR_EQ</span><span class="p">(</span><span class="n">n</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;program&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ASTProgram</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// flatten declaration list</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="n">syntax_tree_node</span><span class="w"> </span><span class="o">*&gt;</span>
+<span class="w">                </span><span class="n">s</span><span class="p">;</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">list_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">list_ptr</span><span class="o">-&gt;</span><span class="n">children_num</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">list_ptr</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">            </span><span class="n">list_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list_ptr</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">list_ptr</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">s</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">child_node</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                    </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">ASTDeclaration</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">transform_node_iter</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">top</span><span class="p">()));</span>
+
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">child_node_shared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ASTDeclaration</span><span class="o">&gt;</span><span class="p">(</span><span class="n">child_node</span><span class="p">);</span>
+<span class="w">            </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">declarations</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">child_node_shared</span><span class="p">);</span>
+<span class="w">            </span><span class="n">s</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">node</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_STR_EQ</span><span class="p">(</span><span class="n">n</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;declaration&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">transform_node_iter</span><span class="p">(</span><span class="n">n</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<p>对于 <code>syntax_tree</code> 的结点 program（也即其根结点），对应的文法产生式为：</p>
+<div class="highlight"><pre><span></span><code>program -&gt; declaration-list
+declaration-list -&gt; declaration-list declaration | declaration
+</code></pre></div>
+<p>我们要将其转换为 <code>ASTNode</code> 中的 <code>ASTProgram</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">ASTProgram</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ASTNode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="n">ASTVisitor</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">final</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">ASTProgram</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ASTDeclaration</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">declarations</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>由其结构体信息，我们需要在转换时填充这个结点的 <code>declarations</code> 属性，也就是对应文法产生式的 <code>declaration-list</code>。这是一个 <code>vector</code> 数组，每一个元素都是一个 <code>ASTDeclaration</code>，也就对应着上述第二个产生式的一个 <code>declaration</code>。</p>
+<p>我们这个结点的转换过程中需要将原先 <code>syntax_tree</code> 中的 <code>declaration-list</code> 展开，然后对每个 <code>declaration</code> 做 DFS。</p>
+<blockquote>
+<p>同学们可以思考这里 flatten declaration list 的逻辑，为什么要用 stack。是否可以用其他的 STL 中的数据结构，实现上会有什么区别？</p>
+<p>flatten 这个操作也大量出现在本次实验中。</p>
+</blockquote>
+<p>填充完成 <code>declarations</code> 后，返回这个结点 node。</p>
+<h2 id="ast-结点">AST 结点<a class="headerlink" href="#ast-结点" title="Permanent link">&para;</a></h2>
+<p>AST 结点类如下：</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">ASTNode</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTProgram</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTDeclaration</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTNum</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTVarDeclaration</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTFunDeclaration</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTParam</span><span class="p">;</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTCompoundStmt</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTStatement</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTExpressionStmt</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTSelectionStmt</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTIterationStmt</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTReturnStmt</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTFactor</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTExpression</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTVar</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTAssignExpression</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTSimpleExpression</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTAdditiveExpression</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTTerm</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">ASTCall</span><span class="p">;</span>
+</code></pre></div>
+<p>所有类的属性定义在 <code>include/common/ast.hpp</code>中。</p>
+<p><code>ASTNode</code> 是一个基类，关于基类及其派生类的相关知识已经在 <a href="../../lab0/cpp/">lab0 C++ 简介 </a> 有所介绍，这里不做赘述。</p>
+<p>结点之间的继承关系如下图：</p>
+<p><a class="glightbox" href="../assets/image-20240915150429119.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240915150429119" src="../assets/image-20240915150429119.png" /></a></p>
+<p><a class="glightbox" href="../assets/image-20240915150442943.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20240915150442943" src="../assets/image-20240915150442943.png" /></a></p>
+<h3 id="astnode">ASTNode<a class="headerlink" href="#astnode" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">ASTNode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="n">ASTVisitor</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">ASTNode</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><code>ASTNode</code>是所有 AST 结点类的基类，使用默认的析构函数。</p>
+<p>其中，<code>accept</code> 函数是一个通过访问者模式访问 <code>AST</code> 每个结点输出相关信息的接口。</p>
+<p>这个函数需要一个 <code>ASTVisitor</code> 实例，通过调用 <code>ASTVisitor</code> 自身的 <code>visit</code> 接口访问该结点。</p>
+<blockquote>
+<p>对不同 AST 结点类的 <code>visit</code> 函数不同，相关接口可以在 <code>src/common/ast.cpp</code> 中查看，本次实验不需要修改。</p>
+</blockquote>
+<h3 id="一个-ast-结点类的例子">一个 AST 结点类的例子<a class="headerlink" href="#一个-ast-结点类的例子" title="Permanent link">&para;</a></h3>
+<p><code>ASTVarDeclaration</code> 类</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">ASTVarDeclaration</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ASTDeclaration</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="n">ASTVisitor</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">final</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ASTNum</span><span class="o">&gt;</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>这个类继承自 <code>ASTDeclaration</code>。</p>
+<p>会有如下三个属性：</p>
+<ul>
+<li><code>type</code>：变量声明的类型 (type-specifier)</li>
+<li><code>id</code>：变量名 (ID)</li>
+<li><code>num</code>：数组类型变量的下标 (INTEGER)</li>
+</ul>
+<p>这些属性与文法产生式对应，比如这个类对应的文法产生式为：</p>
+<p><span class="arithmatex">\(\text{var-declaration}\ \rightarrow \text{type-specifier}\ \underline{\textbf{ID}}\ \underline{\textbf{;}}\ |\ \text{type-specifier}\ \underline{\textbf{ID}}\ \underline{\textbf{[}}\ \underline{\textbf{INTEGER}}\ \underline{\textbf{]}}\ \underline{\textbf{;}}\)</span></p>
+<p>其他类定义类似，都可以在 <code>include/common/ast.hpp</code> 中找到。</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 8, 2025</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="贡献者">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:153092435+terialion@users.noreply.github.com">WangYuhang</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

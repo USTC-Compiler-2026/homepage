@@ -1,0 +1,1672 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Light IR - USTC 编译原理和技术 2026</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#light-ir" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-header__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            USTC 编译原理和技术 2026
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Light IR
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="切换到夜晚模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜晚模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到白天模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到白天模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../exp_platform_intro/" class="md-tabs__link">
+          
+  
+  公共文档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-nav__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    USTC 编译原理和技术 2026
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    公共文档
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            公共文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exp_platform_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课程平台介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#light-ir-简介" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR 简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#light-ir-指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR 指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Light IR 指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#light-ir-指令假设" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR 指令假设
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#light-ir-指令详解" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR 指令详解
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Light IR 指令详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminator-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Terminator Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Terminator Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ret" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ret
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#br" class="md-nav__link">
+    <span class="md-ellipsis">
+      Br
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-binary-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard Binary Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Standard Binary Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-fadd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add FAdd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-fsub" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sub FSub
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mul-fmul" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mul FMul
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdiv-fdiv" class="md-nav__link">
+    <span class="md-ellipsis">
+      SDiv FDiv
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alloca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alloca
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#store" class="md-nav__link">
+    <span class="md-ellipsis">
+      Store
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#castinst" class="md-nav__link">
+    <span class="md-ellipsis">
+      CastInst
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CastInst">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zext" class="md-nav__link">
+    <span class="md-ellipsis">
+      ZExt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fptosi" class="md-nav__link">
+    <span class="md-ellipsis">
+      FpToSi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sitofp" class="md-nav__link">
+    <span class="md-ellipsis">
+      SiToFp
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#icmp-fcmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ICmp FCmp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#call" class="md-nav__link">
+    <span class="md-ellipsis">
+      Call
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getelementptr" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetElementPtr
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#light-ir-c-库" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR C++ 库
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Light IR C++ 库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#light-ir-结构" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR 结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#light-ir-c-类总览" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR C++ 类总览
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#light-ir-c-数据基类valueuser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR C++ 数据基类：Value，User
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Light IR C++ 数据基类：Value，User">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    <span class="md-ellipsis">
+      User
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#light-ir-c-类型基类type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR C++ 类型基类：Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#使用-light-ir-c-库生成-ir" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用 Light IR C++ 库生成 IR
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用 Light IR C++ 库生成 IR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#创建-module-function-basicblock-的接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建 Module, Function, BasicBlock 的接口
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#irbuilder-生成-ir-指令的辅助类" class="md-nav__link">
+    <span class="md-ellipsis">
+      IRBuilder: 生成 IR 指令的辅助类
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#light-ir-c-库核心类定义" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR C++ 库核心类定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Light IR C++ 库核心类定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basicblock" class="md-nav__link">
+    <span class="md-ellipsis">
+      BasicBlock
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globalvariable" class="md-nav__link">
+    <span class="md-ellipsis">
+      GlobalVariable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constant
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argument" class="md-nav__link">
+    <span class="md-ellipsis">
+      Argument
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#irbuilder" class="md-nav__link">
+    <span class="md-ellipsis">
+      IRBuilder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      User
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Value
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="light-ir">Light IR<a class="headerlink" href="#light-ir" title="Permanent link">&para;</a></h1>
+<h2 id="light-ir-简介">Light IR 简介<a class="headerlink" href="#light-ir-简介" title="Permanent link">&para;</a></h2>
+<p>本课程以 Cminusf 语言为源语言，从 LLVM IR 中裁剪出了适用于教学的精简的 IR 子集，并将其命名为 Light IR。同时依据 LLVM 的设计，为 Light IR 提供了配套简化的 <a href="./#light-ir-c-库">C++ 库</a>，用于生成 IR。</p>
+<p>如下是一段 C 语言代码 <code>easy.c</code> 与 其对应的 IR 文件 <code>easy.ll</code> 示例。</p>
+<ul>
+<li><code>easy.c</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>easy.ll</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">;</span><span class="w"> </span><span class="n">整个</span><span class="w"> </span><span class="p">.</span><span class="n">ll</span><span class="w"> </span><span class="n">文件称为</span><span class="w"> </span><span class="n">module</span>
+<span class="p">;</span><span class="w"> </span><span class="n">ModuleID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#39;</span><span class="n">easy</span><span class="p">.</span><span class="n">c</span><span class="err">&#39;</span>
+<span class="p">;</span><span class="w"> </span><span class="p">...</span>
+<span class="p">;</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="n">中至少有一个</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="n">function</span>
+<span class="n">define</span><span class="w"> </span><span class="n">dso_local</span><span class="w"> </span><span class="n">i32</span><span class="w"> </span><span class="err">@</span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="err">#</span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="n">此处</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">仅有</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">个</span><span class="w"> </span><span class="n">basicblock</span>
+<span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="n">basicblock</span><span class="w"> </span><span class="n">由一系列</span><span class="w"> </span><span class="n">instruction</span><span class="w"> </span><span class="n">组成</span>
+<span class="w">  </span><span class="o">%</span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alloca</span><span class="w"> </span><span class="n">i32</span><span class="p">,</span><span class="w"> </span><span class="n">align</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">  </span><span class="o">%</span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alloca</span><span class="w"> </span><span class="n">i32</span><span class="p">,</span><span class="w"> </span><span class="n">align</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">  </span><span class="o">%</span><span class="mi">3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alloca</span><span class="w"> </span><span class="n">i32</span><span class="p">,</span><span class="w"> </span><span class="n">align</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">  </span><span class="n">store</span><span class="w"> </span><span class="n">i32</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">i32</span><span class="o">*</span><span class="w"> </span><span class="o">%</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">align</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">  </span><span class="n">store</span><span class="w"> </span><span class="n">i32</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">i32</span><span class="o">*</span><span class="w"> </span><span class="o">%</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">align</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">  </span><span class="n">store</span><span class="w"> </span><span class="n">i32</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">i32</span><span class="o">*</span><span class="w"> </span><span class="o">%</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">align</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">  </span><span class="o">%</span><span class="mi">4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">load</span><span class="w"> </span><span class="n">i32</span><span class="p">,</span><span class="w"> </span><span class="n">i32</span><span class="o">*</span><span class="w"> </span><span class="o">%</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">align</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">  </span><span class="o">%</span><span class="mi">5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">load</span><span class="w"> </span><span class="n">i32</span><span class="p">,</span><span class="w"> </span><span class="n">i32</span><span class="o">*</span><span class="w"> </span><span class="o">%</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">align</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">  </span><span class="o">%</span><span class="mi">6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">nsw</span><span class="w"> </span><span class="n">i32</span><span class="w"> </span><span class="o">%</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="o">%</span><span class="mi">5</span>
+<span class="w">  </span><span class="n">ret</span><span class="w"> </span><span class="n">i32</span><span class="w"> </span><span class="o">%</span><span class="mi">6</span>
+<span class="p">}</span>
+<span class="p">;</span><span class="w"> </span><span class="p">...</span>
+</code></pre></div>
+<h2 id="light-ir-指令">Light IR 指令<a class="headerlink" href="#light-ir-指令" title="Permanent link">&para;</a></h2>
+<h3 id="light-ir-指令假设">Light IR 指令假设<a class="headerlink" href="#light-ir-指令假设" title="Permanent link">&para;</a></h3>
+<p>Light IR 指令从 LLVM IR 中裁剪得到，因此保留了 LLVM IR 如下的指令规范</p>
+<ul>
+<li>采用 3 地址的方式</li>
+<li><code>%2 = add i32 %0, %1</code></li>
+<li>无限寄存器 + 静态单赋值形式</li>
+<li>IR 中的变量均代表了一个虚拟寄存器，并且数量无上限</li>
+<li>每个虚拟寄存器只被赋值一次</li>
+<li>
+<p>强类型系统</p>
+</li>
+<li>
+<p>每个操作数都具备自身的类型，分为基本类型，以及组合类型</p>
+<p>基本类型：</p>
+<ul>
+<li><code>i1</code>：1 位宽的整数类型</li>
+<li><code>i32</code>：32 位宽的整数类型</li>
+<li><code>float</code>：单精度浮点数类型</li>
+<li><code>label</code>: 基本块的标识符类型</li>
+</ul>
+<p>组合类型：</p>
+<ul>
+<li>指针类型：<code>&lt;type&gt; *</code>，例如 <code>i32*, [10 x i32*]</code></li>
+<li>数组类型：<code>[n x &lt;type&gt;]</code>，例如 <code>[10 x i32], [10 x [10 x i32]]</code></li>
+<li>函数类型：<code>&lt;ret-type&gt;@(&lt;arg-type&gt;)</code>，由函数返回值类型与参数类型列表组合成的类型</li>
+</ul>
+<p>组合类型可以嵌套，例如前面的 <code>[10 x [10 x i32]]</code> 就是嵌套后的类型。</p>
+</li>
+</ul>
+<h3 id="light-ir-指令详解">Light IR 指令详解<a class="headerlink" href="#light-ir-指令详解" title="Permanent link">&para;</a></h3>
+<h4 id="terminator-instructions">Terminator Instructions<a class="headerlink" href="#terminator-instructions" title="Permanent link">&para;</a></h4>
+<p><strong>注</strong>：<code>ret</code> 与 <code>br</code> 都是 Terminator Instructions 也就是终止指令，在 llvm 基本块的定义里，基本块是单进单出的，因此只能有一条终止指令（<code>ret</code> 或 <code>br</code>）。</p>
+<h5 id="ret">Ret<a class="headerlink" href="#ret" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：返回指令。用于将控制流（以及可选的值）从函数返回给调用者。<code>ret</code>指令有两种形式：一种返回值，然后终结函数，另一种仅终结函数。</li>
+<li>格式</li>
+<li><code>ret &lt;type&gt; &lt;value&gt;</code></li>
+<li><code>ret void</code></li>
+<li>例子：</li>
+<li><code>ret i32 %0</code></li>
+<li><code>ret void</code></li>
+</ul>
+<h5 id="br">Br<a class="headerlink" href="#br" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：跳转指令。用于使控制流转移到当前功能中的另一个基本块。该指令有两种形式，分别对应于条件分支和无条件分支。</li>
+<li>格式：</li>
+<li><code>br i1 &lt;cond&gt;, label &lt;iftrue&gt;, label &lt;iffalse&gt;</code></li>
+<li><code>br label &lt;dest&gt;</code></li>
+<li>例子：</li>
+<li><code>br i1 %cond, label %truebb, label %falsebb</code></li>
+<li><code>br label %bb</code></li>
+</ul>
+<h4 id="standard-binary-instructions">Standard Binary Instructions<a class="headerlink" href="#standard-binary-instructions" title="Permanent link">&para;</a></h4>
+<h5 id="add-fadd">Add FAdd<a class="headerlink" href="#add-fadd" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：<code>add</code>指令返回其两个<code>i32</code>类型的操作数之和，返回值为<code>i32</code>类型，<code>fadd</code>指令返回其两个<code>float</code>类型的操作数之和，返回值为<code>float</code>类型。</li>
+<li>格式：</li>
+<li><code>&lt;result&gt; = add &lt;type&gt; &lt;op1&gt;, &lt;op2&gt;</code></li>
+<li><code>&lt;result&gt; = fadd &lt;type&gt; &lt;op1&gt;, &lt;op2&gt;</code></li>
+<li>例子：</li>
+<li><code>%2 = add i32 %1, %0</code></li>
+<li><code>%2 = fadd float %1, %0</code></li>
+</ul>
+<h5 id="sub-fsub">Sub FSub<a class="headerlink" href="#sub-fsub" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：<code>sub</code>指令返回其两个<code>i32</code>类型的操作数之差，返回值为<code>i32</code>类型，<code>fsub</code>指令返回其两个<code>float</code>类型的操作数之差，返回值为<code>float</code>类型。</li>
+<li>格式与例子与<code>add</code>，<code>fadd</code>类似</li>
+</ul>
+<h5 id="mul-fmul">Mul FMul<a class="headerlink" href="#mul-fmul" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：<code>mul</code>指令返回其两个<code>i32</code>类型的操作数之积，返回值为<code>i32</code>类型，<code>fmul</code>指令返回其两个<code>float</code>类型的操作数之积，返回值为<code>float</code>类型。</li>
+<li>格式与例子与<code>add</code>，<code>fadd</code>类似</li>
+</ul>
+<h5 id="sdiv-fdiv">SDiv FDiv<a class="headerlink" href="#sdiv-fdiv" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：<code>sdiv</code>指令返回其两个<code>i32</code>类型的操作数之商，返回值为<code>i32</code>类型，<code>fdiv</code>指令返回其两个<code>float</code>类型的操作数之商，返回值为<code>float</code>类型。</li>
+<li>格式与例子与<code>add</code>，<code>fadd</code>类似</li>
+</ul>
+<h4 id="memory-instructions">Memory Instructions<a class="headerlink" href="#memory-instructions" title="Permanent link">&para;</a></h4>
+<h5 id="alloca">Alloca<a class="headerlink" href="#alloca" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念： <code>alloca</code>指令在当前执行函数的栈帧（Stack Frame）上分配内存。</li>
+<li>格式：<code>&lt;result&gt; = alloca &lt;type&gt;</code></li>
+<li>例子：</li>
+<li><code>%ptr = alloca i32</code></li>
+<li><code>%ptr = alloca [10 x i32]</code></li>
+</ul>
+<h5 id="load">Load<a class="headerlink" href="#load" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：<code>load</code>指令用于从内存中读取。</li>
+<li>格式：<code>&lt;result&gt; = load &lt;type&gt;, &lt;type&gt;* &lt;pointer&gt;</code></li>
+<li>例子：<code>%val = load i32, i32* %ptr</code></li>
+</ul>
+<h5 id="store">Store<a class="headerlink" href="#store" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：<code>store</code>指令用于写入内存。</li>
+<li>格式：<code>store &lt;type&gt; &lt;value&gt;, &lt;type&gt;* &lt;pointer&gt;</code></li>
+<li>例子：<code>store i32 3, i32* %ptr</code></li>
+</ul>
+<h4 id="castinst">CastInst<a class="headerlink" href="#castinst" title="Permanent link">&para;</a></h4>
+<h5 id="zext">ZExt<a class="headerlink" href="#zext" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：<code>zext</code>指令将其操作数<strong>零</strong>扩展为<code>type2</code>类型。</li>
+<li>格式：<code>&lt;result&gt; = zext &lt;type&gt; &lt;value&gt; to &lt;type2&gt;</code></li>
+<li>例子：<code>%1 = zext i1 %0 to i32</code></li>
+</ul>
+<h5 id="fptosi">FpToSi<a class="headerlink" href="#fptosi" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：<code>fptosi</code>指令将浮点值转换为<code>type2</code>（整数）类型。</li>
+<li>格式：<code>&lt;result&gt; = fptosi &lt;type&gt; &lt;value&gt; to &lt;type2&gt;</code></li>
+<li>例子：<code>%Y = fptosi float 1.0E-247 to i32</code></li>
+</ul>
+<h5 id="sitofp">SiToFp<a class="headerlink" href="#sitofp" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：<code>sitofp</code>指令将有符号整数转换为<code>type2</code>（浮点数）类型。</li>
+<li>格式：<code>&lt;result&gt; = sitofp &lt;type&gt; &lt;value&gt; to &lt;type2&gt;</code></li>
+<li>例子：<code>%X = sitofp i32 257 to float</code></li>
+</ul>
+<h4 id="other-instructions">Other Instructions<a class="headerlink" href="#other-instructions" title="Permanent link">&para;</a></h4>
+<h5 id="icmp-fcmp">ICmp FCmp<a class="headerlink" href="#icmp-fcmp" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：<code>icmp</code>指令根据两个整数的比较返回布尔值，<code>fcmp</code>指令根据两个浮点数的比较返回布尔值。</li>
+<li>格式：</li>
+<li><code>&lt;result&gt; = icmp &lt;cond&gt; &lt;type&gt; &lt;op1&gt;, &lt;op2&gt;</code><ul>
+<li><code>&lt;cond&gt; = eq | ne | sgt | sge | slt | sle</code></li>
+</ul>
+</li>
+<li><code>&lt;result&gt; = fcmp &lt;cond&gt; &lt;type&gt; &lt;op1&gt;, &lt;op2&gt;</code><ul>
+<li><code>&lt;cond&gt; = eq | ne | ugt | uge | ult | ule</code></li>
+</ul>
+</li>
+<li>例子：<code>i1 %2 = icmp sge i32 %0, %1</code></li>
+</ul>
+<h5 id="call">Call<a class="headerlink" href="#call" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：<code>call</code>指令用于使控制流转移到指定的函数，其传入参数绑定到指定的值。在被调用函数中执行<code>ret</code>指令后，如果被调用函数返回值不为 <code>void</code> 类型，控制流程将在函数调用后继续执行该指令，并且该函数的返回值绑定到<code>result</code>参数。</li>
+<li>格式：</li>
+<li><code>&lt;result&gt; = call &lt;return ty&gt; &lt;func name&gt;(&lt;function args&gt;)</code></li>
+<li><code>call &lt;func name&gt;(&lt;function args&gt;)</code></li>
+<li>例子：</li>
+<li><code>%0 = call i32 @func( i32 %1, i32* %0)</code></li>
+<li><code>call @func( i32 %arg)</code></li>
+</ul>
+<h5 id="getelementptr">GetElementPtr<a class="headerlink" href="#getelementptr" title="Permanent link">&para;</a></h5>
+<ul>
+<li>概念：<code>getelementptr</code>指令用于获取数组结构的元素的地址。它<strong>仅执行地址计算</strong>，并且不访问内存。</li>
+<li>格式</li>
+<li>数组：<code>&lt;result&gt; = getelementptr &lt;type&gt;, &lt;type&gt;* &lt;ptrval&gt;, i32 0, i32 &lt;idx&gt;</code></li>
+<li>指针（仅在数组作为函数参数时存在）：<code>&lt;result&gt; = getelementptr &lt;type&gt;, &lt;type&gt;* &lt;ptrval&gt;, i32 &lt;idx&gt;</code></li>
+<li>参数解释：<code>getelementptr</code> 后面的两个 <code>&lt;type&gt;</code> 一定是相同的。<code>&lt;ptrval&gt;</code> 表示指针，<code>&lt;idx&gt;</code> 表示索引（也即数组下标）</li>
+<li>例子：</li>
+<li><code>%2 = getelementptr [10 x i32], [10 x i32]* %1, i32 0, i32 %0</code></li>
+<li><code>%2 = getelementptr i32, i32* %1 i32 %0</code></li>
+<li>额外阅读：<a href="https://llvm.org/docs/GetElementPtr.html">The Often Misunderstood GEP Instruction</a></li>
+</ul>
+<h2 id="light-ir-c-库">Light IR C++ 库<a class="headerlink" href="#light-ir-c-库" title="Permanent link">&para;</a></h2>
+<p>Light IR C++ 库依据 LLVM 设计，用于生成 IR。在介绍其核心类之前，先展示 Light IR 的结构</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>在必做实验阶段，请不要对 Light IR C++ 库进行直接修改</p>
+</div>
+<h3 id="light-ir-结构">Light IR 结构<a class="headerlink" href="#light-ir-结构" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../figs/lightir.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-lightir" src="../figs/lightir.png" /></a>
+实验中需要生成的 IR 代码有着相对固定的结构模式：</p>
+<ul>
+<li>最上层的是 module，对应一个 Cminusf 源文件。包含全局变量 global_variable 和函数 function。</li>
+<li>function 由头部和函数体组成。function 的头部包括返回值类型、函数名和参数表。函数体可以由一个或多个 basicblock 构成。</li>
+<li>basicblock 是指程序顺序执行的语句序列，只有一个入口和一个出口。basicblock 由若干指令 instruction 构成。</li>
+<li>注意一个 basicblock 中<strong>只能有一条终止指令</strong>（Ret/Br）。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>为了区别 Light IR 中的概念与我们实现的 Light IR C++ 库。我们用小写 plain text 来表示 Light IR 中的概念，例如 module；用大写的 code block 来表示 C++ 实现，例如 <code>Module</code>。</p>
+</div>
+<h3 id="light-ir-c-类总览">Light IR C++ 类总览<a class="headerlink" href="#light-ir-c-类总览" title="Permanent link">&para;</a></h3>
+<p>在上一节中，可以看出 Light IR 最顶层的结构是 module，并具有层次化结构，在 Light IR C++ 库中，对应有层次化类的设计，如图所示，<code>Module</code>, <code>Function</code>, <code>BasicBlock</code>, <code>Instruction</code> 类分别对应了 Light IR 中 module，function，basicblock，instruction 的概念。
+<a class="glightbox" href="../figs/module_relation.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="module_relation" src="../figs/module_relation.png" /></a></p>
+<h3 id="light-ir-c-数据基类valueuser">Light IR C++ 数据基类：Value，User<a class="headerlink" href="#light-ir-c-数据基类valueuser" title="Permanent link">&para;</a></h3>
+<h4 id="value">Value<a class="headerlink" href="#value" title="Permanent link">&para;</a></h4>
+<p><code>Value</code> 类代表一个可用于指令操作数的带类型的数据，包含众多子类，<code>Instruction</code> 也是其子类之一，表示指令在创建后可以作为另一条指令的操作数。<code>Value</code> 成员 <code>use_list_</code> 是 <code>Use</code> 类的列表，每个 Use 类记录了该 <code>Value</code> 的一次被使用的情况</p>
+<div class="admonition note">
+<p class="admonition-title">use-list 详解</p>
+<p>例如，如果存在指令 <code>%op2 = add i32 %op0, %op1</code>，那么 <code>%op0</code>、<code>%op1</code> 就被 <code>%op2</code> 所使用，<code>%op0</code> 基类 <code>Value</code> 的 <code>use_list_</code> 里就会有 <code>Use(%op2, 0)</code>（这里的 0 代表 <code>%op0</code> 是被使用时的第一个参数）。同理，<code>%op1</code> 的 <code>use_list_</code> 里有 <code>Use(%op2, 1)</code>。</p>
+</div>
+<p><a class="glightbox" href="../figs/value_inherit.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="value_inherit" src="../figs/value_inherit.png" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>Instruction</code> 类是 <code>Value</code> 的子类，这表示，指令在使用操作数创建后的返回值也可以作为另一条指令创建的操作数。</p>
+</div>
+<h4 id="user">User<a class="headerlink" href="#user" title="Permanent link">&para;</a></h4>
+<p><code>User</code> 作为 <code>Value</code> 的子类，含义是使用者，<code>Instruction</code> 也是其子类之一，<code>User</code> 类成员 <code>operands_</code> 是<code>Value</code> 类的列表，表示该使用者使用的操作数列表。如图是 <code>User</code> 类的子类继承关系。
+<a class="glightbox" href="../figs/user_inherit.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="user_inherit" src="../figs/user_inherit.jpg" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>Value</code> 类的 use-list，与 User 类的 operand-list 构成了指令间的依赖关系图。</p>
+</div>
+<h3 id="light-ir-c-类型基类type">Light IR C++ 类型基类：Type<a class="headerlink" href="#light-ir-c-类型基类type" title="Permanent link">&para;</a></h3>
+<p>在 <a href="./#light-ir-指令假设">Light IR 指令假设</a>中提到，Light IR 保留了 LLVM IR 的强类型系统，包含基本类型与组合类型，<code>Type</code> 类是所有类型基类，其子类继承关系如图所示，其中 <code>IntegerType</code>, <code>FloatType</code> 对应表示 Light IR 中的 <code>i1</code>，<code>i32</code>，<code>float</code> 基本类型。<code>ArrayType</code>，<code>PointerType</code>，<code>FunctionType</code> 对应表示组合类型：数组类型，指针类型，函数类型。
+<a class="glightbox" href="../figs/type_inherit.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="type_inherit" src="../figs/type_inherit.png" /></a></p>
+<p>获取基本类型的接口在 <code>Module</code> 类中，获取组合类型的接口则在组合类型对应的类中：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 获取 i1 基本类型</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">int1_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">module</span><span class="o">-&gt;</span><span class="n">get_int1_type</span><span class="p">();</span>
+<span class="c1">// 获取 [2 x i32] 数组类型</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">array_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ArrayType</span><span class="o">::</span><span class="n">get</span><span class="p">(</span><span class="n">Int32Type</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="使用-light-ir-c-库生成-ir">使用 Light IR C++ 库生成 IR<a class="headerlink" href="#使用-light-ir-c-库生成-ir" title="Permanent link">&para;</a></h3>
+<p>本小节将以下列 Light IR 片段介绍使用 Light IR C++ 接口层次化顺序生成 IR 的过程，</p>
+<div class="highlight"><pre><span></span><code><span class="n">define</span><span class="w"> </span><span class="n">i32</span><span class="w"> </span><span class="err">@</span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="err">#</span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="n">entry</span><span class="err">：</span>
+<span class="w">  </span><span class="o">%</span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alloca</span><span class="w"> </span><span class="n">i32</span>
+<span class="w">  </span><span class="n">store</span><span class="w"> </span><span class="n">i32</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w"> </span><span class="n">i32</span><span class="o">*</span><span class="w"> </span><span class="o">%</span><span class="mi">1</span>
+<span class="w">  </span><span class="o">%</span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">load</span><span class="w"> </span><span class="n">i32</span><span class="p">,</span><span class="w"> </span><span class="n">i32</span><span class="o">*</span><span class="w"> </span><span class="o">%</span><span class="mi">1</span>
+<span class="w">  </span><span class="n">ret</span><span class="w"> </span><span class="n">i32</span><span class="w"> </span><span class="o">%</span><span class="mi">2</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="创建-module-function-basicblock-的接口">创建 <code>Module</code>, <code>Function</code>, <code>BasicBlock</code> 的接口<a class="headerlink" href="#创建-module-function-basicblock-的接口" title="Permanent link">&para;</a></h4>
+<p>创建 module</p>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Module</span><span class="p">();</span>
+</code></pre></div>
+<p>为 module 添加 main function 定义</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 从 module 中获取 i32 类型</span>
+<span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">Int32Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">module</span><span class="o">-&gt;</span><span class="n">get_int32_type</span><span class="p">();</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">mainFun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Function</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">FunctionType</span><span class="o">::</span><span class="n">get</span><span class="p">(</span><span class="n">Int32Type</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">Int32Type</span><span class="p">}),</span><span class="w"> </span><span class="s">&quot;main&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">module</span><span class="p">);</span>
+</code></pre></div>
+<p>为 main function 创建 function 内的第一个 basicblock</p>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">bb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BasicBlock</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="k">module</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;entry&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mainFun</span><span class="p">);</span>
+</code></pre></div>
+<p>接下来需要用辅助类 <code>IRBuilder</code> 向 basicblock 中插入指令</p>
+<h4 id="irbuilder-生成-ir-指令的辅助类"><code>IRBuilder</code>: 生成 IR 指令的辅助类<a class="headerlink" href="#irbuilder-生成-ir-指令的辅助类" title="Permanent link">&para;</a></h4>
+<p>Light IR C++ 库为生成 IR 指令提供了辅助类：<code>IRBuilder</code>。该类提供了独立创建 IR 指令的接口，可以创建指令的同时并将它们插入 basicblock 中，<code>IRBuilder</code> 类提供以下接口：</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IRBuilder</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 返回当前插入的基本块</span>
+<span class="w">    </span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">get_insert_block</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">// 设置当前插入的基本块</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_insert_point</span><span class="p">(</span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// 创建一条除法指令，并加入当前基本块中</span>
+<span class="w">    </span><span class="n">BinaryInst</span><span class="w"> </span><span class="o">*</span><span class="n">create_isdiv</span><span class="p">(</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">lhs</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">rhs</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// 创建的 instr_type 类型的指令，并插入到当前基本块中</span>
+<span class="w">    </span><span class="c1">// 可根据 IRBuilder.h 查看每一条指令的创建细节</span>
+<span class="w">    </span><span class="n">Instruction</span><span class="w"> </span><span class="o">*</span><span class="n">create_</span><span class="p">[</span><span class="n">instr_type</span><span class="p">](...);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>在创建 module，main function，basicblock 后：</p>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Module</span><span class="p">();</span>
+<span class="c1">// 从 module 中获取 i32 类型</span>
+<span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">Int32Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">module</span><span class="o">-&gt;</span><span class="n">get_int32_type</span><span class="p">();</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">mainFun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Function</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">FunctionType</span><span class="o">::</span><span class="n">get</span><span class="p">(</span><span class="n">Int32Type</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">Int32Type</span><span class="p">}),</span><span class="w"> </span><span class="s">&quot;main&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">module</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">bb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BasicBlock</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="k">module</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;entry&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mainFun</span><span class="p">);</span>
+</code></pre></div>
+<p>创建 <code>IRBuilder</code>，并使用 <code>IRBuilder</code> 创建新指令</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 实例化 IRBuilder</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IRBuilder</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="k">module</span><span class="p">);</span>
+<span class="c1">// 将 IRBuilder 插入指令位置设置为 bb 尾部</span>
+<span class="n">builder</span><span class="o">-&gt;</span><span class="n">set_insert_point</span><span class="p">(</span><span class="n">bb</span><span class="p">);</span>
+<span class="c1">// 为变量 x 分配栈上空间</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">xAlloca</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="o">-&gt;</span><span class="n">create_alloca</span><span class="p">(</span><span class="n">Int32Type</span><span class="p">);</span>
+<span class="c1">// 创建 store 指令，将 72 常数存到 x 分配空间里</span>
+<span class="n">builder</span><span class="o">-&gt;</span><span class="n">create_store</span><span class="p">(</span><span class="n">ConstantInt</span><span class="o">::</span><span class="n">get</span><span class="p">(</span><span class="mi">72</span><span class="p">,</span><span class="w"> </span><span class="k">module</span><span class="p">),</span><span class="w"> </span><span class="n">xAlloca</span><span class="p">);</span>
+<span class="c1">// 创建 load 指令，将 x 内存值取出来</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">xLoad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="o">-&gt;</span><span class="n">create_load</span><span class="p">(</span><span class="n">xAlloca</span><span class="p">);</span>
+<span class="c1">// 创建 ret 指令，将 x 取出的值返回</span>
+<span class="n">builder</span><span class="o">-&gt;</span><span class="n">create_ret</span><span class="p">(</span><span class="n">xLoad</span><span class="p">);</span>
+</code></pre></div>
+<p>至此，使用 Light IR C++ 接口层次化顺序生成 IR 的过程流程结束</p>
+<h3 id="light-ir-c-库核心类定义">Light IR C++ 库核心类定义<a class="headerlink" href="#light-ir-c-库核心类定义" title="Permanent link">&para;</a></h3>
+<p>本节梳理了在生成 IR 过程中可能会用到的接口，学生可按需进行查阅</p>
+<h4 id="module">Module<a class="headerlink" href="#module" title="Permanent link">&para;</a></h4>
+<ul>
+<li>概念：一个编译单元。对应一个 Cminusf 文件。</li>
+</ul>
+<details class="info">
+<summary>Module 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Module</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 将函数 f 添加到该模块的函数链表上</span>
+<span class="w">    </span><span class="c1">// 在函数被创建的时候会自动调用此方法</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">add_function</span><span class="p">(</span><span class="n">Function</span><span class="w"> </span><span class="o">*</span><span class="n">f</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 将全局变量 g 添加到该模块的全局变量链表上</span>
+<span class="w">    </span><span class="c1">// 在全局变量被创建的时候会自动调用此方法</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">add_global_variable</span><span class="p">(</span><span class="n">GlobalVariable</span><span class="o">*</span><span class="w"> </span><span class="n">g</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 获取全局变量列表</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">GlobalVariable</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="n">get_global_variable</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 获得（创建）自定义的 Pointer 类型</span>
+<span class="w">    </span><span class="n">PointerType</span><span class="w"> </span><span class="o">*</span><span class="nf">get_pointer_type</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">contained</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 获得（创建）自定义的 Array 类型</span>
+<span class="w">    </span><span class="n">ArrayType</span><span class="w"> </span><span class="o">*</span><span class="nf">get_array_type</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">contained</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">num_elements</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 获得基本类型 int32</span>
+<span class="w">    </span><span class="n">IntegerType</span><span class="w"> </span><span class="o">*</span><span class="nf">get_int32_type</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 其他基本类型类似...</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<h4 id="basicblock">BasicBlock<a class="headerlink" href="#basicblock" title="Permanent link">&para;</a></h4>
+<ul>
+<li>概念：基本块。是一个是单入口单出口的代码块，可以作为分支指令目标对象。</li>
+</ul>
+<details class="info">
+<summary>BasicBlock 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BasicBlock</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 创建并返回基本块，参数分别是基本块所属的模块，基本块名字（默认为空），基本块所属的函数</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">create</span><span class="p">(</span><span class="n">Module</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Function</span><span class="w"> </span><span class="o">*</span><span class="n">parent</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 返回该基本块所属的函数</span>
+<span class="w">    </span><span class="n">Function</span><span class="w"> </span><span class="o">*</span><span class="nf">get_parent</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 返回该基本块所属的模块</span>
+<span class="w">    </span><span class="n">Module</span><span class="w"> </span><span class="o">*</span><span class="nf">get_module</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 返回该基本块的终止指令，若基本块的最后一条指令不是终止指令返回则返回 nullptr</span>
+<span class="w">    </span><span class="n">Instruction</span><span class="w"> </span><span class="o">*</span><span class="nf">get_terminator</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 将指令 instr 添加到该基本块的指令链表末端，使用 IRBuilder 来创建函数时会自动调用此方法</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">add_instruction</span><span class="p">(</span><span class="n">Instruction</span><span class="w"> </span><span class="o">*</span><span class="n">instr</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 将指令 instr 添加到该基本块的指令链表首部</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">add_instr_begin</span><span class="p">(</span><span class="n">Instruction</span><span class="w"> </span><span class="o">*</span><span class="n">instr</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 将指令 instr 从该基本块的指令链表中移除，该 API 会同时维护好 instr 的操作数的 use 链表。</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">erase_instr</span><span class="p">(</span><span class="n">Instruction</span><span class="w"> </span><span class="o">*</span><span class="n">instr</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 判断该基本块是否为空</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">empty</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 返回该基本块中的指令数目</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">get_num_of_instr</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 返回该基本块的指令链表</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">Instruction</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">get_instructions</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 将该基本块从所属函数的基本块链表中移除</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">erase_from_parent</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/****************APIs about cfg****************/</span>
+<span class="w">    </span><span class="c1">// 返回前驱基本块集合</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">get_pre_basic_blocks</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 返回后继基本块集合</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">get_succ_basic_blocks</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 添加前驱基本块</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">add_pre_basic_block</span><span class="p">(</span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 添加后继基本块</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">add_succ_basic_block</span><span class="p">(</span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 移除前驱基本块</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">remove_pre_basic_block</span><span class="p">(</span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 移除后继基本块</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">remove_succ_basic_block</span><span class="p">(</span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">);</span>
+<span class="w">    </span><span class="cm">/****************APIs about cfg****************/</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<h4 id="globalvariable">GlobalVariable<a class="headerlink" href="#globalvariable" title="Permanent link">&para;</a></h4>
+<ul>
+<li>概念：全局变量。</li>
+</ul>
+<details class="info">
+<summary>GlobalVariable 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GlobalVariable</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 创建一个全局变量</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">GlobalVariable</span><span class="w"> </span><span class="o">*</span><span class="n">create</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Module</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">Type</span><span class="o">*</span><span class="w"> </span><span class="n">ty</span><span class="p">,</span>
+<span class="w">                                  </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_const</span><span class="p">,</span><span class="w"> </span><span class="n">Constant</span><span class="o">*</span><span class="w"> </span><span class="n">init</span><span class="w"> </span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<h4 id="constant">Constant<a class="headerlink" href="#constant" title="Permanent link">&para;</a></h4>
+<ul>
+<li>概念：常量。不同类型的常量由不同类来表示。</li>
+</ul>
+<details class="info">
+<summary>Constant 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Constant</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Constant</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">ty</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">num_ops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<details class="info">
+<summary>整型常量 ConstantInt 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ConstantInt</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Constant</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 返回该常量中存的数</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">get_value</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 返回常量 const_val 中存的数</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">get_value</span><span class="p">(</span><span class="n">ConstantInt</span><span class="w"> </span><span class="o">*</span><span class="n">const_val</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 以值 val 来创建常量</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">ConstantInt</span><span class="w"> </span><span class="o">*</span><span class="nf">get</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="n">Module</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 以值 val 来创建 bool 常量</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">ConstantInt</span><span class="w"> </span><span class="o">*</span><span class="nf">get</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="n">Module</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<details class="info">
+<summary>浮点数常量 ConstantFP 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ConstantFP</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Constant</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 以值 val 创建并返回浮点数常量</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">ConstantFP</span><span class="w"> </span><span class="o">*</span><span class="n">get</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="n">Module</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 返回该常量中存的值</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="nf">get_value</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<details class="info">
+<summary>ConstantZero 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// 用于全局变量初始化的零常量</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ConstantZero</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Constant</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 创建并返回零常量</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">ConstantZero</span><span class="w"> </span><span class="o">*</span><span class="n">get</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">ty</span><span class="p">,</span><span class="w"> </span><span class="n">Module</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<h4 id="argument">Argument<a class="headerlink" href="#argument" title="Permanent link">&para;</a></h4>
+<ul>
+<li>概念：函数的参数。</li>
+</ul>
+<details class="info">
+<summary>Argument 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Argument</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Value</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 返回该参数的所属的函数</span>
+<span class="w">    </span><span class="n">Function</span><span class="w"> </span><span class="o">*</span><span class="n">get_parent</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 返回该参数在所在函数的参数列表中的序数</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="nf">get_arg_no</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<h4 id="function">Function<a class="headerlink" href="#function" title="Permanent link">&para;</a></h4>
+<ul>
+<li>概念：函数。该类描述了一个过程，包含多个基本块。</li>
+</ul>
+<details class="info">
+<summary>Funtion 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Function</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 创建并返回函数，参数依次是待创建函数类型 ty，函数名字 name (不可为空)，函数所属的模块 parent</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">Function</span><span class="w"> </span><span class="o">*</span><span class="n">create</span><span class="p">(</span><span class="n">FunctionType</span><span class="w"> </span><span class="o">*</span><span class="n">ty</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Module</span><span class="w"> </span><span class="o">*</span><span class="n">parent</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 返回该函数的函数类型</span>
+<span class="w">    </span><span class="n">FunctionType</span><span class="w"> </span><span class="o">*</span><span class="nf">get_function_type</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 返回该函数的返回值类型</span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="nf">get_return_type</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 将基本块 bb 添加至该函数末端（调用基本块的创建函数时会自动调用此函数来）</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">add_basic_block</span><span class="p">(</span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 得到该函数参数数量</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="nf">get_num_of_args</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 得到该函数基本块数量</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="nf">get_num_basic_blocks</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 得到该函数所属的 Module</span>
+<span class="w">    </span><span class="n">Module</span><span class="w"> </span><span class="o">*</span><span class="nf">get_parent</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 从函数的基本块链表中删除基本块 bb</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">remove</span><span class="p">(</span><span class="n">BasicBlock</span><span class="o">*</span><span class="w"> </span><span class="n">bb</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// 返回函数基本块链表</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">get_basic_blocks</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">// 返回函数的参数链表</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">Argument</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">get_args</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">// 给函数中未命名的基本块和指令命名</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_instr_name</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<h4 id="irbuilder">IRBuilder<a class="headerlink" href="#irbuilder" title="Permanent link">&para;</a></h4>
+<ul>
+<li>概念：生成 IR 的辅助类。该类提供了独立的接口创建各种 IR 指令，并将它们插入基本块中（注意：该辅助类不做任何类型检查）。</li>
+</ul>
+<details class="info">
+<summary>IRBuilder 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IRBuilder</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 返回当前插入的基本块</span>
+<span class="w">    </span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">get_insert_block</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">// 设置当前插入的基本块</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set_insert_point</span><span class="p">(</span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// 创建的指令并对应插入到基本块中，函数名字和参数名字和 IR 文档是一一对应的</span>
+<span class="w">    </span><span class="c1">// 具体查看 IRBuilder.h</span>
+<span class="w">    </span><span class="n">Instruction</span><span class="w"> </span><span class="o">*</span><span class="n">create_</span><span class="p">[</span><span class="n">instr_type</span><span class="p">]();</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<h4 id="instruction">Instruction<a class="headerlink" href="#instruction" title="Permanent link">&para;</a></h4>
+<ul>
+<li>概念：指令。该类是所有 LLVM 指令的基类。子类包含 IR 部分中的所有指令。</li>
+</ul>
+<details class="info">
+<summary>Instruction 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Instruction</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 获取指令所在函数</span>
+<span class="w">    </span><span class="n">Function</span><span class="w"> </span><span class="o">*</span><span class="n">get_function</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 获取指令所在 module</span>
+<span class="w">    </span><span class="n">Module</span><span class="w"> </span><span class="o">*</span><span class="nf">get_module</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 获取指令类型</span>
+<span class="w">    </span><span class="n">OpID</span><span class="w"> </span><span class="nf">get_instr_type</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">op_id_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// 获取指令类型的名字</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">get_instr_op_name</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 判断指令是否是 instr_type 类型</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_</span><span class="p">[</span><span class="n">instr_type</span><span class="p">]</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 判断指令是否是二元运算</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isBinary</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 判断指令是否为终止指令</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isTerminator</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<h4 id="type">Type<a class="headerlink" href="#type" title="Permanent link">&para;</a></h4>
+<ul>
+<li>概念：IR 的类型（包含 <code>VoidType</code>、<code>LabelType</code>、<code>FloatType</code>、<code>IntegerType</code>、<code>ArrayType</code>、<code>PointerType</code>）。module 中可以通过 API 获得基本类型，并创建自定义类型。</li>
+<li>子类介绍：其中 <code>ArrayType</code>、<code>PointerType</code> 可以嵌套得到自定义类型，而 <code>VoidType</code>、<code>IntegerType</code>，<code>FloatType</code> 可看做 IR 的基本类型，<code>LabelType</code> 是 <code>BasicBlcok</code> 的类型，可作为跳转指令的参数，<code>FunctionType</code> 表示函数类型。其中 <code>VoidType</code> 与 <code>LabelType</code> 没有对应的子类，通过 <code>Type</code> 中的 <code>tid_</code> 字段判别，而其他类型均有对应子类</li>
+</ul>
+<details class="info">
+<summary>Type 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Type</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 获取 type id</span>
+<span class="w">    </span><span class="n">TypeID</span><span class="w"> </span><span class="n">get_type_id</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 判断是否是 ty 类型</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_</span><span class="p">[</span><span class="n">ty</span><span class="p">]</span><span class="n">_type</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 若是 PointerType 则返回指向的类型，若不是则返回 nullptr。</span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="nf">get_pointer_element_type</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 若是 ArrayType 则返回数组元素的类型，若不是则返回 nullptr。</span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="nf">get_array_element_type</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 返回类型的大小</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="nf">get_size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<details class="info">
+<summary>数组类型 ArrayType 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ArrayType</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 判断数组元素类型是否合法</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_valid_element_type</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">ty</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 通过数组元素类型 contained 以及数组长度 num_elements 创建数组类型</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">ArrayType</span><span class="w"> </span><span class="o">*</span><span class="nf">get</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">contained</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">num_elements</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 得到该数组类型的元素类型</span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="nf">get_element_type</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 获得该数组类型的长度</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="nf">get_num_of_elements</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<details class="info">
+<summary>指针类型 PointerType 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PointerType</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 获取该指针类型指向的元素类型</span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">get_element_type</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 创建指向类型为 contained 的指针类型</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">PointerType</span><span class="w"> </span><span class="o">*</span><span class="nf">get</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">contained</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<details class="info">
+<summary>函数类型 FunctionType 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FunctionType</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 判断返回值类型是否合法</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_valid_return_type</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">ty</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 判断参数类型是否合法</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">is_valid_argument_type</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">ty</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 根据返回值类型 result，参数类型列表 params 创建函数类型</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">FunctionType</span><span class="w"> </span><span class="o">*</span><span class="nf">get</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">params</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 返回该函数类型的参数个数</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="nf">get_num_of_args</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 获得该函数类型第 i 个参数的类型</span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="nf">get_param_type</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 获得该函数类型的参数类型链表的起始迭代器</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Type</span><span class="w"> </span><span class="o">*&gt;::</span><span class="n">iterator</span><span class="w"> </span><span class="n">param_begin</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 获得该函数类型的参数类型链表的结束迭代器</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Type</span><span class="w"> </span><span class="o">*&gt;::</span><span class="n">iterator</span><span class="w"> </span><span class="n">param_end</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 获得该函数类型的返回值类型</span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="nf">get_return_type</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h4 id="user_1">User<a class="headerlink" href="#user_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>概念：使用者。维护了 use-def 信息，表示该使用者用了哪些值。</li>
+</ul>
+<details class="info">
+<summary>User 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 从该使用者的操作数链表中取出第 i 个操作数</span>
+<span class="w">    </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">get_operand</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 将该使用者的第 i 个操作数设为值 v</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_operand</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 将值 v 添加到该使用者的操作数链表上</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">add_operand</span><span class="p">(</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 得到操作数链表的大小</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="nf">get_num_operand</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 从该使用者的操作数链表中的所有操作数的使用情况中移除该使用者</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">remove_use_of_ops</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// 从该使用者的操作数链表中移除第 index 个</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">remove_operands</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<h4 id="use">Use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h4>
+<ul>
+<li>概念：代表了值的使用情况。</li>
+</ul>
+<details class="info">
+<summary>Use 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Use</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 使用者</span>
+<span class="w">    </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">val_</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 使用者中值的序数</span>
+<span class="w">    </span><span class="c1">// 对于 func(a, b)，a 为 0，b 为 1</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">arg_no_</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+<h4 id="value_1">Value<a class="headerlink" href="#value_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>概念：值。代表一个可能用于指令操作数的带类型数据，是最基础的类，维护了 def-use 信息，即该值被哪些使用者使用。</li>
+</ul>
+<details class="info">
+<summary>Value 常用接口</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Value</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 获取该值的类型</span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">get_type</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 取得该值的使用情况</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">Use</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">get_use_list</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">use_list_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// 添加加该值的使用情况</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">add_use</span><span class="p">(</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">arg_no</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 在所有地方将该值用新的值 new_val 替换，并维护好 use_def 和 def_use 链表</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">replace_all_use_with</span><span class="p">(</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">new_val</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 将值 val 从使用链表中移除</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">remove_use</span><span class="p">(</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">val</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+</details>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 8, 2025</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="贡献者">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:153092435+terialion@users.noreply.github.com">WangYuhang</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

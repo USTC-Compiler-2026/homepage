@@ -1,0 +1,791 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>后端环境配置 - USTC 编译原理和技术 2026</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#后端环境配置" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-header__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            USTC 编译原理和技术 2026
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              后端环境配置
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="切换到夜晚模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜晚模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到白天模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到白天模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../exp_platform_intro/" class="md-tabs__link">
+          
+  
+  公共文档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-nav__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    USTC 编译原理和技术 2026
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    公共文档
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            公共文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exp_platform_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课程平台介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#交叉编译" class="md-nav__link">
+    <span class="md-ellipsis">
+      交叉编译
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#安装" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#测试" class="md-nav__link">
+    <span class="md-ellipsis">
+      测试
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#测试-gcc-与-qemu" class="md-nav__link">
+    <span class="md-ellipsis">
+      测试 gcc 与 qemu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#测试-使用-gdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      测试 / 使用 gdb
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="后端环境配置">后端环境配置<a class="headerlink" href="#后端环境配置" title="Permanent link">&para;</a></h1>
+<p>本次实验需要安装龙芯的交叉编译工具链。这篇文档将帮助你安装好相关工具。</p>
+<h2 id="交叉编译">交叉编译<a class="headerlink" href="#交叉编译" title="Permanent link">&para;</a></h2>
+<p>我们的后端面向的是龙芯架构，而虚拟机和宿主机都是 x86 架构，不能直接运行龙芯程序。</p>
+<p>所谓的交叉编译，就是在一个平台上生成另一个平台上的可执行代码。</p>
+<p>具体到我们的实验，我们将在虚拟机上安装龙芯 gcc、qemu 和 gdb，使得我们可以在虚拟机中生成龙芯的可执行文件、模拟运行并且调试。</p>
+<h2 id="安装">安装<a class="headerlink" href="#安装" title="Permanent link">&para;</a></h2>
+<p>助教准备了<a href="https://rec.ustc.edu.cn/share/d8c57580-669d-11ee-8794-d542ef642531">龙芯交叉编译的相关工具</a>，以便同学们在本地完成测试与调试。</p>
+<p>具体来说有以下四项：</p>
+<ul>
+<li><strong>loongarch64-clfs-3.0-cross-tools-gcc-glibc.tar.xz</strong>：生成龙芯汇编、可执行文件等</li>
+<li><strong>qemu-6.2.50.loongarch64.tar.gz</strong>：模拟运行龙芯二进制文件</li>
+<li>
+<p><strong>gdb.tar.gz</strong>：调试生成的龙芯程序</p>
+</li>
+<li>
+<p><strong>test-env.tar.gz</strong>：用于测试上述工具是否安装成功</p>
+</li>
+</ul>
+<p>点击上方链接，下载压缩包至虚拟机中。你可以根据自己的喜好选择存放的位置，比如 <code>~/Downloads</code>。</p>
+<details class="info">
+<summary>如何在宿主机和虚拟机之间传送文件？</summary>
+<p>如果你在 Windows 系统上阅读本文档，你大概将网盘中的文件下载到了 Windows 系统（宿主机）中。</p>
+<p>如何将文件传递进虚拟机中呢？在 Lab0 中你已经配置了宿主机与虚拟机之间的<a href="../../lab0/linux/#141-ssh"> SSH 连接</a>，现在你可以通过 scp 命令进行文件传输：</p>
+<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>-P<span class="w"> </span>端口号<span class="w"> </span>源文件<span class="w"> </span>目标文件
+</code></pre></div>
+例如将 <code>gdb.tar.gz</code> 传送到虚拟机的 <code>~/Downloads</code> 目录，具体步骤如下：</p>
+<ol>
+<li>在 Windows 文件资源管理器中找到下载好的文件</li>
+<li>在文件列表的空白处按住 Shift 点击鼠标右键，选择打开 PowerShell</li>
+<li>在弹出的命令行窗口中键入：<code>scp -P 主机端口 gdb.tar.gz 虚拟机用户名@127.0.0.1:~/Downloads</code></li>
+</ol>
+</details>
+<p>现在进入虚拟机中你选择的目录，通过 <code>ls</code> 可以看到下载好的压缩包，执行以下解压命令，将交叉编译工具解压到 <code>/opt</code> 目录下：</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>tar<span class="w"> </span>xaf<span class="w"> </span>loongarch64-clfs-3.0-cross-tools-gcc-glibc.tar.xz<span class="w"> </span>-C<span class="w"> </span>/opt
+$<span class="w"> </span>sudo<span class="w"> </span>tar<span class="w"> </span>xaf<span class="w"> </span>qemu-6.2.50.loongarch64.tar.gz<span class="w"> </span>-C<span class="w"> </span>/opt
+$<span class="w"> </span>sudo<span class="w"> </span>tar<span class="w"> </span>xaf<span class="w"> </span>gdb.tar.gz<span class="w"> </span>-C<span class="w"> </span>/opt
+</code></pre></div>
+<p>此时解压好的工具分别位于：</p>
+<ul>
+<li><code>/opt/cross-tools.gcc_glibc/bin/loongarch64-unknown-linux-gnu-gcc</code></li>
+<li><code>/opt/qemu/bin/qemu-loongarch64</code></li>
+<li><code>/opt/gdb/bin/loongarch64-unknown-linux-gnu-gdb</code></li>
+</ul>
+<p>需要使用绝对路径访问。为了使用方便和 <strong>Lab3 的顺利测评</strong>，我们将上述路径加入到<code>PATH</code>中：</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export PATH=\$PATH:/opt/cross-tools.gcc_glibc/bin:/opt/gdb/bin:/opt/qemu/bin&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div>
+<h2 id="测试">测试<a class="headerlink" href="#测试" title="Permanent link">&para;</a></h2>
+<p>经过上述步骤，你可以使用以下三个命令简单检查是否安装成功：</p>
+<details class="info">
+<summary>检查龙芯 gcc 版本</summary>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>loongarch64-unknown-linux-gnu-gcc<span class="w"> </span>-v
+Using<span class="w"> </span>built-in<span class="w"> </span>specs.
+<span class="nv">COLLECT_GCC</span><span class="o">=</span>loongarch64-unknown-linux-gnu-gcc
+<span class="nv">COLLECT_LTO_WRAPPER</span><span class="o">=</span>/opt/cross-tools.gcc_glibc/bin/../libexec/gcc/loongarch64-unknown-linux-gnu/12.0.1/lto-wrapper
+Target:<span class="w"> </span>loongarch64-unknown-linux-gnu
+Configured<span class="w"> </span>with:<span class="w"> </span>../configure<span class="w"> </span>--prefix<span class="o">=</span>/opt/cross-tools<span class="w"> </span>--build<span class="o">=</span>x86_64-cross-linux-gnu<span class="w"> </span>--host<span class="o">=</span>x86_64-cross-linux-gnu<span class="w"> </span>--target<span class="o">=</span>loongarch64-unknown-linux-gnu<span class="w"> </span>--enable-__cxa_atexit<span class="w"> </span>--enable-threads<span class="o">=</span>posix<span class="w"> </span>--enable-libstdcxx-time<span class="w"> </span>--enable-checking<span class="o">=</span>release<span class="w"> </span>--with-sysroot<span class="o">=</span>/opt/cross-tools/target<span class="w"> </span>--enable-default-pie<span class="w"> </span>--enable-languages<span class="o">=</span>c,c++,fortran,objc,obj-c++,lto
+Thread<span class="w"> </span>model:<span class="w"> </span>posix
+Supported<span class="w"> </span>LTO<span class="w"> </span>compression<span class="w"> </span>algorithms:<span class="w"> </span>zlib<span class="w"> </span>zstd
+gcc<span class="w"> </span>version<span class="w"> </span><span class="m">12</span>.0.1<span class="w"> </span><span class="m">20220210</span><span class="w"> </span><span class="o">(</span>experimental<span class="o">)</span><span class="w"> </span><span class="o">(</span>GCC<span class="o">)</span>
+</code></pre></div>
+</details>
+<details class="info">
+<summary>检查龙芯 qemu 版本</summary>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>qemu-loongarch64<span class="w"> </span>-version
+qemu-loongarch64<span class="w"> </span>version<span class="w"> </span><span class="m">6</span>.2.50<span class="w"> </span><span class="o">(</span>v6.0.0-7567-gac069a8ffb<span class="o">)</span>
+Copyright<span class="w"> </span><span class="o">(</span>c<span class="o">)</span><span class="w"> </span><span class="m">2003</span>-2022<span class="w"> </span>Fabrice<span class="w"> </span>Bellard<span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>QEMU<span class="w"> </span>Project<span class="w"> </span>developers
+</code></pre></div>
+</details>
+<details class="info">
+<summary>检查龙芯 gdb 版本</summary>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>loongarch64-unknown-linux-gnu-gdb<span class="w"> </span>-v
+GNU<span class="w"> </span>gdb<span class="w"> </span><span class="o">(</span>GDB<span class="o">)</span><span class="w"> </span><span class="m">12</span>.0.50.20210713-git
+Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2021</span><span class="w"> </span>Free<span class="w"> </span>Software<span class="w"> </span>Foundation,<span class="w"> </span>Inc.
+License<span class="w"> </span>GPLv3+:<span class="w"> </span>GNU<span class="w"> </span>GPL<span class="w"> </span>version<span class="w"> </span><span class="m">3</span><span class="w"> </span>or<span class="w"> </span>later<span class="w"> </span>&lt;http://gnu.org/licenses/gpl.html&gt;
+This<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software:<span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>free<span class="w"> </span>to<span class="w"> </span>change<span class="w"> </span>and<span class="w"> </span>redistribute<span class="w"> </span>it.
+There<span class="w"> </span>is<span class="w"> </span>NO<span class="w"> </span>WARRANTY,<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>extent<span class="w"> </span>permitted<span class="w"> </span>by<span class="w"> </span>law.<span class="sb">```</span>
+</code></pre></div>
+</details>
+<p>更进一步，我们提供了环境测试程序。</p>
+<p>进入虚拟机中存放压缩包的目录，解压压缩包 <code>test-env.tar.gz</code>：</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tar<span class="w"> </span>xaf<span class="w"> </span>test-env.tar.gz
+</code></pre></div>
+<p>解压得到文件夹 <code>test-env</code>，其结构及说明如下：</p>
+<div class="highlight"><pre><span></span><code>test-env
+├──<span class="w"> </span>bubble-sort.S<span class="w">       </span><span class="c1"># 冒泡排序的汇编实现</span>
+├──<span class="w"> </span>hello-world.S<span class="w">       </span><span class="c1"># 输出 hello world 的汇编实现</span>
+├──<span class="w"> </span>inline-assembly.c<span class="w">   </span><span class="c1"># 内嵌汇编的 c 程序</span>
+└──<span class="w"> </span>Makefile<span class="w">            </span><span class="c1"># 使用 make 自动测试 gcc 和 qemu 是否安装成功</span>
+</code></pre></div>
+<h3 id="测试-gcc-与-qemu">测试 gcc 与 qemu<a class="headerlink" href="#测试-gcc-与-qemu" title="Permanent link">&para;</a></h3>
+<p>进入上述 <code>test-env</code> 文件夹中，<code>make</code>，三段源程序将被编译成面向龙芯的可执行文件，并用 qemu 模拟运行。</p>
+<details>
+    <summary>期望输出</summary>
+    loongarch64-unknown-linux-gnu-gcc -static hello-world.S -o hello-world</br>
+    loongarch64-unknown-linux-gnu-gcc -static bubble-sort.S -o bubble-sort</br>
+    loongarch64-unknown-linux-gnu-gcc -static inline-assembly.c -o inline-assembly</br>
+    loongarch64-unknown-linux-gnu-gcc -O2 -static inline-assembly.c -o inline-assembly-opt</br>
+    qemu-loongarch64 ./hello-world</br>
+    Hello World!</br>
+    qemu-loongarch64 ./bubble-sort</br>
+    53461</br>
+    13456</br>
+    qemu-loongarch64 ./inline-assembly</br>
+    ret_1 ret 123</br>
+    myadd_1 = 8</br>
+    myadd_2 = 8</br>
+    myadd_3 = 8</br>
+    a = 2, b = 3, c = 2</br>
+    a = 2, b = 3, c = 2</br>
+    test5 ok</br>
+    test6 expected error</br>
+    qemu-loongarch64 ./inline-assembly-opt</br>
+    ret_1 ret 123</br>
+    myadd_1 = 8</br>
+    myadd_2 = 8</br>
+    myadd_3 = 8</br>
+    a = 2, b = 2, c = 1</br>
+    a = 2, b = 3, c = 2</br>
+    test5 ok</br>
+    test6 expected error</br>
+</details>
+<p>如果得到以上输出，说明 gcc 和 qemu 被正确安装，你已经可以正常进行 Lab3 的评测。</p>
+<h3 id="测试-使用-gdb">测试 / 使用 gdb<a class="headerlink" href="#测试-使用-gdb" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Lazy Reading</p>
+<p>这一小节是为了调试生成的汇编，你可以在需要调试时再回来查看。</p>
+</div>
+<p>我们接下来调试程序 <code>test-env/bubble-sort.S</code>，你现在应该去扫一眼这个文件，注意文件最后，<code>main</code> 函数如下：</p>
+<div class="highlight"><pre><span></span><code><span class="na">.global</span><span class="w"> </span><span class="no">main</span>
+<span class="nl">main:</span>
+<span class="w">    </span><span class="nf">bl</span><span class="w"> </span><span class="no">display</span><span class="w">      </span><span class="c1"># 这是第一条汇编指令，率先被执行，表示将跳转进入 display 函数中</span>
+<span class="w">    </span><span class="nf">bl</span><span class="w"> </span><span class="no">sort</span>
+<span class="w">    </span><span class="nf">bl</span><span class="w"> </span><span class="no">display</span>
+
+<span class="w">    </span><span class="nf">li.w</span><span class="w"> </span><span class="no">$a7</span><span class="p">,</span><span class="w"> </span><span class="mi">93</span><span class="w">    </span><span class="c1"># exit</span>
+<span class="w">    </span><span class="nf">li.w</span><span class="w"> </span><span class="no">$a0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="nf">syscall</span><span class="w"> </span><span class="mi">0x0</span>
+</code></pre></div>
+<p>在 <a href="#测试-gcc-与-qemu">测试 gcc 与 qemu</a> 环节，已经利用龙芯 gcc 生成了可执行文件 <code>bubble-sort</code>，我们将读取这个文件进行调试。</p>
+<p>龙芯程序运行在 qemu 上，首先需要启动 qemu，再用 gdb 连接。在 <code>test-env</code> 目录下：</p>
+<ol>
+<li>使用 qemu 模拟运行 <code>bubble-sort</code></li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>qemu-loongarch64<span class="w"> </span>-g<span class="w"> </span><span class="m">1234</span><span class="w"> </span>bubble-sort<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<p>参数 <code>-g 1234</code> 表示不立即执行而是等待 gdb 连接端口 1234，结尾的 <code>&amp;</code> 符号令 qemu 程序在后台运行。</p>
+<ol>
+<li>启动 gdb 并连接 qemu</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>loongarch64-unknown-linux-gnu-gdb<span class="w"> </span>--quiet
+
+<span class="o">(</span>gdb<span class="o">)</span>
+</code></pre></div>
+<p>我们使用 <code>--quiet</code> 参数避免 gdb 输出冗长的版本信息。出现提示符 <code>(gdb)</code>，表示我们处于 gdb 的命令行环境中。</p>
+<p>指定可执行文件：</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>gdb<span class="o">)</span><span class="w"> </span>file<span class="w"> </span>bubble-sort
+Reading<span class="w"> </span>symbols<span class="w"> </span>from<span class="w"> </span>bubble-sort...
+</code></pre></div>
+<p>连接 qemu：</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>gdb<span class="o">)</span><span class="w"> </span>target<span class="w"> </span>remote<span class="w"> </span>localhost:1234
+Remote<span class="w"> </span>debugging<span class="w"> </span>using<span class="w"> </span>localhost:1234
+warning:<span class="w"> </span>Can<span class="w"> </span>not<span class="w"> </span>parse<span class="w"> </span>XML<span class="w"> </span>target<span class="w"> </span>description<span class="p">;</span><span class="w"> </span>XML<span class="w"> </span>support<span class="w"> </span>was<span class="w"> </span>disabled<span class="w"> </span>at<span class="w"> </span>compile<span class="w"> </span><span class="nb">time</span>
+_start<span class="w"> </span><span class="o">()</span><span class="w"> </span>at<span class="w"> </span>../sysdeps/loongarch/start.S:45
+<span class="m">45</span><span class="w">   </span>../sysdeps/loongarch/start.S:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory.
+</code></pre></div>
+<p>出现了一些 warning，对我们的调试没有影响，可以忽略之。</p>
+<ol>
+<li>现在程序停止在 <code>_start()</code> 处，我们让程序停在 <code>main</code> 函数的入口处：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>gdb<span class="o">)</span><span class="w"> </span><span class="k">break</span><span class="w"> </span>main
+Breakpoint<span class="w"> </span><span class="m">1</span><span class="w"> </span>at<span class="w"> </span>0x1200008f4
+<span class="o">(</span>gdb<span class="o">)</span><span class="w"> </span><span class="k">continue</span>
+Continuing.
+
+Breakpoint<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>0x00000001200008f4<span class="w"> </span><span class="k">in</span><span class="w"> </span>main<span class="w"> </span><span class="o">()</span>
+</code></pre></div>
+<p>现在，程序停止在 <code>main</code> 函数入口处。</p>
+<ol>
+<li>将内存中的机器码程序反汇编出来：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>gdb<span class="o">)</span><span class="w"> </span>disassemble
+Dump<span class="w"> </span>of<span class="w"> </span>assembler<span class="w"> </span>code<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">function</span><span class="w"> </span>main:
+<span class="o">=</span>&gt;<span class="w"> </span>0x00000001200008f4<span class="w"> </span>&lt;+0&gt;:<span class="w">  </span>bl<span class="w">              </span>-204<span class="o">(</span>0xfffff34<span class="o">)</span><span class="w"> </span><span class="c1"># 0x120000828 &lt;display&gt;</span>
+<span class="w">   </span>0x00000001200008f8<span class="w"> </span>&lt;+4&gt;:<span class="w">  </span>bl<span class="w">              </span>-100<span class="o">(</span>0xfffff9c<span class="o">)</span><span class="w"> </span><span class="c1"># 0x120000894 &lt;sort&gt;</span>
+<span class="w">   </span>0x00000001200008fc<span class="w"> </span>&lt;+8&gt;:<span class="w">  </span>bl<span class="w">              </span>-212<span class="o">(</span>0xfffff2c<span class="o">)</span><span class="w"> </span><span class="c1"># 0x120000828 &lt;display&gt;</span>
+<span class="w">   </span>0x0000000120000900<span class="w"> </span>&lt;+12&gt;:<span class="w"> </span>ori<span class="w">             </span><span class="nv">$a7</span>,<span class="w"> </span><span class="nv">$zero</span>,<span class="w"> </span>0x5d
+<span class="w">   </span>0x0000000120000904<span class="w"> </span>&lt;+16&gt;:<span class="w"> </span>move<span class="w">            </span><span class="nv">$a0</span>,<span class="w"> </span><span class="nv">$zero</span>
+<span class="w">   </span>0x0000000120000908<span class="w"> </span>&lt;+20&gt;:<span class="w"> </span>syscall<span class="w">         </span>0x0
+End<span class="w"> </span>of<span class="w"> </span>assembler<span class="w"> </span>dump.
+</code></pre></div>
+<p>在这里有很多有用的信息，比如你看到了 <code>main</code> 函数入口处的全部汇编指令，还有当前正在执行的指令地址是 <code>0x00000001200008f4</code>，这也是 <code>main</code> 函数的地址……</p>
+<p>通过对比，你会发现反汇编得到的指令与 <code>bubble-sort.S</code> 中的手写指令基本一致。</p>
+<ol>
+<li>查看当前寄存器状态：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>gdb<span class="o">)</span><span class="w"> </span>info<span class="w"> </span>registers
+<span class="w">                  </span>zero<span class="w">               </span>ra<span class="w">               </span>tp<span class="w">               </span>sp
+R0<span class="w">   </span><span class="m">0000000000000000</span><span class="w"> </span>00000001200009c4<span class="w"> </span>00000001200947e0<span class="w"> </span>00000040007ffb00
+<span class="w">                    </span>a0<span class="w">               </span>a1<span class="w">               </span>a2<span class="w">               </span>a3
+R4<span class="w">   </span><span class="m">0000000000000001</span><span class="w"> </span>00000040007ffc58<span class="w"> </span>00000040007ffc68<span class="w"> </span>000000012008c030
+<span class="w">                    </span>a4<span class="w">               </span>a5<span class="w">               </span>a6<span class="w">               </span>a7
+R8<span class="w">   </span><span class="m">0000000000000001</span><span class="w"> </span>000000012008d060<span class="w"> </span>00000040007ffc50<span class="w"> </span>fffffffffffff000
+<span class="w">                    </span>t0<span class="w">               </span>t1<span class="w">               </span>t2<span class="w">               </span>t3
+R12<span class="w">  </span>00000001200008f4<span class="w"> </span>00000040007ffb20<span class="w"> </span><span class="m">0000000000000000</span><span class="w"> </span>00000001200932b8
+<span class="w">                    </span>t4<span class="w">               </span>t5<span class="w">               </span>t6<span class="w">               </span>t7
+R16<span class="w">  </span>000000012008ee00<span class="w"> </span>000000012008ee00<span class="w"> </span>636a6b6c7c6a2f5b<span class="w"> </span>ffffffffffffffff
+<span class="w">                    </span>t8<span class="w">                </span>x<span class="w">               </span>fp<span class="w">               </span>s0
+R20<span class="w">  </span>fffffffffefef000<span class="w"> </span><span class="m">0000000000000000</span><span class="w"> </span><span class="m">0000000000000000</span><span class="w"> </span>0000000120088da8
+<span class="w">                    </span>s1<span class="w">               </span>s2<span class="w">               </span>s3<span class="w">               </span>s4
+R24<span class="w">  </span><span class="m">0000000000000001</span><span class="w"> </span>00000040007ffc58<span class="w"> </span><span class="m">0000000000000001</span><span class="w"> </span>00000001200008f4
+<span class="w">                    </span>s5<span class="w">               </span>s6<span class="w">               </span>s7<span class="w">               </span>s8
+R28<span class="w">  </span>00000040007ffc68<span class="w"> </span><span class="m">0000000000000001</span><span class="w"> </span><span class="m">0000000120000468</span><span class="w"> </span><span class="m">0000000000000000</span>
+pc<span class="w">             </span>0x1200008f4<span class="w">         </span>0x1200008f4<span class="w"> </span>&lt;main&gt;
+badvaddr<span class="w">       </span>0x0<span class="w">                 </span>0x0
+</code></pre></div>
+<p>你可以重点关注一下 pc 寄存器：其中的值与反汇编得到的 <code>main</code> 函数地址一致。</p>
+<ol>
+<li>当前程序停止在 <code>main</code> 函数入口处，即将执行的是指令 <code>bl display</code>，我们执行这条指令，将进入 <code>display</code> 函数：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>gdb<span class="o">)</span><span class="w"> </span>stepi
+0x0000000120000828<span class="w"> </span><span class="k">in</span><span class="w"> </span>display<span class="w"> </span><span class="o">()</span>
+</code></pre></div>
+<p>更多的实用指令，请善用搜索引擎自助查询，我们也欢迎同学们在群内或者论坛中进行讨论。</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 8, 2025</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="贡献者">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:153092435+terialion@users.noreply.github.com">WangYuhang</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

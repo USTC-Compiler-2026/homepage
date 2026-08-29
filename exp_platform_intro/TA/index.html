@@ -1,0 +1,912 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>助教代码介绍 - USTC 编译原理和技术 2026</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#助教代码介绍" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-header__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            USTC 编译原理和技术 2026
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              助教代码介绍
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="切换到夜晚模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜晚模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到白天模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到白天模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  公共文档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="USTC 编译原理和技术 2026" class="md-nav__button md-logo" aria-label="USTC 编译原理和技术 2026" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M384 96v224H64V96zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16m-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16m32 160a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>
+
+    </a>
+    USTC 编译原理和技术 2026
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    公共文档
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            公共文档
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    课程平台介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#编译代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      编译代码
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="编译代码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#打开仓库" class="md-nav__link">
+    <span class="md-ellipsis">
+      打开仓库
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#使用-vscode-cmake" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用 VSCode CMake
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#使用-vscode-进行调试" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用 VSCode 进行调试
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用 VSCode 进行调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#调试信息" class="md-nav__link">
+    <span class="md-ellipsis">
+      调试信息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#调试变量" class="md-nav__link">
+    <span class="md-ellipsis">
+      调试变量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#框架更新介绍" class="md-nav__link">
+    <span class="md-ellipsis">
+      框架更新介绍
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="框架更新介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#去除-llvm-ilist-依赖" class="md-nav__link">
+    <span class="md-ellipsis">
+      去除 llvm ilist 依赖
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#使用两段化-instruction-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用两段化 Instruction List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#去除-instruction-类的-crtp" class="md-nav__link">
+    <span class="md-ellipsis">
+      去除 Instruction 类的 CRTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#创建时命名" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建时命名
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lldb-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLDB Summary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="助教代码介绍">助教代码介绍<a class="headerlink" href="#助教代码介绍" title="Permanent link">&para;</a></h1>
+<h3 id="编译代码">编译代码<a class="headerlink" href="#编译代码" title="Permanent link">&para;</a></h3>
+<h4 id="打开仓库">打开仓库<a class="headerlink" href="#打开仓库" title="Permanent link">&para;</a></h4>
+<p>确保 vscode 打开的文件夹是你的仓库，即</p>
+<p><a class="glightbox" href="../image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-1.png" /></a></p>
+<p>而不是</p>
+<p><a class="glightbox" href="../image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-2.png" /></a></p>
+<p>如果是后者，首先在命令行切换到仓库文件夹，然后输入 <code>code .</code> 打开一个新 VSCode 窗口</p>
+<p>例如</p>
+<div class="highlight"><pre><span></span><code>yang@xxx:~/ta$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>2025ustc-jianmu-compiler/
+yang@xxx:~/ta/2025ustc-jianmu-compiler$<span class="w"> </span>code<span class="w"> </span>.
+</code></pre></div>
+<h4 id="使用-vscode-cmake">使用 VSCode CMake<a class="headerlink" href="#使用-vscode-cmake" title="Permanent link">&para;</a></h4>
+<p>首先 <code>Ctrl + Shift + P</code> 调出命令窗口，输入 <code>Cmake: Select a Kit</code> 选择工具包</p>
+<p><a class="glightbox" href="../image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-3.png" /></a></p>
+<p>然后选择其中的 Clang</p>
+<p><a class="glightbox" href="../image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-4.png" /></a></p>
+<p>如果你发现只有扫描工具包选项，点击扫描工具包，然后再次 <code>Ctrl + Shift + P</code> 重复输入指令。</p>
+<p>当你的 clang 实在无法通过编译或正常调试，可以使用 gcc，后者在与 lldb 协作调试时有一些问题，但不影响实验。
+注意可能有多个 gcc 选项，若要进行 linux 调试，路径应该是 <code>/usr/bin/gcc</code> 而非其它路径。</p>
+<p>现在可以运行 cmake，我们推荐使用 VSCode CMake 插件进行 CMake，而非命令行调用 <code>cmake ..</code>，你需要</p>
+<ul>
+<li>删除 <code>build</code> 文件夹以刷新缓存</li>
+<li>点进最外层的 <code>CMakeLists.txt</code> 文件，<code>Ctrl + S</code> 保存，它会自动配置 cmake</li>
+</ul>
+<p>然后你可以在 <code>build</code> 文件夹进行 <code>make</code>。</p>
+<details class="note" open="open">
+<summary>Q&amp;A</summary>
+<p><code>Ctrl + S</code> 没有配置 cmake?</p>
+<ul>
+<li><code>Ctrl + Shift + P</code> 输入指令 <code>CMake: Configure</code> 进行配置</li>
+</ul>
+<p>配置之后 make 报错显示没有指定目标?</p>
+<ul>
+<li>点击 VSCode 左下角设置，进行如下设置
+<a class="glightbox" href="../image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-5.png" /></a></li>
+</ul>
+</details>
+<p>若你使用命令行运行 cmake，仍然推荐你删除 <code>build</code> 文件夹以刷新缓存，你需要 cmake 命令行日志中注意使用的编译器确实是 clang。</p>
+<h2 id="使用-vscode-进行调试">使用 VSCode 进行调试<a class="headerlink" href="#使用-vscode-进行调试" title="Permanent link">&para;</a></h2>
+<p>新框架的主要功能是与 CodeLLDB 集成的调试，例如同样断点，旧框架显示</p>
+<p><a class="glightbox" href="../image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-6.png" /></a></p>
+<p>新框架显示</p>
+<p><a class="glightbox" href="../image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-7.png" /></a></p>
+<p>为了进行调试，你首先需要创建 <code>launch.json</code>，助教代码中已经创建好，例如</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lldb&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Compile &amp; Gen 1.ll&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// 要调试的程序</span>
+<span class="w">            </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}/build/cminusfc&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// 命令行参数</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;-emit-llvm&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;./build/1.cminus&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;./build/1.ll&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="c1">// 程序运行的目录</span>
+<span class="w">            </span><span class="nt">&quot;cwd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// 程序运行前运行的命令(例如 build)</span>
+<span class="w">            </span><span class="nt">&quot;preLaunchTask&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;make cminusfc&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// codelldb 集成</span>
+<span class="w">            </span><span class="nt">&quot;initCommands&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;command script import ${workspaceFolder}/lldb_formatters.py&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>创建一个名为 <code>Compile &amp; Gen 1.ll</code> 的调试选项，点击 VSCode 左侧调试栏，你可以找到所有你定义的选项</p>
+<p><a class="glightbox" href="../image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-8.png" /></a></p>
+<p>点击就可以进行调试。</p>
+<p>上文这个选项实际运行了程序 <code>./build/cminusfc -emit-llvm ./build/1.cminus -o ./build/1.ll</code>，
+在运行之前，由于设置了 <code>preLaunchTask</code>，还会取 <code>tasks.json</code> 里的对应指令，也就是每次都编译。</p>
+<p>如果你某个样例测试不通过，可以找到它对应的 <code>cminus</code> 文件，右键复制相对路径，并更改对应的调试指令来进行调试。</p>
+<h3 id="调试信息">调试信息<a class="headerlink" href="#调试信息" title="Permanent link">&para;</a></h3>
+<p>若你不打断点，调试会很快结束（除非 assert 报错，程序会在 assert 停下来），你可以使用 assert 或者断点来停下来程序，例如下图在行号位置单击打断点。</p>
+<p>打断点不一定停下来，特别是在函数返回时，有的编译器会停在 <code>return</code>，有的会停在函数结束的 <code>}</code> 处，你可以多打几个。</p>
+<p><a class="glightbox" href="../image-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-9.png" /></a></p>
+<p>调试界面具有很多信息，右上角漂浮的窗口用于控制目前调试器的行为。这些图标作用分别为：</p>
+<ul>
+<li>继续，从程序停止处开始执行，直到遇到下一个断点暂停或程序结束</li>
+<li>逐过程，执行到下一行的位置停止，如果函数返回了就返回然后停住</li>
+<li>单步调试，和下一步类似，但当你在函数调用上打了断点，"逐过程" 会执行到下一行，但是"单步调试"会进入调用的函数的第一行。</li>
+<li>单步跳出，执行完当前的函数，然后暂停，当你点击"单步调试"进入函数后，单步跳出会执行完进入的函数并退出</li>
+<li>重启，重新开始调试。</li>
+<li>停止，停止调试，同时终止程序。</li>
+</ul>
+<p>左侧的侧边栏拥有变量信息，包括</p>
+<ul>
+<li><code>Local</code> 栏，具有调试程序暂停的时刻每个局部变量的值，暂停在类的内部还包含 <code>this</code>，单步跳出后还包含返回值</li>
+<li><code>Static</code> 栏，包含暂停到的文件中的全局变量的值，暂停在不同的文件会显示不同的全局变量</li>
+</ul>
+<p>下方具有堆栈和断点信息，包括</p>
+<ul>
+<li>调用堆栈栏</li>
+</ul>
+<p>例如下面代码</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">a</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">b</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">b</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">c</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// 断点停止处</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>停止在断点上后，调用堆栈从屏幕下往上依次是 <code>c</code>, <code>b</code>, <code>a</code>。如果你点击 <code>b</code>，页面就会导航到 <code>b</code> 进入 <code>c</code> 的地方，然后你可以查看局部变量 <code>c</code> 的值。</p>
+<p>当程序运行出错，进入一些汇编代码时，调用堆栈告诉你它是如何执行到错误的地方，通过局部变量还可以判断具体是什么错误。</p>
+<ul>
+<li>断点栏</li>
+</ul>
+<p>显示你打了哪些断点，它们在哪里，以及你可以在这里暂时禁用它们。</p>
+<h3 id="调试变量">调试变量<a class="headerlink" href="#调试变量" title="Permanent link">&para;</a></h3>
+<p>变量栏的变量以 <code>名称 + 描述</code> 对出现。</p>
+<p>鼠标悬停在名称上，它可以显示变量的类型。鼠标悬停在描述上，它会将描述展开（如果页面太短了看不到描述）。</p>
+<p>点击某个变量，你就可以看到它的成员。特别的，如果 <code>class A : B</code>，你展开 <code>A</code> 能看到一个 <code>B</code>，它是 <code>A</code> 中包含的父类信息。</p>
+<details class="note" open="open">
+<summary>Q&amp;A</summary>
+<p><strong>调试窗口变量的描述与文档中的图片不同，非常复杂难以阅读?</strong></p>
+<p>这可能是由于 lldb 没有正常工作。</p>
+<p>在命令行输入 <code>lldb</code> 回车，若显示 <code>ModuleNotFoundError: No module named 'lldb.embedded_interpreter'</code>，可能就是这个问题。这是 lldb 的一个 bug，原因是 llvm 需要使用它自带的 python 文件，但是它设置错了自己的默认 python 路径。</p>
+<p>输入 <code>exit</code> 退出刚才的环境，输入 <code>lldb -P</code>，会显示 llvm 默认 python 路径，例如 <code>/usr/lib/local/lib/python3.10/dist-packages</code>。这个 python 路径也许不存在，你需要创建 <code>/usr/lib/local/lib/python3.10</code> 文件夹。</p>
+<p>然后你需要寻找 llvm 自带的 python，它一般在 <code>/usr/lib/llvm-14/lib/python3.10/dist-packages</code>，然后将它链接到 llvm 默认路径，这里即 <code>sudo ln -s /usr/lib/llvm-14/lib/python3.10/dist-packages /usr/lib/local/lib/python3.10/dist-packages</code>。</p>
+<p>不同的机器可能具有不同的路径。</p>
+<p><strong>当程序陷入异常后通过调用堆栈导航到外面，发现调试窗口难以阅读</strong></p>
+<p>这是正常的，异常之前打个断点提前停下来就不会这样。</p>
+</details>
+<h2 id="框架更新介绍">框架更新介绍<a class="headerlink" href="#框架更新介绍" title="Permanent link">&para;</a></h2>
+<p>此处介绍助教代码相对原有框架进行的所有更新</p>
+<h3 id="去除-llvm-ilist-依赖">去除 llvm ilist 依赖<a class="headerlink" href="#去除-llvm-ilist-依赖" title="Permanent link">&para;</a></h3>
+<p>所有的 <code>llvm::ilist&lt;Instruction&gt;</code> 都换成了 <code>std::list&lt;Instruction*&gt;</code>，并且对 llvm 的依赖从 cmake 中去除。</p>
+<p>原有的 llvm::ilist 无法被 lldb 正确识别。导致调试时无法看到一个函数有哪些基本块，一个基本块有哪些指令；</p>
+<p><a class="glightbox" href="../image-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-11.png" /></a></p>
+<p>使用 std::list 虽然性能受损，但是可以在调试时看到所有的基本块和指令。</p>
+<p><a class="glightbox" href="../image-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-10.png" /></a></p>
+<p>代价是有些地方 <code>BasicBlock</code>，<code>Instruction</code> 变成了它们的指针，如果你要复用原来你自己写的代码，你需要改改。</p>
+<h3 id="使用两段化-instruction-list">使用两段化 Instruction List<a class="headerlink" href="#使用两段化-instruction-list" title="Permanent link">&para;</a></h3>
+<p>每个基本块中的指令列表被分为两段</p>
+<div class="highlight"><pre><span></span><code>block_label:
+--------------------
+alloca / phi segment
+--------------------
+other inst segment
+--------------------
+</code></pre></div>
+<p>调用 <code>add_inst</code> 等 api 插入指令时，<code>alloca</code> 和 <code>phi</code> 指令会被插入第一段，而其它指令会被插入第二段，插入顺序和 api 的描述一致。创建指令也是如此。
+因此，你可以在一个已经终止的块中创建 <code>phi</code> 和 <code>allca</code>。</p>
+<p>特别的，<code>IRBuilder</code> 中的 <code>create_alloca</code> 会将 <code>alloca</code> 指令放置在函数的入口块</p>
+<div class="highlight"><pre><span></span><code><span class="n">AllocaInst</span><span class="w"> </span><span class="o">*</span><span class="n">create_alloca</span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="o">*</span><span class="n">ty</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">AllocaInst</span><span class="o">::</span><span class="n">create_alloca</span><span class="p">(</span><span class="n">ty</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">BB_</span><span class="o">-&gt;</span><span class="n">get_entry_block_of_same_function</span><span class="p">(),</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这么做的一个原因是与 llvm 兼容。你可能已经注意到栈式分配给每个 <code>alloca</code> 都分配且仅分配一个位置，但是 llvm lli 却在执行时每次遇到 <code>alloca</code> 都分配一次空间，
+这导致循环中的 <code>alloca</code> 内存泄漏，lli 报错</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>识别 <code>alloca</code> 是否在循环中，然后将它提到循环外是多此一举。无论栈式还是寄存器分配，<code>alloca</code> 指令的位置都不影响最终的汇编性能，
+所以我们可以简单的全放到函数入口块指令列表的第一段，<strong>入口块不可能有前驱基本块</strong>，因此不可能位于循环中。</p>
+<p><code>phi</code> 指令具有不同的考量，当你发现你需要插入一个 <code>phi</code>，通常是选择语句对一个变量进行了不同的赋值</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="p">(</span><span class="n">xxx</span><span class="p">)</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+</code></pre></div>
+<p>然后你需要将它转换为 SSA</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="p">(</span><span class="n">xxx</span><span class="p">)</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="n">a1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">a2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">phi</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">a1</span><span class="p">);</span>
+<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a2</span><span class="p">;</span>
+</code></pre></div>
+<p>a2 放在哪里？它需要放在所有本基本块使用到 a 的变量的前面，不过最省事的做法是直接丢到基本块开头，也就是指令列表第一段。</p>
+<p><code>phi</code> 的操作数来自于前驱基本块，由于入口块不可能有前驱块，入口块不存在 <code>phi</code>，这样，可以认为入口块第一段只有 <code>alloca</code>，而非入口块第一段只有 <code>phi</code>。</p>
+<p>段的区分在接口中没有明显体现，当你遍历指令列表，你还是会遍历所有指令，只不过 <code>alloca</code> 和 <code>phi</code> 都在指令列表开头的地方。</p>
+<h3 id="去除-instruction-类的-crtp">去除 Instruction 类的 CRTP<a class="headerlink" href="#去除-instruction-类的-crtp" title="Permanent link">&para;</a></h3>
+<p>将</p>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Inst</span><span class="o">&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">BaseInst</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Instruction</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">Inst</span><span class="w"> </span><span class="o">*</span><span class="n">create</span><span class="p">(</span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Inst</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="n">BaseInst</span><span class="p">(</span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Instruction</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...)</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">IBinaryInst</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">BaseInst</span><span class="o">&lt;</span><span class="n">IBinaryInst</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="n">BaseInst</span><span class="o">&lt;</span><span class="n">IBinaryInst</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">IBinaryInst</span><span class="p">(</span><span class="n">OpID</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">IBinaryInst</span><span class="w"> </span><span class="o">*</span><span class="n">create_add</span><span class="p">(</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">);</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">IBinaryInst</span><span class="w"> </span><span class="o">*</span><span class="nf">create_sub</span><span class="p">(</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">);</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">IBinaryInst</span><span class="w"> </span><span class="o">*</span><span class="nf">create_mul</span><span class="p">(</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">);</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">IBinaryInst</span><span class="w"> </span><span class="o">*</span><span class="nf">create_sdiv</span><span class="p">(</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>变为
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IBinaryInst</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Instruction</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">IBinaryInst</span><span class="p">(</span><span class="n">OpID</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">IBinaryInst</span><span class="w"> </span><span class="o">*</span><span class="n">create_add</span><span class="p">(</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">IBinaryInst</span><span class="w"> </span><span class="o">*</span><span class="n">create_sub</span><span class="p">(</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">IBinaryInst</span><span class="w"> </span><span class="o">*</span><span class="n">create_mul</span><span class="p">(</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">IBinaryInst</span><span class="w"> </span><span class="o">*</span><span class="n">create_sdiv</span><span class="p">(</span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">*</span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">BasicBlock</span><span class="w"> </span><span class="o">*</span><span class="n">bb</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></p>
+<p>原来的那个实现虽然性能更好，但它会导致报错时点击报错函数导航到 <code>BaseInst</code> 这个空模板，影响 debug。</p>
+<h3 id="创建时命名">创建时命名<a class="headerlink" href="#创建时命名" title="Permanent link">&para;</a></h3>
+<p>实现了一个名称分配器类 <code>Names</code>。当创建基本块和非 <code>void</code> 指令时，即使你不指定名称，它也会给它们立刻分配一个名称。</p>
+<p><code>Names</code> 会确保分配的名字不重复，目前助教代码中所有 <code>alloca</code> 指令指定的名字都是 <code>cminus</code> 中变量的名字。</p>
+<p>以前基本块和指令的名称直到调用 <code>print</code> 时才分配，在这之前一直是空的。当你想要打断点调试时，你会发现你分不清不同指令和基本块。</p>
+<h3 id="lldb-summary">LLDB Summary<a class="headerlink" href="#lldb-summary" title="Permanent link">&para;</a></h3>
+<p>每个类都有自定义的 lldb summary，也就是</p>
+<p><a class="glightbox" href="../image-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-13.png" /></a></p>
+<p>如果不实现这个你会看到</p>
+<p><a class="glightbox" href="../image-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-12.png" /></a></p>
+<p>如果你发现你的 summary 是 <code>parse summary error</code> 类似的话，你可以尝试更新 <code>clang</code> 或者搜索它如何修复，或者换用 <code>gcc</code>。但是 <code>gcc</code> 有一个 bug，导致有些 summary 不能正确显示。例如指令列表：</p>
+<p><a class="glightbox" href="../image-14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image-14.png" /></a></p>
+<p>对 CMAKE 的更改专门用于处理这些情况</p>
+<div class="highlight"><pre><span></span><code><span class="nb">include</span><span class="p">(</span><span class="s">CheckCXXCompilerFlag</span><span class="p">)</span>
+
+<span class="nb">if</span><span class="p">(</span><span class="s">CMAKE_CXX_COMPILER_ID</span><span class="w"> </span><span class="s">MATCHES</span><span class="w"> </span><span class="s2">&quot;Clang&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">check_cxx_compiler_flag</span><span class="p">(</span><span class="s2">&quot;-fstandalone-debug&quot;</span><span class="w"> </span><span class="s">CXX_SUPPORTS_STANDALONE_DEBUG</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">if</span><span class="p">(</span><span class="s">CXX_SUPPORTS_STANDALONE_DEBUG</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">message</span><span class="p">(</span><span class="s">STATUS</span><span class="w"> </span><span class="s2">&quot;Adding -fstandalone-debug for Clang&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_FLAGS_DEBUG</span><span class="w"> </span><span class="s2">&quot;${CMAKE_CXX_FLAGS_DEBUG} -fstandalone-debug&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">else</span><span class="p">()</span>
+<span class="w">        </span><span class="nb">message</span><span class="p">(</span><span class="s">STATUS</span><span class="w"> </span><span class="s2">&quot;Clang does not support -fstandalone-debug, skipping&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endif</span><span class="p">()</span>
+<span class="nb">else</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s">STATUS</span><span class="w"> </span><span class="s2">&quot;Use Gcc&quot;</span><span class="p">)</span>
+<span class="nb">endif</span><span class="p">()</span>
+</code></pre></div>
+<p>如果编译器是 clang 就尝试添加 <code>-fstandalone-debug</code> 修复 <code>parse summary error</code> 的 bug，
+我们确实发现一些同学的环境不支持这个 flag，所以这里进行检测，只在支持时开启它。</p>
+<p>当你实现一个新的类，你会发现它没有描述，你可以添加它，这包括</p>
+<ul>
+<li>在你的类中实现 <code>std::string safe_print() const</code> 方法</li>
+<li>在 <code>lldb_formatters.py</code> 中具有很多类名的列表中添加你的类名</li>
+</ul>
+<p>你也可以在其它 CMAKE 项目中开启这个功能，这包括</p>
+<ul>
+<li>在 launch 中添加 <code>"initCommands": [ "command script import ${workspaceFolder}/lldb_formatters.py" ]</code></li>
+<li>复制 <code>lldb_formatters.py</code> 到项目根目录，列表中只保留你需要的类名</li>
+<li>实现 <code>safe_print</code> 方法</li>
+</ul>
+<p>当然你可能需要处理 gcc/clang 与 lldb 不兼容的问题，就像上文提的一样。</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 4, 2025</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="贡献者">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:ylc221606@mail.ustc.edu.cn">Yang00002</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
