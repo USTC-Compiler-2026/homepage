@@ -1,16 +1,8 @@
-
-
 # <strong>编译原理与技术</strong>
-
-
 
 !!! Info "说明"
 
     本课程主页为 2025 秋季学期李诚老师班《编译原理与技术》课程主页，包含了理论课与实验课的相关信息。
-
-!!! warning "勘误"
-
-    Lab3 栈式分配，由于实验没有对齐需求，框架中栈上给每个 `i1` 分配空间的是 **1** 字节而非 **4** 字节，在作业与考试中也认为 `i1` 占 **1** 字节空间（实验代码无需更改）。
 
 <hr class="hr-my" data-content="(●′∀｀●) 我是分隔线 (●′∀｀●)">
 
@@ -28,52 +20,34 @@
 
 <strong>教师</strong>
 
-- 主讲教师：李诚（<chengli7@ustc.edu.cn>）
+- 李诚（<chengli7@ustc.edu.cn>）
+- 徐伟 (<>)
 
 <strong>助教</strong>
 
+  - 乔昱霖 (<>)
+  - 游兴业 (<>)
   - 王宇航（<wyh2022@mail.ustc.edu.cn>）
-  - 艾琮焜（<ack@mail.ustc.edu.cn>）
-  - 杨龙成（<ylc221606@mail.ustc.edu.cn>）
   - 孙婧雯（<sunj1ngwen@mail.ustc.edu.cn>）
-  - 朱恩松（<eszhu@mail.ustc.edu.cn>）
+  - 吴卫昊 (<>)
+  - 卿文杰 (<>)
 
 <strong>其它</strong>
 
 - QQ 群：910418526
 - 希冀实验平台（作业及实验提交）：<http://cscourse.ustc.edu.cn/>
 <!-- - 录课视频（需校内统一身份认证）：<https://v.ustc.edu.cn/1/2024-1/capture-course/011163.02/detail> -->
-<!-- - 实验框架已公开，见参考资料 [<sup>2</sup>](#textbook2) -->
 
 
 ## <strong>公告</strong>
-- 2025-09-08：[课程平台介绍](exp_platform_intro/README.md) 已发布
-- 2025-09-14：[Lab0](lab0/index.md) 已发布，Deadline：**2025 年 9 月 24 日**
-- 2025-09-21：[第一次作业](hw/011163_25FA_HW1.pdf)已发布，Deadline：**2025 年 9 月 28 日**
-- 2025-09-24：[Lab1](lab1/index.md) 已发布，Deadline：**Phase1 : 2025 年 10 月 1 日 / Phase2 : 2025 年 10 月 8 日**
-- 2025-10-08：[Lab2](lab2/index.md) 已发布，Deadline：
-    - **Phase1 : 2025 年 10 月 22 日**
-    - **Phase2 : 2025 年 10 月 31 日**
-    - **Phase3 : 2025 年 11 月 7 日**
-- 2025-10-17：[第二次作业](hw/011163_25FA_HW2.pdf)已发布，Deadline：**2025 年 10 月 29 日**
-- 2025-11-12：[第三次作业](hw/011163_25FA_HW3.pdf)已发布，Deadline：**2025 年 11 月 23 日**
-- 2025-11-12：[Lab3](lab3/index.md) 已发布，Deadline：
-    - **Phase1 : 2025 年 11 月 23 日**
-    - **Phase2 : 2025 年 11 月 30 日**
-- 2025-11-27：[Lab2 助教代码](exp_platform_intro/TA.md) 已发布：
-	- 包含 Lab1, 2 的助教实现和 Lab3 Phase2 框架，可以在上面实现 Lab3 Phase2
-	- 具有比旧版本更方便调试的底层框架，具体更改见[助教代码介绍](exp_platform_intro/TA.md/#使用-vscode-进行调试)，Lab4 将仅提供该版本代码
-- 2025-11-12：[第四次作业](hw/011163_25FA_HW4.pdf)已发布，Deadline：**2025 年 12 月 07 日**
-- 2025-12-4：[Lab4](lab4/index.md) 已发布，Deadline：
-    - **Phase1 : 2025 年 12 月 14 日**
-    - **Phase2 : 2025 年 12 月 21 日**
-- 2025-12-10：[第五次作业](hw/011163_25FA_HW5.pdf)已发布，Deadline：**2025 年 12 月 16 日**
+- 2026-08-30：[课程平台介绍](exp_platform_intro/README.md) 已发布
 
 ## <strong>教学课件</strong>
 
 |     日期     |                            标题                             |                                                                          课件                                                                          |
 |:----------:|:---------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------:|
-| 2025-09-08 |                         编译原理和技术导论                         |                                                       [Lecture1_Intro](ppt/Lecture1-Intro.pdf)                                                       |
+| 2026-08-31 |                         编译原理和技术导论                         |                                                       [Lecture1_Intro](ppt/Lecture1-Intro.pdf)                                                       |
+<!--
 | 2025-09-10 |                           词法分析                            |                             [Lexical-analysis](ppt/Lecture2-Lexical-analysis.pdf), [Triton_Intro](ppt/triton_intel.pdf)                              |
 | 2025-09-15 |                      语法分析 - 上下文无关文法                       |                                                    [Parser-part1](ppt/Lecture3-Parser-part1.pdf)                                                     |
 | 2025-09-17 |                    语法分析 - 自顶向下 - 递归下降                     |                                                    [Parser-part2](ppt/Lecture4-Parser-part2.pdf)                                                     |
@@ -96,27 +70,14 @@
 | 2025-11-24 |                      龙芯架构介绍 & 龙芯汇编介绍                      |                                                        [LA-part1](ppt/Lecture34-LA-part1.pdf)                                                        |
 | 2025-11-26 |                          栈式分配介绍                           |                                                        [LA-part2](ppt/Lecture35-LA-part2.pdf)                                                        |
 | 2025-12-01 |                          指令并行与调度                          |                                                     [Backend-Opt](ppt/Lecture37-Backend-Opt.pdf)                                                     |
-| 2025-12-08 |                          静态类型检查                           |                                                      [Type-Check](ppt/Lecture38-Type-Check.pdf)                                                      |
-| 2024-12-10 |                     寄存器分配-图着色 & 全局值编号                     |                                   [RegAlloc-part2](ppt/Lecture39-RegAlloc-part2.pdf), [GVN](ppt/Lecture40-GVN.pdf)                                   |
-<!--
-| 2024-11-04 |               中间代码翻译 - 类型表达式 & 符号表与声明语句                |                                        [IR-Translation-part6](ppt/Lecture20-IR%20Translation-part6.pdf)                                        |
-| 2024-11-06 |              中间代码翻译 - 数组寻址 & 运行时管理 - 存储组织              |                                       [IR-Translation-part7](ppt/Lecture21-IR%20Translation-part7.pdf), [Runtime-part1](ppt/Lecture22-Runtime-part1.pdf)                                        |
-| 2024-11-11 |           运行时管理 - 栈式分配          |                                       [Runtime-part2](ppt/Lecture23-Runtime-part2.pdf), [Runtime-part3](ppt/Lecture24-Runtime-part3.pdf)                                        |
-| 2024-11-13 |                     代码生成 - 简单机器模型                     |                                                                              [CodeGen-part1](ppt/Lecture25-CodeGen-part1.pdf)                                                                              |
-| 2024-11-18 | 机器无关代码优化 - 常见优化方法 | [IR Opt-part1](ppt/Lecture26-IR%20Opt-part1.pdf)|
-| 2024-11-20 | 机器无关代码优化 - 数据流与到达定值分析  | [IR Opt-part2](ppt/Lecture27-IR%20Opt-part2.pdf)|
-| 2024-11-25 | 机器无关代码优化 - 可用表达式分析 & 活跃变量分析 & 基本块内优化             |                                       [IR Opt-part3](ppt/Lecture28-IR%20Opt-part3.pdf), [IR Opt-part4](ppt/Lecture29-IR%20Opt-part4.pdf), [IR Opt-part5](ppt/Lecture30-IR%20Opt-part5.pdf)                                       |
-| 2024-11-27 | 流图中的循环 & 寄存器分配              |                                                                              [Loop](ppt/Lecture31-Loop-part1.pdf), [Register](ppt/Lecture32-RegAlloc-part1.pdf)                                |
-
+| 2025-12-08 |                          静态类型检查                           |                                                      [Type-Check](ppt/Lecture38-Type-Check.pdf)                                                      |                                  |
 -->
-<!--| 2024-11-29 |                          面向目标机器的代码优化                           |                                                                              [part1](https://rec.ustc.edu.cn/share/d6169380-9045-11ee-8a37-87201671ab8d)                                                                              |
-| 2024-12-04 |                               guest lecture                               |                                                                                                               无 slides                                                                                                               |
-| 2024-12-06 |                               guest lecture                               |                                                                                                               无 slides                                                                                                               |
-| 2024-12-13 |                                  复习课                                   |                                                                             [slides](https://rec.ustc.edu.cn/share/3a4ffcf0-995a-11ee-9fdc-a7ee4ffd604e)                                                                              | -->
 
 ## <strong>参考资料</strong>
+<!--
 - 2025-10-21：[第一次作业答案](hw/011163_25FA_HW1_ANSWER.pdf) 已发布
 - 2025-11-12：[第二次作业答案](hw/011163_25FA_HW2_ANSWER.pdf) 已发布
+-->
 
 ### <strong>教材和参考书</strong>
 
