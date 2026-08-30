@@ -2,7 +2,7 @@
 
 !!! Info "说明"
 
-    本课程主页为 2025 秋季学期李诚老师班《编译原理与技术》课程主页，包含了理论课与实验课的相关信息。
+    本课程主页为 2026 秋季学期李诚老师班《编译原理与技术》课程主页，包含了理论课与实验课的相关信息。
 
 <hr class="hr-my" data-content="(●′∀｀●) 我是分隔线 (●′∀｀●)">
 
@@ -16,25 +16,26 @@
 
     时间：1~15 周，1(6,7) 和 3(3,4)
     地点：高新校区 GT-B212
+
 ### <strong>联系方式</strong>
 
 <strong>教师</strong>
 
 - 李诚（<chengli7@ustc.edu.cn>）
-- 徐伟 (<>)
+- 徐伟 (<xuweihf@ustc.edu.cn>)
 
 <strong>助教</strong>
 
-  - 乔昱霖 (<>)
-  - 游兴业 (<>)
+  - 乔昱霖 (<qiaoyulin@mail.ustc.edu.cn>)
+  - 游兴业 (<xinye@mail.ustc.edu.cn>)
   - 王宇航（<wyh2022@mail.ustc.edu.cn>）
   - 孙婧雯（<sunj1ngwen@mail.ustc.edu.cn>）
-  - 吴卫昊 (<>)
-  - 卿文杰 (<>)
+  - 吴卫昊 (<wweihao@mail.ustc.edu.cn>)
+  - 卿文杰 (<qingwenjie@mail.ustc.edu.cn>)
 
 <strong>其它</strong>
 
-- QQ 群：910418526
+- QQ 群：463276055
 - 希冀实验平台（作业及实验提交）：<http://cscourse.ustc.edu.cn/>
 <!-- - 录课视频（需校内统一身份认证）：<https://v.ustc.edu.cn/1/2024-1/capture-course/011163.02/detail> -->
 
@@ -90,8 +91,6 @@
 - Stanford 课程主页：<http://web.stanford.edu/class/cs143/>
 - MIT 课程主页：<http://6.035.scripts.mit.edu/fa18/>
 - 编译实验讲解与说明：<https://www.bilibili.com/video/BV1D7421N7c4> 
-
-
 
 ## <strong>如何使用本文档？</strong>
 
