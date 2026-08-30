@@ -2368,7 +2368,7 @@
 </tbody>
 </table>
 <p>其中，对于 <code>.section</code> 伪指令，我们只在给全局变量分配空间时会用到它，具体的语句为：</p>
-<div class="highlight"><pre><span></span><code><span class="na">.section</span><span class="w"> </span><span class="no">.bss</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aw&quot;</span><span class="p">,</span><span class="w"> </span><span class="na">@nobits</span>
+<div class="highlight"><pre><span></span><code><span class="na">.section</span><span class="w"> </span><span class="no">.bss</span><span class="p">,</span><span class="w"> </span><span class="s">"aw"</span><span class="p">,</span><span class="w"> </span><span class="na">@nobits</span>
 </code></pre></div>
 <p>这三个参数的含义分别是：</p>
 <ul>
@@ -2389,7 +2389,7 @@
 <p>编译器生成的汇编代码如下，其中有大量的伪指令，注释中有对各条伪指令的说明：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Global variables</span>
 <span class="w">    </span><span class="na">.text</span><span class="w">                         </span><span class="c1"># 后面的内容将放在代码段 (但是由于 .section, 全局变量实际被放到了 BSS 段)</span>
-<span class="w">    </span><span class="na">.section</span><span class="w"> </span><span class="no">.bss</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aw&quot;</span><span class="p">,</span><span class="w"> </span><span class="na">@nobits</span><span class="w">  </span><span class="c1"># 将后面的全局变量放到 BSS 段, 并设置属性</span>
+<span class="w">    </span><span class="na">.section</span><span class="w"> </span><span class="no">.bss</span><span class="p">,</span><span class="w"> </span><span class="s">"aw"</span><span class="p">,</span><span class="w"> </span><span class="na">@nobits</span><span class="w">  </span><span class="c1"># 将后面的全局变量放到 BSS 段, 并设置属性</span>
 
 <span class="w">    </span><span class="na">.globl</span><span class="w"> </span><span class="no">globalInt</span><span class="w">              </span><span class="c1"># 标记 globalInt 为全局符号</span>
 <span class="w">    </span><span class="na">.type</span><span class="w"> </span><span class="no">globalInt</span><span class="p">,</span><span class="w"> </span><span class="na">@object</span><span class="w">      </span><span class="c1"># 标记 globalInt 为数据对象/变量</span>
@@ -2559,7 +2559,7 @@
 </code></pre></div>
 <p>汇编代码：</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="na">.text</span><span class="w">                        </span><span class="c1"># 标记代码段</span>
-<span class="w">    </span><span class="na">.section</span><span class="w"> </span><span class="no">.bss</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;aw&quot;</span><span class="p">,</span><span class="w"> </span><span class="na">@nobits</span><span class="w"> </span><span class="c1"># 将后面的全局变量放到 BSS 段, 并设置属性</span>
+<span class="w">    </span><span class="na">.section</span><span class="w"> </span><span class="no">.bss</span><span class="p">,</span><span class="w"> </span><span class="s">"aw"</span><span class="p">,</span><span class="w"> </span><span class="na">@nobits</span><span class="w"> </span><span class="c1"># 将后面的全局变量放到 BSS 段, 并设置属性</span>
 <span class="w">    </span><span class="na">.globl</span><span class="w"> </span><span class="no">a</span><span class="w">                     </span><span class="c1"># 标记 a 为全局符号</span>
 <span class="w">    </span><span class="na">.type</span><span class="w"> </span><span class="no">a</span><span class="p">,</span><span class="w"> </span><span class="na">@object</span><span class="w">             </span><span class="c1"># 标记 a 为数据对象/变量</span>
 <span class="w">    </span><span class="na">.size</span><span class="w"> </span><span class="no">a</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w">                   </span><span class="c1"># 标记 a 的大小为 4 字节</span>

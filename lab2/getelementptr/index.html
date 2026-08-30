@@ -551,7 +551,7 @@
 <p>（在<a href="https://godbolt.org/z/G6G1xr">godbolt</a>上查看）</p>
 <p>我们一行一行来看：</p>
 <ol>
-<li>我们将全局变量<code>nums</code>加载（<code>load</code>）到<code>%0</code>中，类型为<code>i64*</code><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">6</a></sup>。</li>
+<li>我们将全局变量<code>nums</code>加载（<code>load</code>）到<code>%0</code>中，类型为<code>i64*</code><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>。</li>
 <li>
 <p>我们使用<code>getelementptr</code>计算一个<code>i64</code>（第一个参数）的地址，使用：</p>
 </li>
@@ -580,14 +580,14 @@
 <span class="w">  </span><span class="k">ret</span><span class="w"> </span><span class="kt">i64</span><span class="w"> </span><span class="nv nv-Anonymous">%0</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>上面这段代码一定程度上变简单了，但在某些地方又变复杂了：<code>getelementptr</code>现在内嵌在<code>load</code>指令中<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">3</a></sup>，但是我们也省去了一个<code>load</code>指令和两个 SSA 变量。</p>
+<p>上面这段代码一定程度上变简单了，但在某些地方又变复杂了：<code>getelementptr</code>现在内嵌在<code>load</code>指令中<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>，但是我们也省去了一个<code>load</code>指令和两个 SSA 变量。</p>
 <p>我们对<code>getelementptr</code>进行分析：</p>
 <ul>
 <li>我们正在计算一个<code>[3 x i64]</code>（即 3 个<code>i64</code>组成的数组）的地址（第一个参数）。</li>
 <li><code>nums</code>是我们的基址，类型为<code>[3 x i64]*</code>（第二个参数）。</li>
 </ul>
 <p>等下，为什么有<strong>两个</strong><code>i64 0</code>索引而不是一个呢？咋回事？</p>
-<p>据我理解，这是我们给予<code>nums</code>的新类型（也就是数组类型）所造成的诡异之处：它不再是指针，而是数组。然而，因为我们<strong>通过指针</strong>访问它（<code>getelementptr</code>就是这么定义的，这里的参数会被视作一个指针），所以我们实际上需要两个 0 索引：第一个用于解引用指针，第二个用于索引数组本身。我们所做的操作与前面的相同，只是在 IR 中稍微绕了一些弯子<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">4</a></sup>。</p>
+<p>据我理解，这是我们给予<code>nums</code>的新类型（也就是数组类型）所造成的诡异之处：它不再是指针，而是数组。然而，因为我们<strong>通过指针</strong>访问它（<code>getelementptr</code>就是这么定义的，这里的参数会被视作一个指针），所以我们实际上需要两个 0 索引：第一个用于解引用指针，第二个用于索引数组本身。我们所做的操作与前面的相同，只是在 IR 中稍微绕了一些弯子<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>。</p>
 <h2 id="更多的间接寻址">更多的间接寻址<a class="headerlink" href="#更多的间接寻址" title="Permanent link">&para;</a></h2>
 <p>当我们增加一个源代码中的间接层次，例如一个索引变量，会发生什么呢？</p>
 <div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="n">nums</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
@@ -695,7 +695,7 @@
 <li><code>i64 0</code>：解引用指针！<code>getelementptr</code>接受了一个指向<code>chuncky</code>的<strong>指针</strong>，而非<code>chunky</code>自身。</li>
 <li><code>i32 0</code>：结构体<code>foo</code>的第一个字段（即<code>foo.bar</code>）。</li>
 <li>注意到这里没有其他合法的索引：因为<code>foo</code>唯一的一个字段就是<code>bar</code>。</li>
-<li><code>i32 1</code>：嵌套聚合的第二个字段（即<code>foo.bar.baz</code><sup id="fnref:6"><a class="footnote-ref" href="#fn:6">7</a></sup>）。</li>
+<li><code>i32 1</code>：嵌套聚合的第二个字段（即<code>foo.bar.baz</code><sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>）。</li>
 <li>注意这里的<code>i32 0</code>会是<code>foo.bar.field1</code>，类似的，<code>i32 2</code>会是<code>foo.bar.field8</code>。换句话说，<strong>我们每进入一个新的聚合，我们就会从 0 开始重新计数</strong>。</li>
 <li><code>i32 2</code>：下一层嵌套的第三个字段（即<code>foo.bar.baz.quux</code>）。</li>
 <li><code>i32 1</code>：再下一层嵌套的第二个字段（即<code>foo.bar.baz.quux.field5</code>）。</li>
@@ -719,7 +719,7 @@
 <li><code>bitcast</code>将其转换为适当的<code>union</code>变量指针（<code>[32 x i8]*</code>）。</li>
 <li>外面一层<code>getelementptr</code>则对转换后的指针解引用（还记得我们前面说的吗，这是<code>i64 0</code>在这里的作用），然后获取位于下标<code>6</code>的<code>field5[6]</code>的地址。</li>
 </ul>
-<p>换句话说，当我们需要访问<code>union</code>中的某些字段时，有时需要两个或更多的<code>getelementptr</code><sup id="fnref:7"><a class="footnote-ref" href="#fn:7">5</a></sup>操作来计算最终的地址。</p>
+<p>换句话说，当我们需要访问<code>union</code>中的某些字段时，有时需要两个或更多的<code>getelementptr</code><sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup>操作来计算最终的地址。</p>
 <h2 id="向量地址计算">向量地址计算<a class="headerlink" href="#向量地址计算" title="Permanent link">&para;</a></h2>
 <p>（译者注：这个部分似乎有着不少错误，因此做了不少调整）</p>
 <p>比较令人尴尬的是，我花了差不多半个小时才理解上面的结构体的示例。那么，为啥不继续<sub>~被虐</sub>~学习呢？</p>
@@ -836,20 +836,20 @@
 <li id="fn:2">
 <p>字面上来说：<code>llvm::Function</code>等类型都是从<code>llvm::Value</code>派生而来的。&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
+<li id="fn:3">
+<p>你可能会注意到，我们从一个<code>i64**</code>类型中加载数据，尽管<code>nums</code>只是一个<code>i64*</code>。这是 LLVM 语义上的一些“有趣”之处：<code>load</code>指令需要一个<code>&lt;ty&gt;*</code>类型作为来源，所以加载一个<code>i64*</code>就需要<code>i64**</code>。&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
 <li id="fn:4">
-<p>如果你是个杠精，你可能会说，这些内联的 GEP 在 LLVM 中实际上并不是指令，而是常量表达式（即<code>llvm::GetElementPtrConstantExpr</code>而非<code>llvm::GetElementPtrInst</code>）。但两者的语义对于我的解释来说是相同的，所以别挑我的毛病。&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>如果你是个杠精，你可能会说，这些内联的 GEP 在 LLVM 中实际上并不是指令，而是常量表达式（即<code>llvm::GetElementPtrConstantExpr</code>而非<code>llvm::GetElementPtrInst</code>）。但两者的语义对于我的解释来说是相同的，所以别挑我的毛病。&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>此事在 LLVM 官方文档中亦有<a href="https://llvm.org/docs/GetElementPtr.html#why-is-the-extra-0-index-required">记载</a>。&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 4 in the text">&#8617;</a></p>
-</li>
-<li id="fn:7">
-<p>同样说给杠精：这些是常量表达式，而不是“真正”的 GEP，因此它们基本上不会带来额外的开销。&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 5 in the text">&#8617;</a></p>
-</li>
-<li id="fn:3">
-<p>你可能会注意到，我们从一个<code>i64**</code>类型中加载数据，尽管<code>nums</code>只是一个<code>i64*</code>。这是 LLVM 语义上的一些“有趣”之处：<code>load</code>指令需要一个<code>&lt;ty&gt;*</code>类型作为来源，所以加载一个<code>i64*</code>就需要<code>i64**</code>。&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p>此事在 LLVM 官方文档中亦有<a href="https://llvm.org/docs/GetElementPtr.html#why-is-the-extra-0-index-required">记载</a>。&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p>我完全不知道为什么 LLVM 在这个 GEP 中会在<code>i64</code>和<code>i32</code>之间切换。大多数 LLVM 文档似乎暗示这其实无关紧要。&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+<p>我完全不知道为什么 LLVM 在这个 GEP 中会在<code>i64</code>和<code>i32</code>之间切换。大多数 LLVM 文档似乎暗示这其实无关紧要。&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>同样说给杠精：这些是常量表达式，而不是“真正”的 GEP，因此它们基本上不会带来额外的开销。&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 <li id="fn:8">
 <p>没有<code>inbounds</code>的话，<code>getelementptr</code>总会返回某个结果地址，这个地址可能有效，也可能无效。&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>

@@ -431,15 +431,15 @@
 <p>为了方便同学们在之后的实验中 debug，为大家设计了一个 C++ 简单实用的分级日志工具。该工具将日志输出信息从低到高分成四种等级：<code>DEBUG</code>，<code>INFO</code>，<code>WARNING</code>，<code>ERROR</code>。通过设定环境变量 <code>LOGV</code> 的值，来选择输出哪些等级的日志。<code>LOGV</code> 的取值是 <strong>0 到 3</strong>，分别对应到上述的 4 种级别 (<code>0:DEBUG</code>,<code>1:INFO</code>,<code>2:WARNING</code>,<code>3:ERROR</code>)。此外输出中还会包含打印该日志的代码所在位置。</p>
 <h2 id="使用">使用<a class="headerlink" href="#使用" title="Permanent link">&para;</a></h2>
 <p>项目编译好之后，可以在 <code>build</code> 目录下运行 test_logging 可执行文件，该文件的源代码在 <code>tests/test_logging.cpp</code>，用法如下：</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;logging.hpp&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"logging.hpp"</span>
 <span class="c1">// 引入头文件</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
-<span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">DEBUG</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;This is DEBUG log item.&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">DEBUG</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"This is DEBUG log item."</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// 使用关键字 LOG，括号中填入要输出的日志等级</span>
 <span class="w">    </span><span class="c1">// 紧接着就是&lt;&lt;以及日志的具体信息，就跟使用 std::cout 一样</span>
-<span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;This is INFO log item&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">WARNING</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;This is WARNING log item&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;This is ERROR log item&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"This is INFO log item"</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">WARNING</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"This is WARNING log item"</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"This is ERROR log item"</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>

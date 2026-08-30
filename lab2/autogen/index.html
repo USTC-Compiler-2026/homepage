@@ -577,15 +577,15 @@
 <p><code>CminusfBuilder</code> 类定义在 <a href="https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler/-/blob/main/include/cminusfc/cminusf_builder.hpp">cminusf_builder.hpp</a>文件中，<code>CminusfBuilder</code> 类中定义了对抽象语法树不同语法节点的 <code>visit</code> 函数，实验已给出了一些语法树节点的访问规则，其余的需要学生补充。</p>
 <p>在 <code>CminusfBuilder</code> 构造函数函数中，下列代码片段是对 <a href="../cminusf%E8%AF%AD%E4%B9%89/">Cminusf 语义</a>中的 4 个预定义函数进行声明并加入全局符号表中，在生成 IR 时可从符号表中查找。我们的测试样例会使用这些函数，从而实现 IO。</p>
 <div class="highlight"><pre><span></span><code><span class="n">scope</span><span class="p">.</span><span class="n">enter</span><span class="p">();</span>
-<span class="n">scope</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;input&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">input_fun</span><span class="p">);</span>
-<span class="n">scope</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;output&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">output_fun</span><span class="p">);</span>
-<span class="n">scope</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;outputFloat&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">output_float_fun</span><span class="p">);</span>
-<span class="n">scope</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;neg_idx_except&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">neg_idx_except_fun</span><span class="p">);</span>
+<span class="n">scope</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">"input"</span><span class="p">,</span><span class="w"> </span><span class="n">input_fun</span><span class="p">);</span>
+<span class="n">scope</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">"output"</span><span class="p">,</span><span class="w"> </span><span class="n">output_fun</span><span class="p">);</span>
+<span class="n">scope</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">"outputFloat"</span><span class="p">,</span><span class="w"> </span><span class="n">output_float_fun</span><span class="p">);</span>
+<span class="n">scope</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">"neg_idx_except"</span><span class="p">,</span><span class="w"> </span><span class="n">neg_idx_except_fun</span><span class="p">);</span>
 </code></pre></div>
 <p><code>CminusfBuilder</code> 类使用成员 <code>context</code> 存储翻译时状态，下列代码片段是 <code>context</code> 的定义，学生需要为该结构体添加更多域来存储翻译时的状态。</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// function that is being built</span>
-<span class="w">    </span><span class="n">Function</span><span class="w"> </span><span class="o">*</span><span class="n">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Function</span><span class="w"> </span><span class="o">*</span><span class="n">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="p">}</span><span class="w"> </span><span class="n">context</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="实验内容">实验内容<a class="headerlink" href="#实验内容" title="Permanent link">&para;</a></h2>

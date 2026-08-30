@@ -519,14 +519,14 @@ C 代码部分
 <li>语法规则部分由归约规则和动作组成。规则基本按照巴科斯范式（BNF）描述。规则中目标或非终端符放在左边，后跟一个冒号：然后是 产生式的右边，之后是对应的动作（用 <code>{}</code> 包含）。<strong>Bison 的语法树是按自下而上的归约方式进行构建的</strong>。如下所示：</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="o">%%</span>
-<span class="w"> </span><span class="nl">program</span><span class="p">:</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">$2</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="nl">program</span><span class="p">:</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="sc">'\n'</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">$2</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 <span class="w"> </span><span class="p">;</span>
-<span class="w"> </span><span class="nl">expr</span><span class="p">:</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="sc">&#39;+&#39;</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">$3</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="sc">&#39;-&#39;</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">$3</span><span class="p">}</span>
+<span class="w"> </span><span class="nl">expr</span><span class="p">:</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="sc">'+'</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">$3</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="sc">'-'</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">$3</span><span class="p">}</span>
 <span class="w"> </span><span class="p">;</span>
 <span class="o">%%</span>
 <span class="cm">/* 动作中“$1”表示右边的第一个标记的值，“$2”表示右边的第二个标记的值，依</span>
-<span class="cm">次类推。“$$”表示归约后的值。以“expr: expr &#39;+&#39; expr { $$ = $1 + $3; }”，说明“$$”表示从左</span>
+<span class="cm">次类推。“$$”表示归约后的值。以“expr: expr '+' expr { $$ = $1 + $3; }”，说明“$$”表示从左</span>
 <span class="cm">向右第一个 expr，即规约的结果，“$1”表示从左向右第二个 expr，“$2”表示“+”加号，“$3”</span>
 <span class="cm">表示从左向右第三个 expr。“|”符号表示其他的规约规则。 */</span>
 </code></pre></div>
@@ -552,12 +552,12 @@ C 代码部分
 
 <span class="cm">/* 从这里开始，下面是解析规则 */</span>
 <span class="o">%%</span>
-<span class="nl">reimu</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">marisa</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 这里写与该规则对应的处理代码 */</span><span class="w"> </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;rule1&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">REIMU</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 这里写与该规则对应的处理代码 */</span><span class="w"> </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;rule2&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="nl">reimu</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">marisa</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 这里写与该规则对应的处理代码 */</span><span class="w"> </span><span class="n">puts</span><span class="p">(</span><span class="s">"rule1"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">REIMU</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 这里写与该规则对应的处理代码 */</span><span class="w"> </span><span class="n">puts</span><span class="p">(</span><span class="s">"rule2"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 <span class="w">      </span><span class="p">;</span><span class="w"> </span><span class="cm">/* 规则最后不要忘了用分号结束哦～ */</span>
 
 <span class="w"> </span><span class="cm">/* 这种写法表示 ε —— 空输入 */</span>
-<span class="nl">marisa</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Hello!&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="nl">marisa</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">puts</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 <span class="o">%%</span>
 
 
@@ -568,7 +568,7 @@ C 代码部分
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getchar</span><span class="p">();</span><span class="w"> </span><span class="c1">// 从 stdin 获取下一个字符</span>
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">EOF</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">YYEOF</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;R&#39;</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">REIMU</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">'R'</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">REIMU</span><span class="p">;</span>
 <span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">YYUNDEF</span><span class="p">;</span><span class="w">     </span><span class="c1">// 报告 token 未定义，迫使 bison 报错。</span>
 <span class="w">    </span><span class="c1">// 由于 bison 不同版本有不同的定义。如果这里 YYUNDEF 未定义，请尝试 YYUNDEFTOK 或使用一个随意的整数。</span>
 <span class="w">    </span><span class="p">}</span>
@@ -576,7 +576,7 @@ C 代码部分
 
 <span class="kt">void</span><span class="w"> </span><span class="n">yyerror</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -638,7 +638,7 @@ syntax<span class="w"> </span>error<span class="w"> </span>&lt;--<span class="w"
 <span class="nl">line</span>
 <span class="p">:</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="n">RET</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; = %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">$1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">" = %f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">$1</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nl">expr</span>
@@ -649,8 +649,8 @@ syntax<span class="w"> </span>error<span class="w"> </span>&lt;--<span class="w"
 <span class="o">|</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="n">ADDOP</span><span class="w"> </span><span class="n">term</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">$2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;+&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">$3</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;-&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">$3</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">'+'</span><span class="p">:</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">$3</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">'-'</span><span class="p">:</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">$3</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -662,8 +662,8 @@ syntax<span class="w"> </span>error<span class="w"> </span>&lt;--<span class="w"
 <span class="o">|</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="n">MULOP</span><span class="w"> </span><span class="n">factor</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">$2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;*&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">$3</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">$3</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// 这里会出什么问题？</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">'*'</span><span class="p">:</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">$3</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">'/'</span><span class="p">:</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">$3</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// 这里会出什么问题？</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -681,7 +681,7 @@ syntax<span class="w"> </span>error<span class="w"> </span>&lt;--<span class="w"
 
 <span class="kt">void</span><span class="w"> </span><span class="n">yyerror</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span>
@@ -699,7 +699,7 @@ syntax<span class="w"> </span>error<span class="w"> </span>&lt;--<span class="w"
 <span class="cm">/* 当我们在.y 文件中使用 %token 声明一个 token 时，这个 token 就会导出到 .h 中，</span>
 <span class="cm">   可以在 C 代码中直接使用，供 Flex 使用。就如 .l 文件中的\( { return LPAREN; }，</span>
 <span class="cm">   其中 LPAREN 定义来自 calc.tab.h，由对应的 .y 文件生成 */</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;calc.tab.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"calc.tab.h"</span>
 <span class="o">%</span><span class="p">}</span>
 
 
@@ -722,10 +722,10 @@ syntax<span class="w"> </span>error<span class="w"> </span>&lt;--<span class="w"
 <span class="o">%%</span>
 <span class="err">\</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">LPAREN</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="err">\</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">RPAREN</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="s">&quot;+&quot;</span><span class="o">|</span><span class="s">&quot;-&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">yylval</span><span class="p">.</span><span class="n">op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yytext</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">ADDOP</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="s">&quot;*&quot;</span><span class="o">|</span><span class="s">&quot;/&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">yylval</span><span class="p">.</span><span class="n">op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yytext</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">MULOP</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="s">"+"</span><span class="o">|</span><span class="s">"-"</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">yylval</span><span class="p">.</span><span class="n">op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yytext</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">ADDOP</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="s">"*"</span><span class="o">|</span><span class="s">"/"</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">yylval</span><span class="p">.</span><span class="n">op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yytext</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">MULOP</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">[</span><span class="mi">0-9</span><span class="p">]</span><span class="o">+|</span><span class="p">[</span><span class="mi">0-9</span><span class="p">]</span><span class="o">+</span><span class="err">\</span><span class="p">.[</span><span class="mi">0-9</span><span class="p">]</span><span class="o">*|</span><span class="p">[</span><span class="mi">0-9</span><span class="p">]</span><span class="o">*</span><span class="err">\</span><span class="p">.[</span><span class="mi">0-9</span><span class="p">]</span><span class="o">+</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">yylval</span><span class="p">.</span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atof</span><span class="p">(</span><span class="n">yytext</span><span class="p">);</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">NUMBER</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="s">&quot; &quot;</span><span class="o">|</span><span class="err">\</span><span class="n">t</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="p">}</span>
+<span class="s">" "</span><span class="o">|</span><span class="err">\</span><span class="n">t</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="p">}</span>
 <span class="err">\</span><span class="n">r</span><span class="err">\</span><span class="n">n</span><span class="o">|</span><span class="err">\</span><span class="n">n</span><span class="o">|</span><span class="err">\</span><span class="n">r</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">RET</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="o">%%</span>
 </code></pre></div>

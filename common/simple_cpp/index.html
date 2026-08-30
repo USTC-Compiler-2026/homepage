@@ -521,7 +521,7 @@
 <h2 id="auto">auto<a class="headerlink" href="#auto" title="Permanent link">&para;</a></h2>
 <p><code>auto</code> 关键字可以用于当类型已知时自动推断类型，例如：</p>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
-<span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="s">&quot;compile&quot;</span><span class="p">);</span>
+<span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="s">"compile"</span><span class="p">);</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">front</span><span class="p">();</span><span class="w"> </span><span class="c1">// 这里 s 就是 std::string 类型</span>
 </code></pre></div>
 <h2 id="class">class<a class="headerlink" href="#class" title="Permanent link">&para;</a></h2>
@@ -558,13 +558,13 @@
 <span class="k">struct</span><span class="w"> </span><span class="nc">Cat</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Animal</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// override 表示覆盖父函数中的实现，下同</span>
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">say</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;I&#39;m a cat&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"I'm a cat"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">Dog</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Animal</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">say</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;I&#39;m a dog&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"I'm a dog"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">};</span>
 
@@ -608,12 +608,12 @@
 <span class="p">};</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;(%d, %d)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"(%d, %d)"</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="n">Line</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">first</span><span class="p">);</span><span class="w"> </span><span class="c1">// s.first == Point { ... }</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-&gt;&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"-&gt;"</span><span class="p">);</span>
 <span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">second</span><span class="p">);</span><span class="w"> </span><span class="c1">// s.second == Point { ... }</span>
 <span class="p">}</span>
 </code></pre></div>
