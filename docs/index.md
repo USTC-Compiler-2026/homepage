@@ -15,7 +15,7 @@
 ### <strong>上课时间与地点</strong>
 
     时间：1~15 周，1(6,7) 和 3(3,4)
-    地点：高新校区 GT-B212
+    地点：高新校区 GT-B112
 
 ### <strong>联系方式</strong>
 
@@ -27,7 +27,7 @@
 <strong>助教</strong>
 
   - 乔昱霖 (<qiaoyulin@mail.ustc.edu.cn>)
-  - 游兴业 (<xinye@mail.ustc.edu.cn>)
+  - 游兴业 (<xingye@mail.ustc.edu.cn>)
   - 王宇航（<wyh2022@mail.ustc.edu.cn>）
   - 孙婧雯（<sunj1ngwen@mail.ustc.edu.cn>）
   - 吴卫昊 (<wweihao@mail.ustc.edu.cn>)
