@@ -22,16 +22,17 @@
 <strong>教师</strong>
 
 - 李诚（<chengli7@ustc.edu.cn>）
-- 徐伟 (<xuweihf@ustc.edu.cn>)
+- 徐伟（<xuweihf@ustc.edu.cn>）
 
 <strong>助教</strong>
 
-  - 乔昱霖 (<qiaoyulin@mail.ustc.edu.cn>)
-  - 游兴业 (<xingye@mail.ustc.edu.cn>)
+  - 乔昱霖（<qiaoyulin@mail.ustc.edu.cn>）
+  - 游兴业（<xingye@mail.ustc.edu.cn>）
   - 王宇航（<wyh2022@mail.ustc.edu.cn>）
   - 孙婧雯（<sunj1ngwen@mail.ustc.edu.cn>）
-  - 吴卫昊 (<wweihao@mail.ustc.edu.cn>)
-  - 卿文杰 (<qingwenjie@mail.ustc.edu.cn>)
+  - 艾琮焜（<ack@mail.ustc.edu.cn>）
+  - 吴卫昊（<wweihao@mail.ustc.edu.cn>）
+  - 卿文杰（<qingwenjie@mail.ustc.edu.cn>）
 
 <strong>其它</strong>
 
