@@ -43,6 +43,7 @@
 
 ## <strong>公告</strong>
 - 2026-08-30：[课程平台介绍](exp_platform_intro/README.md) 已发布
+- 2026-09-02：[第一次作业](hw/011163_26FA_HW1.pdf)已发布
 
 ## <strong>教学课件</strong>
 
