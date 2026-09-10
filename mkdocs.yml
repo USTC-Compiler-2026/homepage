@@ -114,6 +114,12 @@ nav:
   - 首页: index.md
   - 公共文档:
     - 课程平台介绍: exp_platform_intro/README.md
+  - AI 工具配置:
+    - 包管理器: aitools/npm.md
+    - Codex: aitools/codex.md
+    - Claude Code: aitools/claude.md
+    - DeepSeek Harness: aitools/deepseek_harness.md
+
   # - 公共文档:
     # - Cminusf 语法语义介绍: common/cminusf.md
     # - Light IR 简介: common/LightIR.md
