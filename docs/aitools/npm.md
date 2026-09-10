@@ -1,8 +1,8 @@
 # npm 环境配置
 
-npm（Node Package Manager）是 Node.js 的包管理器，用于下载、安装和更新 JavaScript/Node.js 软件包。本组文档使用 npm 安装 Codex CLI、Claude Code 和 OpenCode，因此需要先准备 Node.js 与 npm 环境。
+npm（Node Package Manager）是 Node.js 的包管理器，用于下载、安装和更新 JavaScript/Node.js 软件包。本组文档通过 npx 启动 DeepSeek Harness，并使用 npm 安装 Claude Code 和 Codex CLI，因此需要先准备 Node.js 与 npm 环境。
 
-本文介绍 Node.js 和 npm 的安装，以及使用 npm 安装 AI 工具的方法。Codex、Claude Code 和 OpenCode 的具体说明分别见[Codex](codex.md)、[Claude Code](claude.md)和[OpenCode](opencode.md)。
+本文介绍 Node.js 和 npm 的安装，以及使用 npm 安装 AI 工具的方法。DeepSeek Harness、Claude Code 和 Codex 的具体说明分别见[DeepSeek Harness](deepseek_harness.md)、[Claude Code](claude.md)和[Codex](codex.md)。
 
 ## npm 包管理器的好处
 
@@ -10,12 +10,12 @@ npm（Node Package Manager）是 Node.js 的包管理器，用于下载、安装
 - **自动处理依赖**：无需手动下载和配置相关组件。
 - **方便管理**：支持版本更新和镜像源配置。
 
-例如，三个工具都可以直接使用 npm 安装：
+例如，DeepSeek Harness 可使用 npx 直接启动；Claude Code 和 Codex 可使用 npm 全局安装：
 
 ```bash
-npm install -g @openai/codex
+npx @deepseek-ai/dsh web
 npm install -g @anthropic-ai/claude-code
-npm install -g opencode-ai
+npm install -g @openai/codex
 ```
 
 ## 安装 Node.js LTS
