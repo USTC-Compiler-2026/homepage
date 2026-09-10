@@ -116,9 +116,9 @@ nav:
     - 课程平台介绍: exp_platform_intro/README.md
   - AI 工具配置:
     - 包管理器: aitools/npm.md
-    - Codex: aitools/codex.md
-    - Claude Code: aitools/claude.md
     - DeepSeek Harness: aitools/deepseek_harness.md
+    - Claude Code: aitools/claude.md
+    - Codex: aitools/codex.md
 
   # - 公共文档:
     # - Cminusf 语法语义介绍: common/cminusf.md
