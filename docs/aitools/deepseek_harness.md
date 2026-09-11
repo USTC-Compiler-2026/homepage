@@ -22,6 +22,20 @@ npx @deepseek-ai/dsh web
 
 首次运行时，`npx` 会下载并启动 dsh。启动成功后，终端会输出本地访问地址；默认地址为 <http://127.0.0.1:3080>，并会尝试在浏览器中打开它。
 
+### 使用 npm 镜像站
+
+默认情况下，`npx` 从 npm 官方源下载 dsh。如果下载较慢，可以临时使用镜像站：
+
+```bash
+npx --registry=https://registry.npmmirror.com @deepseek-ai/dsh web
+```
+
+也可以按照 [npm 环境配置](npm.md#可选使用-npm-镜像站) 将镜像站设为默认源，此后仍使用普通命令即可：
+
+```bash
+npx @deepseek-ai/dsh web
+```
+
 若只希望启动服务、不自动打开浏览器，可以使用：
 
 ```bash
