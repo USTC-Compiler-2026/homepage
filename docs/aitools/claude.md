@@ -64,18 +64,18 @@ claude
 
 ## 其他 api 接入
 
-Claude Code 支持接入 DeepSeek 等提供 Anthropic 兼容 API 的服务。以下以 DeepSeek V4 Pro 为例，修改 `$HOME/.claude/settings.json`：
+Claude Code 支持接入 DeepSeek 等提供 Anthropic 兼容 API 的服务。以下以 [DeepSeek V4.1 Flash](https://www.deepseek.com/news/deepseek-v4-1-flash/) 的 API 写法为例，修改 `$HOME/.claude/settings.json`：
 
 ```json
 {
   "env": {
     "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
     "ANTHROPIC_AUTH_TOKEN": "你的 DeepSeek API Key",
-    "ANTHROPIC_MODEL": "deepseek-v4-pro",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-pro",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-pro",
-    "CLAUDE_CODE_SUBAGENT_MODEL": "deepseek-v4-pro",
+    "ANTHROPIC_MODEL": "deepseek-flash",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-flash",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-flash",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-flash",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "deepseek-flash",
     "CLAUDE_CODE_EFFORT_LEVEL": "max"
   }
 }

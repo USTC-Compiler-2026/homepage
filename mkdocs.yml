@@ -119,6 +119,7 @@ nav:
     - DeepSeek Harness: aitools/deepseek_harness.md
     - Claude Code: aitools/claude.md
     - Codex: aitools/codex.md
+    - OpenCode: aitools/opencode.md
 
   # - 公共文档:
     # - Cminusf 语法语义介绍: common/cminusf.md
