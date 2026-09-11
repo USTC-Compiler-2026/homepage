@@ -1,8 +1,8 @@
 # npm 环境配置
 
-npm（Node Package Manager）是 Node.js 的包管理器，用于下载、安装和更新 JavaScript/Node.js 软件包。本组文档通过 npx 启动 DeepSeek Harness，并使用 npm 安装 Claude Code 和 Codex CLI，因此需要先准备 Node.js 与 npm 环境。
+npm（Node Package Manager）是 Node.js 的包管理器，用于下载、安装和更新 JavaScript/Node.js 软件包。本组文档通过 npx 启动 DeepSeek Harness，并使用 npm 安装 Claude Code、Codex CLI 和 OpenCode，因此需要先准备 Node.js 与 npm 环境。
 
-本文介绍 Node.js 和 npm 的安装，以及使用 npm 安装 AI 工具的方法。DeepSeek Harness、Claude Code 和 Codex 的具体说明分别见[DeepSeek Harness](deepseek_harness.md)、[Claude Code](claude.md)和[Codex](codex.md)。
+本文介绍 Node.js 和 npm 的安装，以及使用 npm 安装 AI 工具的方法。DeepSeek Harness、Claude Code、Codex 和 OpenCode 的具体说明分别见[DeepSeek Harness](deepseek_harness.md)、[Claude Code](claude.md)、[Codex](codex.md)和[OpenCode](opencode.md)。
 
 ## npm 包管理器的好处
 
@@ -10,13 +10,18 @@ npm（Node Package Manager）是 Node.js 的包管理器，用于下载、安装
 - **自动处理依赖**：无需手动下载和配置相关组件。
 - **方便管理**：支持版本更新和镜像源配置。
 
-例如，DeepSeek Harness 可使用 npx 直接启动；Claude Code 和 Codex 可使用 npm 全局安装：
+例如，DeepSeek Harness 可使用 npx 直接启动；Claude Code、Codex 和 OpenCode 可使用 npm 全局安装：
 
 ```bash
 npx @deepseek-ai/dsh web
 npm install -g @anthropic-ai/claude-code
 npm install -g @openai/codex
+npm install -g opencode-ai
 ```
+
+!!! note "Linux 全局安装权限"
+
+    使用 apt 或 NodeSource 安装 Node.js 时，`npm install -g` 可能提示 `EACCES` 或权限不足。此时在 npm 全局安装或更新命令前加 `sudo`，例如 `sudo npm install -g @openai/codex`。Windows 不需要 `sudo`；使用 `npx` 启动 DeepSeek Harness 通常也不需要。
 
 ## 安装 Node.js LTS
 
@@ -39,13 +44,13 @@ npm --version
 
 ### Linux（Ubuntu / Debian）
 
-以下命令以 Bash 为例，需要具有管理员权限：
+以下命令以 Bash 为例，普通用户需要具有 `sudo` 权限：
 
 ```bash
-apt-get update
-apt-get install -y curl ca-certificates
-curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
-apt-get install -y nodejs
+sudo apt-get update
+sudo apt-get install -y curl ca-certificates
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt-get install -y nodejs
 ```
 
 安装完成后检查版本：
@@ -65,19 +70,6 @@ npm --version
 npm install -g <package-name> --registry=https://registry.npmmirror.com
 ```
 
-也可以将镜像站设置为默认源：
-
-```bash
-npm config set registry https://registry.npmmirror.com
-npm config get registry
-```
-
-恢复 npm 官方源：
-
-```bash
-npm config set registry https://registry.npmjs.org
-```
-
 !!! warning "镜像源的作用范围"
 
-    npm 镜像只影响安装和更新时的包下载。工具安装完成后，登录和运行仍需要能够访问 OpenAI 或 Anthropic 的服务。
+    npm 镜像只影响安装和更新时的包下载。工具安装完成后，登录和运行仍需要能够访问所选模型提供商的服务。

@@ -18,14 +18,16 @@ npm install -g @openai/codex
 npm install -g @openai/codex --registry=https://registry.npmmirror.com
 ```
 
-如果已经将 npm 镜像设置为默认源，也可以省略 `--registry` 参数。
-
 ### Linux（Ubuntu / Debian，Bash）
 
 ```bash
 # 镜像站用法和 Windows 系统相同
 npm install -g @openai/codex
 ```
+
+!!! note "Linux 全局安装权限"
+
+    若命令提示 `EACCES` 或权限不足，在 npm 全局安装或更新命令前加 `sudo`，例如 `sudo npm install -g @openai/codex`。
 
 ## 验证安装
 
@@ -48,14 +50,14 @@ codex
 
 也可以使用 API key。下面的设置只对当前终端会话生效：
 
-=== "PowerShell"
+=== "Windows PowerShell"
 
     ```powershell
     $env:OPENAI_API_KEY = "你的 OpenAI API Key"
     codex
     ```
 
-=== "Bash"
+=== "Linux Bash"
 
     ```bash
     export OPENAI_API_KEY='你的 OpenAI API Key'

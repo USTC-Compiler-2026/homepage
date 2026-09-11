@@ -24,7 +24,9 @@ npm install -g opencode-ai --registry=https://registry.npmmirror.com
 npm install -g opencode-ai
 ```
 
-如果已经将 npm 镜像设置为默认源，也可以省略 `--registry` 参数。
+!!! note "Linux 全局安装权限"
+
+    若命令提示 `EACCES` 或权限不足，在 npm 全局安装或更新命令前加 `sudo`，例如 `sudo npm install -g opencode-ai`。
 
 !!! note "其他安装方式"
 
@@ -80,10 +82,10 @@ opencode
 npm install -g opencode-ai@latest
 ```
 
-若需要使用镜像站，在命令末尾追加：
+使用镜像站更新：
 
 ```bash
---registry=https://registry.npmmirror.com
+npm install -g opencode-ai@latest --registry=https://registry.npmmirror.com
 ```
 
 ## 官方资料

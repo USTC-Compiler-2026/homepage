@@ -18,13 +18,15 @@ npm install -g @anthropic-ai/claude-code
 npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com
 ```
 
-如果已经将 npm 镜像设置为默认源，也可以省略 `--registry` 参数。
-
 ### Linux（Ubuntu / Debian，Bash）
 
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
+
+!!! note "Linux 全局安装权限"
+
+    若命令提示 `EACCES` 或权限不足，在 npm 全局安装或更新命令前加 `sudo`，例如 `sudo npm install -g @anthropic-ai/claude-code`。
 
 ## 验证安装
 
@@ -48,14 +50,14 @@ claude
 
 也可以使用 API key。下面的设置只对当前终端会话生效：
 
-=== "PowerShell"
+=== "Windows PowerShell"
 
     ```powershell
     $env:ANTHROPIC_API_KEY = "你的 Anthropic API Key"
     claude
     ```
 
-=== "Bash"
+=== "Linux Bash"
 
     ```bash
     export ANTHROPIC_API_KEY='你的 Anthropic API Key'
@@ -88,8 +90,13 @@ Claude Code 支持接入 DeepSeek 等提供 Anthropic 兼容 API 的服务。以
 使用 npm 安装时，可以执行：
 
 ```bash
-# 也可用镜像站
 npm install -g @anthropic-ai/claude-code@latest
+```
+
+使用镜像站更新：
+
+```bash
+npm install -g @anthropic-ai/claude-code@latest --registry=https://registry.npmmirror.com
 ```
 
 Windows PowerShell 和 Linux Bash 使用相同的 npm 命令。
