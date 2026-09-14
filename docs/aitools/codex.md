@@ -78,6 +78,36 @@ npm install -g @openai/codex@latest
 
 Windows PowerShell 和 Linux Bash 使用相同的 npm 命令。
 
+## 使用桌面应用（可视化界面）
+
+OpenAI 提供的可视化桌面端是 ChatGPT 桌面应用，登录后可在应用中选择 Codex 使用。本节的安装方式不依赖 Node.js 或 npm。
+
+### macOS
+
+从 [ChatGPT 官方下载页](https://chatgpt.com/download/) 下载 macOS 安装包。打开下载的 `.dmg` 文件后，将 ChatGPT 拖入“应用程序”文件夹；随后打开 ChatGPT，使用 ChatGPT 账户登录，并在应用中选择 Codex。
+
+### Windows
+
+从 [ChatGPT 官方下载页](https://chatgpt.com/download/) 下载并安装，也可在 `Microsoft Store` 安装。
+
+安装后打开 ChatGPT 桌面应用，使用 ChatGPT 账户登录。
+
+### Linux（Ubuntu / Debian）
+
+Linux 桌面应用目前为预览版。请在 [ChatGPT 官方下载页](https://chatgpt.com/download/) 下载与处理器架构匹配的 `.deb` 安装包；可用以下命令查看架构：
+
+```bash
+uname -m
+```
+
+下载完成后，在安装包所在目录执行：
+
+```bash
+sudo apt install ./chatgpt_amd64.deb
+```
+
+ARM64 设备请将文件名替换为 `chatgpt_arm64.deb`。安装后从应用程序菜单打开 ChatGPT，登录后选择 Codex。当前官方支持 Ubuntu 24.04/26.04 LTS 和 Debian 13 的桌面环境。
+
 ## 官方资料
 
 - [OpenAI Codex CLI 文档](https://developers.openai.com/codex/cli/)
