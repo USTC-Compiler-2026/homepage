@@ -53,6 +53,7 @@
 | 2026-09-02 |                           词法分析                            |                             [Lexical-analysis](ppt/Lecture2-Lexical-analysis.pdf)                                 |
 | 2026-09-07 |                           词法分析                            |                             [Lexical-analysis](ppt/Lecture2-Lexical-analysis.pdf)                                 |
 | 2026-09-09 |                           语法分析 - 上下文无关文                            |                             [Parser-part1](ppt/Lecture3-Parser-part1.pdf)                                 |
+| 2026-09-14 |                           语法分析 - 自顶向下 - 递归下降 & 语法分析 - 自顶向下 - LL(1) 文法                            |                             [Parser-part2](ppt/Lecture3-Parser-part2.pdf)，[Parser-part3](ppt/Lecture5-Parser-part3.pdf)                                 |
 <!--
 | 2025-09-15 |                      语法分析 - 上下文无关文法                       |                                                    [Parser-part1](ppt/Lecture3-Parser-part1.pdf)                                                     |
 | 2025-09-17 |                    语法分析 - 自顶向下 - 递归下降                     |                                                    [Parser-part2](ppt/Lecture4-Parser-part2.pdf)                                                     |
