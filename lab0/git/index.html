@@ -669,17 +669,12 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 <ol>
 <li>在 Ubuntu 环境中，利用得到的 URL，克隆仓库到本地</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="c1"># 使用 URL 进行 git clone XXX 为你的用户名</span>
-git<span class="w"> </span>clone<span class="w"> </span>https://cscourse.ustc.edu.cn/vdir/Gitlab/XXX/2025_warm_up.git
+<div class="highlight"><pre><span></span><code><span class="c1"># 使用 URL 进行 git clone </span>
+git<span class="w"> </span>clone<span class="w"> </span><span class="o">[[</span>https://cscourse.ustc.edu.cn/vdir/Gitlab/XXX<span class="o">]</span>
 </code></pre></div>
 <ol>
 <li>输入 GitLab 用户名和密码进行身份验证，验证完毕后就将服务器上的仓库克隆到了本地</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="c1"># 检查是否成功 clone</span>
-$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>2025_warm_up
-$<span class="w"> </span>ls
-warm_up.txt
-</code></pre></div>
 <p>此时，我们可以创建并提交第一个文件</p>
 <ol>
 <li>创建一个 readme.md 文件</li>
@@ -760,7 +755,7 @@ To<span class="w"> </span>https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping
 <li>添加上游仓库
   <div class="highlight"><pre><span></span><code><span class="c1"># 可以通过 git remote add 添加上游仓库</span>
 <span class="c1"># 用 upstream 标识该上游仓库</span>
-$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up_upstream.git
+$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler.git
 </code></pre></div></li>
 <li>抓取上游仓库</li>
 </ul>
@@ -837,7 +832,7 @@ Delta<span class="w"> </span>compression<span class="w"> </span>using<span class
 Compressing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
 Writing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">6</span>/6<span class="o">)</span>,<span class="w"> </span><span class="m">626</span><span class="w"> </span>bytes<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">626</span>.00<span class="w"> </span>KiB/s,<span class="w"> </span><span class="k">done</span>.
 Total<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>pack-reused<span class="w"> </span><span class="m">0</span>
-To<span class="w"> </span>https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
+To<span class="w"> </span>https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2026_warm_up.git
 <span class="w">   </span>bc20c0b..126d5c9<span class="w">  </span>main<span class="w"> </span>-&gt;<span class="w"> </span>main
 </code></pre></div>
 <p>注：在完成冲突处理后 <code>git commit</code> 时，终端弹出的默认编辑器应该是 GNU nano，并带有默认的 commit message <code>Merge remote-tracking branch 'upstream/main'</code>，这时用 <code>Ctrl + X</code> 再选择 <code>Y</code> 即可完成 commit。感兴趣的同学可以阅读 <a href="https://zhuanlan.zhihu.com/p/341705638">这篇文章</a> 进一步学习 GNU nano 的使用。</p>
