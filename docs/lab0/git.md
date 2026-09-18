@@ -21,12 +21,13 @@ git config --global user.email "Your Email"
 
     **请确保本课程的 GitLab 用户名为学号**，登录希冀平台后点击右上角“更多栏目”登录 GitLab 会直接创建用户名为学号的用户，如果你此前注册过 GitLab，请修改你的用户名为学号，字母大写。
 
-1. 进入以下公开仓库链接： **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up.git](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up.git)**
-2. 点击右上角的 "Fork" 按钮。这个操作会创建一个与原仓库一模一样的新仓库，唯一的区别是，这个新仓库是你自己的。你可以在新仓库上执行任何你需要的操作。
+1. 进入以下公开仓库链接： **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/tree/warmup](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/tree/warmup)**
+
+3. 点击右上角的 "Fork" 按钮。这个操作会创建一个与原仓库一模一样的新仓库，唯一的区别是，这个新仓库是你自己的。你可以在新仓库上执行任何你需要的操作。
 
    ![Untitled](photos/git1.png)
 
-3. 点击 "Fork" 后，页面将自动跳转到新的仓库页面，你将成为这个仓库的拥有者，这也会显示在仓库名称旁边。
+4. 点击 "Fork" 后，页面将自动跳转到新的仓库页面，你将成为这个仓库的拥有者，这也会显示在仓库名称旁边。
 
 ![Untitled](photos/git2.png)
 
@@ -143,7 +144,7 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
 
 通过 fork 操作，你已经拥有了一个自己的仓库，在此我们可以引入上下游的概念。假设通过 fork 仓库 A 得到仓库 B，那么 A 就是 B 的上游。尽管 A 和 B 可能有大部分相同的内容，但对 A 和 B 的修改是彼此独立的。在这个课程实验中，我们将以类似的方式发布实验代码，助教维护上游仓库 A，而学生修改下游仓库 B。由于 A 和 B 的修改是相互独立的，接下来我们将介绍如何使 B 同步 A 的相关修改。
 
-接下来，以 **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up_upstream](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up_upstream)** 作为上游仓库为例：
+接下来，以 **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/tree/warmup](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/tree/warmup)** 作为上游仓库为例：
 
 - 添加上游仓库
   ```bash
