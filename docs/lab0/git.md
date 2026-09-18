@@ -44,18 +44,12 @@ git config --global user.email "Your Email"
 2. 在 Ubuntu 环境中，利用得到的 URL，克隆仓库到本地
 
    ```bash
-   # 使用 URL 进行 git clone XXX 为你的用户名
-   git clone https://cscourse.ustc.edu.cn/vdir/Gitlab/XXX/2025_warm_up.git
+   # 使用 URL 进行 git clone 
+   git clone [[https://cscourse.ustc.edu.cn/vdir/Gitlab/XXX]
    ```
 
 3. 输入 GitLab 用户名和密码进行身份验证，验证完毕后就将服务器上的仓库克隆到了本地
 
-   ```bash
-   # 检查是否成功 clone
-   $ cd 2025_warm_up
-   $ ls
-   warm_up.txt
-   ```
 
    此时，我们可以创建并提交第一个文件
 
@@ -150,7 +144,7 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
   ```bash
   # 可以通过 git remote add 添加上游仓库
   # 用 upstream 标识该上游仓库
-  $ git remote add upstream https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025_warm_up_upstream.git
+  $ git remote add upstream https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler.git
   ```
 - 抓取上游仓库
 
@@ -229,7 +223,7 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
   Compressing objects: 100% (3/3), done.
   Writing objects: 100% (6/6), 626 bytes | 626.00 KiB/s, done.
   Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
-  To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
+  To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2026_warm_up.git
      bc20c0b..126d5c9  main -> main
   ```
 
