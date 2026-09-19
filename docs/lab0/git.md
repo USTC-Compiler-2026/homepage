@@ -21,15 +21,15 @@ git config --global user.email "Your Email"
 
     **请确保本课程的 GitLab 用户名为学号**，登录希冀平台后点击右上角“更多栏目”登录 GitLab 会直接创建用户名为学号的用户，如果你此前注册过 GitLab，请修改你的用户名为学号，字母大写。
 
-1. 进入以下公开仓库链接： **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/tree/warmup](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/tree/warmup)**
+1. 进入以下公开仓库链接： **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/tree/warmup)**
 
 3. 点击右上角的 "Fork" 按钮。这个操作会创建一个与原仓库一模一样的新仓库，唯一的区别是，这个新仓库是你自己的。你可以在新仓库上执行任何你需要的操作。
 
-   ![Untitled](photos/git1.png)
+   ![Untitled](photos/26-0-2.png)
 
 4. 点击 "Fork" 后，页面将自动跳转到新的仓库页面，你将成为这个仓库的拥有者，这也会显示在仓库名称旁边。
 
-![Untitled](photos/git2.png)
+![Untitled](photos/26-0-3.png)
 
 现在，你已经成功拥有了自己的第一个仓库。接下来，我们可以开始对这个仓库进行修改。
 
@@ -237,7 +237,7 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
 
 **一个学习 Git 的小游戏**
 [https://learngitbranching.js.org/?locale=zh_CN](https://learngitbranching.js.org/?locale=zh_CN)
-
+<!-- 
 ## 实验任务
 
 1. 根据上述操作，完成 readme.md 添加、上游仓库添加和冲突处理等操作。
@@ -246,5 +246,5 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
     2. 如何撤销保存在暂存区的修改？如何仅撤销最近一次提交的某一个文件 (test.txt)？
     3. 解释 git fetch 和 git pull 的区别。
 3. 将 [LLVM 等软件环境配置与测试](software.md) 中生成的 Test.ll 文件添加到仓库中，并上传到远程仓库中去。
-
+-- >
 
