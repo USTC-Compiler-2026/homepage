@@ -38,29 +38,22 @@
 
 ### 提交内容
 
-Lab0 完成后，除了 answer.pdf 文件（需要回答 [Git 的使用](git.md#实验任务)和[在 CMake 构建的大型项目中如何 Debug](debug.md#实验任务)中**实验任务**一节的问题），你还在 GitLab 上拥有一个名为 2026_warm_up 的远程仓库，该仓库有以下结构：
+Lab0 完成后，除了 answer.pdf 文件（需要回答 [Git 的使用](git.md#实验任务)和[在 CMake 构建的大型项目中如何 Debug](debug.md#实验任务)中**实验任务**一节的问题）。
 
-```shell
-2026_warm_up_b:
-- warm_up.txt
-- readme.md
-- Test.ll
-```
-
-在希冀平台上传提交你的 answer.pdf 文件，并提交 GitLab 仓库链接。
+在希冀平台上传提交你的 answer.pdf 文件。
 
 #### 文件上传提交方式
 
 对于上传的文件，助教会进行文本相似性检测，请同学们认真学习并完成要求。
 
-![alt text](photos/image-2025.png)
-
+![alt text](photos/26-0-1.png)
+<!--   
 #### GitLab 仓库链接提交方式
 
-![alt text](photos/image-2025-1.png)
+![alt text](photos/26-0-1.png)
 
 ![Alt text](photos/image-2025-2.png)
-
+ -->
 
 
 <!-- #### 答疑
