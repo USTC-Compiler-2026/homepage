@@ -33,6 +33,7 @@
   - 艾琮焜（<ack@mail.ustc.edu.cn>）
   - 吴卫昊（<wweihao@mail.ustc.edu.cn>）
   - 卿文杰（<qingwenjie@mail.ustc.edu.cn>）
+  - 李波（<hfustc_libo@mail.ustc.edu.cn>）
 
 <strong>其它</strong>
 
@@ -49,13 +50,14 @@
 
 |     日期     |                            标题                             |                                                                          课件                                                                          |
 |:----------:|:---------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------:|
-| 2026-08-31 |                         编译原理和技术导论                         |                                                       [Intro](ppt/Lecture1-Intro.pdf)  
-| 2026-09-02 |                           词法分析                            |                             [Lexical-analysis](ppt/Lecture2-Lexical-analysis.pdf)                                 |
-| 2026-09-07 |                           词法分析                            |                             [Lexical-analysis](ppt/Lecture2-Lexical-analysis.pdf)                                 |
-| 2026-09-09 |                           语法分析 - 上下文无关文                            |                             [Parser-part1](ppt/Lecture3-Parser-part1.pdf)                                 |
-| 2026-09-14 |                           语法分析 - 自顶向下 - 递归下降 & 语法分析 - 自顶向下 - LL(1) 文法                            |                             [Parser-part2](ppt/Lecture3-Parser-part2.pdf)，[Parser-part3](ppt/Lecture5-Parser-part3.pdf)                                 |
-<!--
-| 2025-09-15 |                      语法分析 - 上下文无关文法                       |                                                    [Parser-part1](ppt/Lecture3-Parser-part1.pdf)                                                     |
+| 2026-08-31 |                         编译原理和技术导论                         |                                                       [Intro](ppt/Lecture1-Intro.pdf)                                                       |
+| 2026-09-02 |                           词法分析                            |                             [Lexical-analysis](ppt/Lecture2-Lexical-analysis.pdf)                             |
+| 2026-09-07 |                           词法分析                            |                             [Lexical-analysis](ppt/Lecture2-Lexical-analysis.pdf)                             |
+| 2026-09-09 |                           语法分析 - 上下文无关文                            |                             [Parser-part1](ppt/Lecture3-Parser-part1.pdf)                             |
+| 2026-09-14 |                           语法分析 - 自顶向下 - 递归下降 & 语法分析 - 自顶向下 - LL(1) 文法                            |                             [Parser-part2](ppt/Lecture3-Parser-part2.pdf)，[Parser-part3](ppt/Lecture5-Parser-part3.pdf)                             |
+| 2026-09-16 |                      语法分析 - 上下文无关文法                       |                                                    [Parser-part4](ppt/Lecture6-Parser-part4.pdf)                                                  |
+
+<!--                                              |
 | 2025-09-17 |                    语法分析 - 自顶向下 - 递归下降                     |                                                    [Parser-part2](ppt/Lecture4-Parser-part2.pdf)                                                     |
 | 2025-09-22 | 语法分析 - 自顶向下 - LL(1) 文法 & 语法分析 - 自底向上 - 移进规约 & LR 分析器的简单模型 |     [Parser-part3](ppt/Lecture5-Parser-part3.pdf), [Parser-part4](ppt/Lecture6-Parser-part4.pdf), [Parser-part5](ppt/Lecture7-Parser-part5.pdf)      |
 | 2025-09-24 |                     语法分析 - 简单的 LR 方法                      |                                                    [Parser-part6](ppt/Lecture8-Parser-part6.pdf)                                                     |
@@ -96,15 +98,15 @@
 - Stanford 课程主页：<http://web.stanford.edu/class/cs143/>
 - MIT 课程主页：<http://6.035.scripts.mit.edu/fa18/>
 - 编译实验讲解与说明：<https://www.bilibili.com/video/BV1D7421N7c4>
-
+ <!--
 ### <strong>实验概览</strong>
  - [基于面向自主指令集的编译系列实验要点讲解](docs/ppt/0.基于面向自主指令集的编译系列实验要点讲解.pdf)
- - [实验运行环境配置](docs/ppt/1.1实验运行环境配置.pdf)
+ - [实验运行环境配置](ppt/1.1实验运行环境配置.pdf)
  - [实验开发环境配置](docs/ppt/1.2实验开发环境配置.pdf)
  - [实验项目调试环境配置](docs/ppt/1.3实验项目调试环境配置.pdf)
  - [实验项目版本管理](docs/ppt/1.4实验项目版本管理(git).pdf)
  - [后端环境安装](docs/ppt/1.5后端环境安装.pdf)
-
+-->
 ## <strong>如何使用本文档？</strong>
 
 ### <strong>关于提示框</strong>
