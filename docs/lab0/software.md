@@ -117,15 +117,15 @@ void StudentNumber(int u[], int v[], int k[]) {
 /**
  * @brief 修改 main 函数中的信息输出你的学号
  *
- * @param Grade[0]: 你的年级，如 20，21，22 等
+ * @param Grade[0]: 你的年级，如 22，23，24 等
  * @param Degree[0]: 你的专业代号，如计科是 11
- * @param Number[0]: 你的学生序号，如 0011（为了避免出现八进制，这个值不能以0为开头），4514 等
+ * @param Number[0]: 你的学生序号，如（为了避免出现八进制，这个值不能以0为开头）1111 等
  * @return int
  */
 int main(void) {
-    Grade[0] = 20;
+    Grade[0] = 24;
     Degree[0] = 11;
-    Number[0] = 4514;
+    Number[0] = 1111;
     grade_mul = 1000000;
     degree_mul = 10000;
     StudentNumber(Grade,Degree,Number);
@@ -144,13 +144,11 @@ $ clang -S -emit-llvm Test.c -o Test.ll
 
 ```shell
 $ lli Test.ll && echo $?
-PB20114514  # 第一行结果应为你的学号，助教会评测该结果 [重要]
+PB24111111  # 第一行结果应为你的学号
 0           # main 函数返回值，应该为 0
 ```
 
-请将你修改的 Test.ll 保存下来，它将在 [Git 的使用](git.md)中被使用。
-
-感兴趣的同学们也可自行阅读生成的 Test.ll 文件，注意观察高级语言中的常量、变量、全局变量、数组和函数等在 LLVM IR 中是如何表示的，在后续的实验中我们会经常和它们打交道。
+请将你修改的 Test.ll 保存下来，感兴趣的同学们也可自行阅读生成的 Test.ll 文件，注意观察高级语言中的常量、变量、全局变量、数组和函数等在 LLVM IR 中是如何表示的，在后续的实验中我们会经常和它们打交道。
 
 ```shell
 cat Test.ll
