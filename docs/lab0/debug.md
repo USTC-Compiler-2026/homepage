@@ -61,16 +61,20 @@ LLDB 是 LLVM 项目开发的调试器，通过设置 VSCode 扩展可以方便�
 
 ### 克隆需要的测试工程并构建项目
 
+**同学们在本实验中克隆的仓库共有两条分支：warmup 和 lab0，如果有同学发现只有 warmup 分支，请在完成上游仓库配置之后 `git fetch upstream` 获取更新：**
+
+   ![Untitled](photos/debug-patch-fetch.png)
+
+分支数量正确之后，切换到 lab0 分支：
+
 ```shell
-git clone https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler.git
-cd 2025ustc-jianmu-compiler
 git checkout lab0
 ```
 
 
 ???+ Info "设置 VSCode 打开的目录"
 	
-	点击 VSCode 左上角“文件”选项卡，选择“打开文件夹”，然后选择 `2025ustc-jianmu-compiler` 文件夹，这样 VSCode 会打开该文件夹。
+	点击 VSCode 左上角“文件”选项卡，选择“打开文件夹”，然后选择 `2026ustc-jianmu-compiler` 文件夹，这样 VSCode 会打开该文件夹。
 
 	在一些 VSCode 的一些设置中包含 `${workspaceFolder}` 字段，这是代表 VSCode 目前打开的文件夹的宏。VSCode 的很多扩展使用该宏作为其命令的执行目录，所以它们需要 VSCode 打开正确的文件夹才能工作。
 
@@ -258,7 +262,7 @@ Human destructor called
 ??? Warning "请先拉取最新仓库"
 
     ```bash
-    # 在 2025ustc-jianmu-compiler 目录下
+    # 在 2026ustc-jianmu-compiler 目录的 lab0 分支下
     $ git pull
     $ cd build
     $ cmake .. -DCMAKE_BUILD_TYPE=ASAN

@@ -141,7 +141,7 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2026_warm_up.git
 
 之后再次使用 `git branch --all -vv`，上游仓库 upstream 的分支已经出现：
 
-   ![Untitled](photos/remote-upstream-2.png)
+   ![Untitled](photos/remote-upstream-1-fixed.png)
 
 
 
