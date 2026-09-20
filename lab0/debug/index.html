@@ -1046,8 +1046,10 @@
 <p><strong>同学们在本实验中克隆的仓库共有两条分支：warmup 和 lab0，如果有同学发现只有 warmup 分支，请在完成上游仓库配置之后 <code>git fetch upstream</code> 获取更新：</strong></p>
 <p><a class="glightbox" href="../photos/debug-patch-fetch.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Untitled" src="../photos/debug-patch-fetch.png" /></a></p>
 <p>分支数量正确之后，切换到 lab0 分支：</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>lab0
+<p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>lab0
 </code></pre></div>
+如果此时本地仍然没有 lab0 分支，可以尝试如下操作来跟踪没有相关历史的上游分支，前提是<strong>不要在本地创建 lab0 分支</strong>：</p>
+<p><a class="glightbox" href="../photos/fetch-upstream-failed.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Untitled" src="../photos/fetch-upstream-failed.png" /></a></p>
 <details class="info" open="open">
 <summary>设置 VSCode 打开的目录</summary>
 <p>点击 VSCode 左上角“文件”选项卡，选择“打开文件夹”，然后选择 <code>2026ustc-jianmu-compiler</code> 文件夹，这样 VSCode 会打开该文件夹。</p>
