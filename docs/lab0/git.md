@@ -246,5 +246,5 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
     2. 如何撤销保存在暂存区的修改？如何仅撤销最近一次提交的某一个文件 (test.txt)？
     3. 解释 git fetch 和 git pull 的区别。
 3. 将 [LLVM 等软件环境配置与测试](software.md) 中生成的 Test.ll 文件添加到仓库中，并上传到远程仓库中去。
--- >
+-->
 
