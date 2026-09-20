@@ -1,6 +1,6 @@
 # Git 的使用
 
-本课程使用 Git 作为代码管理工具，GitLab 作为代码管理仓库。为了后续实验的便捷进行，需要掌握 Git 的基本用法。
+本课程使用 Git 作为代码管理工具，GitLab 作为代码管理仓库。为了后续实验的便捷进行，需要掌握 Git 的基本用法。**本次实验中，Git 的使用作为大家阅读和探索的部分，不设置需要提交的作业。**
 
 ## Git 配置
 
@@ -21,15 +21,16 @@ git config --global user.email "Your Email"
 
     **请确保本课程的 GitLab 用户名为学号**，登录希冀平台后点击右上角“更多栏目”登录 GitLab 会直接创建用户名为学号的用户，如果你此前注册过 GitLab，请修改你的用户名为学号，字母大写。
 
-1. 进入以下公开仓库链接： **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/tree/warmup)**
+1. 进入以下公开仓库链接： **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/)**
 
-3. 点击右上角的 "Fork" 按钮。这个操作会创建一个与原仓库一模一样的新仓库，唯一的区别是，这个新仓库是你自己的。你可以在新仓库上执行任何你需要的操作。
+2. 点击右上角的 "Fork" 按钮。这个操作会创建一个与原仓库一模一样的新仓库，唯一的区别是，这个新仓库是你自己的。你可以在新仓库上执行任何你需要的操作。
 
    ![Untitled](photos/26-0-2.png)
 
-4. 点击 "Fork" 后，页面将自动跳转到新的仓库页面，你将成为这个仓库的拥有者，这也会显示在仓库名称旁边。
 
-![Untitled](photos/26-0-3.png)
+3. 点击 "Fork" 后，页面将自动跳转到新的仓库页面，你将成为这个仓库的拥有者，这也会显示在仓库名称旁边。
+
+   ![Untitled](photos/forked.png)
 
 现在，你已经成功拥有了自己的第一个仓库。接下来，我们可以开始对这个仓库进行修改。
 
@@ -90,30 +91,11 @@ git config --global user.email "Your Email"
    ```bash
    # 使用 git commit 提交本次修改到 Git 本地仓库
    # -m 后面的内容用于帮助记录本次提交的相关信息，要求每次提交最好都记录信息
-   $ git commit -m 'add readme'
+   $ git commit -m 'Add README.md'
    [main bc20c0b] add readme
    1 file changed, 1 insertion(+)
    create mode 100644 readme.md
    
-   # 我们可以通过 git log 查看历史提交记录
-   $ git log
-   commit bc20c0b170a829948439961745cf1a2dc7817e86 (HEAD -> main)
-   Author: gpzlx1 <gpzlx1@mail.ustc.edu.cn>
-   Date:   Wed Sep 6 19:01:15 2025 +0800
-   
-       add readme
-   
-   commit 6d08e6d4a1be64dea41798086b54cb0acc4377e2 (origin/main, origin/HEAD)
-   Author: 123 <hej148@nenu.edu.cn>
-   Date:   Tue Sep 5 22:39:37 2025 +0800
-   
-       copy b
-   
-   commit 1abfe16c1d28becaea62aa0971b1e7afd1f4672e
-   Author: 123 <hej148@nenu.edu.cn>
-   Date:   Tue Sep 5 22:02:53 2025 +0800
-   
-       欢迎加入编译原理
    ```
 
 通过以上操作，我们完成了一次本地修改和提交。然而，请注意这些更改仅存储在本地，需要使用 "git push" 命令将它们上传到服务器，以实现本地和服务器的同步。
@@ -126,31 +108,47 @@ Delta compression using up to 8 threads
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 290 bytes | 290.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
+To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2026_warm_up.git
     6d08e6d..bc20c0b  main -> main
 ```
 
 现在，刷新 GitLab 页面，刚刚提交的内容已经显示在网页上。
 
-![Untitled](photos/git4.png)
+![Untitled](photos/hello-world.png)
 
-## 上下游同步和冲突处理
+## 上下游同步
 
-通过 fork 操作，你已经拥有了一个自己的仓库，在此我们可以引入上下游的概念。假设通过 fork 仓库 A 得到仓库 B，那么 A 就是 B 的上游。尽管 A 和 B 可能有大部分相同的内容，但对 A 和 B 的修改是彼此独立的。在这个课程实验中，我们将以类似的方式发布实验代码，助教维护上游仓库 A，而学生修改下游仓库 B。由于 A 和 B 的修改是相互独立的，接下来我们将介绍如何使 B 同步 A 的相关修改。
+通过 fork 操作，你已经拥有了一个自己的仓库，在此我们可以引入上下游的概念。假设通过 fork 仓库 A 得到仓库 B，那么 A 就是 B 的上游。尽管 A 和 B 可能有大部分相同的内容，但对 A 和 B 的修改是彼此独立的。在这个课程实验中，我们将以类似的方式发布实验代码，助教维护上游仓库 A，而学生修改下游仓库 B。
 
-接下来，以 **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/tree/warmup](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/tree/warmup)** 作为上游仓库为例：
+以 **[https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/)** 作为上游仓库为例：
 
-- 添加上游仓库
+在添加上游仓库之前，我们可以使用 `git branch --all -vv` 查看本地和远程属于你的所有分支：
+
+   ![Untitled](photos/remote-upstream-1.png)
+
+
+添加上游仓库
   ```bash
   # 可以通过 git remote add 添加上游仓库
   # 用 upstream 标识该上游仓库
   $ git remote add upstream https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler.git
   ```
-- 抓取上游仓库
+抓取上游仓库
+   ```bash
+   # 使用以下命令从上游仓库获取最新代码
+  $ git fetch upstream
+  ```
 
+之后再次使用 `git branch --all -vv`，上游仓库 upstream 的分支已经出现：
+
+   ![Untitled](photos/remote-upstream-2.png)
+
+
+
+<!--
   ```bash
   # 使用以下命令从上游仓库获取最新代码
-  $ git fetch upstream main
+  $ git fetch upstream
   remote: Enumerating objects: 5, done.
   remote: Counting objects: 100% (5/5), done.
   remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
@@ -228,7 +226,7 @@ To https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
   ```
 
 注：在完成冲突处理后 `git commit` 时，终端弹出的默认编辑器应该是 GNU nano，并带有默认的 commit message `Merge remote-tracking branch 'upstream/main'`，这时用 `Ctrl + X` 再选择 `Y` 即可完成 commit。感兴趣的同学可以阅读 [这篇文章](https://zhuanlan.zhihu.com/p/341705638) 进一步学习 GNU nano 的使用。
-
+-->
 ## 扩展材料
 
 **Git 教程** [https://www.liaoxuefeng.com/wiki/896043488029600](https://www.liaoxuefeng.com/wiki/896043488029600)

@@ -252,7 +252,7 @@ if (cc != nullptr) {
 
 这样我们就可以把基类指针又转回对应的子类指针。当然，如果指针不是 `Cat *` 类型的，`dynamic_cast` 将会返回 `nullptr`。（与 C 中统一使用 `NULL` 不同，在 C++ 中，我们用 `nullptr` 表示空指针）
 
-??? Info "失败的`dynamic_cast`"
+??? Info "失败的 `dynamic_cast`"
 
     对于指针类型的转换,如果转换失败（即无法将基类指针转换为派生类指针），`dynamic_cast` 会返回 `nullptr`。对于引用类型的转换,如果转换失败，`dynamic_cast` 会抛出异常。
 
