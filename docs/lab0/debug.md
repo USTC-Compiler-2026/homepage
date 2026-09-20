@@ -70,6 +70,10 @@ LLDB 是 LLVM 项目开发的调试器，通过设置 VSCode 扩展可以方便�
 ```shell
 git checkout lab0
 ```
+如果此时本地仍然没有 lab0 分支，可以尝试如下操作来跟踪没有相关历史的上游分支，前提是**不要在本地创建 lab0 分支**：
+
+   ![Untitled](photos/fetch-upstream-failed.png)
+
 
 
 ???+ Info "设置 VSCode 打开的目录"
