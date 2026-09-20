@@ -1043,13 +1043,14 @@
 </details>
 <p>LLDB 是 LLVM 项目开发的调试器，通过设置 VSCode 扩展可以方便地调试大型项目。下面将以一个小型工程为例：</p>
 <h3 id="克隆需要的测试工程并构建项目">克隆需要的测试工程并构建项目<a class="headerlink" href="#克隆需要的测试工程并构建项目" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler.git
-<span class="nb">cd</span><span class="w"> </span>2025ustc-jianmu-compiler
-git<span class="w"> </span>checkout<span class="w"> </span>lab0
+<p><strong>同学们在本实验中克隆的仓库共有两条分支：warmup 和 lab0，如果有同学发现只有 warmup 分支，请在完成上游仓库配置之后 <code>git fetch upstream</code> 获取更新：</strong></p>
+<p><a class="glightbox" href="../photos/debug-patch-fetch.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Untitled" src="../photos/debug-patch-fetch.png" /></a></p>
+<p>分支数量正确之后，切换到 lab0 分支：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>lab0
 </code></pre></div>
 <details class="info" open="open">
 <summary>设置 VSCode 打开的目录</summary>
-<p>点击 VSCode 左上角“文件”选项卡，选择“打开文件夹”，然后选择 <code>2025ustc-jianmu-compiler</code> 文件夹，这样 VSCode 会打开该文件夹。</p>
+<p>点击 VSCode 左上角“文件”选项卡，选择“打开文件夹”，然后选择 <code>2026ustc-jianmu-compiler</code> 文件夹，这样 VSCode 会打开该文件夹。</p>
 <p>在一些 VSCode 的一些设置中包含 <code>${workspaceFolder}</code> 字段，这是代表 VSCode 目前打开的文件夹的宏。VSCode 的很多扩展使用该宏作为其命令的执行目录，所以它们需要 VSCode 打开正确的文件夹才能工作。</p>
 <p>在我们的实验中，默认打开 git 仓库所在的文件夹。</p>
 </details>
@@ -1186,7 +1187,7 @@ Human<span class="w"> </span>destructor<span class="w"> </span>called
 </details>
 <details class="warning">
 <summary>请先拉取最新仓库</summary>
-<div class="highlight"><pre><span></span><code><span class="c1"># 在 2025ustc-jianmu-compiler 目录下</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 在 2026ustc-jianmu-compiler 目录的 lab0 分支下</span>
 $<span class="w"> </span>git<span class="w"> </span>pull
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
 $<span class="w"> </span>cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>ASAN
@@ -1339,7 +1340,11 @@ Shadow<span class="w"> </span>gap:<span class="w">              </span><span cla
     
     <a href="mailto:sunj1ngwen@mail.ustc.edu.cn">ShirakawaSanae</a>,
     
-    <a href="mailto:terialionwyh@gmail.com">WangYuhang</a>,
+    <a href="mailto:sunj1ngwen@mail.ustc.eu.cn">ShirakawaSanae</a>,
+    
+    <a href="mailto:1002682355@qq.com">Terialion</a>,
+    
+    <a href="mailto:153092435+terialion@users.noreply.github.com">WangYuhang</a>,
     
     <a href="mailto:ylc221606@mail.ustc.edu.cn">Yang00002</a>
   </nav>
