@@ -747,9 +747,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#上下游同步和冲突处理" class="md-nav__link">
+  <a href="#上下游同步" class="md-nav__link">
     <span class="md-ellipsis">
-      上下游同步和冲突处理
+      上下游同步
     </span>
   </a>
   
@@ -876,9 +876,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#上下游同步和冲突处理" class="md-nav__link">
+  <a href="#上下游同步" class="md-nav__link">
     <span class="md-ellipsis">
-      上下游同步和冲突处理
+      上下游同步
     </span>
   </a>
   
@@ -909,7 +909,7 @@
 
 
 <h1 id="git-的使用">Git 的使用<a class="headerlink" href="#git-的使用" title="Permanent link">&para;</a></h1>
-<p>本课程使用 Git 作为代码管理工具，GitLab 作为代码管理仓库。为了后续实验的便捷进行，需要掌握 Git 的基本用法。</p>
+<p>本课程使用 Git 作为代码管理工具，GitLab 作为代码管理仓库。为了后续实验的便捷进行，需要掌握 Git 的基本用法。<strong>本次实验中，Git 的使用作为大家阅读和探索的部分，不设置需要提交的作业。</strong></p>
 <h2 id="git-配置">Git 配置<a class="headerlink" href="#git-配置" title="Permanent link">&para;</a></h2>
 <p>在 Linux 环境中，我们已经通过 apt 安装了 Git。然而，还需要进行一些配置以确保每次代码提交都能正确标识提交者。在 Shell 中运行以下命令，并将 "Your Name" 和 "Your Email" 替换为你自己的信息：</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"Your Name"</span>
@@ -924,7 +924,7 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 </div>
 <ol>
 <li>
-<p>进入以下公开仓库链接： <strong><a href="https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/tree/warmup">https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler</a></strong></p>
+<p>进入以下公开仓库链接： <strong><a href="https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/">https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler</a></strong></p>
 </li>
 <li>
 <p>点击右上角的 "Fork" 按钮。这个操作会创建一个与原仓库一模一样的新仓库，唯一的区别是，这个新仓库是你自己的。你可以在新仓库上执行任何你需要的操作。</p>
@@ -934,7 +934,7 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 <ol>
 <li>点击 "Fork" 后，页面将自动跳转到新的仓库页面，你将成为这个仓库的拥有者，这也会显示在仓库名称旁边。</li>
 </ol>
-<p><a class="glightbox" href="../photos/26-0-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Untitled" src="../photos/26-0-3.png" /></a></p>
+<p><a class="glightbox" href="../photos/forked.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Untitled" src="../photos/forked.png" /></a></p>
 <p>现在，你已经成功拥有了自己的第一个仓库。接下来，我们可以开始对这个仓库进行修改。</p>
 <h2 id="进行一次提交">进行一次提交<a class="headerlink" href="#进行一次提交" title="Permanent link">&para;</a></h2>
 <p>由于仓库目前在服务器上，我们首先得到仓库的 URL，并通过 git clone 将其下载到本地。</p>
@@ -986,30 +986,10 @@ Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </sp
 </ol>
 <div class="highlight"><pre><span></span><code><span class="c1"># 使用 git commit 提交本次修改到 Git 本地仓库</span>
 <span class="c1"># -m 后面的内容用于帮助记录本次提交的相关信息，要求每次提交最好都记录信息</span>
-$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">'add readme'</span>
+$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">'Add README.md'</span>
 <span class="o">[</span>main<span class="w"> </span>bc20c0b<span class="o">]</span><span class="w"> </span>add<span class="w"> </span>readme
 <span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>insertion<span class="o">(</span>+<span class="o">)</span>
 create<span class="w"> </span>mode<span class="w"> </span><span class="m">100644</span><span class="w"> </span>readme.md
-
-<span class="c1"># 我们可以通过 git log 查看历史提交记录</span>
-$<span class="w"> </span>git<span class="w"> </span>log
-commit<span class="w"> </span>bc20c0b170a829948439961745cf1a2dc7817e86<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>main<span class="o">)</span>
-Author:<span class="w"> </span>gpzlx1<span class="w"> </span>&lt;gpzlx1@mail.ustc.edu.cn&gt;
-Date:<span class="w">   </span>Wed<span class="w"> </span>Sep<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">19</span>:01:15<span class="w"> </span><span class="m">2025</span><span class="w"> </span>+0800
-
-<span class="w">    </span>add<span class="w"> </span>readme
-
-commit<span class="w"> </span>6d08e6d4a1be64dea41798086b54cb0acc4377e2<span class="w"> </span><span class="o">(</span>origin/main,<span class="w"> </span>origin/HEAD<span class="o">)</span>
-Author:<span class="w"> </span><span class="m">123</span><span class="w"> </span>&lt;hej148@nenu.edu.cn&gt;
-Date:<span class="w">   </span>Tue<span class="w"> </span>Sep<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">22</span>:39:37<span class="w"> </span><span class="m">2025</span><span class="w"> </span>+0800
-
-<span class="w">    </span>copy<span class="w"> </span>b
-
-commit<span class="w"> </span>1abfe16c1d28becaea62aa0971b1e7afd1f4672e
-Author:<span class="w"> </span><span class="m">123</span><span class="w"> </span>&lt;hej148@nenu.edu.cn&gt;
-Date:<span class="w">   </span>Tue<span class="w"> </span>Sep<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">22</span>:02:53<span class="w"> </span><span class="m">2025</span><span class="w"> </span>+0800
-
-<span class="w">    </span>欢迎加入编译原理
 </code></pre></div>
 <p>通过以上操作，我们完成了一次本地修改和提交。然而，请注意这些更改仅存储在本地，需要使用 "git push" 命令将它们上传到服务器，以实现本地和服务器的同步。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main<span class="w">  </span><span class="c1"># 推送本地仓库的内容到 Git 远程仓库</span>
@@ -1019,24 +999,30 @@ Delta<span class="w"> </span>compression<span class="w"> </span>using<span class
 Compressing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
 Writing<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>,<span class="w"> </span><span class="m">290</span><span class="w"> </span>bytes<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">290</span>.00<span class="w"> </span>KiB/s,<span class="w"> </span><span class="k">done</span>.
 Total<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>pack-reused<span class="w"> </span><span class="m">0</span>
-To<span class="w"> </span>https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2025_warm_up.git
+To<span class="w"> </span>https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2026_warm_up.git
 <span class="w">    </span>6d08e6d..bc20c0b<span class="w">  </span>main<span class="w"> </span>-&gt;<span class="w"> </span>main
 </code></pre></div>
 <p>现在，刷新 GitLab 页面，刚刚提交的内容已经显示在网页上。</p>
-<p><a class="glightbox" href="../photos/git4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Untitled" src="../photos/git4.png" /></a></p>
-<h2 id="上下游同步和冲突处理">上下游同步和冲突处理<a class="headerlink" href="#上下游同步和冲突处理" title="Permanent link">&para;</a></h2>
-<p>通过 fork 操作，你已经拥有了一个自己的仓库，在此我们可以引入上下游的概念。假设通过 fork 仓库 A 得到仓库 B，那么 A 就是 B 的上游。尽管 A 和 B 可能有大部分相同的内容，但对 A 和 B 的修改是彼此独立的。在这个课程实验中，我们将以类似的方式发布实验代码，助教维护上游仓库 A，而学生修改下游仓库 B。由于 A 和 B 的修改是相互独立的，接下来我们将介绍如何使 B 同步 A 的相关修改。</p>
-<p>接下来，以 <strong><a href="https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/tree/warmup">https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/tree/warmup</a></strong> 作为上游仓库为例：</p>
-<ul>
-<li>添加上游仓库
+<p><a class="glightbox" href="../photos/hello-world.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Untitled" src="../photos/hello-world.png" /></a></p>
+<h2 id="上下游同步">上下游同步<a class="headerlink" href="#上下游同步" title="Permanent link">&para;</a></h2>
+<p>通过 fork 操作，你已经拥有了一个自己的仓库，在此我们可以引入上下游的概念。假设通过 fork 仓库 A 得到仓库 B，那么 A 就是 B 的上游。尽管 A 和 B 可能有大部分相同的内容，但对 A 和 B 的修改是彼此独立的。在这个课程实验中，我们将以类似的方式发布实验代码，助教维护上游仓库 A，而学生修改下游仓库 B。</p>
+<p>以 <strong><a href="https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/">https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/</a></strong> 作为上游仓库为例：</p>
+<p>在添加上游仓库之前，我们可以使用 <code>git branch --all -vv</code> 查看本地和远程属于你的所有分支：</p>
+<p><a class="glightbox" href="../photos/remote-upstream-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Untitled" src="../photos/remote-upstream-1.png" /></a></p>
+<p>添加上游仓库
   <div class="highlight"><pre><span></span><code><span class="c1"># 可以通过 git remote add 添加上游仓库</span>
 <span class="c1"># 用 upstream 标识该上游仓库</span>
 $<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler.git
-</code></pre></div></li>
-<li>抓取上游仓库</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="c1"># 使用以下命令从上游仓库获取最新代码</span>
-$<span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>upstream<span class="w"> </span>main
+</code></pre></div>
+抓取上游仓库
+   <code>bash
+   # 使用以下命令从上游仓库获取最新代码
+  $ git fetch upstream</code></p>
+<p>之后再次使用 <code>git branch --all -vv</code>，上游仓库 upstream 的分支已经出现：</p>
+<p><a class="glightbox" href="../photos/remote-upstream-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Untitled" src="../photos/remote-upstream-2.png" /></a></p>
+<!--
+  <div class="highlight"><pre><span></span><code><span class="c1"># 使用以下命令从上游仓库获取最新代码</span>
+$<span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>upstream
 remote:<span class="w"> </span>Enumerating<span class="w"> </span>objects:<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="k">done</span>.
 remote:<span class="w"> </span>Counting<span class="w"> </span>objects:<span class="w"> </span><span class="m">100</span>%<span class="w"> </span><span class="o">(</span><span class="m">5</span>/5<span class="o">)</span>,<span class="w"> </span><span class="k">done</span>.
 remote:<span class="w"> </span>Total<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>pack-reused<span class="w"> </span><span class="m">0</span>
@@ -1062,10 +1048,10 @@ fatal:<span class="w"> </span>Need<span class="w"> </span>to<span class="w"> </s
 <span class="c1"># 分支是 git 的一个重要概念，在本质上是一条独立的开发线。</span>
 <span class="c1"># 在处理新功能或 bug 修复时，您可以使用分支来将您的工作与其他团队成员的工作隔离开来。</span>
 </code></pre></div>
-<ul>
-<li>合并分支并处理冲突</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="c1"># 此时我们的仓库中存在两条分支</span>
+
+- 合并分支并处理冲突
+
+  <div class="highlight"><pre><span></span><code><span class="c1"># 此时我们的仓库中存在两条分支</span>
 <span class="c1"># main: 我们修改内容</span>
 <span class="c1"># upstream/main: 上游的内存</span>
 <span class="c1"># 我们可以通过 merge 操作将 upstream/main 的内容合并到 main 中</span>
@@ -1111,7 +1097,9 @@ Total<span class="w"> </span><span class="m">6</span><span class="w"> </span><sp
 To<span class="w"> </span>https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping/2026_warm_up.git
 <span class="w">   </span>bc20c0b..126d5c9<span class="w">  </span>main<span class="w"> </span>-&gt;<span class="w"> </span>main
 </code></pre></div>
-<p>注：在完成冲突处理后 <code>git commit</code> 时，终端弹出的默认编辑器应该是 GNU nano，并带有默认的 commit message <code>Merge remote-tracking branch 'upstream/main'</code>，这时用 <code>Ctrl + X</code> 再选择 <code>Y</code> 即可完成 commit。感兴趣的同学可以阅读 <a href="https://zhuanlan.zhihu.com/p/341705638">这篇文章</a> 进一步学习 GNU nano 的使用。</p>
+
+注：在完成冲突处理后 `git commit` 时，终端弹出的默认编辑器应该是 GNU nano，并带有默认的 commit message `Merge remote-tracking branch 'upstream/main'`，这时用 `Ctrl + X` 再选择 `Y` 即可完成 commit。感兴趣的同学可以阅读 [这篇文章](https://zhuanlan.zhihu.com/p/341705638) 进一步学习 GNU nano 的使用。
+-->
 <h2 id="扩展材料">扩展材料<a class="headerlink" href="#扩展材料" title="Permanent link">&para;</a></h2>
 <p><strong>Git 教程</strong> <a href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
 <p><strong>Git 文档</strong> <a href="https://git-scm.com/book/zh/v2">https://git-scm.com/book/zh/v2</a></p>
@@ -1147,6 +1135,8 @@ To<span class="w"> </span>https://cscourse.ustc.edu.cn/vdir/Gitlab/ustc_gongping
     <a href="mailto:119509559+shirakawasanae@users.noreply.github.com">Jingwen Sun</a>,
     
     <a href="mailto:165445503+qiaoyulin@users.noreply.github.com">QiaoYulin</a>,
+    
+    <a href="mailto:sunj1ngwen@mail.ustc.eu.cn">ShirakawaSanae</a>,
     
     <a href="mailto:sunj1ngwen@mail.ustc.edu.cn">ShirakawaSanae</a>,
     
