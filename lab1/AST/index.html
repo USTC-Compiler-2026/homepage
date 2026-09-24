@@ -866,7 +866,7 @@
 <h2 id="简介">简介<a class="headerlink" href="#简介" title="Permanent link">&para;</a></h2>
 <p><strong>AST（抽象语法树，Abstract Syntax Tree）</strong> 是编程语言中的一种树状数据结构，用于表示源代码的语法结构。AST 将程序代码中的元素（如变量、运算符、语句等）按照层次结构组织起来，去除掉原始源代码中的一些无关紧要的信息（例如注释和格式），并抽象出表达式和控制流的关键部分。</p>
 <p>AST 是编译器用来理解和处理源代码的关键步骤。编译器首先将源代码解析成 AST，然后再进行优化，生成中间代码。</p>
-<p>对于 phase1 中 <code>Bison</code> 生成的 <code>syntax_tree</code> 本身就是 AST，但为了适配 lab2 中通过访问者模式进行中间代码生成的需求，我们在这里需要将其简化，将每个语法树结点类型抽象为一个类，在每个类中填充一些属性，并按类进行中间代码生成。</p>
+<p>Phase1 中 <code>Bison</code> 生成的 <code>syntax_tree</code> 本身就是 AST，但为了适配 lab2 中通过访问者模式进行中间代码生成的需求，我们在这里需要将其简化，将每个语法树结点类型抽象为一个类，在每个类中填充一些属性，并按类进行中间代码生成。</p>
 <p>而我们目前得到的 <code>syntax_tree</code> 的所有结点都只是由一个 <code>name</code> 表示，因此需要将 Bison 自动生成分析树转化成更简单的 AST。</p>
 <div class="admonition notes">
 <p class="admonition-title">分析树（Parse Tree）与抽象语法树（Abstract Syntax Tree）</p>
@@ -941,9 +941,9 @@
 <li><code>syntax_tree</code> 结构体唯一属性是 <code>root</code>，指向根结点的指针</li>
 <li>每个 <code>syntax_tree_node</code> 有以下属性：</li>
 <li><code>parent</code>：父结点</li>
-<li><code>children</code>：子结点数组，这里子结点数目是由产生式决定的，不会超过 10</li>
+<li><code>children</code>：子结点数组，这里子结点数目是由产生式决定的，在本课程的实验中，子节点数目不会超过 10</li>
 <li><code>children_num</code>：子结点的数目</li>
-<li><code>name</code>：<code>syntax_tree</code>结点的名字，也是区分不同结点的标识</li>
+<li><code>name</code>：<code>syntax_tree</code> 结点的名字，也是区分不同结点的标识</li>
 </ul>
 <p>比如对于 <code>declaration-list</code> 这个结点，其对应的文法产生式为：</p>
 <p><span class="arithmatex">\(program\rightarrow declaration-list\)</span></p>
@@ -1061,7 +1061,6 @@ declaration-list -&gt; declaration-list declaration | declaration
 <span class="k">struct</span><span class="w"> </span><span class="nc">ASTVarDeclaration</span><span class="p">;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">ASTFunDeclaration</span><span class="p">;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">ASTParam</span><span class="p">;</span>
-
 <span class="k">struct</span><span class="w"> </span><span class="nc">ASTCompoundStmt</span><span class="p">;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">ASTStatement</span><span class="p">;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">ASTExpressionStmt</span><span class="p">;</span>
@@ -1119,15 +1118,16 @@ declaration-list -&gt; declaration-list declaration | declaration
   <span class="md-icon" title="最后更新">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
   </span>
-  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 8, 2025</span>
+  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 24, 2026</span>
 </span>
      
 <span class="md-source-file__fact">
   <span class="md-icon" title="贡献者">
-     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
-    
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg> 
   </span>
   <nav>
+    
+    <a href="mailto:sunj1ngwen@mail.ustc.eu.cn">ShirakawaSanae</a>,
     
     <a href="mailto:153092435+terialion@users.noreply.github.com">WangYuhang</a>
   </nav>

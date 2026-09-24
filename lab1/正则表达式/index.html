@@ -876,11 +876,14 @@
 <!-- prettier-ignore-end -->
 
 <p>这些符号允许你创建复杂的 pattern，用于匹配和操作文本中的字符串。不同的编程语言和工具可能会略有不同，但基本的正则表达式符号通常是通用的。值得注意的是，我们实验中所使用的 flex 由于某些历史原因，并不支持<code>\s</code>和<code>\S</code>这两个符号，所以在实验中请使用其他方法来代替。</p>
-<p>这是一个正则表达式在线匹配网站（<a href="https://c.runoob.com/front-end/854/">https://c.runoob.com/front-end/854/</a>），你可以在该网站创建相关正则 pattern 进行匹配，以熟悉计算机程序中的正则表达式符号。</p>
 <h2 id="思考题">思考题<a class="headerlink" href="#思考题" title="Permanent link">&para;</a></h2>
-<ul>
+<ol>
 <li><code>\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</code> 正则表达式匹配的字符串的含义是什么？</li>
-</ul>
+<li><code>(-?\d+)(\.\d+)?</code> 正则表达式匹配的字符串的含义是什么？</li>
+<li>十六进制颜色码（Hex Color Code）是一种在软件、网页设计和数字图形等领域用于精确设定颜色值的代码。<strong>其标准格式为 #RRGGBB</strong>，其中RR、GG、BB分别代表红、绿、蓝三原色的强度，使用两位十六进制数表示，范围从00到FF（对应十进制0到255）。在16进制颜色表示下，<span style="color: #66ccff;">#66CCFF</span> 表示天依蓝，<span style="color: #39c5bb;">#39C5BB</span> 表示初音绿。</li>
+</ol>
+<p>当 #RRGGBB 格式中每两位字符相同时，可使用简写格式 #RGB，例如<span style="color: #6cf;">#66CCFF</span> 可简写为 <span style="color: #66ccff;">#6CF</span>；另外，大写字母也可以用小写字母表示，如 <span style="color: #66ccff;">#66cF</span>。</p>
+<p>请你设计一个正则表达式，匹配所有合法的十六进制颜色码。</p>
          
     
 <aside class="md-source-file">
@@ -889,15 +892,16 @@
   <span class="md-icon" title="最后更新">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
   </span>
-  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 8, 2025</span>
+  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 24, 2026</span>
 </span>
      
 <span class="md-source-file__fact">
   <span class="md-icon" title="贡献者">
-     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
-    
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg> 
   </span>
   <nav>
+    
+    <a href="mailto:sunj1ngwen@mail.ustc.eu.cn">ShirakawaSanae</a>,
     
     <a href="mailto:153092435+terialion@users.noreply.github.com">WangYuhang</a>
   </nav>
