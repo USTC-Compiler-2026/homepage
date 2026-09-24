@@ -1,6 +1,6 @@
 # Lab1 简介
 
-本次实验需要同学们从无到有完成一个完整的 Cminusf 解析器，包括基于 **Flex** 的词法分析器和基于 Bison 的语法分析器，并将得到的语法分析树转化成抽象语法树（AST）。
+本次实验需要同学们从无到有完成一个完整的 Cminusf 解析器，包括基于 Flex 的词法分析器和基于 Bison 的语法分析器，并将得到的语法分析树转化成抽象语法树（AST）。
 
 ## 文档
 
@@ -25,7 +25,7 @@
 
 !!! warning "Deadline"
 
-    **2025 年 10 月 1 日 23:59**
+    **2026 年 10 月 3 日 23:59**
 
 ### 阶段二
 
@@ -35,35 +35,44 @@
 
 !!! warning "Deadline"
 
-    **2025 年 10 月 8 日 23:59**
+    **2026 年 10 月 10 日 23:59**
 
 ## 实验要求
 
 !!! Warning "请务必先 fork 后拉取最新的实验仓库"
 
-    请使用自己fork后的仓库完成今后的实验！
+    请使用自己 fork 后的仓库完成今后的实验！
 
-请根据 Lab0 的内容，将[实验仓库](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler) <font color="red">**fork**</font> 并 clone 到本地虚拟机中，并将实验仓库设置为上游仓库。
+请根据 Lab0 的内容，将[实验仓库](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler) <font color="red">**fork**</font> 并 clone 到本地，并将实验仓库设置为上游仓库。已经 clone 过的同学只需要拉取最新内容即可。
 
 ```bash
 
-git clone ${Your_Repo}
-cd 2025ustc-jianmu-compiler
-git checkout lab1
-git remote add upstream https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler
-git pull upstream lab1
+# 进入你自己的本地实验仓库目录
+cd 2026ustc-jianmu-compiler
+git git fetch upstream main
+git git switch -c main --track upstream/main
 
-#在你完成TODO后
+# 在你完成 TODO 后
 
-git push origin lab1
+git push origin main
 
 ```
 
+   ![Untitled](assets/fetch-upstream.png)
+
+
 ## 提交内容
 
-- 在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2025ustc-jianmu-compiler.git lab1`）。
-    - 注意是 url 后空格加上分支名
+- 在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/PB24xxx/2026ustc-jianmu-compiler.git main`）。
+    - 注意: url 后空格加上分支名!!!
 - 在希冀平台提交你的 `answer.pdf` 文件，其中包含：
     - [正则表达式](./正则表达式.md#思考题)
     - [Flex](./Flex.md#思考题)
     - [Bison](./Bison.md#思考题)
+
+## 写在前面
+
+助教推荐同学们在自己的 VS Code 中安装 TODO 高亮扩展，它可以帮助你在完成实验时更快地找到需要补充代码的部分；你还可以对这个扩展进行自定义，例如高亮的颜色、高亮的关键词等。
+
+   ![Untitled](assets/todo-extension.png)
+

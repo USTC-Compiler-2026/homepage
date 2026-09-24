@@ -6,7 +6,7 @@
 
 AST 是编译器用来理解和处理源代码的关键步骤。编译器首先将源代码解析成 AST，然后再进行优化，生成中间代码。
 
-对于 phase1 中 `Bison` 生成的 `syntax_tree` 本身就是 AST，但为了适配 lab2 中通过访问者模式进行中间代码生成的需求，我们在这里需要将其简化，将每个语法树结点类型抽象为一个类，在每个类中填充一些属性，并按类进行中间代码生成。
+Phase1 中 `Bison` 生成的 `syntax_tree` 本身就是 AST，但为了适配 lab2 中通过访问者模式进行中间代码生成的需求，我们在这里需要将其简化，将每个语法树结点类型抽象为一个类，在每个类中填充一些属性，并按类进行中间代码生成。
 
 而我们目前得到的 `syntax_tree` 的所有结点都只是由一个 `name` 表示，因此需要将 Bison 自动生成分析树转化成更简单的 AST。
 
@@ -96,9 +96,9 @@ typedef struct _syntax_tree syntax_tree;
 - `syntax_tree` 结构体唯一属性是 `root`，指向根结点的指针
 - 每个 `syntax_tree_node` 有以下属性：
   - `parent`：父结点
-  - `children`：子结点数组，这里子结点数目是由产生式决定的，不会超过 10
+  - `children`：子结点数组，这里子结点数目是由产生式决定的，在本课程的实验中，子节点数目不会超过 10
   - `children_num`：子结点的数目
-  - `name`：`syntax_tree`结点的名字，也是区分不同结点的标识
+  - `name`：`syntax_tree` 结点的名字，也是区分不同结点的标识
 
 比如对于 `declaration-list` 这个结点，其对应的文法产生式为：
 
@@ -238,7 +238,6 @@ struct ASTNum;
 struct ASTVarDeclaration;
 struct ASTFunDeclaration;
 struct ASTParam;
-
 struct ASTCompoundStmt;
 struct ASTStatement;
 struct ASTExpressionStmt;

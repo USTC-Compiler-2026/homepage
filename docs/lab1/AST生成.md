@@ -4,9 +4,9 @@
 
 现在我们开始实现 由 `syntax_tree` 向 `AST` 的转换。
 
-`AST`中所有结点类都在 `include/common/ast.hpp` 中有所定义，并在 `src/common/ast.cpp` 补充了相关实现。
+`AST` 中所有结点类都在 `include/common/ast.hpp` 中有所定义，并在 `src/common/ast.cpp` 补充了相关实现。
 
-关于 `AST` 的具体知识请参考 [AST](./AST.md)
+关于 `AST` 的具体知识请参考 [AST](./AST.md)。
 
 ### 实验内容
 
@@ -82,7 +82,7 @@ program
 
 ### 编译、运行和评测
 
-首先将你的实验仓库克隆的本地虚拟机中。要编译和测试 `AST`，请按照以下步骤在本地虚拟机中进行操作：
+首先将你的实验仓库克隆到本地虚拟机中。要编译和测试 `AST`，请按照以下步骤在本地虚拟机中进行操作：
 
 #### 编译
 
