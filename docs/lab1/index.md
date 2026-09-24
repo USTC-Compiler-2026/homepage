@@ -49,8 +49,8 @@
 
 # 进入你自己的本地实验仓库目录
 cd 2026ustc-jianmu-compiler
-git git fetch upstream main
-git git switch -c main --track upstream/main
+git fetch upstream main
+git switch -c main --track upstream/main
 
 # 在你完成 TODO 后
 
