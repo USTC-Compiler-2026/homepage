@@ -44,7 +44,9 @@
 
 ## <strong>公告</strong>
 - 2026-08-30：[课程平台介绍](exp_platform_intro/README.md) 已发布
+- 2026-09-20：[Lab0](lab0/index.md)已发布
 - 2026-09-21：[第一次作业](hw/011163_26FA_HW1.pdf)已发布
+- 2026-09-24：[Lab1](lab1/index.md)已发布
 
 ## <strong>教学课件</strong>
 
@@ -58,6 +60,7 @@
 | 2026-09-16 |                      语法分析 - 自底向上 - 移进规约 & LR 分析器的简单模型                       |                                                    [Parser-part4](ppt/Lecture6-Parser-part4.pdf)，[Parser-part5](ppt/Lecture7-Parser-part5.pdf)                                                  |
 | 2026-09-21 |                     语法分析 - 简单的 LR 方法 & 规范的 LR 方法                      |                                                    [Parser-part6](ppt/Lecture8-Parser-part6.pdf)，[Parser-part7](ppt/Lecture9-Parser-part7.pdf)        
 | 2026-09-23 |           中间代码表示 & 语法制导翻译            |                                 [IR](ppt/Lecture10-IR.pdf)                                 |                                             |
+| 2026-09-28 |           中间代码表示 & 语法制导翻译            |                                 [Translation-part1](ppt/Lecture11-Translation-part1.pdf)                                 |
 <!--                                              |
 | 2025-09-29 |           中间代码表示 & 语法制导翻译 - 语法制导定义 & S/L 属性的定义            |                                 [IR](ppt/Lecture10-IR.pdf), [Translation-part1](ppt/Lecture11-Translation-part1.pdf)                                 |
 | 2025-10-13 |              语法制导翻译 - 语法制导翻译方案 & L 属性定义的翻译方案              |                  [Translation-part2](ppt/Lecture12-Translation-part2.pdf), [Translation-part3](ppt/Lecture13-Translation-part3.pdf)                  |
