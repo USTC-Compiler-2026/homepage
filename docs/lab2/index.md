@@ -1,5 +1,4 @@
 <!-- TODO:
-1）确定 deadline
 2）优化文档关于 Light IR C++ api 介绍的内容
 3）说明 git 仓库同步的流程，如何 merge
 4）在 warmup 阶段，有一些例子引用了仓库链接，需要同步仓库后更新这些链接！
@@ -107,7 +106,7 @@
 
 !!! warning "Deadline"
 
-    **2025 年 10 月 22 日 23:59**
+    **2026 年 10 月 25 日 23:59**
 
 ### 阶段二
 
@@ -115,7 +114,7 @@
 
 !!! warning "Deadline"
 
-    **2025 年 10 月 31 日 23:59**
+    **2026 年 11 月 3 日 23:59**
 
 ### 阶段三
 
@@ -123,11 +122,15 @@
 
 !!! warning "Deadline"
 
-    **2025 年 11 月 7 日 23:59**
+    **2026 年 11 月 10 日 23:59**
+
+!!! warning "迟交说明"
+
+    各阶段截止时间后一周内仍可补交，但会扣除一定比例的分数；超过一周后不再接受补交。
 
 ## 提交内容
 
-- 阶段一：在希冀平台提交你的 `answer.pdf` 文件，在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2025ustc-jianmu-compiler.git main`）。
-- 阶段二、三：在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2025ustc-jianmu-compiler.git main`）。
+- 阶段一：在希冀平台提交你的 `answer.pdf` 文件，并提交你实验仓库的 URL（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2026ustc-jianmu-compiler.git main`）。
+- 阶段二、三：在希冀平台提交你实验仓库的 URL（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2026ustc-jianmu-compiler.git main`）。
 
 

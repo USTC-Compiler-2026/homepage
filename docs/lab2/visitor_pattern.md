@@ -103,7 +103,7 @@ class NodePrinter: NodeVisitor {
 **编译**
 
 ```shell
-$ cd 2025ustc-jianmu-compiler
+$ cd 2026ustc-jianmu-compiler
 $ mkdir build
 $ cd build
 # 使用 cmake 生成 makefile 等文件
