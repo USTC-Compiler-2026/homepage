@@ -151,7 +151,7 @@ nav:
     - Light IR C++ 库: lab2/LightIR C++.md
     - 访问者模式: lab2/visitor_pattern.md
     - IR 自动化生成: lab2/autogen.md
-     - 剖析LLVM中的getelementptr: lab2/getelementptr.md
+    - 剖析LLVM中的getelementptr: lab2/getelementptr.md
   #- Lab3:
   #  - Lab3 简介: lab3/index.md
   #  - Lab3 实验指导: lab3/guidance.md
