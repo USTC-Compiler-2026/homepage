@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../LightIR/">
+      
+      
+        <link rel="next" href="../visitor_pattern/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -287,6 +291,26 @@
           
   
   Lab1
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Lab2
 
         </a>
       </li>
@@ -924,6 +948,948 @@
   
   <span class="md-ellipsis">
     AST生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Lab2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Lab2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab2 简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../warmup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Light IR 预热
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cminusf%E8%AF%AD%E4%B9%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cminusf 语义介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LightIR/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Light IR 简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Light IR C++ 库
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Light IR C++ 库
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#light-ir-结构" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR 结构
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#light-ir-c-类总览" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR C++ 类总览
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Light IR C++ 类总览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#light-ir-c-数据基类valueuser" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR C++ 数据基类：Value，User
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Light IR C++ 数据基类：Value，User">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    <span class="md-ellipsis">
+      User
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#light-ir-c-类型基类type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR C++ 类型基类：Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#使用-light-ir-c-库生成-ir" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用 Light IR C++ 库生成 IR
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用 Light IR C++ 库生成 IR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#创建-module-function-basicblock-的接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建 Module, Function, BasicBlock 的接口
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#irbuilder-生成-ir-指令的辅助类" class="md-nav__link">
+    <span class="md-ellipsis">
+      IRBuilder: 生成 IR 指令的辅助类
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#light-ir-c-库核心类定义" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light IR C++ 库核心类定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Light IR C++ 库核心类定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#属性" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#常用接口" class="md-nav__link">
+    <span class="md-ellipsis">
+      常用接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globalvaribale" class="md-nav__link">
+    <span class="md-ellipsis">
+      GlobalVaribale
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GlobalVaribale">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#属性_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#常用接口_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      常用接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-和-argument" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function 和 Argument
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Function 和 Argument">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#属性_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#常用接口_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      常用接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argument" class="md-nav__link">
+    <span class="md-ellipsis">
+      Argument
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#属性_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basicblock" class="md-nav__link">
+    <span class="md-ellipsis">
+      BasicBlock
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BasicBlock">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#属性_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#常用接口_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      常用接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instruction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#子类" class="md-nav__link">
+    <span class="md-ellipsis">
+      子类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#属性_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constant
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Constant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constantint" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConstantInt
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConstantInt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#属性_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constantfp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConstantFP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConstantFP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#属性_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constantzero" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConstantZero
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConstantZero">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#接口_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constantarray" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConstantArray
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConstantArray">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#属性_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#irbuilder" class="md-nav__link">
+    <span class="md-ellipsis">
+      IRBuilder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IRBuilder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#属性_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#子类_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      子类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      User &amp;&amp; Use
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User && Use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      User
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#属性_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#属性_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Value
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Value">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#属性_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#接口_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      接口
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#常用接口_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      常用接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visitor_pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    访问者模式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autogen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IR 自动化生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getelementptr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    剖析LLVM中的getelementptr
   </span>
   
 
@@ -2947,6 +3913,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../LightIR/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Light IR 简介">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Light IR 简介
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../visitor_pattern/" class="md-footer__link md-footer__link--next" aria-label="下一页: 访问者模式">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                访问者模式
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
