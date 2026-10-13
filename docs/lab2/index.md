@@ -1,10 +1,4 @@
-<!-- TODO:
-2）优化文档关于 Light IR C++ api 介绍的内容
-3）说明 git 仓库同步的流程，如何 merge
-4）在 warmup 阶段，有一些例子引用了仓库链接，需要同步仓库后更新这些链接！
-5）Lab1 也有 AST，需要检查 lab2 关于 AST 的叙述是不是要改动
-
- -->
+<!-- TODO: 优化文档关于 Light IR C++ API 的介绍。 -->
 
 # Lab2 中间代码生成
 
@@ -19,7 +13,7 @@
 
 ![](figs/index2.png)
 
-两个仓库各有 3 条分支（红色字体）：main、lab0 和 lab1，如下图。最上边的 lab1 和 main 代表本地的分支，分别追踪远程的 `origin/lab1` 和 `origin/main`，main 前边的星号 `*` 和绿色字体代表当前处于 main 分支下：
+两个远程仓库各有 3 条分支：`main`、`lab0` 和 `warmup`。下图展示了 `origin` 的远程跟踪分支；本例中的本地 `main` 分支跟踪 `origin/main`，前面的星号 `*` 和绿色字体表示当前处于 `main` 分支下：
 
 ![](figs/index3.png)
 
@@ -27,7 +21,7 @@
 
     以上两条命令分别是：`git remote -v` 和 `git branch --all -vv`，如果第二条命令的输出中缺少 upstream 的分支，你可以通过 `git fetch --all` 来获取。
 
-在实验一中，我们通过 lab1 分支发布实验，与 lab0 作为区分，因此学生也是处于 lab1 分支下完成实验。为了更优雅地发布实验，从 lab2 开始，我们将使用 main 分支发布实验。在开始撰写本次实验代码之前，学生需要抓取最新的 main 分支到本地，然后将 lab1 分支合并到 main 分支，并处理可能的冲突。以下是详细的指导。
+在实验一中，我们通过 main 分支发布实验。为了在同学们实现的基础上继续实验，从 lab2 开始，我们将继续使用 main 分支发布实验。在开始撰写本次实验代码之前，学生需要抓取最新的 main 分支到本地。以下是详细的指导。
 
 ### 拉取最新代码
 
@@ -36,17 +30,20 @@
 - `git checkout main`：如果 `git branch` 的输出存在 main；
 - 或 `git checkout -b main --track origin/main`：如果在自己的远程仓库中有main分支，而 `git branch` 的输出不存在 main。
 
-??? note "如果你的远程仓库没有 main 分支"
+??? note "如果你的 origin 仓库还没有 main 分支"
 
-    首先登录自己的gitlab平台，进入自己的实验仓库页面，点击左侧的 Repository -> Branches，查看是否存在 main 分支。如果不存在，请点击 New branch 创建一个 main 分支，分支来源选择 master。
-    ![](figs/create_main1.png)
-    ![](figs/create_main2.png)
-    在本地执行 `git pull origin` 拉取新创建的 main 分支，然后执行 `git checkout main`切换到 main 分支下面。
-    我们以后的实验都是基于 main 分支进行的，所以可以把 main 分支设置为默认分支，点击 Settings -> Repository -> Default branch 进行设置。
-    ![](figs/set_default_branch.png)
+    如果本地已有 `main`，先切换到该分支；如果本地也没有 `main`，从课程仓库创建：
 
-然后使用 `git pull upstream main` 获取最新内容。此时你应该可以在项目下找到 `tests/2-ir-gen/**` 和 `src/lightir/**` 等内容。
+    ```shell
+    git fetch upstream main
+    git switch -c main --track upstream/main
+    ```
 
+    然后执行 `git push -u origin main`，将 `main` 分支推送到自己的仓库。后续实验均基于 `main` 分支进行。
+
+然后执行 `git fetch upstream` 获取最新内容，再执行 `git merge upstream/main` 合并到本地。若出现冲突，编辑冲突文件、删除 `<<<<<<<`、`=======`、`>>>>>>>` 标记并保留正确内容，然后执行 `git add <已解决文件>` 和 `git merge --continue`；更多背景可参考 [Lab0 中的上下游同步说明](../lab0/git.md#上下游同步)。此时你应该可以在项目下找到 `tests/2-ir-gen/**` 和 `src/lightir/**` 等内容。
+
+<!--
 ### 合并 lab1 分支
 
 检查当前关于 lab1 的实验内容：`src/parser/lexical_analyzer.l`、`src/parser/syntax_analyzer.y` 和 `src/common/ast.cpp`，你会发现曾经完成的代码不见了，这三个文件处于 lab1 开始前的版本。现在使用 `git merge lab1`，将你在 lab1 完成的内容合并到主分支（main）下。
@@ -76,7 +73,7 @@
 
     VS code 还提供了高亮合并选项，例如下图是助教保留 lab1 parser 相关代码时的高亮选项 `Accept Incoming Change`：
     ![](figs/merge-extra1.png)
-
+-->
 此时进入 build 文件夹，执行 `cmake ..` 和 `make -j` 编译最新的程序，然后进入 lab1 的测试目录 `tests/1-parser`，执行 lab1 的两个脚本。在正确合并分支的情况下，你应该能够正常编译项目并通过 lab1 的两个脚本，这时你可以开始本次实验的撰写了。
 
 ??? note "ZLIB 相关报错"

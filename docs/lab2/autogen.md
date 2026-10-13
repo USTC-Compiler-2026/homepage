@@ -38,7 +38,7 @@
 
     分析树在语法分析的过程中被构造；抽象语法树则是分析树的浓缩表示，使用运算符作为根节点和内部节点，并使用操作数作为子节点。进一步了解可以阅读 [分析树和抽象语法树的比较](https://stackoverflow.com/questions/5026517/whats-the-difference-between-parse-trees-and-abstract-syntax-trees-asts)。
 
-实验框架实现了 Lab1 生成的分析树到 C++ 上的抽象语法树的转换。可以使用[访问者模式](./visitor_pattern.md)来实现对抽象语法树的遍历，[ast.hpp](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/blob/main/include/common/ast.hpp) 文件中包含抽象语法树节点定义。
+Lab2 将复用你在 Lab1 阶段二中完成的 `syntax_tree` 到 C++ 抽象语法树的转换，并在此基础上生成 IR。可以使用[访问者模式](./visitor_pattern.md)遍历 AST；[ast.hpp](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/blob/main/include/common/ast.hpp) 文件中包含抽象语法树节点定义。
 
 ### 符号表 Scope
 
@@ -100,7 +100,7 @@ struct {
 ### 编译
 
 ```shell
-$ cd 2025stc-jianmu-compiler
+$ cd 2026ustc-jianmu-compiler
 $ mkdir build
 $ cd build
 # 使用 cmake 生成 makefile 等文件
