@@ -1530,7 +1530,7 @@
 <p class="admonition-title">分析树（Parse Tree）与抽象语法树（Abstract Syntax Tree）</p>
 <p>分析树在语法分析的过程中被构造；抽象语法树则是分析树的浓缩表示，使用运算符作为根节点和内部节点，并使用操作数作为子节点。进一步了解可以阅读 <a href="https://stackoverflow.com/questions/5026517/whats-the-difference-between-parse-trees-and-abstract-syntax-trees-asts">分析树和抽象语法树的比较</a>。</p>
 </div>
-<p>实验框架实现了 Lab1 生成的分析树到 C++ 上的抽象语法树的转换。可以使用<a href="../visitor_pattern/">访问者模式</a>来实现对抽象语法树的遍历，<a href="https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/blob/main/include/common/ast.hpp">ast.hpp</a> 文件中包含抽象语法树节点定义。</p>
+<p>Lab2 将复用你在 Lab1 阶段二中完成的 <code>syntax_tree</code> 到 C++ 抽象语法树的转换，并在此基础上生成 IR。可以使用<a href="../visitor_pattern/">访问者模式</a>遍历 AST；<a href="https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler/-/blob/main/include/common/ast.hpp">ast.hpp</a> 文件中包含抽象语法树节点定义。</p>
 <h3 id="符号表-scope">符号表 Scope<a class="headerlink" href="#符号表-scope" title="Permanent link">&para;</a></h3>
 <p>在 <code>include/cminusf_builder.hpp</code> 中，我们定义了一个用于存储作用域的类 <code>Scope</code>。它的作用是辅助我们在遍历语法树时，管理不同作用域中的变量。它提供了以下接口：</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 进入一个新的作用域</span>
@@ -1573,7 +1573,7 @@
 </ol>
 <h2 id="编译运行和评测">编译、运行和评测<a class="headerlink" href="#编译运行和评测" title="Permanent link">&para;</a></h2>
 <h3 id="编译">编译<a class="headerlink" href="#编译" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>2025stc-jianmu-compiler
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>2026ustc-jianmu-compiler
 $<span class="w"> </span>mkdir<span class="w"> </span>build
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
 <span class="c1"># 使用 cmake 生成 makefile 等文件</span>
@@ -1622,7 +1622,7 @@ $<span class="w"> </span>cat<span class="w"> </span>eval_result
   <span class="md-icon" title="最后更新">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
   </span>
-  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 12, 2026</span>
+  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 13, 2026</span>
 </span>
      
 <span class="md-source-file__fact">

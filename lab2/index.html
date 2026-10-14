@@ -1078,15 +1078,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#合并-lab1-分支" class="md-nav__link">
-    <span class="md-ellipsis">
-      合并 lab1 分支
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1351,15 +1342,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#合并-lab1-分支" class="md-nav__link">
-    <span class="md-ellipsis">
-      合并 lab1 分支
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1431,13 +1413,7 @@
                   
 
 
-<!-- TODO:
-2）优化文档关于 Light IR C++ api 介绍的内容
-3）说明 git 仓库同步的流程，如何 merge
-4）在 warmup 阶段，有一些例子引用了仓库链接，需要同步仓库后更新这些链接！
-5）Lab1 也有 AST，需要检查 lab2 关于 AST 的叙述是不是要改动
-
- -->
+<!-- TODO: 优化文档关于 Light IR C++ API 的介绍。 -->
 
 <h1 id="lab2-中间代码生成">Lab2 中间代码生成<a class="headerlink" href="#lab2-中间代码生成" title="Permanent link">&para;</a></h1>
 <p>本次实验需要同学们在 Lab1 实现的 Cminusf 解析器基础上，完成从语法树向中间代码的自动化翻译过程。</p>
@@ -1448,13 +1424,13 @@
 <li>origin：学生 fork 得到的私有仓库</li>
 </ul>
 <p><a class="glightbox" href="figs/index2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/index2.png" /></a></p>
-<p>两个仓库各有 3 条分支（红色字体）：main、lab0 和 lab1，如下图。最上边的 lab1 和 main 代表本地的分支，分别追踪远程的 <code>origin/lab1</code> 和 <code>origin/main</code>，main 前边的星号 <code>*</code> 和绿色字体代表当前处于 main 分支下：</p>
+<p>两个远程仓库各有 3 条分支：<code>main</code>、<code>lab0</code> 和 <code>warmup</code>。下图展示了 <code>origin</code> 的远程跟踪分支；本例中的本地 <code>main</code> 分支跟踪 <code>origin/main</code>，前面的星号 <code>*</code> 和绿色字体表示当前处于 <code>main</code> 分支下：</p>
 <p><a class="glightbox" href="figs/index3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/index3.png" /></a></p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>以上两条命令分别是：<code>git remote -v</code> 和 <code>git branch --all -vv</code>，如果第二条命令的输出中缺少 upstream 的分支，你可以通过 <code>git fetch --all</code> 来获取。</p>
 </div>
-<p>在实验一中，我们通过 lab1 分支发布实验，与 lab0 作为区分，因此学生也是处于 lab1 分支下完成实验。为了更优雅地发布实验，从 lab2 开始，我们将使用 main 分支发布实验。在开始撰写本次实验代码之前，学生需要抓取最新的 main 分支到本地，然后将 lab1 分支合并到 main 分支，并处理可能的冲突。以下是详细的指导。</p>
+<p>在实验一中，我们通过 main 分支发布实验。为了在同学们实现的基础上继续实验，从 lab2 开始，我们将继续使用 main 分支发布实验。在开始撰写本次实验代码之前，学生需要抓取最新的 main 分支到本地。以下是详细的指导。</p>
 <h3 id="拉取最新代码">拉取最新代码<a class="headerlink" href="#拉取最新代码" title="Permanent link">&para;</a></h3>
 <p>首先切换到 main 分支下：</p>
 <ul>
@@ -1462,34 +1438,45 @@
 <li>或 <code>git checkout -b main --track origin/main</code>：如果在自己的远程仓库中有main分支，而 <code>git branch</code> 的输出不存在 main。</li>
 </ul>
 <details class="note">
-<summary>如果你的远程仓库没有 main 分支</summary>
-<p>首先登录自己的gitlab平台，进入自己的实验仓库页面，点击左侧的 Repository -&gt; Branches，查看是否存在 main 分支。如果不存在，请点击 New branch 创建一个 main 分支，分支来源选择 master。
-<a class="glightbox" href="figs/create_main1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/create_main1.png" /></a>
-<a class="glightbox" href="figs/create_main2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/create_main2.png" /></a>
-在本地执行 <code>git pull origin</code> 拉取新创建的 main 分支，然后执行 <code>git checkout main</code>切换到 main 分支下面。
-我们以后的实验都是基于 main 分支进行的，所以可以把 main 分支设置为默认分支，点击 Settings -&gt; Repository -&gt; Default branch 进行设置。
-<a class="glightbox" href="figs/set_default_branch.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/set_default_branch.png" /></a></p>
+<summary>如果你的 origin 仓库还没有 main 分支</summary>
+<p>如果本地已有 <code>main</code>，先切换到该分支；如果本地也没有 <code>main</code>，从课程仓库创建：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>fetch<span class="w"> </span>upstream<span class="w"> </span>main
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>main<span class="w"> </span>--track<span class="w"> </span>upstream/main
+</code></pre></div>
+<p>然后执行 <code>git push -u origin main</code>，将 <code>main</code> 分支推送到自己的仓库。后续实验均基于 <code>main</code> 分支进行。</p>
 </details>
-<p>然后使用 <code>git pull upstream main</code> 获取最新内容。此时你应该可以在项目下找到 <code>tests/2-ir-gen/**</code> 和 <code>src/lightir/**</code> 等内容。</p>
-<h3 id="合并-lab1-分支">合并 lab1 分支<a class="headerlink" href="#合并-lab1-分支" title="Permanent link">&para;</a></h3>
-<p>检查当前关于 lab1 的实验内容：<code>src/parser/lexical_analyzer.l</code>、<code>src/parser/syntax_analyzer.y</code> 和 <code>src/common/ast.cpp</code>，你会发现曾经完成的代码不见了，这三个文件处于 lab1 开始前的版本。现在使用 <code>git merge lab1</code>，将你在 lab1 完成的内容合并到主分支（main）下。</p>
-<details class="note">
-<summary>如果你遇到了冲突</summary>
-<p>在执行 merge 时，git 会尝试自动合并经过修改的文件内容，如果一处内容同时被两方（current 和 incoming）修改，就会产生冲突，需要手动决定保留哪一方的更改（或者都保留）。</p>
-<p><a href="../lab0/git/#上下游同步和冲突处理">回顾 Lab0 中关于 git 冲突处理的讲解</a>。</p>
-<p>下图就是在合并时出现了冲突的例子，表示在 <code>src/common/ast.cpp</code> 文件出现了冲突。
-<a class="glightbox" href="figs/conflict.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/conflict.png" /></a></p>
-<p>我们检查这个文件，看到一处冲突，截图如下：
-<a class="glightbox" href="figs/conflict-solve-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/conflict-solve-1.png" /></a></p>
-<p>在这里，我们（上游仓库）最新的代码将 <code>ASTVisitor::visit</code> 接口的返回值更新成了 <code>Value *</code>，这种接口变动要以上游为准。现在是将 lab1 合并进 main 分支，所以进行 merge 的双方，current 是上游内容，incoming 是 lab1 的内容，在这里保留 current 内容。</p>
-<p>在完成文件的更改后，保存文件，你仍然在 merge 的阶段，你可以使用 <code>git status</code> 查看，并使用 <code>git merge --continue</code> 完成你的合并操作，如下图所示。</p>
-<p><a class="glightbox" href="figs/conflict-solve-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/conflict-solve-2.png" /></a></p>
-<p>如果执行 <code>git merge --continue</code> 后有下图所示的 hint，按照提示先 <code>git add &lt;your_directory_or_merged_files&gt;</code> 再 merge 即可。
-<a class="glightbox" href="figs/merge-extra2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/merge-extra2.png" /></a></p>
-<p>事实上，在处理本次合并可能的冲突时，只需要保留你在 lab1 编写的代码即可，其余基本上都保留上游仓库的最新内容。</p>
-<p>VS code 还提供了高亮合并选项，例如下图是助教保留 lab1 parser 相关代码时的高亮选项 <code>Accept Incoming Change</code>：
-<a class="glightbox" href="figs/merge-extra1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="figs/merge-extra1.png" /></a></p>
-</details>
+<p>然后执行 <code>git fetch upstream</code> 获取最新内容，再执行 <code>git merge upstream/main</code> 合并到本地。若出现冲突，编辑冲突文件、删除 <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>、<code>=======</code>、<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> 标记并保留正确内容，然后执行 <code>git add &lt;已解决文件&gt;</code> 和 <code>git merge --continue</code>；更多背景可参考 <a href="../lab0/git/#上下游同步">Lab0 中的上下游同步说明</a>。此时你应该可以在项目下找到 <code>tests/2-ir-gen/**</code> 和 <code>src/lightir/**</code> 等内容。</p>
+<!--
+### 合并 lab1 分支
+
+检查当前关于 lab1 的实验内容：`src/parser/lexical_analyzer.l`、`src/parser/syntax_analyzer.y` 和 `src/common/ast.cpp`，你会发现曾经完成的代码不见了，这三个文件处于 lab1 开始前的版本。现在使用 `git merge lab1`，将你在 lab1 完成的内容合并到主分支（main）下。
+
+??? note "如果你遇到了冲突"
+
+    在执行 merge 时，git 会尝试自动合并经过修改的文件内容，如果一处内容同时被两方（current 和 incoming）修改，就会产生冲突，需要手动决定保留哪一方的更改（或者都保留）。
+
+    [回顾 Lab0 中关于 git 冲突处理的讲解](../lab0/git.md#上下游同步和冲突处理)。
+
+    下图就是在合并时出现了冲突的例子，表示在 `src/common/ast.cpp` 文件出现了冲突。
+    ![](figs/conflict.png)
+
+    我们检查这个文件，看到一处冲突，截图如下：
+    ![](figs/conflict-solve-1.png)
+
+    在这里，我们（上游仓库）最新的代码将 `ASTVisitor::visit` 接口的返回值更新成了 `Value *`，这种接口变动要以上游为准。现在是将 lab1 合并进 main 分支，所以进行 merge 的双方，current 是上游内容，incoming 是 lab1 的内容，在这里保留 current 内容。
+
+    在完成文件的更改后，保存文件，你仍然在 merge 的阶段，你可以使用 `git status` 查看，并使用 `git merge --continue` 完成你的合并操作，如下图所示。
+
+    ![](figs/conflict-solve-2.png)
+
+    如果执行 `git merge --continue` 后有下图所示的 hint，按照提示先 `git add <your_directory_or_merged_files>` 再 merge 即可。
+    ![](figs/merge-extra2.png)
+
+    事实上，在处理本次合并可能的冲突时，只需要保留你在 lab1 编写的代码即可，其余基本上都保留上游仓库的最新内容。
+
+    VS code 还提供了高亮合并选项，例如下图是助教保留 lab1 parser 相关代码时的高亮选项 `Accept Incoming Change`：
+    ![](figs/merge-extra1.png)
+-->
 <p>此时进入 build 文件夹，执行 <code>cmake ..</code> 和 <code>make -j</code> 编译最新的程序，然后进入 lab1 的测试目录 <code>tests/1-parser</code>，执行 lab1 的两个脚本。在正确合并分支的情况下，你应该能够正常编译项目并通过 lab1 的两个脚本，这时你可以开始本次实验的撰写了。</p>
 <details class="note">
 <summary>ZLIB 相关报错</summary>
@@ -1546,7 +1533,7 @@
   <span class="md-icon" title="最后更新">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
   </span>
-  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 12, 2026</span>
+  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 13, 2026</span>
 </span>
      
 <span class="md-source-file__fact">
