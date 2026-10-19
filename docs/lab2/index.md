@@ -41,7 +41,11 @@
 
     然后执行 `git push -u origin main`，将 `main` 分支推送到自己的仓库。后续实验均基于 `main` 分支进行。
 
-然后执行 `git fetch upstream` 获取最新内容，再执行 `git merge upstream/main` 合并到本地。若出现冲突，编辑冲突文件、删除 `<<<<<<<`、`=======`、`>>>>>>>` 标记并保留正确内容，然后执行 `git add <已解决文件>` 和 `git merge --continue`；更多背景可参考 [Lab0 中的上下游同步说明](../lab0/git.md#上下游同步)。此时你应该可以在项目下找到 `tests/2-ir-gen/**` 和 `src/lightir/**` 等内容。
+然后执行 `git fetch upstream` 获取最新内容，再执行 `git merge upstream/main` 合并到本地。`merge` 后的本地分支应如下图所示，你的本地 `main` 以及有了新的 `commit` 内容：
+![main本地内容](figs/commit_merge.png)
+若你在 `merge` 操作时，终端出现一下内容，输入 `:wq` 直接退出即可：
+![vim_warning 退出](figs/vim_warning.png)
+若出现冲突，编辑冲突文件、删除 `<<<<<<<`、`=======`、`>>>>>>>` 标记并保留正确内容，然后执行 `git add <已解决文件>` 和 `git merge --continue`；更多背景可参考 [Lab0 中的上下游同步说明](../lab0/git.md#上下游同步)。此时你应该可以在项目下找到 `tests/2-ir-gen/**` 和 `src/lightir/**` 等内容。
 
 <!--
 ### 合并 lab1 分支
