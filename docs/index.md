@@ -49,7 +49,7 @@
 - 2026-09-24：[Lab1](lab1/index.md)已发布
 - 2026-09-30：[第二次作业](hw/011163_26FA_HW2.pdf)已发布
 - 2026-10-08：[第三次作业](hw/011163_26FA_HW3.pdf)已发布
-- 2026-10-21：[Lab2](lab2/index.md)预计发布
+- 2026-10-21：[Lab2](lab2/index.md)已发布
 
 ## <strong>教学课件</strong>
 
@@ -86,6 +86,7 @@
 ## <strong>参考资料</strong>
 - [第一次作业答案](hw/011163_26FA_HW1_ANSWER.pdf)
 - [第二次作业答案](hw/011163_26FA_HW2_ANSWER.pdf)
+- [第三次作业答案](hw/011163_26FA_HW3_ANSWER.pdf)
 
 ### <strong>教材和参考书</strong>
 
