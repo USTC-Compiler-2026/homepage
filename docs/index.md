@@ -50,6 +50,7 @@
 - 2026-09-30：[第二次作业](hw/011163_26FA_HW2.pdf)已发布
 - 2026-10-08：[第三次作业](hw/011163_26FA_HW3.pdf)已发布
 - 2026-10-21：[Lab2](lab2/index.md)已发布
+- 2026-11-05：[第四次作业](hw/011163_26FA_HW4.pdf)已发布
 
 ## <strong>教学课件</strong>
 
@@ -67,12 +68,11 @@
 | 2026-10-12 |           语法制导翻译 - 语法制导翻译方案 & L 属性定义的翻译方案           |                                 [Translation-part3](ppt/Lecture13-Translation-part3.pdf), [Translation-part4](ppt/Lecture14-Translation-part4.pdf)                                 |
 | 2026-10-14 |           中间代码翻译 - 简单语句 & 控制流与布尔表达式翻译            |              [IR-Translation-part1](ppt/Lecture15-IR%20Translation-part1.pdf), [IR-Translation-part2](ppt/Lecture16-IR%20Translation-part2.pdf)              |
 | 2026-10-26 |              中间代码生成 - 标号回填与布尔表达式 & 标号回填与控制流语句             |          [IR-Translation-part3](ppt/Lecture17-IR%20Translation-part3.pdf)，[IR-Translation-part4](ppt/Lecture18-IR%20Translation-part4.pdf)          |
-| 2026-10-28 |             中间代码翻译 - 类型表达式及自动构造 &              |          [IR-Translation-part5](ppt/Lecture19-IR%20Translation-part5.pdf)， [IR-Translation-part6](ppt/Lecture20-IR%20Translation-part6.pdf)                              |
-| 2026-11-02 |               中间代码翻译 - 数组寻址 & 运行时管理 - 存储组织                |                  [IR-Translation-part7](ppt/Lecture21-IR%20Translation-part7.pdf), [Runtime-part1](ppt/Lecture22-Runtime-part1.pdf)                  |
-<!--                                              |
-| 2025-11-03 |                   运行时管理 - 栈式分配 & 非局部名字                    |                          [Runtime-part2](ppt/Lecture23-Runtime-part2.pdf), [Runtime-part3](ppt/Lecture24-Runtime-part3.pdf)                          |
-| 2025-11-05 |             代码生成 - 简单机器模型 & 机器无关代码优化 - 常见优化方法             |                         [CodeGen-part1](ppt/Lecture25-CodeGen-part1.pdf),  [IR Opt-part1](ppt/Lecture26-IR%20Opt-part1.pdf)                          |
-| 2025-11-10 |                   机器无关代码优化 - 数据流与到达定值分析                   |                                                   [IR Opt-part2](ppt/Lecture27-IR%20Opt-part2.pdf)                                                   |
+| 2026-10-28 |             中间代码翻译 - 类型表达式及自动构造 & 符号表与声明语句翻译             |          [IR-Translation-part5](ppt/Lecture19-IR%20Translation-part5.pdf)， [IR-Translation-part6](ppt/Lecture20-IR%20Translation-part6.pdf)                              |
+| 2026-11-02 |               中间代码翻译 - 数组寻址 & 运行时管理 - 存储组织 & 运行时管理 - 栈式分配               |                  [IR-Translation-part7](ppt/Lecture21-IR%20Translation-part7.pdf), [Runtime-part1](ppt/Lecture22-Runtime-part1.pdf), [Runtime-part2](ppt/Lecture23-Runtime-part2.pdf),                  |
+| 2026-11-04 |                   运行时管理 - 非局部名字 & 代码生成 - 简单机器模型 & 机器无关代码优化 - 常见优化方法                    |                          [Runtime-part3](ppt/Lecture24-Runtime-part3.pdf), [CodeGen-part1](ppt/Lecture25-CodeGen-part1.pdf),  [IR Opt-part1](ppt/Lecture26-IR%20Opt-part1.pdf)                         |
+| 2026-11-09 |                   机器无关代码优化 - 数据流与到达定值分析 & 机器无关代码优化 - 可用表达式分析 & 活跃变量分析                   |                       [IR Opt-part2](ppt/Lecture27-IR%20Opt-part2.pdf), [IR Opt-part3](ppt/Lecture28-IR%20Opt-part3.pdf), [IR Opt-part4](ppt/Lecture29-IR%20Opt-part4.pdf)                                                   |
+<!--
 | 2025-11-12 |           机器无关代码优化 - 可用表达式分析 & 活跃变量分析 & 基本块内优化            | [IR Opt-part3](ppt/Lecture28-IR%20Opt-part3.pdf), [IR Opt-part4](ppt/Lecture29-IR%20Opt-part4.pdf), [IR Opt-part5](ppt/Lecture30-IR%20Opt-part5.pdf) |
 | 2025-11-17 |                      流图中的循环 & 寄存器分配                       |                               [Loop](ppt/Lecture31-Loop-part1.pdf), [RegAlloc-part1](ppt/Lecture32-RegAlloc-part1.pdf)                               |
 | 2024-11-19 |                         一段代码的神奇之旅                         |                                                            [一段代码的神奇之旅](ppt/一段代码的神奇之旅.pdf)                                                            |
