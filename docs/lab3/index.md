@@ -1,14 +1,10 @@
 # Lab3 后端代码生成
 
-!!! warning "勘误"
-
-    Lab3 栈式分配，由于实验没有对齐需求，框架中栈上给每个 `i1` 分配空间的是 **1** 字节而非 **4** 字节，在作业与考试中也认为 `i1` 占 **1** 字节空间（实验代码无需更改）。
-
 经过 Lab1 和 Lab2，我们的编译器能够将 Cminusf 源代码翻译成 Light IR。本次实验要求同学们将 IR 翻译成龙芯汇编指令。
 
 ## 同步实验仓库
 
-在进行实验之前，首先拉取[实验仓库](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2025ustc-jianmu-compiler)的最新代码，具体步骤可以参考 [Lab2 中的指导](../lab2/index.md#实验要求)。
+在进行实验之前，首先拉取[实验仓库](https://cscourse.ustc.edu.cn/vdir/Gitlab/compiler_staff/2026ustc-jianmu-compiler)的最新代码，具体步骤可以参考 [Lab2 中的指导](../lab2/index.md#实验要求)。
 
 本次实验仓库更新的内容如下，每个阶段的文件将在对应文档详细说明：
 
@@ -51,7 +47,7 @@
 
 !!! warning "Deadline"
 
-    **2025 年 11 月 23 日 23:59**
+    **2026 年 11 月 26 日 23:59**
 
 ### 阶段二
 
@@ -65,11 +61,11 @@
 
 !!! warning "Deadline"
 
-    **2025 年 11 月 30 日 23:59**
+    **2026 年 12 月 3 日 23:59**
 
 ## 提交内容
 
-阶段一、二：在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2025ustc-jianmu-compiler.git`）。
+阶段一、二：在希冀平台提交你实验仓库的 url（如 `https://cscourse.ustc.edu.cn/vdir/Gitlab/xxx/2026ustc-jianmu-compiler.git`）。
 
 在提交之前，请确保你 fork 得到的远程仓库与本地同步：
 
