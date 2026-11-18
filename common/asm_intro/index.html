@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../../lab3/environment/">
+      
+      
+        <link rel="next" href="../../lab3/stack_allocation/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -305,6 +309,26 @@
           
   
   Lab2
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../lab3/" class="md-tabs__link">
+          
+  
+  Lab3
 
         </a>
       </li>
@@ -1157,6 +1181,948 @@
   
   <span class="md-ellipsis">
     剖析LLVM中的getelementptr
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Lab3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Lab3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab3 简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab3/guidance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab3 实验指导
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab3/environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    后端环境配置
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    龙芯汇编介绍
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    龙芯汇编介绍
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#汇编文件的组成" class="md-nav__link">
+    <span class="md-ellipsis">
+      汇编文件的组成
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#寄存器介绍" class="md-nav__link">
+    <span class="md-ellipsis">
+      寄存器介绍
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="寄存器介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#通用寄存器" class="md-nav__link">
+    <span class="md-ellipsis">
+      通用寄存器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#浮点寄存器" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点寄存器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="浮点寄存器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#浮点寄存器_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点寄存器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#条件标志寄存器" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件标志寄存器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#基础指令介绍" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础指令介绍
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基础指令介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#指令编码格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      指令编码格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#汇编助记格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      汇编助记格式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="汇编助记格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#指令名前缀" class="md-nav__link">
+    <span class="md-ellipsis">
+      指令名前缀
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#指令名后缀" class="md-nav__link">
+    <span class="md-ellipsis">
+      指令名后缀
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#整数指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      整数指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="整数指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#算数逻辑运算指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      算数/逻辑运算指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="算数/逻辑运算指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addw-addd-subw-subd" class="md-nav__link">
+    <span class="md-ellipsis">
+      add.w, add.d, sub.w, sub.d
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mulw-muld-divw-divd" class="md-nav__link">
+    <span class="md-ellipsis">
+      mul.w, mul.d, div.w, div.d
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addiw-addid" class="md-nav__link">
+    <span class="md-ellipsis">
+      addi.w, addi.d
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lu12iw-lu32id-lu52id" class="md-nav__link">
+    <span class="md-ellipsis">
+      lu12i.w, lu32i.d, lu52i.d
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#整数比较指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      整数比较指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="整数比较指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slt-sltu" class="md-nav__link">
+    <span class="md-ellipsis">
+      slt, sltu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slti-sltui" class="md-nav__link">
+    <span class="md-ellipsis">
+      slti, sltui
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#位运算指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      位运算指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="位运算指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#and-or-nor-xor" class="md-nav__link">
+    <span class="md-ellipsis">
+      and, or, nor, xor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#andn-orn" class="md-nav__link">
+    <span class="md-ellipsis">
+      andn, orn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#andi-ori-xori" class="md-nav__link">
+    <span class="md-ellipsis">
+      andi, ori, xori
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#位操作指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      位操作指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="位操作指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bstrpickw-bstrpickd" class="md-nav__link">
+    <span class="md-ellipsis">
+      bstrpick.w, bstrpick.d
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#分支指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      分支指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分支指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beq-bne-blt-bge-bltu-bgeu" class="md-nav__link">
+    <span class="md-ellipsis">
+      beq, bne, blt, bge, bltu, bgeu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beqz-bnez" class="md-nav__link">
+    <span class="md-ellipsis">
+      beqz, bnez
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      b
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bl" class="md-nav__link">
+    <span class="md-ellipsis">
+      bl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jirl" class="md-nav__link">
+    <span class="md-ellipsis">
+      jirl
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#普通访存指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      普通访存指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="普通访存指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ldb-ldh-ldw-ldd" class="md-nav__link">
+    <span class="md-ellipsis">
+      ld.b, ld.h, ld.w, ld.d
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stb-sth-stw-std" class="md-nav__link">
+    <span class="md-ellipsis">
+      st.b, st.h, st.w, st.d
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#宏指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      宏指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="宏指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jr" class="md-nav__link">
+    <span class="md-ellipsis">
+      jr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lalocal" class="md-nav__link">
+    <span class="md-ellipsis">
+      la.local
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#浮点数指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点数指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="浮点数指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#浮点运算指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点运算指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="浮点运算指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fadds-fsubs-fmuls-fdivs" class="md-nav__link">
+    <span class="md-ellipsis">
+      fadd.s, fsub.s, fmul.s, fdiv.s
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#浮点转换指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点转换指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="浮点转换指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ffintsw" class="md-nav__link">
+    <span class="md-ellipsis">
+      ffint.s.w
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ftintrzws" class="md-nav__link">
+    <span class="md-ellipsis">
+      ftintrz.w.s
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#浮点搬运指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点搬运指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="浮点搬运指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#movgr2frw" class="md-nav__link">
+    <span class="md-ellipsis">
+      movgr2fr.w
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#movfr2grs" class="md-nav__link">
+    <span class="md-ellipsis">
+      movfr2gr.s
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#浮点普通访存指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点普通访存指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="浮点普通访存指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flds-fldd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fld.s, fld.d
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fsts-fstd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fst.s, fst.d
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#浮点比较指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点比较指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="浮点比较指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fcmpconds-fcmpcondd" class="md-nav__link">
+    <span class="md-ellipsis">
+      fcmp.cond.s, fcmp.cond.d
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#浮点分支指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点分支指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="浮点分支指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bceqz-bcnez" class="md-nav__link">
+    <span class="md-ellipsis">
+      bceqz, bcnez
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gnu-汇编伪指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      GNU 汇编伪指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GNU 汇编伪指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#示例" class="md-nav__link">
+    <span class="md-ellipsis">
+      示例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#栈帧与函数调用" class="md-nav__link">
+    <span class="md-ellipsis">
+      栈帧与函数调用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="栈帧与函数调用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#栈帧布局" class="md-nav__link">
+    <span class="md-ellipsis">
+      栈帧布局
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#函数调用过程" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数调用过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#参数传递" class="md-nav__link">
+    <span class="md-ellipsis">
+      参数传递
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#函数的返回" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数的返回
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la64-汇编示例" class="md-nav__link">
+    <span class="md-ellipsis">
+      LA64 汇编示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LA64 汇编示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#示例-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      示例 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#示例-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      示例 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#示例-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      示例 3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#示例-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      示例 4
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab3/stack_allocation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    栈式分配介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab3/framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    后端框架介绍
   </span>
   
 
@@ -3541,6 +4507,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../lab3/environment/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 后端环境配置">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                后端环境配置
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../lab3/stack_allocation/" class="md-footer__link md-footer__link--next" aria-label="下一页: 栈式分配介绍">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                栈式分配介绍
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

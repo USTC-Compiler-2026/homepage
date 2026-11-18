@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../../common/asm_intro/">
+      
+      
+        <link rel="next" href="../framework/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -305,6 +309,26 @@
           
   
   Lab2
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Lab3
 
         </a>
       </li>
@@ -1173,6 +1197,249 @@
   
 
     
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Lab3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Lab3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab3 简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guidance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab3 实验指导
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    后端环境配置
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/asm_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    龙芯汇编介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    栈式分配介绍
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    栈式分配介绍
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#核心思想" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心思想
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#实验方案" class="md-nav__link">
+    <span class="md-ellipsis">
+      实验方案
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#举个例子" class="md-nav__link">
+    <span class="md-ellipsis">
+      举个例子
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    后端框架介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1242,10 +1509,6 @@
 
 
 <h1 id="栈式分配介绍">栈式分配介绍<a class="headerlink" href="#栈式分配介绍" title="Permanent link">&para;</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">勘误</p>
-<p>Lab3 栈式分配，由于实验没有对齐需求，框架中栈上给每个 <code>i1</code> 分配空间的是 <strong>1</strong> 字节而非 <strong>4</strong> 字节，在作业与考试中也认为 <code>i1</code> 占 <strong>1</strong> 字节空间（实验代码无需更改）。</p>
-</div>
 <p>本篇文档介绍后端代码生成中栈式分配的核心思想及实验方案，我们假设你已经阅读了<a href="../../common/asm_intro/">龙芯汇编介绍</a>章节，并基本了解了龙芯的寄存器、汇编指令、调用规范等。</p>
 <h2 id="核心思想">核心思想<a class="headerlink" href="#核心思想" title="Permanent link">&para;</a></h2>
 <p>栈式分配，是指<strong>程序的所有变量都保存在栈上</strong>，只在参与计算时提取到寄存器中。</p>
@@ -1276,7 +1539,7 @@
 <div class="admonition note">
 <p class="admonition-title">注意</p>
 <p>为变量分配空间，实际上就是移动栈指针，这里注意 <code>$sp</code> 和 <code>$fp</code> 需要<strong>对齐到 16 字节</strong>，详见<a href="../../common/asm_intro/#栈帧布局">汇编介绍中的栈帧布局章节</a>。</p>
-<p>当为 <code>i1</code> 条件变量分配内存时，一般是为其分配一个 <code>i32</code> 1 字节空间，而非只占一个比特。</p>
+<p>本实验对 <code>i1</code> 条件变量没有额外的对齐要求，框架在栈上为每个 <code>i1</code> 分配 <strong>1 字节</strong>空间。在作业与考试中，也认为 <code>i1</code> 占 <strong>1 字节</strong>空间。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">代码</p>
@@ -1382,7 +1645,7 @@
   <span class="md-icon" title="最后更新">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
   </span>
-  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 27, 2025</span>
+  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 18, 2026</span>
 </span>
      
 <span class="md-source-file__fact">
@@ -1393,7 +1656,9 @@
     
     <a href="mailto:terialionwyh@gmail.com">WangYuhang</a>,
     
-    <a href="mailto:ylc221606@mail.ustc.edu.cn">Yang00002</a>
+    <a href="mailto:ylc221606@mail.ustc.edu.cn">Yang00002</a>,
+    
+    <a href="mailto:ack@mail.ustc.edu.cn">dest1ny</a>
   </nav>
 </span>
   
@@ -1415,6 +1680,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../common/asm_intro/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 龙芯汇编介绍">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                龙芯汇编介绍
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../framework/" class="md-footer__link md-footer__link--next" aria-label="下一页: 后端框架介绍">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                后端框架介绍
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
