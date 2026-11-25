@@ -73,6 +73,8 @@
 | 2026-11-02 |               中间代码翻译 - 数组寻址 & 运行时管理 - 存储组织 & 运行时管理 - 栈式分配               |                  [IR-Translation-part7](ppt/Lecture21-IR%20Translation-part7.pdf), [Runtime-part1](ppt/Lecture22-Runtime-part1.pdf), [Runtime-part2](ppt/Lecture23-Runtime-part2.pdf),                  |
 | 2026-11-04 |                   运行时管理 - 非局部名字 & 代码生成 - 简单机器模型 & 机器无关代码优化 - 常见优化方法                    |                          [Runtime-part3](ppt/Lecture24-Runtime-part3.pdf), [CodeGen-part1](ppt/Lecture25-CodeGen-part1.pdf),  [IR Opt-part1](ppt/Lecture26-IR%20Opt-part1.pdf)                         |
 | 2026-11-09 |                   机器无关代码优化 - 数据流与到达定值分析 & 机器无关代码优化 - 可用表达式分析 & 活跃变量分析                   |                       [IR Opt-part2](ppt/Lecture27-IR%20Opt-part2.pdf), [IR Opt-part3](ppt/Lecture28-IR%20Opt-part3.pdf), [IR Opt-part4](ppt/Lecture29-IR%20Opt-part4.pdf)                                                   |
+| 2026-11-23 | 机器无关代码优化 - 基本块内的优化 & 寄存器分配 & 寄存器分配 - 图着色 | [IR Opt-part5](ppt/Lecture30-IR%20Opt-part5.pdf), [Register](ppt/Lecture31-RegAlloc-part1.pdf), [RegAlloc-part2](ppt/Lecture32-RegAlloc-part2.pdf) |
+| 2026-11-25 | 流图中的循环 & 静态类型检查 | [Loop](ppt/Lecture33-Loop.pdf), [Type-Check](ppt/Lecture34-Type-Check.pdf) |
 <!--
 | 2025-11-12 |           机器无关代码优化 - 可用表达式分析 & 活跃变量分析 & 基本块内优化            | [IR Opt-part3](ppt/Lecture28-IR%20Opt-part3.pdf), [IR Opt-part4](ppt/Lecture29-IR%20Opt-part4.pdf), [IR Opt-part5](ppt/Lecture30-IR%20Opt-part5.pdf) |
 | 2025-11-17 |                      流图中的循环 & 寄存器分配                       |                               [Loop](ppt/Lecture31-Loop-part1.pdf), [RegAlloc-part1](ppt/Lecture32-RegAlloc-part1.pdf)                               |
